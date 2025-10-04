@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sam the Revenant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000000;
+            color: #f5f5f5;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #333;
+            margin: 0 auto 1.5rem;
+            animation: breath 4s ease-in-out infinite;
+            box-shadow: 0 0 30px rgba(255,255,255,0.1);
+        }
+
+        @keyframes breath {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .bio {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        .motto {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .featured-track {
+            background: #111;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border-left: 3px solid #666;
+        }
+
+        .track-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .listen-btn {
+            display: inline-block;
+            background: #333;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: 1px solid #444;
+        }
+
+        .listen-btn:hover {
+            background: #444;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255,255,255,0.1);
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .link-btn {
+            background: #1a1a1a;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 1px solid #333;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .link-btn:hover::before {
+            left: 100%;
+        }
+
+        .link-btn:hover {
+            background: #2a2a2a;
+            border-color: #555;
+            transform: translateY(-2px);
+        }
+
+        .link-btn.youtube { border-left: 4px solid #ff0000; }
+        .link-btn.soundcloud { border-left: 4px solid #ff8800; }
+        .link-btn.audiomack { border-left: 4px solid #00ff88; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://yt3.ggpht.com/Z6UP3_g1F9t2nJM1_SBp1uaInWJdaflA-dZ28Su_mpHqu-TVF9HDOW2NCGXfmrdlp8J-EoG4cA=s600-c-k-c0x00ffffff-no-rj-rp-mo" alt="Sam the Revenant" class="avatar" id="avatar">
+        
+        <h1 class="name">Sam the Revenant</h1>
+        <p class="bio">Pianist. 18. Elegance isn't optional.</p>
+        <div class="motto">Elegance isn't optional</div>
+
+        <div class="featured-track">
+            <div class="track-title">Bella's Lullaby, Op. I: Crépuscule</div>
+            <a href="https://on.soundcloud.com/VTnVrL0eQ9XkPJWAlH" class="listen-btn" target="_blank">Escuchar Preview</a>
+        </div>
+
+        <div class="links">
+            <a href="https://www.youtube.com/@therevsam" class="link-btn youtube" target="_blank">YouTube</a>
+            <a href="https://on.soundcloud.com/EgUkaPQousFJbW0g6A" class="link-btn soundcloud" target="_blank">SoundCloud</a>
+            <a href="https://audiomack.com/therevsam" class="link-btn audiomack" target="_blank">Audiomack</a>
+        </div>
+    </div>
+
+    <script>
+        // Cargar avatar dinámicamente
+        document.getElementById('avatar').src = 'https://yt3.ggpht.com/Z6UP3_g1F9t2nJM1_SBp1uaInWJdaflA-dZ28Su_mpHqu-TVF9HDOW2NCGXfmrdlp8J-EoG4cA=s600-c-k-c0x00ffffff-no-rj-rp-mo';
+    </script>
+</body>
+</html>
