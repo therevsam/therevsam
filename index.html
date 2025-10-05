@@ -151,30 +151,531 @@
         .link-btn.soundcloud { border-left: 4px solid #ff8800; }
         .link-btn.audiomack { border-left: 4px solid #00ff88; }
     </style>
+</head><!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sam the Revenant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000000;
+            color: #f5f5f5;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            animation: fadeIn 2s ease-in-out forwards;
+            padding: 1rem;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .container {
+            text-align: center;
+            padding: 1.5rem;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #333;
+            margin: 0 auto 1.5rem;
+            animation: breath 4s ease-in-out infinite;
+            box-shadow: 0 0 20px rgba(255,255,255,0.05);
+        }
+
+        @keyframes breath {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .bio {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            font-style: italic;
+            line-height: 1.4;
+        }
+
+        .featured-track {
+            background: rgba(17, 17, 17, 0.8);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            border-left: 3px solid #444;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+            overflow: hidden;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .carousel {
+            position: relative;
+            width: 100%;
+            touch-action: pan-y;
+            flex: 1;
+        }
+
+        .carousel-track {
+            position: relative;
+            height: 180px;
+        }
+
+        .carousel-slide {
+            width: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+        }
+
+        .album-cover {
+            width: 100px;
+            height: 100px;
+            border-radius: 8px;
+            object-fit: cover;
+            margin: 0 auto 1rem;
+            border: 2px solid #333;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            position: relative;
+        }
+
+        .new-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: rgba(255,255,255,0.1);
+            color: #87CEEB;
+            padding: 0.3rem 0.8rem;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            z-index: 2;
+        }
+
+        .track-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+            min-height: 2.6rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .listen-btn-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+
+        .listen-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: rgba(20, 20, 20, 0.8);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.75rem;
+            transition: all 0.3s ease;
+            border: 1px solid #2a2a2a;
+            backdrop-filter: blur(15px);
+            position: relative;
+            overflow: hidden;
+            min-height: 44px;
+        }
+
+        /* Efecto de puntitos viajando rápido */
+        .listen-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.4) 1px, transparent 2px),
+                radial-gradient(circle at 50% 80%, rgba(255,255,255,0.3) 1px, transparent 2px),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.5) 1px, transparent 2px);
+            animation: dotsTravel 2s linear infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes dotsTravel {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(200%);
+            }
+        }
+
+        .listen-btn:hover {
+            background: rgba(30, 30, 30, 0.9);
+            border-color: #3a3a3a;
+            transform: translateY(-2px);
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 1rem 0 0.5rem 0;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: rgba(255,255,255,0.8);
+            transform: scale(1.2);
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .link-btn {
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: rgba(20, 20, 20, 0.8);
+            color: white;
+            padding: 0.9rem 1.5rem;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 1px solid #2a2a2a;
+            font-size: 0.9rem;
+            overflow: hidden;
+            backdrop-filter: blur(15px);
+            min-height: 54px;
+        }
+
+        .link-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
+            transition: left 0.7s;
+        }
+
+        .link-btn:hover::before {
+            left: 100%;
+        }
+
+        .link-btn:hover {
+            background: rgba(30, 30, 30, 0.9);
+            border-color: #3a3a3a;
+            transform: translateY(-2px);
+        }
+
+        .platform-logo {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            filter: brightness(0.9);
+            border-radius: 6px;
+        }
+
+        .btn-text {
+            flex: 1;
+            text-align: center;
+        }
+
+        .soon-badge {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.1);
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            opacity: 0.8;
+        }
+
+        /* Mejoras para móviles */
+        @media (max-width: 480px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .avatar {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .name {
+                font-size: 1.8rem;
+            }
+            
+            .bio {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .featured-track {
+                padding: 1.2rem;
+                margin-bottom: 1.5rem;
+                min-height: 260px;
+            }
+            
+            .carousel-track {
+                height: 160px;
+            }
+            
+            .album-cover {
+                width: 90px;
+                height: 90px;
+            }
+            
+            .track-title {
+                font-size: 1rem;
+                min-height: 2.4rem;
+            }
+            
+            .link-btn {
+                padding: 0.8rem 1.2rem;
+                font-size: 0.85rem;
+                min-height: 50px;
+            }
+
+            .platform-logo {
+                width: 24px;
+                height: 24px;
+                left: 0.8rem;
+                border-radius: 5px;
+            }
+
+            .soon-badge {
+                right: 0.8rem;
+                font-size: 0.65rem;
+                padding: 0.15rem 0.5rem;
+            }
+
+            .new-badge {
+                font-size: 0.65rem;
+                padding: 0.2rem 0.6rem;
+            }
+
+            .listen-btn {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.7rem;
+                min-height: 42px;
+            }
+        }
+
+        /* Scroll suave */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <img src="https://yt3.ggpht.com/Z6UP3_g1F9t2nJM1_SBp1uaInWJdaflA-dZ28Su_mpHqu-TVF9HDOW2NCGXfmrdlp8J-EoG4cA=s600-c-k-c0x00ffffff-no-rj-rp-mo" alt="Sam the Revenant" class="avatar" id="avatar">
+        <img src="https://yt3.ggpht.com/Z6UP3_g1F9t2nJM1_SBp1uaInWJdaflA-dZ28Su_mpHqu-TVF9HDOW2NCGXfmrdlp8J-EoG4cA=s600-c-k-c0x00ffffff-no-rj-rp-mo" alt="Sam the Revenant" class="avatar">
         
         <h1 class="name">Sam the Revenant</h1>
         <p class="bio">Pianist. 18. Elegance isn't optional.</p>
-        <div class="motto">Elegance isn't optional</div>
 
         <div class="featured-track">
-            <div class="track-title">Bella's Lullaby, Op. I: Crépuscule</div>
-            <a href="https://on.soundcloud.com/VTnVrL0eQ9XkPJWAlH" class="listen-btn" target="_blank">Escuchar Preview</a>
+            <div class="carousel">
+                <div class="carousel-track">
+                    <!-- Slide 1 - Bella's Lullaby -->
+                    <div class="carousel-slide active">
+                        <img src="https://i.pinimg.com/736x/7f/4f/8e/7f4f8e83dea5492b29cc66689764c709.jpg" alt="Bella's Lullaby Cover" class="album-cover">
+                        <div class="track-title">Bella's Lullaby, Op. I: Crépuscule</div>
+                    </div>
+                    
+                    <!-- Slide 2 - Notturno I -->
+                    <div class="carousel-slide">
+                        <img src="https://i.pinimg.com/736x/a0/39/97/a0399783d0268a90692e3bd678ba203c.jpg" alt="Notturno I Cover" class="album-cover">
+                        <div class="track-title">Notturno I in Do♯ Minore - Velo della Notte</div>
+                    </div>
+                    
+                    <!-- Slide 3 - Notturno II -->
+                    <div class="carousel-slide">
+                        <img src="https://i.pinimg.com/736x/fe/d5/27/fed52761e918dca05135a9da4046eac0.jpg" alt="Notturno II Cover" class="album-cover">
+                        <div class="new-badge" style="color: #87CEEB;">New</div>
+                        <div class="track-title">Notturno II en Mi mineur – Murmures Perdus</div>
+                    </div>
+                </div>
+                
+                <div class="carousel-dots">
+                    <div class="dot active" onclick="goToSlide(0)"></div>
+                    <div class="dot" onclick="goToSlide(1)"></div>
+                    <div class="dot" onclick="goToSlide(2)"></div>
+                </div>
+            </div>
+
+            <!-- Botón único fuera del carrusel -->
+            <div class="listen-btn-container">
+                <a href="https://www.youtube.com/@therevsam" class="listen-btn" target="_blank">
+                    <svg class="icon" viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;">
+                        <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                    </svg>
+                    Escuchar en YouTube
+                </a>
+            </div>
         </div>
 
         <div class="links">
-            <a href="https://www.youtube.com/@therevsam" class="link-btn youtube" target="_blank">YouTube</a>
-            <a href="https://on.soundcloud.com/EgUkaPQousFJbW0g6A" class="link-btn soundcloud" target="_blank">SoundCloud</a>
-            <a href="https://audiomack.com/therevsam" class="link-btn audiomack" target="_blank">Audiomack</a>
+            <a href="https://www.youtube.com/@therevsam" class="link-btn" target="_blank">
+                <img src="https://i.pinimg.com/736x/7a/5d/56/7a5d56c5e22d6fed8d72eeb70329f5f5.jpg" alt="YouTube" class="platform-logo">
+                <span class="btn-text">YouTube</span>
+            </a>
+            
+            <a href="https://soundcloud.com/therevsam" class="link-btn" target="_blank">
+                <img src="https://i.pinimg.com/1200x/81/9d/35/819d35d67997e972a5542b5ba49d577b.jpg" alt="SoundCloud" class="platform-logo">
+                <span class="btn-text">SoundCloud</span>
+            </a>
+            
+            <a href="https://audiomack.com/therevsam" class="link-btn" target="_blank">
+                <img src="https://i.pinimg.com/1200x/f6/36/b6/f636b60899bb4ec359b6e4aadecce904.jpg" alt="Audiomack" class="platform-logo">
+                <span class="btn-text">Audiomack</span>
+            </a>
+            
+            <a href="#" class="link-btn" onclick="return false;">
+                <img src="https://i.pinimg.com/1200x/e6/55/bf/e655bff3217dd6f575a275604b0ff7e1.jpg" alt="Spotify" class="platform-logo">
+                <span class="btn-text">Spotify</span>
+                <span class="soon-badge">Soon</span>
+            </a>
+            
+            <a href="#" class="link-btn" onclick="return false;">
+                <img src="https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg" alt="Apple Music" class="platform-logo">
+                <span class="btn-text">Apple Music</span>
+                <span class="soon-badge">Soon</span>
+            </a>
+
+            <a href="#" class="link-btn" onclick="return false;">
+                <img src="https://i.pinimg.com/736x/94/9c/01/949c014c813bc031520d82af3905a4f0.jpg" alt="Tidal" class="platform-logo">
+                <span class="btn-text">Tidal</span>
+                <span class="soon-badge">Soon</span>
+            </a>
         </div>
     </div>
 
     <script>
-        // Cargar avatar dinámicamente
-        document.getElementById('avatar').src = 'https://yt3.ggpht.com/Z6UP3_g1F9t2nJM1_SBp1uaInWJdaflA-dZ28Su_mpHqu-TVF9HDOW2NCGXfmrdlp8J-EoG4cA=s600-c-k-c0x00ffffff-no-rj-rp-mo';
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.dot');
+        const totalSlides = slides.length;
+
+        function updateSlide() {
+            // Ocultar todos los slides primero
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active');
+            });
+            
+            // Mostrar solo el slide activo
+            slides[currentSlide].classList.add('active');
+            
+            // Actualizar dots
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlide();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlide();
+        }
+
+        function goToSlide(slideIndex) {
+            currentSlide = slideIndex;
+            updateSlide();
+        }
+
+        // Soporte para swipe en móviles
+        let startX = 0;
+        const carousel = document.querySelector('.carousel');
+        
+        carousel.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+        });
+
+        carousel.addEventListener('touchend', (e) => {
+            const endX = e.changedTouches[0].clientX;
+            const diffX = startX - endX;
+            
+            if (Math.abs(diffX) > 50) {
+                if (diffX > 0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
+                }
+            }
+        });
+
+        // También soporte para click en los dots
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                goToSlide(index);
+            });
+        });
+
+        // Inicializar
+        updateSlide();
     </script>
 </body>
 </html>
