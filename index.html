@@ -16,6 +16,10 @@
             min-height: 100vh;
             overflow-x: hidden;
             overflow-y: auto;
+            /* Mejora el rendimiento */
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            perspective: 1000;
         }
 
         body {
@@ -29,9 +33,12 @@
             animation: fadeIn 2s ease-in-out forwards;
             padding: 1rem;
             position: relative;
+            /* Optimizaciones de rendimiento */
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeSpeed;
         }
 
-        /* FONDO ANIMADO MEJORADO */
+        /* FONDO OPTIMIZADO - Sin animaciones pesadas */
         .animated-bg {
             position: fixed;
             top: 0;
@@ -40,15 +47,10 @@
             height: 100%;
             z-index: -1;
             background: 
-                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.05) 0%, transparent 50%);
-            animation: bgPulse 8s ease-in-out infinite;
-        }
-
-        @keyframes bgPulse {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.5; }
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.04) 0%, transparent 50%);
+            /* Animación removida para mejor rendimiento */
         }
 
         @keyframes fadeIn {
@@ -62,13 +64,16 @@
             width: 100%;
             position: relative;
             z-index: 1;
+            /* Mejora de rendimiento */
+            transform: translateZ(0);
         }
 
-        /* EFECTO LIQUID GLASS MEJORADO Y NOTABLE */
+        /* EFECTO LIQUID GLASS OPTIMIZADO */
         .glass-effect {
             background: rgba(25, 25, 35, 0.25) !important;
-            backdrop-filter: blur(25px) saturate(200%);
-            -webkit-backdrop-filter: blur(25px) saturate(200%);
+            /* backdrop-filter reducido para móviles */
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.15) !important;
             border-radius: 16px;
             position: relative;
@@ -77,9 +82,12 @@
                 0 8px 32px rgba(0, 0, 0, 0.3),
                 inset 0 1px 0 rgba(255, 255, 255, 0.1),
                 inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+            /* Mejora de rendimiento */
+            transform: translateZ(0);
+            will-change: transform;
         }
 
-        /* Efecto de reflejo líquido mejorado */
+        /* Efecto de reflejo líquido - OPTIMIZADO */
         .glass-effect::before {
             content: '';
             position: absolute;
@@ -90,13 +98,15 @@
             background: linear-gradient(
                 90deg,
                 transparent,
-                rgba(255, 255, 255, 0.1),
-                rgba(255, 255, 255, 0.2),
-                rgba(255, 255, 255, 0.1),
+                rgba(255, 255, 255, 0.08),
+                rgba(255, 255, 255, 0.12),
+                rgba(255, 255, 255, 0.08),
                 transparent
             );
             transition: left 0.8s ease;
             z-index: 1;
+            /* Solo activar transform en hover para mejor rendimiento */
+            transform: translateZ(0);
         }
 
         .glass-effect:hover::before {
@@ -117,6 +127,8 @@
             object-fit: cover;
             filter: brightness(0.4) contrast(1.1);
             border-radius: 16px;
+            /* Optimización de imagen */
+            image-rendering: -webkit-optimize-contrast;
         }
 
         .avatar {
@@ -129,7 +141,8 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            animation: breath 4s ease-in-out infinite;
+            /* Animación simplificada */
+            animation: breath 6s ease-in-out infinite;
             box-shadow: 
                 0 0 40px rgba(0, 0, 0, 0.6),
                 0 0 80px rgba(120, 119, 198, 0.3);
@@ -138,7 +151,7 @@
 
         @keyframes breath {
             0%, 100% { transform: translate(-50%, -50%) scale(1); }
-            50% { transform: translate(-50%, -50%) scale(1.03); }
+            50% { transform: translate(-50%, -50%) scale(1.02); }
         }
 
         .name {
@@ -188,6 +201,8 @@
             position: absolute;
             top: 0;
             left: 0;
+            /* Mejora de rendimiento */
+            backface-visibility: hidden;
         }
 
         .carousel-slide.active {
@@ -218,7 +233,7 @@
             font-size: 0.7rem;
             font-weight: bold;
             z-index: 2;
-            backdrop-filter: blur(15px);
+            backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
@@ -257,7 +272,7 @@
             overflow: hidden;
         }
 
-        /* EFECTO BRILLANTE MEJORADO */
+        /* EFECTO BRILLANTE OPTIMIZADO */
         .shiny-text {
             position: relative;
             color: #ffffff;
@@ -274,7 +289,8 @@
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: textShine 3s linear infinite;
+            /* Animación optimizada */
+            animation: textShine 4s linear infinite;
             text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
         }
 
@@ -294,10 +310,6 @@
                 0 6px 15px rgba(255, 255, 255, 0.1);
         }
 
-        .listen-btn:hover .shiny-text {
-            animation-duration: 1.5s;
-        }
-
         .carousel-dots {
             display: flex;
             justify-content: center;
@@ -312,7 +324,7 @@
             background: rgba(255, 255, 255, 0.3);
             cursor: pointer;
             transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
@@ -385,7 +397,7 @@
             border-radius: 10px;
             font-size: 0.7rem;
             opacity: 0.9;
-            backdrop-filter: blur(15px);
+            backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             z-index: 2;
         }
@@ -443,7 +455,23 @@
             z-index: 2;
         }
 
-        /* RESPONSIVE */
+        /* MEDIA QUERY OPTIMIZADA PARA MÓVILES */
+        @media (max-width: 768px) {
+            /* Reducir efectos en móviles para mejor rendimiento */
+            .glass-effect {
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+            }
+            
+            .shiny-text {
+                animation: textShine 6s linear infinite; /* Más lento en móviles */
+            }
+            
+            .avatar {
+                animation: breath 8s ease-in-out infinite; /* Más lento en móviles */
+            }
+        }
+
         @media (max-width: 480px) {
             body {
                 padding: 0.8rem;
@@ -527,10 +555,19 @@
                 gap: 0.8rem;
             }
         }
+
+        /* Deshabilitar animaciones para usuarios que prefieren reducción de movimiento */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Fondo animado mejorado -->
+    <!-- Fondo optimizado -->
     <div class="animated-bg"></div>
 
     <div class="container">
@@ -684,6 +721,15 @@
         });
 
         updateSlide();
+
+        // Optimización: Reducir procesamiento cuando la página no está visible
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                document.body.style.animationPlayState = 'paused';
+            } else {
+                document.body.style.animationPlayState = 'running';
+            }
+        });
     </script>
 </body>
 </html>
