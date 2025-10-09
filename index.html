@@ -402,7 +402,7 @@
             z-index: 2;
         }
 
-        /* BOTONES FINALES */
+        /* BOTONES FINALES - CORREGIDOS */
         .final-buttons {
             display: flex;
             gap: 1rem;
@@ -412,6 +412,7 @@
         .contact-btn, .instagram-btn {
             display: flex;
             align-items: center;
+            justify-content: center;
             position: relative;
             color: white;
             padding: 1.2rem 1.5rem;
@@ -436,14 +437,34 @@
         .final-buttons .platform-logo {
             width: 24px;
             height: 24px;
+            position: absolute;
             left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
-        .final-buttons .btn-text {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: auto;
+        /* TEXTO INDEPENDIENTE PARA CADA BOTÓN - CORREGIDO */
+        .contact-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            z-index: 2;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            text-align: center;
+            flex: 1;
+            padding: 0 0.5rem;
+            margin-left: 12px; /* Compensa el espacio del icono */
+        }
+
+        .instagram-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            z-index: 2;
+            font-size: 0.85rem;
+            text-align: center;
+            flex: 1;
+            padding: 0 0.5rem;
+            margin-left: 12px; /* Compensa el espacio del icono */
         }
 
         .lock-icon {
@@ -535,6 +556,16 @@
                 width: 22px;
                 height: 22px;
                 left: 0.8rem;
+            }
+
+            .contact-text {
+                font-size: 0.75rem;
+                margin-left: 10px; /* Ajuste para móviles */
+            }
+
+            .instagram-text {
+                font-size: 0.8rem;
+                margin-left: 10px; /* Ajuste para móviles */
             }
 
             .soon-badge {
@@ -655,12 +686,12 @@
         <div class="final-buttons">
             <a href="mailto:samtherevenant@gmail.com" class="contact-btn glass-effect">
                 <img src="https://i.pinimg.com/1200x/8e/48/1a/8e481add923811cde7fb76cc3597b19f.jpg" alt="Email" class="platform-logo">
-                <span class="btn-text">Contact Me</span>
+                <span class="contact-text">Contact Me</span>
             </a>
 
             <a href="#" class="instagram-btn glass-effect" onclick="return false;">
                 <img src="https://i.pinimg.com/736x/41/b4/76/41b476b8b88c61372eab7d21e83bea28.jpg" alt="Instagram" class="platform-logo">
-                <span class="btn-text">Instagram</span>
+                <span class="instagram-text">Instagram</span>
                 <svg class="lock-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM12 17c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zM15.1 8H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
                 </svg>
