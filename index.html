@@ -43,7 +43,6 @@
             background: 
                 radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.05) 0%, transparent 50%),
                 radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.03) 0%, transparent 50%);
-            /* Animación removida completamente */
         }
 
         @keyframes fadeIn {
@@ -59,7 +58,7 @@
             z-index: 1;
         }
 
-        /* GLASS EFFECT OPTIMIZADO - Sin transformaciones pesadas */
+        /* GLASS EFFECT OPTIMIZADO */
         .glass-effect {
             background: rgba(25, 25, 35, 0.3) !important;
             backdrop-filter: blur(10px);
@@ -71,11 +70,6 @@
             box-shadow: 
                 0 8px 25px rgba(0, 0, 0, 0.2),
                 inset 0 1px 0 rgba(255, 255, 255, 0.05);
-        }
-
-        /* EFECTO DE REFLEJO REMOVIDO PARA MÓVILES */
-        .glass-effect::before {
-            display: none; /* Eliminado para mejor rendimiento */
         }
 
         /* BANNER */
@@ -104,14 +98,11 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            /* Animación simplificada o removida */
             box-shadow: 
                 0 0 30px rgba(0, 0, 0, 0.5),
                 0 0 60px rgba(120, 119, 198, 0.2);
             z-index: 2;
         }
-
-        /* ANIMACIÓN DE RESPIRACIÓN REMOVIDA PARA MEJOR RENDIMIENTO */
 
         .name {
             font-family: 'Cormorant Garamond', serif;
@@ -132,8 +123,9 @@
             text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
         }
 
-        .featured-track {
-            padding: 1.8rem;
+        /* REPRODUCTOR DE AUDIO CON CARRUSEL */
+        .audio-player-section {
+            padding: 2rem;
             margin-bottom: 1.8rem;
             min-height: 280px;
             display: flex;
@@ -141,119 +133,60 @@
             justify-content: space-between;
         }
 
-        .carousel {
+        .album-art-container {
             position: relative;
-            width: 100%;
-            touch-action: pan-y;
-            flex: 1;
+            margin-bottom: 1.2rem;
         }
 
-        .carousel-track {
-            position: relative;
-            height: 180px;
-        }
-
-        .carousel-slide {
-            width: 100%;
-            opacity: 0;
-            transition: opacity 0.4s ease-in-out;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-
-        .carousel-slide.active {
-            opacity: 1;
-        }
-
-        .album-cover {
-            width: 110px;
-            height: 110px;
+        .album-art {
+            width: 140px;
+            height: 140px;
             border-radius: 12px;
             object-fit: cover;
-            margin: 0 auto 1.2rem;
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            margin: 0 auto;
+            border: 1.5px solid rgba(255, 255, 255, 0.15);
             box-shadow: 
-                0 8px 20px rgba(0, 0, 0, 0.3);
-            position: relative;
+                0 8px 30px rgba(0, 0, 0, 0.3),
+                0 4px 15px rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease;
         }
 
-        .new-badge {
-            position: absolute;
-            top: -6px;
-            right: -6px;
-            background: rgba(255, 255, 255, 0.15);
-            color: #87CEEB;
-            padding: 0.4rem 0.9rem;
-            border-radius: 12px;
-            font-size: 0.7rem;
-            font-weight: bold;
-            z-index: 2;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .album-art:hover {
+            transform: scale(1.02);
+        }
+
+        .track-info {
+            margin-bottom: 1.2rem;
+            min-height: 60px;
         }
 
         .track-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
             line-height: 1.3;
-            min-height: 2.6rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+            transition: opacity 0.3s ease;
         }
 
-        .listen-btn-container {
+        .track-artist {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-bottom: 1rem;
+        }
+
+        /* INDICADORES DEL CARRUSEL */
+        .carousel-indicators {
             display: flex;
             justify-content: center;
-            align-items: center;
-            margin-top: 0.8rem;
+            gap: 0.8rem;
+            margin-bottom: 1.2rem;
         }
 
-        .listen-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.6rem;
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 12px;
-            text-decoration: none;
-            font-size: 0.8rem;
-            transition: all 0.3s ease;
-            min-height: 48px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* EFECTO SHINY TEXT OPTIMIZADO */
-        .shiny-text {
-            position: relative;
-            color: #ffffff;
-            font-weight: 600;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-        }
-
-        /* Animación removida para mejor rendimiento */
-
-        .listen-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 
-                0 8px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .carousel-dots {
-            display: flex;
-            justify-content: center;
-            gap: 0.6rem;
-            margin: 1.2rem 0 0.8rem 0;
-        }
-
-        .dot {
-            width: 10px;
-            height: 10px;
+        .indicator {
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.3);
             cursor: pointer;
@@ -261,11 +194,181 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .dot.active {
+        .indicator.active {
             background: rgba(255, 255, 255, 0.9);
             transform: scale(1.2);
         }
 
+        /* CONTROLES DEL REPRODUCTOR */
+        .player-controls {
+            width: 100%;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 3px;
+            margin-bottom: 1.2rem;
+            cursor: pointer;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: #ffffff;
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.1s linear;
+            position: relative;
+        }
+
+        .progress-handle {
+            width: 14px;
+            height: 14px;
+            background: #ffffff;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            right: -7px;
+            transform: translateY(-50%);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .progress-container:hover .progress-handle {
+            opacity: 1;
+        }
+
+        .time-display {
+            display: flex;
+            justify-content: space-between;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            opacity: 0.6;
+            margin-bottom: 1.5rem;
+        }
+
+        /* BOTONES MODERNOS - NUEVO DISEÑO */
+        .control-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .control-btn {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.8;
+            position: relative;
+        }
+
+        /* Botones de navegación - Estilo moderno */
+        .nav-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+            opacity: 1;
+        }
+
+        .nav-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Botón play/pause - Estilo elegante */
+        .play-pause-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(15px);
+            border: 1.5px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 
+                0 8px 25px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            opacity: 1;
+        }
+
+        .play-pause-btn:hover {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+            transform: scale(1.05);
+            box-shadow: 
+                0 12px 30px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        }
+
+        .play-pause-btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-icon {
+            width: 24px;
+            height: 24px;
+            transition: transform 0.2s ease;
+        }
+
+        .play-pause-btn .btn-icon {
+            width: 28px;
+            height: 28px;
+        }
+
+        .nav-btn .btn-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* BOTÓN YOUTUBE */
+        .player-youtube-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            width: auto;
+            margin: 0 auto;
+        }
+
+        .player-youtube-btn:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .shiny-text {
+            position: relative;
+            color: #ffffff;
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Resto de estilos se mantienen igual */
         .links {
             display: flex;
             flex-direction: column;
@@ -291,8 +394,7 @@
 
         .link-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 
-                0 8px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
 
         .platform-logo {
@@ -332,7 +434,6 @@
             z-index: 2;
         }
 
-        /* BOTONES FINALES */
         .final-buttons {
             display: flex;
             gap: 1rem;
@@ -360,8 +461,7 @@
 
         .contact-btn:hover, .instagram-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 
-                0 8px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
 
         .final-buttons .platform-logo {
@@ -405,7 +505,6 @@
             z-index: 2;
         }
 
-        /* COPYRIGHT */
         .copyright {
             font-family: 'Inter', sans-serif;
             font-size: 0.75rem;
@@ -417,24 +516,18 @@
             letter-spacing: 0.3px;
         }
 
-        /* MEDIA QUERY PARA MÓVILES - OPTIMIZADO */
+        /* MEDIA QUERY PARA MÓVILES */
         @media (max-width: 768px) {
-            /* Efectos reducidos al mínimo en móviles */
             .glass-effect {
                 backdrop-filter: blur(5px);
                 -webkit-backdrop-filter: blur(5px);
-            }
-            
-            /* Remover todas las animaciones pesadas en móviles */
-            .shiny-text {
-                animation: none;
             }
         }
 
         @media (max-width: 480px) {
             body {
                 padding: 0.8rem;
-                animation-duration: 1s; /* Animación más rápida en móviles */
+                animation-duration: 1s;
             }
             
             .container {
@@ -460,23 +553,43 @@
                 margin-bottom: 1.5rem;
             }
             
-            .featured-track {
-                padding: 1.4rem;
+            .audio-player-section {
+                padding: 1.5rem;
                 margin-bottom: 1.5rem;
                 min-height: 260px;
             }
             
-            .carousel-track {
-                height: 160px;
-            }
-            
-            .album-cover {
-                width: 95px;
-                height: 95px;
+            .album-art {
+                width: 120px;
+                height: 120px;
             }
             
             .track-title {
-                font-size: 1rem;
+                font-size: 1.1rem;
+            }
+            
+            .control-buttons {
+                gap: 1.5rem;
+            }
+            
+            .play-pause-btn {
+                width: 55px;
+                height: 55px;
+            }
+            
+            .play-pause-btn .btn-icon {
+                width: 26px;
+                height: 26px;
+            }
+            
+            .nav-btn {
+                width: 36px;
+                height: 36px;
+            }
+            
+            .nav-btn .btn-icon {
+                width: 18px;
+                height: 18px;
             }
             
             .link-btn {
@@ -512,12 +625,8 @@
                 font-size: 0.65rem;
             }
 
-            .new-badge {
-                font-size: 0.65rem;
-            }
-
-            .listen-btn {
-                padding: 0.9rem 1.8rem;
+            .player-youtube-btn {
+                padding: 0.7rem 1.3rem;
                 font-size: 0.75rem;
             }
 
@@ -532,16 +641,19 @@
                 padding-top: 0.8rem;
             }
 
-            /* Deshabilitar efectos hover en touch devices */
             @media (hover: none) {
-                .link-btn:hover, .listen-btn:hover, .contact-btn:hover, .instagram-btn:hover {
+                .link-btn:hover, .player-youtube-btn:hover, .contact-btn:hover, .instagram-btn:hover,
+                .control-btn:hover, .play-pause-btn:hover, .nav-btn:hover {
                     transform: none;
                     box-shadow: none;
+                }
+                
+                .progress-handle {
+                    opacity: 1;
                 }
             }
         }
 
-        /* Deshabilitar animaciones para usuarios que prefieren reducción de movimiento */
         @media (prefers-reduced-motion: reduce) {
             * {
                 animation-duration: 0.01ms !important;
@@ -565,35 +677,62 @@
         <h1 class="name">Sam the Revenant</h1>
         <p class="bio">Pianist & Composer. 18. Elegance isn't optional.</p>
 
-        <div class="featured-track glass-effect">
-            <div class="carousel">
-                <div class="carousel-track">
-                    <div class="carousel-slide active">
-                        <img src="https://i.pinimg.com/736x/7f/4f/8e/7f4f8e83dea5492b29cc66689764c709.jpg" alt="Bella's Lullaby Cover" class="album-cover">
-                        <div class="track-title">Bella's Lullaby, Op. I: Crépuscule</div>
-                    </div>
-                    
-                    <div class="carousel-slide">
-                        <img src="https://i.pinimg.com/736x/a0/39/97/a0399783d0268a90692e3bd678ba203c.jpg" alt="Notturno I Cover" class="album-cover">
-                        <div class="track-title">Notturno I in Do♯ Minore - Velo della Notte</div>
-                    </div>
-                    
-                    <div class="carousel-slide">
-                        <img src="https://i.pinimg.com/736x/fe/d5/27/fed52761e918dca05135a9da4046eac0.jpg" alt="Notturno II Cover" class="album-cover">
-                        <div class="new-badge">New</div>
-                        <div class="track-title">Notturno II en Mi mineur – Murmures Perdus</div>
+        <!-- REPRODUCTOR DE AUDIO CON CARRUSEL -->
+        <div class="audio-player-section glass-effect">
+            <div class="album-art-container">
+                <img src="https://i.pinimg.com/736x/7f/4f/8e/7f4f8e83dea5492b29cc66689764c709.jpg" alt="Album Cover" class="album-art" id="albumArt">
+            </div>
+            
+            <!-- INDICADORES DEL CARRUSEL -->
+            <div class="carousel-indicators" id="carouselIndicators">
+                <div class="indicator active" data-index="0"></div>
+                <div class="indicator" data-index="1"></div>
+                <div class="indicator" data-index="2"></div>
+            </div>
+
+            <div class="track-info">
+                <div class="track-title" id="trackTitle">Bella's Lullaby, Op. I – Crépuscule</div>
+                <div class="track-artist">Sam the Revenant</div>
+            </div>
+
+            <div class="player-controls">
+                <div class="progress-container" id="progressContainer">
+                    <div class="progress-bar" id="progressBar">
+                        <div class="progress-handle"></div>
                     </div>
                 </div>
                 
-                <div class="carousel-dots">
-                    <div class="dot active" onclick="goToSlide(0)"></div>
-                    <div class="dot" onclick="goToSlide(1)"></div>
-                    <div class="dot" onclick="goToSlide(2)"></div>
+                <div class="time-display">
+                    <span class="current-time" id="currentTime">0:00</span>
+                    <span class="duration" id="duration">0:30</span>
                 </div>
-            </div>
 
-            <div class="listen-btn-container">
-                <a href="https://www.youtube.com/@therevsam" class="listen-btn glass-effect" target="_blank">
+                <!-- BOTONES DE CONTROL MODERNOS -->
+                <div class="control-buttons">
+                    <button class="control-btn nav-btn" id="prevBtn">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                        </svg>
+                    </button>
+                    
+                    <button class="control-btn play-pause-btn" id="playPauseBtn">
+                        <svg class="btn-icon" id="playIcon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                        <svg class="btn-icon" id="pauseIcon" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+                            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                        </svg>
+                    </button>
+                    
+                    <button class="control-btn nav-btn" id="nextBtn">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- BOTÓN YOUTUBE -->
+                <a href="https://www.youtube.com/@therevsam" class="player-youtube-btn" target="_blank">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
                     </svg>
@@ -666,56 +805,150 @@
     </div>
 
     <script>
-        // Carousel functionality - Optimizado
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.carousel-slide');
-        const dots = document.querySelectorAll('.dot');
-        const totalSlides = slides.length;
-
-        function updateSlide() {
-            slides.forEach((slide, index) => {
-                slide.classList.toggle('active', index === currentSlide);
-            });
-            
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentSlide);
-            });
-        }
-
-        function goToSlide(slideIndex) {
-            currentSlide = slideIndex;
-            updateSlide();
-        }
-
-        // Swipe simplificado
-        let startX = 0;
-        const carousel = document.querySelector('.carousel');
-        
-        carousel.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].clientX;
-        });
-
-        carousel.addEventListener('touchend', (e) => {
-            const endX = e.changedTouches[0].clientX;
-            const diffX = startX - endX;
-            
-            if (Math.abs(diffX) > 50) {
-                if (diffX > 0) {
-                    currentSlide = (currentSlide + 1) % totalSlides;
-                } else {
-                    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-                }
-                updateSlide();
+        // Configuración de las canciones
+        const tracks = [
+            {
+                title: "Bella's Lullaby, Op. I – Crépuscule",
+                audioUrl: "https://bellaslullaby-bysam.edgeone.app/Bellas%20L,%20preview.mp3",
+                coverUrl: "https://i.pinimg.com/736x/7f/4f/8e/7f4f8e83dea5492b29cc66689764c709.jpg",
+                duration: "0:30"
+            },
+            {
+                title: "Notturno I in Do♯ Minore - Velo della Notte",
+                audioUrl: "https://notturno1-bysam.edgeone.app/Notturno%20I,%20preview.mp3",
+                coverUrl: "https://i.pinimg.com/736x/a0/39/97/a0399783d0268a90692e3bd678ba203c.jpg",
+                duration: "0:30"
+            },
+            {
+                title: "Notturno II en Mi mineur – Murmures Perdus",
+                audioUrl: "https://notturno2-bysam.edgeone.app/Notturno%20II,%20preview.mp3",
+                coverUrl: "https://i.pinimg.com/736x/fe/d5/27/fed52761e918dca05135a9da4046eac0.jpg",
+                duration: "0:30"
             }
+        ];
+
+        // Elementos del DOM
+        const audio = new Audio();
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const playIcon = document.getElementById('playIcon');
+        const pauseIcon = document.getElementById('pauseIcon');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const progressBar = document.getElementById('progressBar');
+        const progressContainer = document.getElementById('progressContainer');
+        const currentTimeEl = document.getElementById('currentTime');
+        const durationEl = document.getElementById('duration');
+        const albumArt = document.getElementById('albumArt');
+        const trackTitle = document.getElementById('trackTitle');
+        const indicators = document.querySelectorAll('.indicator');
+
+        // Estado del reproductor
+        let currentTrackIndex = 0;
+        let isPlaying = false;
+
+        // Cargar track inicial
+        loadTrack(currentTrackIndex);
+
+        // Funciones del reproductor
+        function loadTrack(index) {
+            const track = tracks[index];
+            
+            // Actualizar interfaz
+            albumArt.src = track.coverUrl;
+            trackTitle.textContent = track.title;
+            durationEl.textContent = track.duration;
+            
+            // Cargar audio
+            audio.src = track.audioUrl;
+            audio.currentTime = 0;
+            progressBar.style.width = '0%';
+            currentTimeEl.textContent = '0:00';
+            
+            // Actualizar indicadores
+            updateIndicators(index);
+            
+            // Si estaba reproduciendo, continuar
+            if (isPlaying) {
+                audio.play().catch(e => console.log('Auto-play prevented'));
+            }
+        }
+
+        function updateIndicators(activeIndex) {
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === activeIndex);
+            });
+        }
+
+        function playPause() {
+            if (audio.paused) {
+                audio.play();
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'block';
+                isPlaying = true;
+            } else {
+                audio.pause();
+                playIcon.style.display = 'block';
+                pauseIcon.style.display = 'none';
+                isPlaying = false;
+            }
+        }
+
+        function nextTrack() {
+            currentTrackIndex = (currentTrackIndex + 1) % tracks.length;
+            loadTrack(currentTrackIndex);
+            if (isPlaying) {
+                audio.play().catch(e => console.log('Auto-play prevented'));
+            }
+        }
+
+        function prevTrack() {
+            currentTrackIndex = (currentTrackIndex - 1 + tracks.length) % tracks.length;
+            loadTrack(currentTrackIndex);
+            if (isPlaying) {
+                audio.play().catch(e => console.log('Auto-play prevented'));
+            }
+        }
+
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+
+        function updateProgress() {
+            const progressPercent = (audio.currentTime / audio.duration) * 100;
+            progressBar.style.width = `${progressPercent}%`;
+            currentTimeEl.textContent = formatTime(audio.currentTime);
+        }
+
+        function setProgress(e) {
+            const width = this.clientWidth;
+            const clickX = e.offsetX;
+            const duration = audio.duration;
+            
+            audio.currentTime = (clickX / width) * duration;
+        }
+
+        // Event Listeners
+        playPauseBtn.addEventListener('click', playPause);
+        prevBtn.addEventListener('click', prevTrack);
+        nextBtn.addEventListener('click', nextTrack);
+        audio.addEventListener('timeupdate', updateProgress);
+        audio.addEventListener('ended', nextTrack); // Auto-siguiente al terminar
+        progressContainer.addEventListener('click', setProgress);
+
+        // Navegación por indicadores
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                currentTrackIndex = index;
+                loadTrack(currentTrackIndex);
+                if (isPlaying) {
+                    audio.play().catch(e => console.log('Auto-play prevented'));
+                }
+            });
         });
 
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => goToSlide(index));
-        });
-
-        updateSlide();
-
-        // Optimización: Pausar animaciones cuando no está visible
+        // Optimización para móviles
         document.addEventListener('visibilitychange', function() {
             if (document.hidden) {
                 document.body.style.animationPlayState = 'paused';
