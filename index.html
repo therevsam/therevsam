@@ -675,23 +675,24 @@
         </div>
         
         <h1 class="name">Sam the Revenant</h1>
-        <p class="bio">Pianist & Composer. 18. Elegance isn't optional.</p>
+        <p class="bio">Pianist & Composer. 18. "Elegance isn't optional".</p>
 
         <!-- REPRODUCTOR DE AUDIO CON CARRUSEL -->
         <div class="audio-player-section glass-effect">
             <div class="album-art-container">
-                <img src="https://i.pinimg.com/736x/7f/4f/8e/7f4f8e83dea5492b29cc66689764c709.jpg" alt="Album Cover" class="album-art" id="albumArt">
+                <img src="https://i.pinimg.com/736x/c3/9a/19/c39a19d3a07405fad8f183cb336547d3.jpg" alt="Album Cover" class="album-art" id="albumArt">
             </div>
             
-            <!-- INDICADORES DEL CARRUSEL -->
+            <!-- INDICADORES DEL CARRUSEL (ahora 4 puntos) -->
             <div class="carousel-indicators" id="carouselIndicators">
                 <div class="indicator active" data-index="0"></div>
                 <div class="indicator" data-index="1"></div>
                 <div class="indicator" data-index="2"></div>
+                <div class="indicator" data-index="3"></div>
             </div>
 
             <div class="track-info">
-                <div class="track-title" id="trackTitle">Bella's Lullaby, Op. I – Crépuscule</div>
+                <div class="track-title" id="trackTitle">Sonate Noire, Op. II — Nuit Obscure</div>
                 <div class="track-artist">Sam the Revenant</div>
             </div>
 
@@ -805,8 +806,14 @@
     </div>
 
     <script>
-        // Configuración de las canciones
+        // Configuración de las canciones - NUEVA MELODÍA PRIMERA
         const tracks = [
+            {
+                title: "Sonate Noire, Op. II — Nuit Obscure",
+                audioUrl: "https://sonatenoirepreview.edgeone.app/Sonate%20Noire%20preview.mp3",
+                coverUrl: "https://i.pinimg.com/736x/c3/9a/19/c39a19d3a07405fad8f183cb336547d3.jpg",
+                duration: "0:30"
+            },
             {
                 title: "Bella's Lullaby, Op. I – Crépuscule",
                 audioUrl: "https://bellaslullaby-bysam.edgeone.app/Bellas%20L,%20preview.mp3",
