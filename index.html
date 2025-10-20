@@ -49,13 +49,14 @@
             to { opacity: 1; }
         }
 
-        /* CONTENEDOR PRINCIPAL */
+        /* CONTENEDOR PRINCIPAL - MISMAS MEDIDAS QUE LA VERSIÓN ANTERIOR */
         .main-container {
             width: 100%;
-            max-width: 380px;
+            max-width: 400px; /* Mismo max-width que la versión anterior */
             position: relative;
             margin-top: 2cm;
             margin-bottom: 2cm;
+            padding: 0 1.5rem; /* Mismo padding que la versión anterior */
         }
 
         /* TRANSICIONES MEJORADAS ENTRE SECCIONES */
@@ -714,7 +715,7 @@
             transform: scale(1.1);
         }
 
-        /* MEDIA QUERY PARA MÓVILES */
+        /* MEDIA QUERY PARA MÓVILES - MISMAS MEDIDAS QUE LA VERSIÓN ANTERIOR */
         @media (max-width: 768px) {
             .glass-effect {
                 backdrop-filter: blur(5px);
@@ -756,10 +757,10 @@
             }
             
             .main-container {
-                padding: 0;
+                padding: 0 1rem; /* Mismo padding que la versión anterior en móvil */
                 margin-top: 1.5cm;
                 margin-bottom: 1.5cm;
-                max-width: 360px;
+                max-width: 400px; /* Mantener el mismo max-width */
             }
             
             .banner-container {
