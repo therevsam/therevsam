@@ -6,6 +6,41 @@
     <title>Sam the Revenant - Pianist & Composer</title>
     <meta name="description" content="Sam the Revenant - Elegant piano compositions and musical interpretations. Pianist & Composer creating timeless melodies.">
     <meta name="keywords" content="piano, composer, music, classical, melodies, Sam the Revenant">
+    
+    <!-- Schema.org markup para músicos -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MusicGroup",
+        "name": "Sam the Revenant",
+        "description": "Pianist & Composer creating timeless melodies. Elegant piano compositions and musical interpretations.",
+        "url": "https://therevsam.com",
+        "genre": ["Classical", "Piano", "Contemporary", "Neoclassical"],
+        "image": "https://yt3.ggpht.com/Z6UP3_g1F9t2nJM1_SBp1uaInWJdaflA-dZ28Su_mpHqu-TVF9HDOW2NCGXfmrdlp8J-EoG4cA=s600-c-k-c0x00ffffff-no-rj-rp-mo",
+        "sameAs": [
+            "https://www.youtube.com/@therevsam",
+            "https://soundcloud.com/therevsam",
+            "https://audiomack.com/therevsam"
+        ],
+        "track": [
+            {
+                "@type": "MusicRecording",
+                "name": "Sonate Noire, Op. II — Nuit Obscure",
+                "url": "https://youtu.be/2vPzG4mL5pA",
+                "duration": "PT30S",
+                "genre": "Classical"
+            },
+            {
+                "@type": "MusicRecording", 
+                "name": "Bella's Lullaby, Op. I – Crépuscule",
+                "url": "https://youtu.be/AhWvSNRSflA",
+                "duration": "PT30S",
+                "genre": "Classical"
+            }
+        ]
+    }
+    </script>
+    
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
     <style>
         * {
@@ -145,10 +180,10 @@
             text-align: center;
         }
 
-        /* CORRECCIÓN DEL REPRODUCTOR - Altura y padding arreglados */
+        /* REPRODUCTOR MEJORADO */
         .audio-player-section {
             padding: 2rem;
-            margin-bottom: 1.8rem;
+            margin-bottom: 2rem;
             min-height: 380px;
             display: flex;
             flex-direction: column;
@@ -295,7 +330,6 @@
             border-color: rgba(255, 255, 255, 0.25);
         }
 
-        /* CORRECCIÓN DEL BOTÓN LIKE - Azul oscuro */
         .like-btn.liked {
             color: #1e3a8a !important;
             background: rgba(30, 58, 138, 0.2) !important;
@@ -604,6 +638,41 @@
             z-index: 2;
         }
 
+        /* NUEVA SECCIÓN: MENSAJE DEL ARTISTA - ACTUALIZADA */
+        .artist-message-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .artist-message {
+            padding: 1.2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+            min-height: auto;
+        }
+
+        .artist-message:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .message-content {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            opacity: 0.85;
+            margin-bottom: 0.8rem;
+            font-style: italic;
+            letter-spacing: 0.2px;
+        }
+
+        .message-signature {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.8rem;
+            opacity: 0.6;
+            font-style: italic;
+        }
+
         .copyright {
             font-family: 'Inter', sans-serif;
             font-size: 0.75rem;
@@ -616,6 +685,7 @@
             margin-bottom: 1.5rem;
         }
 
+        /* SECCIÓN MELODÍAS ACTUALIZADA */
         .melodies-section {
             padding-bottom: 5rem;
             overflow: visible;
@@ -623,7 +693,7 @@
 
         .melodies-header {
             text-align: center;
-            margin-bottom: 3.5rem;
+            margin-bottom: 2rem;
         }
 
         .melodies-title {
@@ -632,6 +702,12 @@
             font-weight: 600;
             margin-bottom: 0.5rem;
             letter-spacing: 0.5px;
+        }
+
+        .melodies-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            opacity: 0.7;
         }
 
         .category-section {
@@ -912,6 +988,14 @@
                 padding: 0.7rem 1.2rem;
                 font-size: 0.8rem;
             }
+
+            .artist-message {
+                padding: 1rem;
+            }
+            
+            .message-content {
+                font-size: 0.85rem;
+            }
         }
     </style>
 </head>
@@ -920,6 +1004,7 @@
     <div class="toast" id="toast"></div>
 
     <div class="main-container">
+        <!-- SECCIÓN HOME - Solo enlaces -->
         <div class="section active" id="home-section">
             <div class="banner-container glass-effect">
                 <img src="https://i.pinimg.com/736x/a6/60/37/a66037aed932f02c6895fd5a3d79d9a8.jpg" alt="Banner" class="banner">
@@ -928,80 +1013,6 @@
             
             <h1 class="name">Sam the Revenant</h1>
             <p class="bio">Pianist & Composer. 18. "Elegance isn't optional".</p>
-
-            <div class="audio-player-section glass-effect">
-                <div class="loading-overlay" id="loadingOverlay">
-                    <div class="pulse-loader">
-                        <div class="pulse-dot"></div>
-                    </div>
-                </div>
-
-                <div class="album-art-container">
-                    <img src="https://i.pinimg.com/736x/c3/9a/19/c39a19d3a07405fad8f183cb336547d3.jpg" alt="Album Cover" class="album-art" id="albumArt">
-                </div>
-
-                <div class="track-info">
-                    <div class="track-title" id="trackTitle">Sonate Noire, Op. II — Nuit Obscure</div>
-                    <div class="track-artist">Sam the Revenant</div>
-                </div>
-
-                <div class="player-controls">
-                    <div class="top-controls">
-                        <button class="top-control-btn share-btn" id="shareBtn" aria-label="Share track">
-                            <svg class="top-control-icon" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
-                            </svg>
-                        </button>
-                        
-                        <button class="top-control-btn like-btn" id="likeBtn" aria-label="Like this track">
-                            <svg class="top-control-icon" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                            </svg>
-                        </button>
-                    </div>
-
-                    <div class="progress-container" id="progressContainer">
-                        <div class="progress-bar" id="progressBar">
-                            <div class="progress-handle"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="time-display">
-                        <span class="current-time" id="currentTime">0:00</span>
-                        <span class="duration" id="duration">0:30</span>
-                    </div>
-
-                    <div class="control-buttons">
-                        <button class="control-btn nav-btn" id="prevBtn" aria-label="Previous track">
-                            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
-                            </svg>
-                        </button>
-                        
-                        <button class="control-btn play-pause-btn" id="playPauseBtn" aria-label="Play/Pause">
-                            <svg class="btn-icon" id="playIcon" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M8 5v14l11-7z"/>
-                            </svg>
-                            <svg class="btn-icon" id="pauseIcon" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
-                                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-                            </svg>
-                        </button>
-                        
-                        <button class="control-btn nav-btn" id="nextBtn" aria-label="Next track">
-                            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
-                            </svg>
-                        </button>
-                    </div>
-
-                    <a href="https://www.youtube.com/@therevsam" class="player-youtube-btn" target="_blank" aria-label="Listen on YouTube">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
-                        </svg>
-                        <span class="shiny-text">Escuchar en YouTube</span>
-                    </a>
-                </div>
-            </div>
 
             <div class="links">
                 <a href="https://www.youtube.com/@therevsam" class="link-btn glass-effect" target="_blank">
@@ -1059,17 +1070,107 @@
                 </a>
             </div>
 
+            <!-- NUEVA SECCIÓN: MENSAJE DEL ARTISTA - REPOSICIONADA -->
+            <div class="artist-message-section">
+                <div class="artist-message glass-effect">
+                    <div class="message-content">
+                        "Componer es desenterrar melodías que el tiempo enterró. Cada pieza es un eco de algo que alguna vez existió."
+                    </div>
+                    <div class="message-signature">
+                        — Sam the Revenant
+                    </div>
+                </div>
+            </div>
+
             <div class="copyright">
                 © 2025 Sam the Revenant. All rights reserved.
             </div>
         </div>
 
+        <!-- SECCIÓN MELODÍAS - Con reproductor y lista -->
         <div class="section" id="melodies-section">
             <div class="melodies-section">
                 <div class="melodies-header">
                     <h2 class="melodies-title">My Melodies</h2>
+                    <p class="melodies-subtitle">Discover my musical creations</p>
                 </div>
 
+                <!-- REPRODUCTOR EN LA SECCIÓN MELODÍAS -->
+                <div class="audio-player-section glass-effect">
+                    <div class="loading-overlay" id="loadingOverlay">
+                        <div class="pulse-loader">
+                            <div class="pulse-dot"></div>
+                        </div>
+                    </div>
+
+                    <div class="album-art-container">
+                        <img src="https://i.pinimg.com/736x/c3/9a/19/c39a19d3a07405fad8f183cb336547d3.jpg" alt="Album Cover" class="album-art" id="albumArt">
+                    </div>
+
+                    <div class="track-info">
+                        <div class="track-title" id="trackTitle">Sonate Noire, Op. II — Nuit Obscure</div>
+                        <div class="track-artist">Sam the Revenant</div>
+                    </div>
+
+                    <div class="player-controls">
+                        <div class="top-controls">
+                            <button class="top-control-btn share-btn" id="shareBtn" aria-label="Share track">
+                                <svg class="top-control-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+                                </svg>
+                            </button>
+                            
+                            <button class="top-control-btn like-btn" id="likeBtn" aria-label="Like this track">
+                                <svg class="top-control-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="progress-container" id="progressContainer">
+                            <div class="progress-bar" id="progressBar">
+                                <div class="progress-handle"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="time-display">
+                            <span class="current-time" id="currentTime">0:00</span>
+                            <span class="duration" id="duration">0:30</span>
+                        </div>
+
+                        <div class="control-buttons">
+                            <button class="control-btn nav-btn" id="prevBtn" aria-label="Previous track">
+                                <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
+                                </svg>
+                            </button>
+                            
+                            <button class="control-btn play-pause-btn" id="playPauseBtn" aria-label="Play/Pause">
+                                <svg class="btn-icon" id="playIcon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                                <svg class="btn-icon" id="pauseIcon" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+                                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                                </svg>
+                            </button>
+                            
+                            <button class="control-btn nav-btn" id="nextBtn" aria-label="Next track">
+                                <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <a href="https://www.youtube.com/@therevsam" class="player-youtube-btn" target="_blank" aria-label="Listen on YouTube">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                            </svg>
+                            <span class="shiny-text">Escuchar en YouTube</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- LISTA DE MELODÍAS -->
                 <div class="category-section">
                     <h3 class="category-title">Original Compositions</h3>
                     <div class="melodies-grid">
@@ -1134,7 +1235,7 @@
     <div class="bottom-nav">
         <div class="nav-button active" id="home-nav">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/>
             </svg>
         </div>
         <div class="nav-button" id="melodies-nav">
@@ -1362,6 +1463,7 @@
             }
         }
 
+        // CORRECCIÓN: Scroll al top al cambiar sección
         function showSection(sectionToShow) {
             const currentActive = document.querySelector('.section.active');
             if (currentActive && currentActive !== sectionToShow) {
@@ -1373,6 +1475,10 @@
                     void sectionToShow.offsetWidth;
                     sectionToShow.style.opacity = '1';
                     sectionToShow.style.transform = 'translateY(0)';
+                    
+                    // Scroll al top de la página
+                    window.scrollTo(0, 0);
+                    
                     document.querySelectorAll('.nav-button').forEach(button => {
                         button.classList.remove('active');
                     });
