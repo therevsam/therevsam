@@ -7,7 +7,6 @@
     <meta name="description" content="Sam the Revenant - Elegant piano compositions and musical interpretations. Pianist & Composer creating timeless melodies.">
     <meta name="keywords" content="piano, composer, music, classical, melodies, Sam the Revenant">
     
-    <!-- Schema.org markup para músicos -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -100,7 +99,6 @@
             position: relative;
         }
 
-        /* ESTILOS BLANCO Y NEGRO */
         .glass-effect {
             background: #111111 !important;
             border: 1px solid #333333 !important;
@@ -172,6 +170,18 @@
 
         .bio {
             font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+            opacity: 0.9;
+            font-style: normal;
+            line-height: 1.4;
+            text-align: center;
+            color: #e0e0e0;
+            font-weight: 400;
+        }
+
+        .quote {
+            font-family: 'Cormorant Garamond', serif;
             font-size: 1rem;
             margin-bottom: 2rem;
             opacity: 0.8;
@@ -181,7 +191,6 @@
             color: #cccccc;
         }
 
-        /* SEPARADOR DE REDES SOCIALES */
         .section-divider {
             margin: 2rem 0 1.5rem 0;
             position: relative;
@@ -217,7 +226,6 @@
             margin: 1.5rem 0;
         }
 
-        /* REPRODUCTOR MEJORADO */
         .audio-player-section {
             padding: 2rem;
             margin-bottom: 2rem;
@@ -681,7 +689,6 @@
             color: #cccccc;
         }
 
-        /* SECCIÓN MENSAJE DEL ARTISTA */
         .artist-message-section {
             margin-bottom: 1.5rem;
         }
@@ -736,7 +743,6 @@
             color: #cccccc;
         }
 
-        /* SECCIÓN MELODÍAS */
         .melodies-section {
             padding-bottom: 5rem;
             overflow: visible;
@@ -846,7 +852,6 @@
             opacity: 1;
         }
 
-        /* SECCIÓN PLAYLISTS */
         .playlist-section {
             margin-bottom: 2.5rem;
         }
@@ -929,7 +934,6 @@
             opacity: 1;
         }
 
-        /* SECCIÓN POSTS - DISEÑO MEJORADO */
         .posts-section {
             padding-bottom: 5rem;
         }
@@ -1052,7 +1056,6 @@
             filter: grayscale(100%);
         }
 
-        /* BOTONES MÁS LARGOS PARA POSTS - CORREGIDOS */
         .timeline-actions {
             display: flex;
             gap: 0.8rem;
@@ -1120,7 +1123,6 @@
             color: #ffffff;
         }
 
-        /* NAVEGACIÓN INFERIOR CON BORDES CUADRADOS */
         .bottom-nav {
             position: fixed;
             bottom: 1.5rem;
@@ -1288,8 +1290,12 @@
             }
             
             .bio {
-                font-size: 0.9rem;
+                font-size: 1.1rem;
                 margin-bottom: 1.5rem;
+            }
+            
+            .quote {
+                font-size: 0.9rem;
             }
             
             .audio-player-section {
@@ -1433,7 +1439,6 @@
     <div class="toast" id="toast"></div>
 
     <div class="main-container">
-        <!-- SECCIÓN HOME - Solo enlaces -->
         <div class="section active" id="home-section">
             <div class="banner-container">
                 <img src="https://i.pinimg.com/736x/a6/60/37/a66037aed932f02c6895fd5a3d79d9a8.jpg" alt="Banner" class="banner">
@@ -1442,9 +1447,9 @@
             </div>
             
             <h1 class="name">Sam the Revenant</h1>
-            <p class="bio">Pianist & Composer. 18. "Elegance isn't optional".</p>
+            <p class="bio">Pianist & Composer, 18.</p>
+            <p class="quote">"Between silence and chaos, I found my truth — and turned it into music."</p>
 
-            <!-- SEPARADOR: MY SOCIALS -->
             <div class="section-divider">
                 <div class="divider-line"></div>
                 <div class="divider-text">My Socials</div>
@@ -1456,7 +1461,7 @@
                     <span class="btn-text">YouTube</span>
                 </a>
                 
-                <a href="https://open.spotify.com/artist/5m4k5QM67SNdvDsnPFnfkD?si=29DlJSBMTA2-LAFf0zKgOA" class="link-btn" target="_blank">
+                <a href="https://open.spotify.com/intl-es/artist/5m4k5QM67SNdvDsnPFnfkD?si=c-tDmNrHQjCFKzoU0NANww" class="link-btn" target="_blank">
                     <img src="https://i.pinimg.com/1200x/e6/55/bf/e655bff3217dd6f575a275604b0ff7e1.jpg" alt="Spotify" class="platform-logo">
                     <span class="btn-text">Spotify</span>
                 </a>
@@ -1503,14 +1508,12 @@
                 </a>
             </div>
 
-            <!-- SEPARADOR SIMPLE ANTES DEL MENSAJE -->
             <div class="simple-divider"></div>
 
-            <!-- SECCIÓN: MENSAJE DEL ARTISTA -->
             <div class="artist-message-section">
                 <div class="artist-message">
                     <div class="message-content">
-                        "Componer es desenterrar melodías que el tiempo enterró. Cada pieza es un eco de algo que alguna vez existió."
+                        "To compose is to unearth melodies that time buried. Each piece is an echo of something that once existed."
                     </div>
                     <div class="message-signature">
                         — Sam the Revenant
@@ -1523,7 +1526,6 @@
             </div>
         </div>
 
-        <!-- SECCIÓN MELODÍAS - Con reproductor y lista -->
         <div class="section" id="melodies-section">
             <div class="melodies-section">
                 <div class="melodies-header">
@@ -1531,7 +1533,6 @@
                     <p class="melodies-subtitle">Discover my musical creations</p>
                 </div>
 
-                <!-- REPRODUCTOR EN LA SECCIÓN MELODÍAS -->
                 <div class="audio-player-section">
                     <div class="loading-overlay" id="loadingOverlay">
                         <div class="pulse-loader">
@@ -1606,7 +1607,6 @@
                     </div>
                 </div>
 
-                <!-- SECCIÓN: ALL MY MELODIES - PLAYLIST -->
                 <div class="playlist-section">
                     <div class="section-divider">
                         <div class="divider-line"></div>
@@ -1651,7 +1651,6 @@
                     </div>
                 </div>
 
-                <!-- LISTA DE MELODÍAS -->
                 <div class="category-section">
                     <h3 class="category-title">Original Compositions</h3>
                     <div class="melodies-grid">
@@ -1712,7 +1711,6 @@
             </div>
         </div>
 
-        <!-- SECCIÓN POSTS - DISEÑO MEJORADO -->
         <div class="section" id="posts-section">
             <div class="posts-section">
                 <div class="posts-header">
@@ -1721,7 +1719,6 @@
                 </div>
 
                 <div class="timeline">
-                    <!-- Post 1 - Más reciente -->
                     <div class="timeline-post glass-effect">
                         <div class="timeline-header">
                             <div class="timeline-avatar">
@@ -1765,7 +1762,6 @@
                         </div>
                     </div>
 
-                    <!-- Post 2 - Menos reciente -->
                     <div class="timeline-post glass-effect">
                         <div class="timeline-header">
                             <div class="timeline-avatar">
@@ -1809,7 +1805,6 @@
                         </div>
                     </div>
 
-                    <!-- Post 3 - Nueva publicación (15 de septiembre) -->
                     <div class="timeline-post glass-effect">
                         <div class="timeline-header">
                             <div class="timeline-avatar">
@@ -1861,7 +1856,6 @@
         </div>
     </div>
 
-    <!-- NAVEGACIÓN INFERIOR ACTUALIZADA -->
     <div class="bottom-nav">
         <div class="nav-button active" id="home-nav">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
@@ -2089,7 +2083,6 @@
             }
         }
 
-        // Funcionalidad para los posts
         function initPosts() {
             const likeButtons = document.querySelectorAll('.like-btn');
             const shareButtons = document.querySelectorAll('.share-btn');
@@ -2117,7 +2110,6 @@
                     navigator.clipboard.writeText('https://therevsam.github.io/therevsam/').then(() => {
                         showToast('Link copied');
                     }).catch(() => {
-                        // Fallback para navegadores que no soportan clipboard API
                         const textArea = document.createElement('textarea');
                         textArea.value = 'https://therevsam.github.io/therevsam/';
                         document.body.appendChild(textArea);
@@ -2130,7 +2122,6 @@
             });
         }
 
-        // Event Listeners
         playPauseBtn.addEventListener('click', playPause);
         prevBtn.addEventListener('click', prevTrack);
         nextBtn.addEventListener('click', nextTrack);
@@ -2151,12 +2142,10 @@
             }
         });
 
-        // Inicializar funcionalidades
         document.addEventListener('DOMContentLoaded', function() {
             initPosts();
         });
 
-        // Preload de tracks
         tracks.forEach((track, index) => {
             if (index !== currentTrackIndex) {
                 const preloadAudio = new Audio();
