@@ -1585,7 +1585,7 @@
                         
                         <div class="time-display">
                             <span class="current-time" id="currentTime">0:00</span>
-                            <span class="duration" id="duration">0:30</span>
+                            <span class="duration" id="duration">0:00</span>
                         </div>
 
                         <div class="control-buttons">
@@ -1615,7 +1615,7 @@
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
                             </svg>
-                            <span class="shiny-text">Escuchar en YouTube</span>
+                            <span class="shiny-text">Listen on YouTube</span>
                         </a>
                     </div>
                 </div>
@@ -1693,6 +1693,17 @@
                             <img src="https://i.pinimg.com/736x/fe/d5/27/fed52761e918dca05135a9da4046eac0.jpg" alt="Notturno II" class="melody-cover">
                             <div class="melody-info">
                                 <div class="melody-name">Notturno II en Mi mineur – Murmures Perdus</div>
+                                <div class="melody-artist">Sam the Revenant</div>
+                            </div>
+                            <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                            </svg>
+                        </a>
+
+                        <a href="https://youtu.be/example-link" class="melody-card" target="_blank">
+                            <img src="https://i.pinimg.com/736x/70/87/92/708792c7feb322f89a0cb62940737cb7.jpg" alt="Sérénade Céleste" class="melody-cover">
+                            <div class="melody-info">
+                                <div class="melody-name">Sérénade Céleste, Op. II — Amour Flétri</div>
                                 <div class="melody-artist">Sam the Revenant</div>
                             </div>
                             <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
@@ -1893,29 +1904,31 @@
                 title: "Sonate Noire, Op. II — Nuit Obscure",
                 audioUrl: "https://sonatenoirepreview.edgeone.app/Sonate%20Noire%20preview.mp3",
                 coverUrl: "https://i.pinimg.com/736x/c3/9a/19/c39a19d3a07405fad8f183cb336547d3.jpg",
-                youtubeUrl: "https://youtu.be/2vPzG4mL5pA?si=_3zAZPqTDxdRhwZJ",
-                duration: "0:30"
+                youtubeUrl: "https://youtu.be/2vPzG4mL5pA?si=_3zAZPqTDxdRhwZJ"
             },
             {
                 title: "Bella's Lullaby, Op. I – Crépuscule",
                 audioUrl: "https://bellaslullaby-bysam.edgeone.app/Bellas%20L,%20preview.mp3",
                 coverUrl: "https://i.pinimg.com/736x/7f/4f/8e/7f4f8e83dea5492b29cc66689764c709.jpg",
-                youtubeUrl: "https://youtu.be/AhWvSNRSflA?si=LvaNZVMUvkr6oNSv",
-                duration: "0:30"
+                youtubeUrl: "https://youtu.be/AhWvSNRSflA?si=LvaNZVMUvkr6oNSv"
             },
             {
                 title: "Notturno I in Do♯ Minore - Velo della Notte",
                 audioUrl: "https://notturno1-bysam.edgeone.app/Notturno%20I,%20preview.mp3",
                 coverUrl: "https://i.pinimg.com/736x/a0/39/97/a0399783d0268a90692e3bd678ba203c.jpg",
-                youtubeUrl: "https://youtu.be/LSGb5LSdq08?si=W9Y_PMzq7dLYqHyF",
-                duration: "0:30"
+                youtubeUrl: "https://youtu.be/LSGb5LSdq08?si=W9Y_PMzq7dLYqHyF"
             },
             {
                 title: "Notturno II en Mi mineur – Murmures Perdus",
                 audioUrl: "https://notturno2-bysam.edgeone.app/Notturno%20II,%20preview.mp3",
                 coverUrl: "https://i.pinimg.com/736x/fe/d5/27/fed52761e918dca05135a9da4046eac0.jpg",
-                youtubeUrl: "https://youtu.be/94Ntp_VQ2Gw?si=l8fmouUI9I70iH9o",
-                duration: "0:30"
+                youtubeUrl: "https://youtu.be/94Ntp_VQ2Gw?si=l8fmouUI9I70iH9o"
+            },
+            {
+                title: "Sérénade Céleste, Op. II — Amour Flétri",
+                audioUrl: "https://blushing-emerald-c9wdqxxrlj.edgeone.app/Serenade%20Celeste,%20preview.mp3",
+                coverUrl: "https://i.pinimg.com/736x/70/87/92/708792c7feb322f89a0cb62940737cb7.jpg",
+                youtubeUrl: "https://youtu.be/example-link"
             }
         ];
 
@@ -1961,13 +1974,18 @@
             setTimeout(() => {
                 albumArt.src = track.coverUrl;
                 trackTitle.textContent = track.title;
-                durationEl.textContent = track.duration;
                 
                 audio.pause();
                 audio.src = track.audioUrl;
                 audio.currentTime = 0;
                 progressBar.style.width = '0%';
                 currentTimeEl.textContent = '0:00';
+                durationEl.textContent = '0:00';
+                
+                // Wait for metadata to load to get actual duration
+                audio.addEventListener('loadedmetadata', function() {
+                    durationEl.textContent = formatTime(audio.duration);
+                }, { once: true });
                 
                 setTimeout(() => {
                     albumArt.classList.remove('fade-transition');
@@ -2027,6 +2045,7 @@
         }
 
         function formatTime(seconds) {
+            if (isNaN(seconds)) return '0:00';
             const mins = Math.floor(seconds / 60);
             const secs = Math.floor(seconds % 60);
             return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
@@ -2036,6 +2055,11 @@
             const progressPercent = (audio.currentTime / audio.duration) * 100;
             progressBar.style.width = `${progressPercent}%`;
             currentTimeEl.textContent = formatTime(audio.currentTime);
+            
+            // Update duration in case it wasn't available initially
+            if (audio.duration && !isNaN(audio.duration)) {
+                durationEl.textContent = formatTime(audio.duration);
+            }
         }
 
         function setProgress(e) {
