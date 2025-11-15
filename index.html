@@ -609,6 +609,22 @@
             color: #cccccc;
         }
 
+        .hifi-badge {
+            position: absolute;
+            right: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #222222;
+            padding: 0.4rem 0.8rem;
+            border-radius: 8px;
+            font-size: 0.7rem;
+            opacity: 0.9;
+            border: 1px solid #444444;
+            z-index: 2;
+            color: #D4AF37;
+            font-weight: 600;
+        }
+
         .final-buttons {
             display: flex;
             gap: 1rem;
@@ -616,7 +632,7 @@
             margin-bottom: 1.5rem;
         }
 
-        .contact-btn, .instagram-btn, .bandlab-btn, .vampr-btn {
+        .contact-btn, .instagram-btn, .bandlab-btn, .vampr-btn, .qobuz-btn {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -637,7 +653,7 @@
             border: 1px solid #333333;
         }
 
-        .contact-btn:hover, .instagram-btn:hover, .bandlab-btn:hover, .vampr-btn:hover {
+        .contact-btn:hover, .instagram-btn:hover, .bandlab-btn:hover, .vampr-btn:hover, .qobuz-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
             background: #1a1a1a;
@@ -667,7 +683,7 @@
             color: #ffffff;
         }
 
-        .instagram-text, .bandlab-text, .vampr-text {
+        .instagram-text, .bandlab-text, .vampr-text, .qobuz-text {
             font-family: 'Inter', sans-serif;
             font-weight: 500;
             z-index: 2;
@@ -780,6 +796,15 @@
             padding-bottom: 0.5rem;
             border-bottom: 1px solid #333333;
             color: #ffffff;
+        }
+
+        .album-info {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            opacity: 0.6;
+            margin-bottom: 1rem;
+            color: #cccccc;
+            font-style: italic;
         }
 
         .melodies-grid {
@@ -1466,19 +1491,27 @@
                     <span class="btn-text">Spotify</span>
                 </a>
                 
+                <a href="https://music.apple.com/es/artist/sam-the-revenant/1850689072" class="link-btn" target="_blank">
+                    <img src="https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg" alt="Apple Music" class="platform-logo">
+                    <span class="btn-text">Apple Music</span>
+                    <span class="hifi-badge">Hi-Fi</span>
+                </a>
+                
                 <a href="https://www.deezer.com/es/artist/353551022" class="link-btn" target="_blank">
                     <img src="https://i.pinimg.com/736x/1b/f9/33/1bf93302bd924479b90f47a0df2134cd.jpg" alt="Deezer" class="platform-logo">
                     <span class="btn-text">Deezer</span>
-                </a>
-                
-                <a href="https://soundcloud.com/therevsam" class="link-btn" target="_blank">
-                    <img src="https://i.pinimg.com/1200x/81/9d/35/819d35d67997e972a5542b5ba49d577b.jpg" alt="SoundCloud" class="platform-logo">
-                    <span class="btn-text">SoundCloud</span>
+                    <span class="hifi-badge">Hi-Fi</span>
                 </a>
                 
                 <a href="https://tidal.com/artist/69131106" class="link-btn" target="_blank">
                     <img src="https://i.pinimg.com/736x/94/9c/01/949c014c813bc031520d82af3905a4f0.jpg" alt="Tidal" class="platform-logo">
                     <span class="btn-text">Tidal</span>
+                    <span class="hifi-badge">Hi-Fi</span>
+                </a>
+
+                <a href="https://soundcloud.com/therevsam" class="link-btn" target="_blank">
+                    <img src="https://i.pinimg.com/1200x/81/9d/35/819d35d67997e972a5542b5ba49d577b.jpg" alt="SoundCloud" class="platform-logo">
+                    <span class="btn-text">SoundCloud</span>
                 </a>
 
                 <a href="https://audiomack.com/therevsam" class="link-btn" target="_blank">
@@ -1492,8 +1525,8 @@
                 </a>
 
                 <a href="#" class="link-btn" onclick="return false;">
-                    <img src="https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg" alt="Apple Music" class="platform-logo">
-                    <span class="btn-text">Apple Music</span>
+                    <img src="https://headphone.guru/wp-content/uploads/2021/02/qobuz-logo.png" alt="Qobuz" class="platform-logo">
+                    <span class="btn-text">Qobuz</span>
                     <span class="soon-badge">Soon</span>
                 </a>
             </div>
@@ -1559,7 +1592,7 @@
                     </div>
 
                     <div class="album-art-container">
-                        <img src="https://i.pinimg.com/736x/c3/9a/19/c39a19d3a07405fad8f183cb336547d3.jpg" alt="Album Cover" class="album-art" id="albumArt">
+                        <img src="https://i.pinimg.com/736x/a5/24/c0/a524c0f2fca32421708bb32f6a26ee99.jpg" alt="Album Cover" class="album-art" id="albumArt">
                     </div>
 
                     <div class="track-info">
@@ -1670,21 +1703,12 @@
                 </div>
 
                 <div class="category-section">
-                    <h3 class="category-title">Original Compositions</h3>
+                    <h3 class="category-title">My Discography</h3>
+                    
+                    <div class="album-info">E.P. Nocturne</div>
                     <div class="melodies-grid">
-                        <a href="https://youtu.be/2vPzG4mL5pA?si=_3zAZPqTDxdRhwZJ" class="melody-card" target="_blank">
-                            <img src="https://i.pinimg.com/736x/c3/9a/19/c39a19d3a07405fad8f183cb336547d3.jpg" alt="Sonate Noire" class="melody-cover">
-                            <div class="melody-info">
-                                <div class="melody-name">Sonate Noire, Op. II — Nuit Obscure</div>
-                                <div class="melody-artist">Sam the Revenant</div>
-                            </div>
-                            <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
-                            </svg>
-                        </a>
-
                         <a href="https://youtu.be/LSGb5LSdq08?si=W9Y_PMzq7dLYqHyF" class="melody-card" target="_blank">
-                            <img src="https://i.pinimg.com/736x/a0/39/97/a0399783d0268a90692e3bd678ba203c.jpg" alt="Notturno I" class="melody-cover">
+                            <img src="https://i.pinimg.com/736x/5b/35/5e/5b355efd3b65d11bc14a53fa3931afbe.jpg" alt="Notturno I" class="melody-cover">
                             <div class="melody-info">
                                 <div class="melody-name">Notturno I in Do♯ Minore - Velo della Notte</div>
                                 <div class="melody-artist">Sam the Revenant</div>
@@ -1695,7 +1719,7 @@
                         </a>
 
                         <a href="https://youtu.be/94Ntp_VQ2Gw?si=l8fmouUI9I70iH9o" class="melody-card" target="_blank">
-                            <img src="https://i.pinimg.com/736x/fe/d5/27/fed52761e918dca05135a9da4046eac0.jpg" alt="Notturno II" class="melody-cover">
+                            <img src="https://i.pinimg.com/736x/5b/35/5e/5b355efd3b65d11bc14a53fa3931afbe.jpg" alt="Notturno II" class="melody-cover">
                             <div class="melody-info">
                                 <div class="melody-name">Notturno II en Mi mineur – Murmures Perdus</div>
                                 <div class="melody-artist">Sam the Revenant</div>
@@ -1704,11 +1728,36 @@
                                 <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
                             </svg>
                         </a>
+                    </div>
 
-                        <a href="https://youtu.be/example-link" class="melody-card" target="_blank">
-                            <img src="https://i.pinimg.com/736x/70/87/92/708792c7feb322f89a0cb62940737cb7.jpg" alt="Sérénade Céleste" class="melody-cover">
+                    <div class="album-info" style="margin-top: 2rem;">L'Âme Nocturne</div>
+                    <div class="melodies-grid">
+                        <a href="https://youtu.be/2vPzG4mL5pA?si=_3zAZPqTDxdRhwZJ" class="melody-card" target="_blank">
+                            <img src="https://i.pinimg.com/736x/a5/24/c0/a524c0f2fca32421708bb32f6a26ee99.jpg" alt="Sonate Noire" class="melody-cover">
+                            <div class="melody-info">
+                                <div class="melody-name">Sonate Noire, Op. II — Nuit Obscure</div>
+                                <div class="melody-artist">Sam the Revenant</div>
+                            </div>
+                            <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                            </svg>
+                        </a>
+
+                        <a href="https://youtu.be/l-7QFvMkOr0?si=U1PZA-bw0KqqMe5J" class="melody-card" target="_blank">
+                            <img src="https://i.pinimg.com/736x/a5/24/c0/a524c0f2fca32421708bb32f6a26ee99.jpg" alt="Sérénade Céleste" class="melody-cover">
                             <div class="melody-info">
                                 <div class="melody-name">Sérénade Céleste, Op. II — Amour Flétri</div>
+                                <div class="melody-artist">Sam the Revenant</div>
+                            </div>
+                            <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                            </svg>
+                        </a>
+
+                        <a href="https://youtu.be/mpynbtLfV3k?si=xqY8_fBBVVYuXhT0" class="melody-card" target="_blank">
+                            <img src="https://i.pinimg.com/736x/a5/24/c0/a524c0f2fca32421708bb32f6a26ee99.jpg" alt="Épilogue Nocturne" class="melody-cover">
+                            <div class="melody-info">
+                                <div class="melody-name">Épilogue Nocturne, Op. II — Dernier Souffle</div>
                                 <div class="melody-artist">Sam the Revenant</div>
                             </div>
                             <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
@@ -1762,9 +1811,9 @@
                         </div>
 
                         <div class="timeline-content">
-                            <p class="timeline-caption">For those who still think music ended with Beethoven. 💽</p>
+                            <p class="timeline-caption">Soon.</p>
                             <div class="timeline-media">
-                                <img src="https://i.pinimg.com/736x/84/16/c8/8416c8a0c54a1688a9f5cebc6c1346dc.jpg" alt="Post" class="timeline-image">
+                                <img src="https://i.pinimg.com/736x/c4/7d/59/c47d59bebc4a10764c51967df2637049.jpg" alt="Post" class="timeline-image">
                             </div>
                         </div>
 
@@ -1952,7 +2001,7 @@
             {
                 title: "Sonate Noire, Op. II — Nuit Obscure",
                 audioUrl: "https://sonatenoirepreview.edgeone.app/Sonate%20Noire%20preview.mp3",
-                coverUrl: "https://i.pinimg.com/736x/c3/9a/19/c39a19d3a07405fad8f183cb336547d3.jpg",
+                coverUrl: "https://i.pinimg.com/736x/a5/24/c0/a524c0f2fca32421708bb32f6a26ee99.jpg",
                 youtubeUrl: "https://youtu.be/2vPzG4mL5pA?si=_3zAZPqTDxdRhwZJ"
             },
             {
@@ -1964,20 +2013,26 @@
             {
                 title: "Notturno I in Do♯ Minore - Velo della Notte",
                 audioUrl: "https://notturno1-bysam.edgeone.app/Notturno%20I,%20preview.mp3",
-                coverUrl: "https://i.pinimg.com/736x/a0/39/97/a0399783d0268a90692e3bd678ba203c.jpg",
+                coverUrl: "https://i.pinimg.com/736x/5b/35/5e/5b355efd3b65d11bc14a53fa3931afbe.jpg",
                 youtubeUrl: "https://youtu.be/LSGb5LSdq08?si=W9Y_PMzq7dLYqHyF"
             },
             {
                 title: "Notturno II en Mi mineur – Murmures Perdus",
                 audioUrl: "https://notturno2-bysam.edgeone.app/Notturno%20II,%20preview.mp3",
-                coverUrl: "https://i.pinimg.com/736x/fe/d5/27/fed52761e918dca05135a9da4046eac0.jpg",
+                coverUrl: "https://i.pinimg.com/736x/5b/35/5e/5b355efd3b65d11bc14a53fa3931afbe.jpg",
                 youtubeUrl: "https://youtu.be/94Ntp_VQ2Gw?si=l8fmouUI9I70iH9o"
             },
             {
                 title: "Sérénade Céleste, Op. II — Amour Flétri",
                 audioUrl: "https://blushing-emerald-c9wdqxxrlj.edgeone.app/Serenade%20Celeste,%20preview.mp3",
-                coverUrl: "https://i.pinimg.com/736x/70/87/92/708792c7feb322f89a0cb62940737cb7.jpg",
-                youtubeUrl: "https://youtu.be/example-link"
+                coverUrl: "https://i.pinimg.com/736x/a5/24/c0/a524c0f2fca32421708bb32f6a26ee99.jpg",
+                youtubeUrl: "https://youtu.be/l-7QFvMkOr0?si=U1PZA-bw0KqqMe5J"
+            },
+            {
+                title: "Épilogue Nocturne, Op. II — Dernier Souffle",
+                audioUrl: "https://example.com/epilogue-preview.mp3",
+                coverUrl: "https://i.pinimg.com/736x/a5/24/c0/a524c0f2fca32421708bb32f6a26ee99.jpg",
+                youtubeUrl: "https://youtu.be/mpynbtLfV3k?si=xqY8_fBBVVYuXhT0"
             }
         ];
 
