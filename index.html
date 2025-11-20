@@ -705,42 +705,31 @@
             color: #cccccc;
         }
 
-        /* NUEVO ESTILO PARA ABOUT ME */
-        .about-me-section {
+        /* NUEVO ESTILO PARA LA FIRMA */
+        .signature-section {
             margin-bottom: 1.5rem;
         }
 
-        .about-me {
+        .signature-container {
             padding: 2rem;
             transition: all 0.3s ease;
             text-align: center;
-            min-height: auto;
             background: #111111;
             border: 1px solid #333333;
             border-radius: 12px;
         }
 
-        .about-me:hover {
+        .signature-container:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
             background: #1a1a1a;
             border-color: #444444;
         }
 
-        .about-content {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1rem;
-            line-height: 1.6;
-            opacity: 0.9;
-            margin-bottom: 1.5rem;
-            text-align: left;
-            color: #ffffff;
-        }
-
-        .about-signature {
-            width: 180px;
+        .artist-signature {
+            width: 280px;
             height: auto;
-            margin: 1rem auto;
+            margin: 0 auto;
             opacity: 0.9;
             filter: brightness(0.9);
         }
@@ -969,16 +958,17 @@
             opacity: 1;
         }
 
-        .posts-section {
+        /* NUEVA SECCIÓN STORE */
+        .store-section {
             padding-bottom: 5rem;
         }
 
-        .posts-header {
+        .store-header {
             text-align: center;
             margin-bottom: 2rem;
         }
 
-        .posts-title {
+        .store-title {
             font-family: 'Cormorant Garamond', serif;
             font-size: 2rem;
             font-weight: 600;
@@ -987,175 +977,187 @@
             color: #ffffff;
         }
 
-        .posts-subtitle {
+        .store-subtitle {
             font-family: 'Inter', sans-serif;
             font-size: 0.9rem;
             opacity: 0.7;
             color: #cccccc;
         }
 
-        .timeline {
+        .albums-grid {
             display: flex;
             flex-direction: column;
-            gap: 2.5rem;
+            gap: 2rem;
         }
 
-        .timeline-post {
-            padding: 1.5rem;
-            border-radius: 20px;
+        .album-card {
             background: #111111;
             border: 1px solid #333333;
+            border-radius: 16px;
+            padding: 1.5rem;
             transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        .timeline-post:hover {
-            border-color: #444444;
-            transform: translateY(-2px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-        }
-
-        .timeline-header {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 1.2rem;
-            gap: 1rem;
-        }
-
-        .timeline-avatar {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
+            position: relative;
             overflow: hidden;
-            border: 1px solid #333333;
-            flex-shrink: 0;
         }
 
-        .timeline-avatar img {
+        .album-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+            border-color: #444444;
+            background: #1a1a1a;
+        }
+
+        .album-cover {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(100%);
+            max-width: 280px;
+            height: auto;
+            border-radius: 12px;
+            margin: 0 auto 1.5rem auto;
+            display: block;
+            border: 1px solid #333333;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
         }
 
-        .timeline-user {
-            flex: 1;
-        }
-
-        .timeline-username {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #ffffff;
-            margin-bottom: 0.1rem;
-            line-height: 1.2;
-        }
-
-        .timeline-handle {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.75rem;
-            opacity: 0.6;
-            color: #cccccc;
-        }
-
-        .timeline-date {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.7rem;
-            opacity: 0.6;
-            color: #cccccc;
-            white-space: nowrap;
-            margin-top: 0.2rem;
-        }
-
-        .timeline-content {
+        .album-details {
             margin-bottom: 1.5rem;
         }
 
-        .timeline-caption {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            line-height: 1.4;
-            margin-bottom: 1.2rem;
+        .album-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
             color: #ffffff;
+            text-align: center;
         }
 
-        .timeline-media {
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid #333333;
+        .album-artist {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-bottom: 1.2rem;
+            text-align: center;
+            color: #cccccc;
         }
 
-        .timeline-image {
-            width: 100%;
-            display: block;
-            filter: grayscale(100%);
+        .track-list {
+            margin-bottom: 1.5rem;
         }
 
-        .timeline-actions {
+        .track-list-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            color: #ffffff;
+            opacity: 0.9;
+        }
+
+        .track-item {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            margin-bottom: 0.4rem;
+            padding-left: 1rem;
+            color: #cccccc;
+            opacity: 0.8;
+        }
+
+        .album-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            text-align: center;
+            color: #D4AF37;
+        }
+
+        .platforms-available {
+            margin-bottom: 1.5rem;
+        }
+
+        .platforms-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin-bottom: 0.8rem;
+            color: #cccccc;
+            text-align: center;
+        }
+
+        .platforms-grid {
             display: flex;
-            gap: 0.8rem;
-            padding-top: 1.2rem;
-            border-top: 1px solid #333333;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
 
-        .post-action-btn {
+        .platform-icon {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+            filter: grayscale(100%) brightness(2);
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .buy-button {
             display: flex;
             align-items: center;
-            gap: 0.4rem;
+            justify-content: center;
+            gap: 0.5rem;
             background: #222222;
             border: 1px solid #444444;
             color: #ffffff;
-            padding: 0.7rem 0.9rem;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 500;
-            flex: 1;
-            justify-content: center;
-            -webkit-tap-highlight-color: transparent;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
             text-decoration: none;
-            min-height: 42px;
-            min-width: 0;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            width: 100%;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        .post-action-btn.like-btn {
-            flex: 0.8;
-            padding: 0.7rem 0.7rem;
-        }
-
-        .post-action-btn:hover {
+        .buy-button:hover {
             background: #333333;
             transform: translateY(-2px);
             border-color: #666666;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
 
-        .post-action-btn.liked {
-            background: #333333;
-            border-color: #666666;
+        .buy-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
         }
 
-        .action-icon {
-            width: 16px;
-            height: 16px;
-            transition: all 0.3s ease;
+        .buy-button:disabled:hover {
+            transform: none;
+            box-shadow: none;
         }
 
-        .post-action-btn.liked .action-icon {
-            color: #ffffff;
-            transform: scale(1.1);
+        .soon-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            z-index: 2;
         }
 
-        .action-count {
+        .soon-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
             font-weight: 600;
-            color: #cccccc;
-            font-size: 0.8rem;
-        }
-
-        .post-action-btn.liked .action-count {
-            color: #ffffff;
+            color: #D4AF37;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            border: 1px solid #D4AF37;
         }
 
         .bottom-nav {
@@ -1252,56 +1254,20 @@
                 height: 18px;
             }
 
-            .timeline-post {
+            .artist-signature {
+                width: 240px;
+            }
+
+            .album-card {
                 padding: 1.2rem;
             }
 
-            .timeline-avatar {
-                width: 44px;
-                height: 44px;
+            .album-name {
+                font-size: 1.3rem;
             }
 
-            .timeline-username {
-                font-size: 0.85rem;
-            }
-
-            .timeline-handle {
-                font-size: 0.7rem;
-            }
-
-            .timeline-caption {
-                font-size: 0.9rem;
-            }
-
-            .post-action-btn {
-                padding: 0.6rem 0.8rem;
-                font-size: 0.75rem;
-                min-height: 40px;
-            }
-
-            .post-action-btn.like-btn {
-                padding: 0.6rem 0.6rem;
-            }
-
-            .action-icon {
-                width: 14px;
-                height: 14px;
-            }
-
-            .action-count {
-                font-size: 0.75rem;
-            }
-
-            .about-me {
-                padding: 1.5rem;
-            }
-
-            .about-content {
-                font-size: 0.95rem;
-            }
-
-            .about-signature {
-                width: 160px;
+            .album-price {
+                font-size: 1.2rem;
             }
         }
 
@@ -1400,88 +1366,38 @@
                 font-size: 0.8rem;
             }
 
-            .about-me {
-                padding: 1.2rem;
-            }
-            
-            .about-content {
-                font-size: 0.9rem;
+            .artist-signature {
+                width: 200px;
             }
 
-            .about-signature {
-                width: 140px;
+            .signature-container {
+                padding: 1.5rem;
             }
 
-            .playlist-card {
+            .album-card {
                 padding: 1rem;
             }
-            
-            .playlist-logo {
-                width: 35px;
-                height: 35px;
-                margin-right: 1rem;
-            }
-            
-            .playlist-name {
-                font-size: 0.95rem;
+
+            .album-name {
+                font-size: 1.2rem;
             }
 
-            .timeline {
-                gap: 2rem;
+            .album-price {
+                font-size: 1.1rem;
             }
 
-            .timeline-post {
-                padding: 1rem;
-                border-radius: 16px;
-            }
-
-            .timeline-header {
-                gap: 0.8rem;
-            }
-
-            .timeline-avatar {
-                width: 40px;
-                height: 40px;
-            }
-
-            .timeline-username {
+            .track-item {
                 font-size: 0.8rem;
             }
 
-            .timeline-handle {
-                font-size: 0.65rem;
-            }
-
-            .timeline-date {
-                font-size: 0.65rem;
-            }
-
-            .timeline-caption {
+            .buy-button {
+                padding: 0.9rem 1.2rem;
                 font-size: 0.85rem;
             }
 
-            .timeline-actions {
-                gap: 0.6rem;
-            }
-
-            .post-action-btn {
-                padding: 0.6rem 0.7rem;
-                font-size: 0.7rem;
-                gap: 0.3rem;
-                min-height: 38px;
-            }
-
-            .post-action-btn.like-btn {
-                padding: 0.6rem 0.6rem;
-            }
-
-            .action-icon {
-                width: 13px;
-                height: 13px;
-            }
-
-            .action-count {
-                font-size: 0.7rem;
+            .soon-text {
+                font-size: 1.3rem;
+                padding: 0.8rem 1.5rem;
             }
         }
     </style>
@@ -1589,17 +1505,10 @@
 
             <div class="simple-divider"></div>
 
-            <!-- NUEVA SECCIÓN ABOUT ME -->
-            <div class="about-me-section">
-                <div class="about-me glass-effect">
-                    <div class="about-content">
-                        <p>I'm Sam, pianist, composer, and the mind behind Sam the Revenant.</p>
-                        <br>
-                        <p>I've played piano for as long as I can remember, long enough for it to become the language I trust the most. My compositions explore stillness, tension, and the quiet truths that only music can say without asking permission. Every piece is a conversation I never had, but needed to.</p>
-                        <br>
-                        <p>Sam the Revenant is the name I chose for the version of me that survives in my music — disciplined, detached from noise, and driven by the need to create something that lasts. I don't write to impress; I write to reveal. Every melody carries its own pulse, its own shadow, and its own reason to exist.</p>
-                    </div>
-                    <img src="https://image2url.com/images/1763610983055-9b1bfa4a-a3e8-4b20-bcec-6ae201499e77.png" alt="Sam the Revenant Signature" class="about-signature">
+            <!-- SECCIÓN DE FIRMA SOLAMENTE -->
+            <div class="signature-section">
+                <div class="signature-container glass-effect">
+                    <img src="https://image2url.com/images/1763610983055-9b1bfa4a-a3e8-4b20-bcec-6ae201499e77.png" alt="Sam the Revenant Signature" class="artist-signature">
                 </div>
             </div>
 
@@ -1826,184 +1735,82 @@
             </div>
         </div>
 
-        <div class="section" id="posts-section">
-            <div class="posts-section">
-                <div class="posts-header">
-                    <h2 class="posts-title">My Posts</h2>
-                    <p class="posts-subtitle">Updates & thoughts</p>
+        <!-- NUEVA SECCIÓN STORE -->
+        <div class="section" id="store-section">
+            <div class="store-section">
+                <div class="store-header">
+                    <h2 class="store-title">Collection Store</h2>
+                    <p class="store-subtitle">Official editions available here.</p>
                 </div>
 
-                <div class="timeline">
-                    <!-- Nuevo post -->
-                    <div class="timeline-post glass-effect">
-                        <div class="timeline-header">
-                            <div class="timeline-avatar">
-                                <img src="https://yt3.ggpht.com/Z6UP3_g1F9t2nJM1_SBp1uaInWJdaflA-dZ28Su_mpHqu-TVF9HDOW2NCGXfmrdlp8J-EoG4cA=s600-c-k-c0x00ffffff-no-rj-rp-mo" alt="Sam">
-                            </div>
-                            <div class="timeline-user">
-                                <div class="timeline-username">Sam the Revenant</div>
-                                <div class="timeline-handle">@therevsam</div>
-                            </div>
-                            <div class="timeline-date">Nov 4, 2025</div>
-                        </div>
-
-                        <div class="timeline-content">
-                            <p class="timeline-caption">Soon.</p>
-                            <div class="timeline-media">
-                                <img src="https://i.pinimg.com/736x/c4/7d/59/c47d59bebc4a10764c51967df2637049.jpg" alt="Post" class="timeline-image">
-                            </div>
-                        </div>
-
-                        <div class="timeline-actions">
-                            <button class="post-action-btn like-btn" data-likes="81">
-                                <svg class="action-icon" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                                </svg>
-                                <span class="action-count">81</span>
-                            </button>
+                <div class="albums-grid">
+                    <!-- ÁLBUM E.P. NOCTURNE -->
+                    <div class="album-card glass-effect">
+                        <img src="https://i.pinimg.com/736x/5b/35/5e/5b355efd3b65d11bc14a53fa3931afbe.jpg" alt="E.P. Nocturne" class="album-cover">
+                        
+                        <div class="album-details">
+                            <h3 class="album-name">E.P. Nocturne</h3>
+                            <p class="album-artist">Sam the Revenant</p>
                             
-                            <button class="post-action-btn share-btn">
-                                <svg class="action-icon" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+                            <div class="track-list">
+                                <div class="track-list-title">Track List:</div>
+                                <div class="track-item">1. Notturno I in Do♯ Minore - Velo della Notte</div>
+                                <div class="track-item">2. Notturno II en Mi mineur – Murmures Perdus</div>
+                            </div>
+                            
+                            <div class="album-price">1.98 USD$</div>
+                            
+                            <div class="platforms-available">
+                                <div class="platforms-title">Available on:</div>
+                                <div class="platforms-grid">
+                                    <img src="https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg" alt="iTunes" class="platform-icon">
+                                </div>
+                            </div>
+                            
+                            <a href="https://music.apple.com/hn/album/e-p-nocturne-single/1850689071" class="buy-button" target="_blank">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px;">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                                 </svg>
-                                Share
-                            </button>
-
-                            <a href="mailto:samtherevenant@gmail.com" class="post-action-btn message-btn">
-                                <svg class="action-icon" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                                </svg>
-                                Message
+                                Purchase
                             </a>
                         </div>
                     </div>
 
-                    <div class="timeline-post glass-effect">
-                        <div class="timeline-header">
-                            <div class="timeline-avatar">
-                                <img src="https://yt3.ggpht.com/Z6UP3_g1F9t2nJM1_SBp1uaInWJdaflA-dZ28Su_mpHqu-TVF9HDOW2NCGXfmrdlp8J-EoG4cA=s600-c-k-c0x00ffffff-no-rj-rp-mo" alt="Sam">
-                            </div>
-                            <div class="timeline-user">
-                                <div class="timeline-username">Sam the Revenant</div>
-                                <div class="timeline-handle">@therevsam</div>
-                            </div>
-                            <div class="timeline-date">Oct 25, 2025</div>
+                    <!-- ÁLBUM L'ÂME NOCTURNE (PRÓXIMAMENTE) -->
+                    <div class="album-card glass-effect">
+                        <div class="soon-overlay">
+                            <div class="soon-text">Soon</div>
                         </div>
-
-                        <div class="timeline-content">
-                            <p class="timeline-caption">🎹🎶.</p>
-                            <div class="timeline-media">
-                                <img src="https://image2url.com/images/1761604100820-1c29de8c-c2b3-43c1-98a0-136d56064101.jpg" alt="Post" class="timeline-image">
-                            </div>
-                        </div>
-
-                        <div class="timeline-actions">
-                            <button class="post-action-btn like-btn" data-likes="73">
-                                <svg class="action-icon" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                                </svg>
-                                <span class="action-count">73</span>
-                            </button>
+                        
+                        <img src="https://i.pinimg.com/736x/a5/24/c0/a524c0f2fca32421708bb32f6a26ee99.jpg" alt="L'Âme Nocturne" class="album-cover">
+                        
+                        <div class="album-details">
+                            <h3 class="album-name">L'Âme Nocturne</h3>
+                            <p class="album-artist">Sam the Revenant</p>
                             
-                            <button class="post-action-btn share-btn">
-                                <svg class="action-icon" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
-                                </svg>
-                                Share
-                            </button>
-
-                            <a href="mailto:samtherevenant@gmail.com" class="post-action-btn message-btn">
-                                <svg class="action-icon" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                                </svg>
-                                Message
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="timeline-post glass-effect">
-                        <div class="timeline-header">
-                            <div class="timeline-avatar">
-                                <img src="https://yt3.ggpht.com/Z6UP3_g1F9t2nJM1_SBp1uaInWJdaflA-dZ28Su_mpHqu-TVF9HDOW2NCGXfmrdlp8J-EoG4cA=s600-c-k-c0x00ffffff-no-rj-rp-mo" alt="Sam">
+                            <div class="track-list">
+                                <div class="track-list-title">Track List:</div>
+                                <div class="track-item">1. Sonate Noire, Op. II — Nuit Obscure</div>
+                                <div class="track-item">2. Sérénade Céleste, Op. II — Amour Flétri</div>
+                                <div class="track-item">3. Épilogue Nocturne, Op. II — Dernier S.</div>
                             </div>
-                            <div class="timeline-user">
-                                <div class="timeline-username">Sam the Revenant</div>
-                                <div class="timeline-handle">@therevsam</div>
-                            </div>
-                            <div class="timeline-date">Sep 17, 2025</div>
-                        </div>
-
-                        <div class="timeline-content">
-                            <p class="timeline-caption">This looks good.</p>
-                            <div class="timeline-media">
-                                <img src="https://image2url.com/images/1761604290429-04edb858-24f8-483c-b605-1b22ac28bd23.jpg" alt="Post" class="timeline-image">
-                            </div>
-                        </div>
-
-                        <div class="timeline-actions">
-                            <button class="post-action-btn like-btn" data-likes="54">
-                                <svg class="action-icon" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                                </svg>
-                                <span class="action-count">54</span>
-                            </button>
                             
-                            <button class="post-action-btn share-btn">
-                                <svg class="action-icon" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
-                                </svg>
-                                Share
-                            </button>
-
-                            <a href="mailto:samtherevenant@gmail.com" class="post-action-btn message-btn">
-                                <svg class="action-icon" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                                </svg>
-                                Message
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="timeline-post glass-effect">
-                        <div class="timeline-header">
-                            <div class="timeline-avatar">
-                                <img src="https://yt3.ggpht.com/Z6UP3_g1F9t2nJM1_SBp1uaInWJdaflA-dZ28Su_mpHqu-TVF9HDOW2NCGXfmrdlp8J-EoG4cA=s600-c-k-c0x00ffffff-no-rj-rp-mo" alt="Sam">
-                            </div>
-                            <div class="timeline-user">
-                                <div class="timeline-username">Sam the Revenant</div>
-                                <div class="timeline-handle">@therevsam</div>
-                            </div>
-                            <div class="timeline-date">Sep 15, 2025</div>
-                        </div>
-
-                        <div class="timeline-content">
-                            <p class="timeline-caption">Creating something...</p>
-                            <div class="timeline-media">
-                                <img src="https://image2url.com/images/1761621882077-5ec5d6c1-7fa2-4dc7-b41c-42be3e7a3c75.jpg" alt="Post" class="timeline-image">
-                            </div>
-                        </div>
-
-                        <div class="timeline-actions">
-                            <button class="post-action-btn like-btn" data-likes="67">
-                                <svg class="action-icon" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                                </svg>
-                                <span class="action-count">67</span>
-                            </button>
+                            <div class="album-price">Coming Soon</div>
                             
-                            <button class="post-action-btn share-btn">
-                                <svg class="action-icon" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+                            <div class="platforms-available">
+                                <div class="platforms-title">Available soon on:</div>
+                                <div class="platforms-grid">
+                                    <img src="https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg" alt="iTunes" class="platform-icon">
+                                    <img src="https://headphone.guru/wp-content/uploads/2021/02/qobuz-logo.png" alt="Qobuz" class="platform-icon">
+                                </div>
+                            </div>
+                            
+                            <button class="buy-button" disabled>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px; opacity: 0.6;">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                                 </svg>
-                                Share
+                                Coming Soon
                             </button>
-
-                            <a href="mailto:samtherevenant@gmail.com" class="post-action-btn message-btn">
-                                <svg class="action-icon" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                                </svg>
-                                Message
-                            </a>
                         </div>
                     </div>
                 </div>
@@ -2026,9 +1833,9 @@
                 <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
             </svg>
         </div>
-        <div class="nav-button" id="posts-nav">
+        <div class="nav-button" id="store-nav">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M3 18h18v-2H3v2zM3 6v2h18V6H3zm0 7h18v-2H3v2z"/>
+                <path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-1.99.9-1.99 2L3 20c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm0 10c-2.76 0-5-2.24-5-5h2c0 1.66 1.34 3 3 3s3-1.34 3-3h2c0 2.76-2.24 5-5 5z"/>
             </svg>
         </div>
     </div>
@@ -2092,10 +1899,10 @@
         const toast = document.getElementById('toast');
         const homeSection = document.getElementById('home-section');
         const melodiesSection = document.getElementById('melodies-section');
-        const postsSection = document.getElementById('posts-section');
+        const storeSection = document.getElementById('store-section');
         const homeNav = document.getElementById('home-nav');
         const melodiesNav = document.getElementById('melodies-nav');
-        const postsNav = document.getElementById('posts-nav');
+        const storeNav = document.getElementById('store-nav');
 
         let currentTrackIndex = 0;
         let isPlaying = false;
@@ -2254,50 +2061,11 @@
                         homeNav.classList.add('active');
                     } else if (sectionToShow.id === 'melodies-section') {
                         melodiesNav.classList.add('active');
-                    } else if (sectionToShow.id === 'posts-section') {
-                        postsNav.classList.add('active');
+                    } else if (sectionToShow.id === 'store-section') {
+                        storeNav.classList.add('active');
                     }
                 }, 300);
             }
-        }
-
-        function initPosts() {
-            const likeButtons = document.querySelectorAll('.like-btn');
-            const shareButtons = document.querySelectorAll('.share-btn');
-            
-            likeButtons.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const likeCount = this.querySelector('.action-count');
-                    const currentLikes = parseInt(likeCount.textContent);
-                    const originalLikes = parseInt(this.getAttribute('data-likes'));
-                    
-                    if (this.classList.contains('liked')) {
-                        likeCount.textContent = originalLikes;
-                        showToast('Like removed');
-                    } else {
-                        likeCount.textContent = currentLikes + 1;
-                        showToast('Liked post');
-                    }
-                    
-                    this.classList.toggle('liked');
-                });
-            });
-            
-            shareButtons.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    navigator.clipboard.writeText('https://therevsam.github.io/therevsam/').then(() => {
-                        showToast('Link copied');
-                    }).catch(() => {
-                        const textArea = document.createElement('textarea');
-                        textArea.value = 'https://therevsam.github.io/therevsam/';
-                        document.body.appendChild(textArea);
-                        textArea.select();
-                        document.execCommand('copy');
-                        document.body.removeChild(textArea);
-                        showToast('Link copied');
-                    });
-                });
-            });
         }
 
         playPauseBtn.addEventListener('click', playPause);
@@ -2312,16 +2080,12 @@
         shareBtn.addEventListener('click', shareTrack);
         homeNav.addEventListener('click', () => showSection(homeSection));
         melodiesNav.addEventListener('click', () => showSection(melodiesSection));
-        postsNav.addEventListener('click', () => showSection(postsSection));
+        storeNav.addEventListener('click', () => showSection(storeSection));
 
         document.addEventListener('visibilitychange', function() {
             if (document.hidden) {
                 if (isPlaying) audio.pause();
             }
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            initPosts();
         });
 
         tracks.forEach((track, index) => {
