@@ -705,14 +705,14 @@
             color: #cccccc;
         }
 
-        .artist-message-section {
+        /* NUEVO ESTILO PARA ABOUT ME */
+        .about-me-section {
             margin-bottom: 1.5rem;
         }
 
-        .artist-message {
-            padding: 1.5rem;
+        .about-me {
+            padding: 2rem;
             transition: all 0.3s ease;
-            cursor: pointer;
             text-align: center;
             min-height: auto;
             background: #111111;
@@ -720,30 +720,29 @@
             border-radius: 12px;
         }
 
-        .artist-message:hover {
+        .about-me:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
             background: #1a1a1a;
             border-color: #444444;
         }
 
-        .message-content {
+        .about-content {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1rem;
-            line-height: 1.5;
+            line-height: 1.6;
             opacity: 0.9;
-            margin-bottom: 1rem;
-            font-style: italic;
-            letter-spacing: 0.3px;
+            margin-bottom: 1.5rem;
+            text-align: left;
             color: #ffffff;
         }
 
-        .message-signature {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 0.85rem;
-            opacity: 0.7;
-            font-style: italic;
-            color: #cccccc;
+        .about-signature {
+            width: 180px;
+            height: auto;
+            margin: 1rem auto;
+            opacity: 0.9;
+            filter: brightness(0.9);
         }
 
         .copyright {
@@ -1292,6 +1291,18 @@
             .action-count {
                 font-size: 0.75rem;
             }
+
+            .about-me {
+                padding: 1.5rem;
+            }
+
+            .about-content {
+                font-size: 0.95rem;
+            }
+
+            .about-signature {
+                width: 160px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1389,12 +1400,16 @@
                 font-size: 0.8rem;
             }
 
-            .artist-message {
+            .about-me {
                 padding: 1.2rem;
             }
             
-            .message-content {
-                font-size: 0.95rem;
+            .about-content {
+                font-size: 0.9rem;
+            }
+
+            .about-signature {
+                width: 140px;
             }
 
             .playlist-card {
@@ -1574,14 +1589,17 @@
 
             <div class="simple-divider"></div>
 
-            <div class="artist-message-section">
-                <div class="artist-message">
-                    <div class="message-content">
-                        "To compose is to unearth melodies that time buried. Each piece is an echo of something that once existed."
+            <!-- NUEVA SECCIÓN ABOUT ME -->
+            <div class="about-me-section">
+                <div class="about-me glass-effect">
+                    <div class="about-content">
+                        <p>I'm Sam, pianist, composer, and the mind behind Sam the Revenant.</p>
+                        <br>
+                        <p>I've played piano for as long as I can remember, long enough for it to become the language I trust the most. My compositions explore stillness, tension, and the quiet truths that only music can say without asking permission. Every piece is a conversation I never had, but needed to.</p>
+                        <br>
+                        <p>Sam the Revenant is the name I chose for the version of me that survives in my music — disciplined, detached from noise, and driven by the need to create something that lasts. I don't write to impress; I write to reveal. Every melody carries its own pulse, its own shadow, and its own reason to exist.</p>
                     </div>
-                    <div class="message-signature">
-                        — Sam the Revenant
-                    </div>
+                    <img src="https://image2url.com/images/1763610983055-9b1bfa4a-a3e8-4b20-bcec-6ae201499e77.png" alt="Sam the Revenant Signature" class="about-signature">
                 </div>
             </div>
 
@@ -1597,6 +1615,7 @@
                     <p class="discography-subtitle">Discover my musical creations</p>
                 </div>
 
+                <!-- REPRODUCTOR DE AUDIO (PRIMERO) -->
                 <div class="audio-player-section">
                     <div class="loading-overlay" id="loadingOverlay">
                         <div class="pulse-loader">
@@ -1671,53 +1690,7 @@
                     </div>
                 </div>
 
-                <div class="playlist-section">
-                    <div class="section-divider">
-                        <div class="divider-line"></div>
-                        <div class="divider-text">Sam the Revenant Collection</div>
-                    </div>
-                    
-                    <p class="playlist-description">The complete collection of Sam the Revenant.</p>
-                    
-                    <!-- NUEVA PORTADA DE PLAYLIST AGREGADA AQUÍ -->
-                    <img src="https://i.pinimg.com/736x/65/51/85/655185780cce5db43c91bc642b56de2d.jpg" alt="Sam the Revenant Collection" class="playlist-cover">
-                    
-                    <div class="playlist-grid">
-                        <a href="https://youtube.com/playlist?list=PLxczVDZlfe7gNwqRiqsFLRCtU9mSigZrS&si=6Fv6NIcwc7kzuyb0" class="playlist-card" target="_blank">
-                            <img src="https://i.pinimg.com/736x/7a/5d/56/7a5d56c5e22d6fed8d72eeb70329f5f5.jpg" alt="YouTube" class="playlist-logo">
-                            <div class="playlist-info">
-                                <div class="playlist-name">Sam the Revenant Collection</div>
-                                <div class="playlist-platform">YouTube Playlist</div>
-                            </div>
-                            <svg class="playlist-arrow" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                            </svg>
-                        </a>
-
-                        <a href="https://on.soundcloud.com/Bfh65Er1vC6TNGfHT6" class="playlist-card" target="_blank">
-                            <img src="https://i.pinimg.com/1200x/81/9d/35/819d35d67997e972a5542b5ba49d577b.jpg" alt="SoundCloud" class="playlist-logo">
-                            <div class="playlist-info">
-                                <div class="playlist-name">Sam the Revenant Collection</div>
-                                <div class="playlist-platform">SoundCloud Playlist</div>
-                            </div>
-                            <svg class="playlist-arrow" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                            </svg>
-                        </a>
-
-                        <a href="https://audiomack.com/therevsam/playlist/64080268" class="playlist-card" target="_blank">
-                            <img src="https://i.pinimg.com/1200x/f6/36/b6/f636b60899bb4ec359b6e4aadecce904.jpg" alt="Audiomack" class="playlist-logo">
-                            <div class="playlist-info">
-                                <div class="playlist-name">Sam the Revenant Collection</div>
-                                <div class="playlist-platform">Audiomack Playlist</div>
-                            </div>
-                            <svg class="playlist-arrow" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
+                <!-- SECCIÓN MY DISCOGRAPHY (SEGUNDO) -->
                 <div class="category-section">
                     <h3 class="category-title">My Discography</h3>
                     
@@ -1794,6 +1767,54 @@
                             </div>
                             <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN SAM THE REVENANT COLLECTION (TERCERO) -->
+                <div class="playlist-section">
+                    <div class="section-divider">
+                        <div class="divider-line"></div>
+                        <div class="divider-text">Sam the Revenant Collection</div>
+                    </div>
+                    
+                    <p class="playlist-description">The complete collection of Sam the Revenant.</p>
+                    
+                    <!-- PORTADA DE PLAYLIST -->
+                    <img src="https://i.pinimg.com/736x/65/51/85/655185780cce5db43c91bc642b56de2d.jpg" alt="Sam the Revenant Collection" class="playlist-cover">
+                    
+                    <div class="playlist-grid">
+                        <a href="https://youtube.com/playlist?list=PLxczVDZlfe7gNwqRiqsFLRCtU9mSigZrS&si=6Fv6NIcwc7kzuyb0" class="playlist-card" target="_blank">
+                            <img src="https://i.pinimg.com/736x/7a/5d/56/7a5d56c5e22d6fed8d72eeb70329f5f5.jpg" alt="YouTube" class="playlist-logo">
+                            <div class="playlist-info">
+                                <div class="playlist-name">Sam the Revenant Collection</div>
+                                <div class="playlist-platform">YouTube Playlist</div>
+                            </div>
+                            <svg class="playlist-arrow" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                            </svg>
+                        </a>
+
+                        <a href="https://on.soundcloud.com/Bfh65Er1vC6TNGfHT6" class="playlist-card" target="_blank">
+                            <img src="https://i.pinimg.com/1200x/81/9d/35/819d35d67997e972a5542b5ba49d577b.jpg" alt="SoundCloud" class="playlist-logo">
+                            <div class="playlist-info">
+                                <div class="playlist-name">Sam the Revenant Collection</div>
+                                <div class="playlist-platform">SoundCloud Playlist</div>
+                            </div>
+                            <svg class="playlist-arrow" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                            </svg>
+                        </a>
+
+                        <a href="https://audiomack.com/therevsam/playlist/64080268" class="playlist-card" target="_blank">
+                            <img src="https://i.pinimg.com/1200x/f6/36/b6/f636b60899bb4ec359b6e4aadecce904.jpg" alt="Audiomack" class="playlist-logo">
+                            <div class="playlist-info">
+                                <div class="playlist-name">Sam the Revenant Collection</div>
+                                <div class="playlist-platform">Audiomack Playlist</div>
+                            </div>
+                            <svg class="playlist-arrow" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
                             </svg>
                         </a>
                     </div>
