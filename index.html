@@ -958,14 +958,14 @@
             opacity: 1;
         }
 
-        /* NUEVA SECCIÓN STORE */
+        /* NUEVA SECCIÓN STORE - DISEÑO PROFESIONAL */
         .store-section {
             padding-bottom: 5rem;
         }
 
         .store-header {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
         }
 
         .store-title {
@@ -987,177 +987,201 @@
         .albums-grid {
             display: flex;
             flex-direction: column;
-            gap: 2rem;
+            gap: 1.8rem;
         }
 
         .album-card {
-            background: #111111;
+            background: linear-gradient(145deg, #111111 0%, #1a1a1a 100%);
             border: 1px solid #333333;
             border-radius: 16px;
-            padding: 1.5rem;
-            transition: all 0.3s ease;
+            padding: 1.8rem;
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
         }
 
+        .album-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+            transition: left 0.6s ease;
+        }
+
         .album-card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
             border-color: #444444;
-            background: #1a1a1a;
+            background: linear-gradient(145deg, #1a1a1a 0%, #222222 100%);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .album-card:hover::before {
+            left: 100%;
+        }
+
+        .album-content {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            margin-bottom: 1.2rem;
         }
 
         .album-cover {
-            width: 100%;
-            max-width: 280px;
-            height: auto;
+            width: 110px;
+            height: 110px;
             border-radius: 12px;
-            margin: 0 auto 1.5rem auto;
-            display: block;
+            object-fit: cover;
             border: 1px solid #333333;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            filter: grayscale(100%);
+            flex-shrink: 0;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .album-card:hover .album-cover {
+            filter: grayscale(0%);
+            border-color: #555555;
+            transform: scale(1.02);
         }
 
         .album-details {
-            margin-bottom: 1.5rem;
+            flex: 1;
+            min-width: 0;
         }
 
         .album-name {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+            margin-bottom: 0.4rem;
             color: #ffffff;
-            text-align: center;
+            line-height: 1.3;
+            font-weight: 600;
         }
 
         .album-artist {
             font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            opacity: 0.7;
-            margin-bottom: 1.2rem;
-            text-align: center;
-            color: #cccccc;
+            font-size: 0.85rem;
+            opacity: 0.8;
+            margin-bottom: 1rem;
+            color: #D4AF37;
+            font-weight: 500;
+            letter-spacing: 0.3px;
         }
 
         .track-list {
-            margin-bottom: 1.5rem;
-        }
-
-        .track-list-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1rem;
-            margin-bottom: 0.8rem;
-            color: #ffffff;
-            opacity: 0.9;
+            margin-bottom: 1rem;
         }
 
         .track-item {
             font-family: 'Inter', sans-serif;
-            font-size: 0.85rem;
+            font-size: 0.78rem;
             margin-bottom: 0.4rem;
-            padding-left: 1rem;
             color: #cccccc;
             opacity: 0.8;
+            line-height: 1.4;
+            padding-left: 0.5rem;
+            border-left: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .track-item:hover {
+            border-left-color: #D4AF37;
+            opacity: 1;
+        }
+
+        .album-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1.2rem;
+            border-top: 1px solid #333333;
         }
 
         .album-price {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.3rem;
             font-weight: 600;
-            margin-bottom: 1.2rem;
-            text-align: center;
             color: #D4AF37;
+            letter-spacing: 0.5px;
         }
 
-        .platforms-available {
-            margin-bottom: 1.5rem;
-        }
-
-        .platforms-title {
+        .price-coming {
             font-family: 'Inter', sans-serif;
-            font-size: 0.8rem;
-            opacity: 0.7;
-            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+            opacity: 0.6;
             color: #cccccc;
-            text-align: center;
-        }
-
-        .platforms-grid {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .platform-icon {
-            width: 32px;
-            height: 32px;
-            object-fit: contain;
-            filter: grayscale(100%) brightness(2);
-            opacity: 0.8;
-            transition: all 0.3s ease;
+            font-style: italic;
         }
 
         .buy-button {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            background: #222222;
+            gap: 0.6rem;
+            background: linear-gradient(135deg, #222222 0%, #333333 100%);
             border: 1px solid #444444;
             color: #ffffff;
-            padding: 1rem 1.5rem;
-            border-radius: 12px;
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
             text-decoration: none;
             font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
             transition: all 0.3s ease;
-            width: 100%;
-            -webkit-tap-highlight-color: transparent;
+            min-width: 120px;
+            justify-content: center;
+            letter-spacing: 0.3px;
         }
 
         .buy-button:hover {
-            background: #333333;
-            transform: translateY(-2px);
-            border-color: #666666;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(135deg, #333333 0%, #444444 100%);
+            border-color: #D4AF37;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
         }
 
-        .buy-button:disabled {
-            opacity: 0.6;
+        .buy-button.soon {
+            background: #1a1a1a;
+            color: #888888;
+            border-color: #333333;
             cursor: not-allowed;
-            transform: none;
         }
 
-        .buy-button:disabled:hover {
+        .buy-button.soon:hover {
             transform: none;
             box-shadow: none;
+            border-color: #333333;
         }
 
-        .soon-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
+        .button-icon {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.2s ease;
+        }
+
+        .buy-button:hover .button-icon {
+            transform: scale(1.1);
+        }
+
+        .platforms {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 16px;
-            z-index: 2;
+            gap: 0.6rem;
+            margin-top: 0.8rem;
         }
 
-        .soon-text {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #D4AF37;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 1rem 2rem;
-            border-radius: 12px;
-            border: 1px solid #D4AF37;
+        .platform-icon {
+            width: 18px;
+            height: 18px;
+            opacity: 0.6;
+            filter: grayscale(100%) brightness(2);
+            transition: all 0.3s ease;
+        }
+
+        .platform-icon:hover {
+            opacity: 1;
+            filter: grayscale(0%) brightness(1);
         }
 
         .bottom-nav {
@@ -1259,15 +1283,20 @@
             }
 
             .album-card {
-                padding: 1.2rem;
+                padding: 1.5rem;
             }
 
             .album-name {
-                font-size: 1.3rem;
+                font-size: 1.2rem;
             }
 
             .album-price {
                 font-size: 1.2rem;
+            }
+
+            .album-cover {
+                width: 100px;
+                height: 100px;
             }
         }
 
@@ -1375,29 +1404,30 @@
             }
 
             .album-card {
-                padding: 1rem;
+                padding: 1.2rem;
             }
 
             .album-name {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
             }
 
             .album-price {
                 font-size: 1.1rem;
             }
 
+            .album-cover {
+                width: 90px;
+                height: 90px;
+            }
+
             .track-item {
-                font-size: 0.8rem;
+                font-size: 0.75rem;
             }
 
             .buy-button {
-                padding: 0.9rem 1.2rem;
-                font-size: 0.85rem;
-            }
-
-            .soon-text {
-                font-size: 1.3rem;
-                padding: 0.8rem 1.5rem;
+                padding: 0.7rem 1.2rem;
+                font-size: 0.8rem;
+                min-width: 110px;
             }
         }
     </style>
@@ -1407,6 +1437,7 @@
 
     <div class="main-container">
         <div class="section active" id="home-section">
+            <!-- ... (todo el contenido de home-section se mantiene igual) ... -->
             <div class="banner-container">
                 <img src="https://i.pinimg.com/736x/a6/60/37/a66037aed932f02c6895fd5a3d79d9a8.jpg" alt="Banner" class="banner">
                 <img src="https://yt3.ggpht.com/Z6UP3_g1F9t2nJM1_SBp1uaInWJdaflA-dZ28Su_mpHqu-TVF9HDOW2NCGXfmrdlp8J-EoG4cA=s600-c-k-c0x00ffffff-no-rj-rp-mo" alt="Sam the Revenant" class="avatar">
@@ -1518,6 +1549,7 @@
         </div>
 
         <div class="section" id="melodies-section">
+            <!-- ... (todo el contenido de melodies-section se mantiene igual) ... -->
             <div class="discography-section">
                 <div class="discography-header">
                     <h2 class="discography-title">My Discography</h2>
@@ -1735,7 +1767,7 @@
             </div>
         </div>
 
-        <!-- NUEVA SECCIÓN STORE -->
+        <!-- NUEVA SECCIÓN STORE - DISEÑO PROFESIONAL -->
         <div class="section" id="store-section">
             <div class="store-section">
                 <div class="store-header">
@@ -1745,71 +1777,65 @@
 
                 <div class="albums-grid">
                     <!-- ÁLBUM E.P. NOCTURNE -->
-                    <div class="album-card glass-effect">
-                        <img src="https://i.pinimg.com/736x/5b/35/5e/5b355efd3b65d11bc14a53fa3931afbe.jpg" alt="E.P. Nocturne" class="album-cover">
-                        
-                        <div class="album-details">
-                            <h3 class="album-name">E.P. Nocturne</h3>
-                            <p class="album-artist">Sam the Revenant</p>
+                    <div class="album-card">
+                        <div class="album-content">
+                            <img src="https://i.pinimg.com/736x/5b/35/5e/5b355efd3b65d11bc14a53fa3931afbe.jpg" alt="E.P. Nocturne" class="album-cover">
                             
-                            <div class="track-list">
-                                <div class="track-list-title">Track List:</div>
-                                <div class="track-item">1. Notturno I in Do♯ Minore - Velo della Notte</div>
-                                <div class="track-item">2. Notturno II en Mi mineur – Murmures Perdus</div>
-                            </div>
-                            
-                            <div class="album-price">1.98 USD$</div>
-                            
-                            <div class="platforms-available">
-                                <div class="platforms-title">Available on:</div>
-                                <div class="platforms-grid">
+                            <div class="album-details">
+                                <h3 class="album-name">E.P. Nocturne</h3>
+                                <p class="album-artist">Sam the Revenant</p>
+                                
+                                <div class="track-list">
+                                    <div class="track-item">1. Notturno I in Do♯ Minore - Velo della Notte</div>
+                                    <div class="track-item">2. Notturno II en Mi mineur – Murmures Perdus</div>
+                                </div>
+                                
+                                <div class="platforms">
                                     <img src="https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg" alt="iTunes" class="platform-icon">
                                 </div>
                             </div>
-                            
+                        </div>
+                        
+                        <div class="album-footer">
+                            <div class="album-price">1.98 USD</div>
                             <a href="https://music.apple.com/hn/album/e-p-nocturne-single/1850689071" class="buy-button" target="_blank">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px;">
-                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                <svg class="button-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
                                 </svg>
                                 Purchase
                             </a>
                         </div>
                     </div>
 
-                    <!-- ÁLBUM L'ÂME NOCTURNE (PRÓXIMAMENTE) -->
-                    <div class="album-card glass-effect">
-                        <div class="soon-overlay">
-                            <div class="soon-text">Soon</div>
-                        </div>
-                        
-                        <img src="https://i.pinimg.com/736x/a5/24/c0/a524c0f2fca32421708bb32f6a26ee99.jpg" alt="L'Âme Nocturne" class="album-cover">
-                        
-                        <div class="album-details">
-                            <h3 class="album-name">L'Âme Nocturne</h3>
-                            <p class="album-artist">Sam the Revenant</p>
+                    <!-- ÁLBUM L'ÂME NOCTURNE -->
+                    <div class="album-card">
+                        <div class="album-content">
+                            <img src="https://i.pinimg.com/736x/a5/24/c0/a524c0f2fca32421708bb32f6a26ee99.jpg" alt="L'Âme Nocturne" class="album-cover">
                             
-                            <div class="track-list">
-                                <div class="track-list-title">Track List:</div>
-                                <div class="track-item">1. Sonate Noire, Op. II — Nuit Obscure</div>
-                                <div class="track-item">2. Sérénade Céleste, Op. II — Amour Flétri</div>
-                                <div class="track-item">3. Épilogue Nocturne, Op. II — Dernier S.</div>
-                            </div>
-                            
-                            <div class="album-price">Coming Soon</div>
-                            
-                            <div class="platforms-available">
-                                <div class="platforms-title">Available soon on:</div>
-                                <div class="platforms-grid">
+                            <div class="album-details">
+                                <h3 class="album-name">L'Âme Nocturne</h3>
+                                <p class="album-artist">Sam the Revenant</p>
+                                
+                                <div class="track-list">
+                                    <div class="track-item">1. Sonate Noire, Op. II — Nuit Obscure</div>
+                                    <div class="track-item">2. Sérénade Céleste, Op. II — Amour Flétri</div>
+                                    <div class="track-item">3. Épilogue Nocturne, Op. II — Dernier Souffle</div>
+                                </div>
+                                
+                                <div class="platforms">
                                     <img src="https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg" alt="iTunes" class="platform-icon">
                                     <img src="https://headphone.guru/wp-content/uploads/2021/02/qobuz-logo.png" alt="Qobuz" class="platform-icon">
                                 </div>
                             </div>
-                            
-                            <button class="buy-button" disabled>
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px; opacity: 0.6;">
+                        </div>
+                        
+                        <div class="album-footer">
+                            <div class="price-coming">Coming Soon</div>
+                            <button class="buy-button soon">
+                                <svg class="button-icon" viewBox="0 0 24 24" fill="currentColor" opacity="0.6">
                                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                                 </svg>
-                                Coming Soon
+                                Soon
                             </button>
                         </div>
                     </div>
