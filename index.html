@@ -189,7 +189,7 @@
         .quote {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem; /* Reducido para acercar al botón */
             opacity: 0.8;
             font-style: italic;
             line-height: 1.4;
@@ -197,21 +197,71 @@
             color: #cccccc;
         }
 
-        /* NUEVA SECCIÓN DE MERCHANDISING */
+        /* NUEVO BOTÓN "ESCUCHAR AHORA" - MÁS PEQUEÑO */
+        .listen-now-btn {
+            display: block;
+            width: 100%;
+            max-width: 150px; /* Reducido significativamente */
+            margin: 0.5rem auto 1rem auto; /* Espacio reducido */
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .listen-now-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .listen-now-img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+        }
+
+        /* NUEVA SECCIÓN DE MERCHANDISING CON CARRUSEL */
         .merch-section {
             margin-bottom: 2rem;
+            position: relative;
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+            border-radius: 16px;
+        }
+
+        .merch-carousel {
+            position: relative;
+            width: 100%;
+            height: auto;
+        }
+
+        .merch-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: auto;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            border-radius: 16px;
+            border: 1px solid #333333;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .merch-slide.active {
+            opacity: 1;
+            position: relative;
         }
 
         .merch-image {
             width: 100%;
+            height: auto;
             border-radius: 16px;
-            border: 1px solid #333333;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
-        }
-
-        .merch-image:hover {
-            transform: scale(1.02);
+            display: block;
         }
 
         .section-divider {
@@ -240,13 +290,6 @@
             z-index: 1;
             color: #ffffff;
             display: inline-block;
-        }
-
-        .simple-divider {
-            height: 1px;
-            background: #333333;
-            width: 100%;
-            margin: 1.5rem 0;
         }
 
         .audio-player-section {
@@ -730,6 +773,8 @@
             color: #cccccc;
         }
 
+        /* SECCIÓN DE FIRMA ELIMINADA */
+        /*
         .signature-section {
             margin-bottom: 1.5rem;
         }
@@ -757,6 +802,7 @@
             opacity: 0.9;
             filter: brightness(0.9);
         }
+        */
 
         .copyright {
             font-family: 'Inter', sans-serif;
@@ -1302,8 +1348,8 @@
                 height: 18px;
             }
 
-            .artist-signature {
-                width: 240px;
+            .listen-now-btn {
+                max-width: 180px;
             }
 
             .album-card {
@@ -1355,6 +1401,11 @@
             
             .quote {
                 font-size: 0.9rem;
+            }
+            
+            .listen-now-btn {
+                max-width: 160px;
+                margin-bottom: 1rem;
             }
             
             .audio-player-section {
@@ -1410,14 +1461,6 @@
                 bottom: 80px;
                 padding: 0.7rem 1.2rem;
                 font-size: 0.8rem;
-            }
-
-            .artist-signature {
-                width: 200px;
-            }
-
-            .signature-container {
-                padding: 1.5rem;
             }
 
             .album-card {
@@ -1491,9 +1534,21 @@
             <p class="bio">Pianist & Composer</p>
             <p class="quote">"Between silence and chaos, I found my truth — and turned it into music."</p>
 
-            <!-- NUEVA SECCIÓN DE MERCHANDISING -->
+            <!-- NUEVO BOTÓN "ESCUCHAR AHORA" - MÁS PEQUEÑO -->
+            <a href="https://youtu.be/l-7QFvMkOr0?si=8GtKDMU2qLHL_J6Y" class="listen-now-btn" target="_blank">
+                <img src="https://image2url.com/images/1764438678014-b4985758-e3ab-4ad6-a79d-04caf468a111.jpg" alt="Listen Now" class="listen-now-img">
+            </a>
+
+            <!-- NUEVA SECCIÓN DE MERCHANDISING CON CARRUSEL AUTOMÁTICO -->
             <div class="merch-section">
-                <img src="https://image2url.com/images/1764395824883-bf12cd19-b4da-48d5-bb27-94b7b2df4606.png" alt="Sam the Revenant Merchandise Coming Soon" class="merch-image">
+                <div class="merch-carousel">
+                    <div class="merch-slide active">
+                        <img src="https://image2url.com/images/1764395824883-bf12cd19-b4da-48d5-bb27-94b7b2df4606.png" alt="Sam the Revenant Merchandise Coming Soon" class="merch-image">
+                    </div>
+                    <div class="merch-slide">
+                        <img src="https://image2url.com/images/1764436959030-4cccf419-b3c1-4296-a565-4b5cf4ed431f.png" alt="Sam the Revenant Merchandise" class="merch-image">
+                    </div>
+                </div>
             </div>
 
             <div class="section-divider">
@@ -1581,13 +1636,7 @@
                 </a>
             </div>
 
-            <div class="simple-divider"></div>
-
-            <div class="signature-section">
-                <div class="signature-container glass-effect">
-                    <img src="https://image2url.com/images/1763610983055-9b1bfa4a-a3e8-4b20-bcec-6ae201499e77.png" alt="Sam the Revenant Signature" class="artist-signature">
-                </div>
-            </div>
+            <!-- SECCIÓN DE FIRMA ELIMINADA -->
 
             <div class="copyright">
                 © 2025 Sam the Revenant. All rights reserved.
@@ -1957,8 +2006,27 @@
         let isLiked = false;
         let currentSection = 'home';
 
+        // NUEVO: Variables para el carrusel de merchandising
+        let currentMerchSlide = 0;
+        const merchSlides = document.querySelectorAll('.merch-slide');
+        const totalMerchSlides = merchSlides.length;
+
         audio.preload = 'metadata';
         loadTrack(currentTrackIndex);
+
+        // NUEVO: Función para el carrusel automático de merchandising
+        function startMerchCarousel() {
+            setInterval(() => {
+                // Ocultar slide actual
+                merchSlides[currentMerchSlide].classList.remove('active');
+                
+                // Calcular siguiente slide
+                currentMerchSlide = (currentMerchSlide + 1) % totalMerchSlides;
+                
+                // Mostrar nuevo slide
+                merchSlides[currentMerchSlide].classList.add('active');
+            }, 5000); // Cambiar cada 5 segundos
+        }
 
         // NUEVO: Control del banner con desvanecimiento progresivo
         function handleScroll() {
@@ -2201,6 +2269,9 @@
 
         // Inicializar el banner
         updateBannerForSection('home');
+
+        // NUEVO: Iniciar el carrusel de merchandising
+        startMerchCarousel();
     </script>
 </body>
 </html>
