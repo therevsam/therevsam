@@ -7,11 +7,11 @@
     <meta name="description" content="Sam the Revenant - Elegant piano compositions and musical interpretations. Pianist & Composer creating timeless melodies.">
     <meta name="keywords" content="piano, composer, music, classical, melodies, Sam the Revenant">
     
-    <!-- NUEVO FAVICON -->
-    <link rel="icon" type="image/x-icon" href="https://yt3.ggpht.com/Z6UP3_g1F9t2nJM1_SBp1uaInWJdaflA-dZ28Su_mpHqu-TVF9HDOW2NCGXfmrdlp8J-EoG4cA=s600-c-k-c0x00ffffff-no-rj-rp-mo">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://yt3.ggpht.com/Z6UP3_g1F9t2nJM1_SBp1uaInWJdaflA-dZ28Su_mpHqu-TVF9HDOW2NCGXfmrdlp8J-EoG4cA=s600-c-k-c0x00ffffff-no-rj-rp-mo">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://yt3.ggpht.com/Z6UP3_g1F9t2nJM1_SBp1uaInWJdaflA-dZ28Su_mpHqu-TVF9HDOW2NCGXfmrdlp8J-EoG4cA=s600-c-k-c0x00ffffff-no-rj-rp-mo">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://yt3.ggpht.com/Z6UP3_g1F9t2nJM1_SBp1uaInWJdaflA-dZ28Su_mpHqu-TVF9HDOW2NCGXfmrdlp8J-EoG4cA=s600-c-k-c0x00ffffff-no-rj-rp-mo">
+    <!-- NUEVO FAVICON ACTUALIZADO -->
+    <link rel="icon" type="image/x-icon" href="https://image2url.com/images/1764395969079-b7cb359f-b1a9-4587-96b2-d58c0fb83810.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://image2url.com/images/1764395969079-b7cb359f-b1a9-4587-96b2-d58c0fb83810.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://image2url.com/images/1764395969079-b7cb359f-b1a9-4587-96b2-d58c0fb83810.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://image2url.com/images/1764395969079-b7cb359f-b1a9-4587-96b2-d58c0fb83810.png">
     
     <script type="application/ld+json">
     {
@@ -105,6 +105,29 @@
             position: relative;
         }
 
+        /* NUEVO BANNER CON EFECTO DE DESVANECIMIENTO PROGRESIVO */
+        .fading-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 350px; /* Más alto como solicitaste */
+            background: linear-gradient(to bottom, 
+                rgba(0,0,0,0.3) 0%, 
+                rgba(0,0,0,0.2) 30%, 
+                rgba(0,0,0,0.1) 60%, 
+                rgba(0,0,0,0.05) 80%, 
+                rgba(0,0,0,0) 100%),
+                url('https://image2url.com/images/1764398925959-0ac36ca7-3ed4-4585-8843-b7cec2422e39.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -1;
+            opacity: 1;
+            transition: opacity 0.3s ease-in-out;
+            pointer-events: none;
+        }
+
         .glass-effect {
             background: #111111 !important;
             border: 1px solid #333333 !important;
@@ -114,54 +137,31 @@
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
 
-        .banner-container {
+        /* CONTENEDOR DE AVATAR SOLAMENTE (BANNER ELIMINADO) */
+        .avatar-container {
             position: relative;
             width: 100%;
-            height: 180px;
-            margin-bottom: 2rem;
-            overflow: hidden;
-            border-radius: 16px;
-            background: #000000;
-            border: 1px solid #333333;
-        }
-
-        .banner {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(100%) brightness(0.6) contrast(1.1);
-            border-radius: 16px;
+            margin-bottom: 1.5rem; /* Reducido para acercar al texto */
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .avatar {
-            width: 120px;
-            height: 120px;
+            width: 140px; /* Un poco más grande */
+            height: 140px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid #ffffff;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
             z-index: 2;
             filter: grayscale(100%);
+            transition: all 0.3s ease;
         }
 
-        .artist-tag {
-            position: absolute;
-            bottom: 12px;
-            right: 15px;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.75rem;
-            font-weight: bold;
-            opacity: 0.8;
-            color: #ffffff;
-            background: rgba(0, 0, 0, 0.6);
-            padding: 0.3rem 0.6rem;
-            border-radius: 8px;
-            border: 1px solid #333333;
-            z-index: 2;
+        .avatar:hover {
+            transform: scale(1.05);
+            filter: grayscale(0%);
         }
 
         .name {
@@ -195,6 +195,23 @@
             line-height: 1.4;
             text-align: center;
             color: #cccccc;
+        }
+
+        /* NUEVA SECCIÓN DE MERCHANDISING */
+        .merch-section {
+            margin-bottom: 2rem;
+        }
+
+        .merch-image {
+            width: 100%;
+            border-radius: 16px;
+            border: 1px solid #333333;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .merch-image:hover {
+            transform: scale(1.02);
         }
 
         .section-divider {
@@ -390,7 +407,7 @@
             width: 20px;
             height: 20px;
             transition: all 0.3s ease;
-            filter: invert(1); /* NUEVO: Invertir color a blanco */
+            filter: invert(1);
         }
 
         .progress-container {
@@ -498,7 +515,7 @@
             width: 24px;
             height: 24px;
             transition: transform 0.2s ease;
-            filter: invert(1); /* NUEVO: Invertir color a blanco */
+            filter: invert(1);
         }
 
         .play-pause-btn .btn-icon {
@@ -713,7 +730,6 @@
             color: #cccccc;
         }
 
-        /* NUEVO ESTILO PARA LA FIRMA */
         .signature-section {
             margin-bottom: 1.5rem;
         }
@@ -966,7 +982,6 @@
             opacity: 1;
         }
 
-        /* NUEVA SECCIÓN STORE - DISEÑO PROFESIONAL */
         .store-section {
             padding-bottom: 5rem;
         }
@@ -1235,7 +1250,7 @@
             width: 22px;
             height: 22px;
             transition: transform 0.2s ease;
-            filter: invert(1); /* NUEVO: Invertir color a blanco */
+            filter: invert(1);
         }
 
         .toast {
@@ -1307,6 +1322,10 @@
                 width: 100px;
                 height: 100px;
             }
+
+            .fading-banner {
+                height: 300px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1320,20 +1339,9 @@
                 margin-bottom: 1.5cm;
             }
             
-            .banner-container {
-                height: 150px;
-                margin-bottom: 1.5rem;
-            }
-            
             .avatar {
-                width: 100px;
-                height: 100px;
-            }
-
-            .artist-tag {
-                font-size: 0.7rem;
-                bottom: 10px;
-                right: 12px;
+                width: 120px;
+                height: 120px;
             }
             
             .name {
@@ -1438,24 +1446,55 @@
                 font-size: 0.8rem;
                 min-width: 110px;
             }
+
+            .fading-banner {
+                height: 250px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .fading-banner {
+                height: 400px;
+            }
+        }
+
+        /* Media query para formato 4:5 en móviles */
+        @media (max-width: 480px) and (max-height: 900px) {
+            .fading-banner {
+                background: linear-gradient(to bottom, 
+                    rgba(0,0,0,0.3) 0%, 
+                    rgba(0,0,0,0.2) 30%, 
+                    rgba(0,0,0,0.1) 60%, 
+                    rgba(0,0,0,0.05) 80%, 
+                    rgba(0,0,0,0) 100%),
+                    url('https://image2url.com/images/1764398985781-a61e0746-c61a-4367-919a-2d252db88001.png');
+                background-size: cover;
+                background-position: center;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- NUEVO BANNER CON EFECTO DE DESVANECIMIENTO PROGRESIVO -->
+    <div class="fading-banner" id="fadingBanner"></div>
+
     <div class="toast" id="toast"></div>
 
     <div class="main-container">
         <div class="section active" id="home-section">
-            <div class="banner-container">
-                <img src="https://i.pinimg.com/736x/a6/60/37/a66037aed932f02c6895fd5a3d79d9a8.jpg" alt="Banner" class="banner">
+            <!-- CONTENEDOR DE AVATAR SOLAMENTE (BANNER ELIMINADO) -->
+            <div class="avatar-container">
                 <img src="https://yt3.ggpht.com/Z6UP3_g1F9t2nJM1_SBp1uaInWJdaflA-dZ28Su_mpHqu-TVF9HDOW2NCGXfmrdlp8J-EoG4cA=s600-c-k-c0x00ffffff-no-rj-rp-mo" alt="Sam the Revenant" class="avatar">
-                <div class="artist-tag">Artist ♪</div>
             </div>
             
             <h1 class="name">Sam the Revenant</h1>
-            <!-- BIO MODIFICADA -->
             <p class="bio">Pianist & Composer</p>
             <p class="quote">"Between silence and chaos, I found my truth — and turned it into music."</p>
+
+            <!-- NUEVA SECCIÓN DE MERCHANDISING -->
+            <div class="merch-section">
+                <img src="https://image2url.com/images/1764395824883-bf12cd19-b4da-48d5-bb27-94b7b2df4606.png" alt="Sam the Revenant Merchandise Coming Soon" class="merch-image">
+            </div>
 
             <div class="section-divider">
                 <div class="divider-line"></div>
@@ -1518,7 +1557,6 @@
                 </a>
             </div>
 
-            <!-- Nuevos botones BandLab y Vampr -->
             <div class="final-buttons">
                 <a href="https://www.bandlab.com/samtherev" class="bandlab-btn" target="_blank">
                     <img src="https://i.pinimg.com/1200x/d9/96/9d/d9969dcc861731e87c4a7265c02b4d40.jpg" alt="BandLab" class="platform-logo">
@@ -1545,7 +1583,6 @@
 
             <div class="simple-divider"></div>
 
-            <!-- SECCIÓN DE FIRMA SOLAMENTE -->
             <div class="signature-section">
                 <div class="signature-container glass-effect">
                     <img src="https://image2url.com/images/1763610983055-9b1bfa4a-a3e8-4b20-bcec-6ae201499e77.png" alt="Sam the Revenant Signature" class="artist-signature">
@@ -1557,6 +1594,7 @@
             </div>
         </div>
 
+        <!-- Las otras secciones (melodies-section y store-section) se mantienen igual -->
         <div class="section" id="melodies-section">
             <div class="discography-section">
                 <div class="discography-header">
@@ -1564,7 +1602,6 @@
                     <p class="discography-subtitle">Discover my musical creations</p>
                 </div>
 
-                <!-- REPRODUCTOR DE AUDIO (PRIMERO) -->
                 <div class="audio-player-section">
                     <div class="loading-overlay" id="loadingOverlay">
                         <div class="pulse-loader">
@@ -1627,7 +1664,6 @@
                     </div>
                 </div>
 
-                <!-- SECCIÓN MY DISCOGRAPHY (SEGUNDO) -->
                 <div class="category-section">
                     <h3 class="category-title">My Discography</h3>
                     
@@ -1709,7 +1745,6 @@
                     </div>
                 </div>
 
-                <!-- SECCIÓN SAM THE REVENANT COLLECTION (TERCERO) -->
                 <div class="playlist-section">
                     <div class="section-divider">
                         <div class="divider-line"></div>
@@ -1718,7 +1753,6 @@
                     
                     <p class="playlist-description">The complete collection of Sam the Revenant.</p>
                     
-                    <!-- PORTADA DE PLAYLIST -->
                     <img src="https://i.pinimg.com/736x/65/51/85/655185780cce5db43c91bc642b56de2d.jpg" alt="Sam the Revenant Collection" class="playlist-cover">
                     
                     <div class="playlist-grid">
@@ -1763,7 +1797,6 @@
             </div>
         </div>
 
-        <!-- NUEVA SECCIÓN STORE - DISEÑO PROFESIONAL -->
         <div class="section" id="store-section">
             <div class="store-section">
                 <div class="store-header">
@@ -1772,7 +1805,6 @@
                 </div>
 
                 <div class="albums-grid">
-                    <!-- ÁLBUM E.P. NOCTURNE -->
                     <div class="album-card">
                         <div class="album-content">
                             <img src="https://i.pinimg.com/736x/5b/35/5e/5b355efd3b65d11bc14a53fa3931afbe.jpg" alt="E.P. Nocturne" class="album-cover">
@@ -1803,7 +1835,6 @@
                         </div>
                     </div>
 
-                    <!-- ÁLBUM L'ÂME NOCTURNE -->
                     <div class="album-card">
                         <div class="album-content">
                             <img src="https://i.pinimg.com/736x/a5/24/c0/a524c0f2fca32421708bb32f6a26ee99.jpg" alt="L'Âme Nocturne" class="album-cover">
@@ -1844,7 +1875,6 @@
         </div>
     </div>
 
-    <!-- BARRA DE NAVEGACIÓN INFERIOR CON NUEVOS BOTONES PNG -->
     <div class="bottom-nav">
         <div class="nav-button active" id="home-nav">
             <img src="https://image2url.com/images/1764081504690-58bf4fad-eed8-4ee3-b8cf-b8de57126838.png" alt="Links" class="nav-icon">
@@ -1891,7 +1921,7 @@
             },
             {
                 title: "Épilogue Nocturne, Op. II — Dernier Souffle",
-                audioUrl: "https://example.com/epilogue-preview.mp3",
+                audioUrl: "https://boring-lavender-k9kuxilizy-1c0vdsupjt.edgeone.app/epilogue%20preview.mp3",
                 coverUrl: "https://i.pinimg.com/736x/a5/24/c0/a524c0f2fca32421708bb32f6a26ee99.jpg",
                 youtubeUrl: "https://youtu.be/mpynbtLfV3k?si=xqY8_fBBVVYuXhT0"
             }
@@ -1920,13 +1950,54 @@
         const homeNav = document.getElementById('home-nav');
         const melodiesNav = document.getElementById('melodies-nav');
         const storeNav = document.getElementById('store-nav');
+        const fadingBanner = document.getElementById('fadingBanner');
 
         let currentTrackIndex = 0;
         let isPlaying = false;
         let isLiked = false;
+        let currentSection = 'home';
 
         audio.preload = 'metadata';
         loadTrack(currentTrackIndex);
+
+        // NUEVO: Control del banner con desvanecimiento progresivo
+        function handleScroll() {
+            if (currentSection === 'home') {
+                const scrollY = window.scrollY;
+                const banner = document.getElementById('fadingBanner');
+                const maxScroll = 300; // Máximo scroll para desvanecimiento completo
+                
+                // Calcular opacidad basada en el scroll (0 a 1)
+                let opacity = 1 - (scrollY / maxScroll);
+                
+                // Limitar la opacidad entre 0 y 1
+                opacity = Math.max(0, Math.min(1, opacity));
+                
+                banner.style.opacity = opacity;
+            }
+        }
+
+        function updateBannerForSection(section) {
+            currentSection = section;
+            const banner = document.getElementById('fadingBanner');
+            
+            if (section === 'home') {
+                banner.style.display = 'block';
+                // Añadir transición suave al cambiar secciones
+                banner.style.transition = 'opacity 0.6s ease';
+                setTimeout(() => {
+                    banner.style.opacity = '1';
+                    handleScroll(); // Aplicar estado actual del scroll
+                }, 50);
+            } else {
+                // Transición suave al ocultar
+                banner.style.transition = 'opacity 0.6s ease';
+                banner.style.opacity = '0';
+                setTimeout(() => {
+                    banner.style.display = 'none';
+                }, 600);
+            }
+        }
 
         function loadTrack(index) {
             const track = tracks[index];
@@ -1947,7 +2018,6 @@
                 currentTimeEl.textContent = '0:00';
                 durationEl.textContent = '0:00';
                 
-                // Wait for metadata to load to get actual duration
                 audio.addEventListener('loadedmetadata', function() {
                     durationEl.textContent = formatTime(audio.duration);
                 }, { once: true });
@@ -2021,7 +2091,6 @@
             progressBar.style.width = `${progressPercent}%`;
             currentTimeEl.textContent = formatTime(audio.currentTime);
             
-            // Update duration in case it wasn't available initially
             if (audio.duration && !isNaN(audio.duration)) {
                 durationEl.textContent = formatTime(audio.duration);
             }
@@ -2074,17 +2143,22 @@
                     document.querySelectorAll('.nav-button').forEach(button => {
                         button.classList.remove('active');
                     });
+                    
                     if (sectionToShow.id === 'home-section') {
                         homeNav.classList.add('active');
+                        updateBannerForSection('home');
                     } else if (sectionToShow.id === 'melodies-section') {
                         melodiesNav.classList.add('active');
+                        updateBannerForSection('melodies');
                     } else if (sectionToShow.id === 'store-section') {
                         storeNav.classList.add('active');
+                        updateBannerForSection('store');
                     }
                 }, 300);
             }
         }
 
+        // Event Listeners
         playPauseBtn.addEventListener('click', playPause);
         prevBtn.addEventListener('click', prevTrack);
         nextBtn.addEventListener('click', nextTrack);
@@ -2099,12 +2173,24 @@
         melodiesNav.addEventListener('click', () => showSection(melodiesSection));
         storeNav.addEventListener('click', () => showSection(storeSection));
 
+        // NUEVO: Event listener para el scroll con throttling
+        let scrollTimeout;
+        window.addEventListener('scroll', function() {
+            if (!scrollTimeout) {
+                scrollTimeout = setTimeout(function() {
+                    handleScroll();
+                    scrollTimeout = null;
+                }, 10);
+            }
+        });
+
         document.addEventListener('visibilitychange', function() {
             if (document.hidden) {
                 if (isPlaying) audio.pause();
             }
         });
 
+        // Precarga de tracks
         tracks.forEach((track, index) => {
             if (index !== currentTrackIndex) {
                 const preloadAudio = new Audio();
@@ -2112,6 +2198,9 @@
                 preloadAudio.preload = 'metadata';
             }
         });
+
+        // Inicializar el banner
+        updateBannerForSection('home');
     </script>
 </body>
 </html>
