@@ -105,13 +105,13 @@
             position: relative;
         }
 
-        /* NUEVO BANNER CON EFECTO DE DESVANECIMIENTO PROGRESIVO */
+        /* BANNER CON EFECTO DE DESVANECIMIENTO PROGRESIVO - SOLO EN HOME */
         .fading-banner {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 350px; /* Más alto como solicitaste */
+            height: 350px;
             background: linear-gradient(to bottom, 
                 rgba(0,0,0,0.3) 0%, 
                 rgba(0,0,0,0.2) 30%, 
@@ -124,7 +124,7 @@
             background-repeat: no-repeat;
             z-index: -1;
             opacity: 1;
-            transition: opacity 0.3s ease-in-out;
+            transition: opacity 0.6s ease-in-out;
             pointer-events: none;
         }
 
@@ -137,18 +137,19 @@
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
 
-        /* CONTENEDOR DE AVATAR SOLAMENTE (BANNER ELIMINADO) */
+        /* CONTENEDOR DE AVATAR SOLAMENTE */
         .avatar-container {
             position: relative;
             width: 100%;
-            margin-bottom: 1.5rem; /* Reducido para acercar al texto */
+            margin-bottom: 1.5rem;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
+        /* AVATAR - SIN INTERACCIÓN */
         .avatar {
-            width: 140px; /* Un poco más grande */
+            width: 140px;
             height: 140px;
             border-radius: 50%;
             object-fit: cover;
@@ -156,13 +157,19 @@
             box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
             z-index: 2;
             filter: grayscale(100%);
-            transition: all 0.3s ease;
+            /* ELIMINAR TODAS LAS TRANSICIONES Y EFECTOS HOVER */
+            pointer-events: none;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
         }
 
-        .avatar:hover {
+        /* ELIMINADO EL HOVER DEL AVATAR */
+        /* .avatar:hover {
             transform: scale(1.05);
             filter: grayscale(0%);
-        }
+        } */
 
         .name {
             font-family: 'Cormorant Garamond', serif;
@@ -189,7 +196,7 @@
         .quote {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1rem;
-            margin-bottom: 1rem; /* Reducido para acercar al botón */
+            margin-bottom: 1rem;
             opacity: 0.8;
             font-style: italic;
             line-height: 1.4;
@@ -197,12 +204,12 @@
             color: #cccccc;
         }
 
-        /* NUEVO BOTÓN "ESCUCHAR AHORA" - MÁS PEQUEÑO */
+        /* BOTÓN "ESCUCHAR AHORA" MODIFICADO A 130px */
         .listen-now-btn {
             display: block;
             width: 100%;
-            max-width: 150px; /* Reducido significativamente */
-            margin: 0.5rem auto 1rem auto; /* Espacio reducido */
+            max-width: 130px; /* REDUCIDO A 130px */
+            margin: 0.5rem auto 1rem auto;
             border-radius: 8px;
             transition: all 0.3s ease;
             cursor: pointer;
@@ -223,46 +230,40 @@
             display: block;
         }
 
-        /* NUEVA SECCIÓN DE MERCHANDISING CON CARRUSEL */
-        .merch-section {
-            margin-bottom: 2rem;
+        /* SECCIÓN DE ACTUALIZACIONES EN FORMATO 16:9 - SIN INTERACCIÓN */
+        .updates-section {
+            margin-bottom: 1.5rem;
             position: relative;
             width: 100%;
             height: auto;
+            border-radius: 16px;
             overflow: hidden;
-            border-radius: 16px;
-        }
-
-        .merch-carousel {
-            position: relative;
-            width: 100%;
-            height: auto;
-        }
-
-        .merch-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: auto;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-            border-radius: 16px;
             border: 1px solid #333333;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            pointer-events: none; /* DESACTIVA TODA INTERACCIÓN */
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
         }
 
-        .merch-slide.active {
-            opacity: 1;
-            position: relative;
-        }
-
-        .merch-image {
+        .update-image {
             width: 100%;
             height: auto;
             border-radius: 16px;
             display: block;
+            /* ELIMINAR TRANSICIONES Y EFECTOS HOVER */
+            pointer-events: none;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
         }
+
+        /* ELIMINADO EL HOVER DE LA IMAGEN DE ACTUALIZACIONES */
+        /* .update-image:hover {
+            transform: scale(1.02);
+        } */
 
         .section-divider {
             margin: 2rem 0 1.5rem 0;
@@ -292,6 +293,7 @@
             display: inline-block;
         }
 
+        /* REPRODUCTOR CON FONDO PERSONALIZADO - CORREGIDO */
         .audio-player-section {
             padding: 2rem;
             margin-bottom: 2rem;
@@ -300,9 +302,28 @@
             flex-direction: column;
             justify-content: space-between;
             position: relative;
-            background: #111111;
             border: 1px solid #333333;
             border-radius: 16px;
+            overflow: hidden;
+            background: transparent; /* IMPORTANTE: hacer el fondo transparente */
+        }
+
+        /* FONDO DEL REPRODUCTOR CON 20% MENOS BRILLO - CORREGIDO */
+        .audio-player-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
+                              url('https://image2url.com/images/1764777063266-1fb46b28-5748-4791-bb0b-257dcd6745d7.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -1; /* DEBE ESTAR DETRÁS DEL CONTENIDO */
+            opacity: 0.7; /* 20% menos brillo = 70% de opacidad */
+            filter: brightness(0.8);
         }
 
         .loading-overlay {
@@ -316,7 +337,7 @@
             align-items: center;
             justify-content: center;
             border-radius: 16px;
-            z-index: 10;
+            z-index: 5; /* POR ENCIMA DEL FONDO */
         }
 
         .pulse-loader {
@@ -349,6 +370,7 @@
             margin-bottom: 1.2rem;
             display: flex;
             justify-content: center;
+            z-index: 2; /* POR ENCIMA DEL FONDO */
         }
 
         .album-art {
@@ -360,6 +382,8 @@
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
             transition: transform 0.3s ease, opacity 0.3s ease;
             filter: grayscale(100%);
+            z-index: 2; /* POR ENCIMA DEL FONDO */
+            position: relative;
         }
 
         .album-art.fade-transition {
@@ -374,6 +398,8 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            z-index: 2; /* POR ENCIMA DEL FONDO */
+            position: relative;
         }
 
         .track-title {
@@ -409,6 +435,7 @@
         .player-controls {
             width: 100%;
             position: relative;
+            z-index: 2; /* POR ENCIMA DEL FONDO */
         }
 
         .top-controls {
@@ -432,6 +459,8 @@
             height: 44px;
             border-radius: 12px;
             -webkit-tap-highlight-color: transparent;
+            z-index: 3; /* POR ENCIMA DEL FONDO */
+            position: relative;
         }
 
         .top-control-btn:hover {
@@ -462,6 +491,7 @@
             cursor: pointer;
             position: relative;
             border: 1px solid #444444;
+            z-index: 2; /* POR ENCIMA DEL FONDO */
         }
 
         .progress-bar {
@@ -499,6 +529,8 @@
             opacity: 0.6;
             margin-bottom: 1.5rem;
             color: #cccccc;
+            z-index: 2; /* POR ENCIMA DEL FONDO */
+            position: relative;
         }
 
         .control-buttons {
@@ -507,6 +539,8 @@
             align-items: center;
             gap: 2rem;
             margin-bottom: 1.5rem;
+            z-index: 2; /* POR ENCIMA DEL FONDO */
+            position: relative;
         }
 
         .control-btn {
@@ -522,6 +556,7 @@
             opacity: 0.9;
             position: relative;
             -webkit-tap-highlight-color: transparent;
+            z-index: 3; /* POR ENCIMA DEL FONDO */
         }
 
         .nav-btn {
@@ -589,6 +624,8 @@
             min-width: 180px;
             text-align: center;
             -webkit-tap-highlight-color: transparent;
+            z-index: 2; /* POR ENCIMA DEL FONDO */
+            position: relative;
         }
 
         .player-youtube-btn:hover {
@@ -772,37 +809,6 @@
             z-index: 2;
             color: #cccccc;
         }
-
-        /* SECCIÓN DE FIRMA ELIMINADA */
-        /*
-        .signature-section {
-            margin-bottom: 1.5rem;
-        }
-
-        .signature-container {
-            padding: 2rem;
-            transition: all 0.3s ease;
-            text-align: center;
-            background: #111111;
-            border: 1px solid #333333;
-            border-radius: 12px;
-        }
-
-        .signature-container:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-            background: #1a1a1a;
-            border-color: #444444;
-        }
-
-        .artist-signature {
-            width: 280px;
-            height: auto;
-            margin: 0 auto;
-            opacity: 0.9;
-            filter: brightness(0.9);
-        }
-        */
 
         .copyright {
             font-family: 'Inter', sans-serif;
@@ -1028,6 +1034,7 @@
             opacity: 1;
         }
 
+        /* SECCIÓN DE TIENDA MODIFICADA */
         .store-section {
             padding-bottom: 5rem;
         }
@@ -1253,6 +1260,59 @@
             filter: grayscale(0%) brightness(1);
         }
 
+        /* SECCIÓN DE MERCHANDISING EN TIENDA (9:16) */
+        .merch-store-section {
+            margin-top: 3rem;
+            width: 100%;
+        }
+
+        .merch-store-container {
+            position: relative;
+            width: 100%;
+            height: auto;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid #333333;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            margin-bottom: 2rem;
+        }
+
+        .merch-store-image {
+            width: 100%;
+            height: auto;
+            border-radius: 16px;
+            display: block;
+        }
+
+        /* SEPARADOR ENTRE ÁLBUMES Y MERCHANDISING */
+        .store-divider {
+            margin: 3rem 0 2rem 0;
+            position: relative;
+            text-align: center;
+        }
+
+        .store-divider-line {
+            height: 1px;
+            background: #333333;
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+        }
+
+        .store-divider-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            background: #000000;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 1;
+            color: #ffffff;
+            display: inline-block;
+        }
+
         .bottom-nav {
             position: fixed;
             bottom: 1.5rem;
@@ -1349,7 +1409,7 @@
             }
 
             .listen-now-btn {
-                max-width: 180px;
+                max-width: 130px; /* Mantener 130px */
             }
 
             .album-card {
@@ -1404,7 +1464,7 @@
             }
             
             .listen-now-btn {
-                max-width: 160px;
+                max-width: 130px; /* Mantener 130px */
                 margin-bottom: 1rem;
             }
             
@@ -1518,14 +1578,14 @@
     </style>
 </head>
 <body>
-    <!-- NUEVO BANNER CON EFECTO DE DESVANECIMIENTO PROGRESIVO -->
+    <!-- BANNER CON EFECTO DE DESVANECIMIENTO PROGRESIVO - SOLO EN HOME -->
     <div class="fading-banner" id="fadingBanner"></div>
 
     <div class="toast" id="toast"></div>
 
     <div class="main-container">
         <div class="section active" id="home-section">
-            <!-- CONTENEDOR DE AVATAR SOLAMENTE (BANNER ELIMINADO) -->
+            <!-- CONTENEDOR DE AVATAR SOLAMENTE - SIN INTERACCIÓN -->
             <div class="avatar-container">
                 <img src="https://yt3.ggpht.com/Z6UP3_g1F9t2nJM1_SBp1uaInWJdaflA-dZ28Su_mpHqu-TVF9HDOW2NCGXfmrdlp8J-EoG4cA=s600-c-k-c0x00ffffff-no-rj-rp-mo" alt="Sam the Revenant" class="avatar">
             </div>
@@ -1534,21 +1594,14 @@
             <p class="bio">Pianist & Composer</p>
             <p class="quote">"Between silence and chaos, I found my truth — and turned it into music."</p>
 
-            <!-- NUEVO BOTÓN "ESCUCHAR AHORA" - MÁS PEQUEÑO -->
+            <!-- BOTÓN "ESCUCHAR AHORA" MODIFICADO A 130px -->
             <a href="https://youtu.be/l-7QFvMkOr0?si=8GtKDMU2qLHL_J6Y" class="listen-now-btn" target="_blank">
                 <img src="https://image2url.com/images/1764438678014-b4985758-e3ab-4ad6-a79d-04caf468a111.jpg" alt="Listen Now" class="listen-now-img">
             </a>
 
-            <!-- NUEVA SECCIÓN DE MERCHANDISING CON CARRUSEL AUTOMÁTICO -->
-            <div class="merch-section">
-                <div class="merch-carousel">
-                    <div class="merch-slide active">
-                        <img src="https://image2url.com/images/1764395824883-bf12cd19-b4da-48d5-bb27-94b7b2df4606.png" alt="Sam the Revenant Merchandise Coming Soon" class="merch-image">
-                    </div>
-                    <div class="merch-slide">
-                        <img src="https://image2url.com/images/1764436959030-4cccf419-b3c1-4296-a565-4b5cf4ed431f.png" alt="Sam the Revenant Merchandise" class="merch-image">
-                    </div>
-                </div>
+            <!-- SECCIÓN DE ACTUALIZACIONES EN FORMATO 16:9 - SIN INTERACCIÓN -->
+            <div class="updates-section">
+                <img src="https://image2url.com/images/1764776723968-1d5d39e6-99f7-429a-a52d-a5ab05f34863.png" alt="Latest Updates" class="update-image">
             </div>
 
             <div class="section-divider">
@@ -1636,14 +1689,12 @@
                 </a>
             </div>
 
-            <!-- SECCIÓN DE FIRMA ELIMINADA -->
-
             <div class="copyright">
                 © 2025 Sam the Revenant. All rights reserved.
             </div>
         </div>
 
-        <!-- Las otras secciones (melodies-section y store-section) se mantienen igual -->
+        <!-- SECCIÓN DE MELODÍAS CON FONDO PERSONALIZADO EN EL REPRODUCTOR - CORREGIDO -->
         <div class="section" id="melodies-section">
             <div class="discography-section">
                 <div class="discography-header">
@@ -1846,6 +1897,7 @@
             </div>
         </div>
 
+        <!-- SECCIÓN DE TIENDA CON MERCHANDISING AGREGADO -->
         <div class="section" id="store-section">
             <div class="store-section">
                 <div class="store-header">
@@ -1914,6 +1966,19 @@
                                 Soon
                             </button>
                         </div>
+                    </div>
+                </div>
+
+                <!-- SEPARADOR ENTRE ÁLBUMES Y MERCHANDISING -->
+                <div class="store-divider">
+                    <div class="store-divider-line"></div>
+                    <div class="store-divider-text">Merchandising</div>
+                </div>
+
+                <!-- SECCIÓN DE MERCHANDISING EN FORMATO 9:16 -->
+                <div class="merch-store-section">
+                    <div class="merch-store-container">
+                        <img src="https://image2url.com/images/1764776522658-e181a56c-8228-4551-8fb7-ff0215699cbc.png" alt="Merchandise" class="merch-store-image">
                     </div>
                 </div>
 
@@ -2006,59 +2071,36 @@
         let isLiked = false;
         let currentSection = 'home';
 
-        // NUEVO: Variables para el carrusel de merchandising
-        let currentMerchSlide = 0;
-        const merchSlides = document.querySelectorAll('.merch-slide');
-        const totalMerchSlides = merchSlides.length;
-
         audio.preload = 'metadata';
         loadTrack(currentTrackIndex);
 
-        // NUEVO: Función para el carrusel automático de merchandising
-        function startMerchCarousel() {
-            setInterval(() => {
-                // Ocultar slide actual
-                merchSlides[currentMerchSlide].classList.remove('active');
-                
-                // Calcular siguiente slide
-                currentMerchSlide = (currentMerchSlide + 1) % totalMerchSlides;
-                
-                // Mostrar nuevo slide
-                merchSlides[currentMerchSlide].classList.add('active');
-            }, 5000); // Cambiar cada 5 segundos
-        }
-
-        // NUEVO: Control del banner con desvanecimiento progresivo
+        // CONTROL DEL BANNER CON DESVANECIMIENTO PROGRESIVO - SOLO EN HOME
         function handleScroll() {
             if (currentSection === 'home') {
                 const scrollY = window.scrollY;
                 const banner = document.getElementById('fadingBanner');
-                const maxScroll = 300; // Máximo scroll para desvanecimiento completo
+                const maxScroll = 300;
                 
-                // Calcular opacidad basada en el scroll (0 a 1)
                 let opacity = 1 - (scrollY / maxScroll);
-                
-                // Limitar la opacidad entre 0 y 1
                 opacity = Math.max(0, Math.min(1, opacity));
                 
                 banner.style.opacity = opacity;
             }
         }
 
+        // BANNER SOLO EN HOME
         function updateBannerForSection(section) {
             currentSection = section;
             const banner = document.getElementById('fadingBanner');
             
             if (section === 'home') {
                 banner.style.display = 'block';
-                // Añadir transición suave al cambiar secciones
                 banner.style.transition = 'opacity 0.6s ease';
                 setTimeout(() => {
                     banner.style.opacity = '1';
-                    handleScroll(); // Aplicar estado actual del scroll
+                    handleScroll();
                 }, 50);
             } else {
-                // Transición suave al ocultar
                 banner.style.transition = 'opacity 0.6s ease';
                 banner.style.opacity = '0';
                 setTimeout(() => {
@@ -2241,7 +2283,7 @@
         melodiesNav.addEventListener('click', () => showSection(melodiesSection));
         storeNav.addEventListener('click', () => showSection(storeSection));
 
-        // NUEVO: Event listener para el scroll con throttling
+        // Event listener para el scroll con throttling
         let scrollTimeout;
         window.addEventListener('scroll', function() {
             if (!scrollTimeout) {
@@ -2267,11 +2309,8 @@
             }
         });
 
-        // Inicializar el banner
+        // Inicializar el banner (solo en home)
         updateBannerForSection('home');
-
-        // NUEVO: Iniciar el carrusel de merchandising
-        startMerchCarousel();
     </script>
 </body>
 </html>
