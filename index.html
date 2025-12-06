@@ -32,14 +32,14 @@
                 "@type": "MusicRecording",
                 "name": "Sonate Noire, Op. II — Nuit Obscure",
                 "url": "https://youtu.be/2vPzG4mL5pA",
-                "duration": "PT30S",
+                "duration": "PT2M42S",
                 "genre": "Classical"
             },
             {
                 "@type": "MusicRecording", 
                 "name": "Bella's Lullaby, Op. I – Crépuscule",
                 "url": "https://youtu.be/AhWvSNRSflA",
-                "duration": "PT30S",
+                "duration": "PT2M30S",
                 "genre": "Classical"
             }
         ]
@@ -1043,7 +1043,7 @@
             opacity: 1;
         }
 
-        /* SECCIÓN DE TIENDA MODIFICADA - TARJETAS MÁS GRANDES */
+        /* NUEVA SECCIÓN DE TIENDA CON PROPUESTA 2 MODIFICADA */
         .store-section {
             padding-bottom: 5rem;
         }
@@ -1069,268 +1069,273 @@
             color: #cccccc;
         }
 
-        .albums-grid {
+        .albums-container {
             display: flex;
             flex-direction: column;
             gap: 2.5rem;
-            width: 100%;
         }
 
-        /* TARJETAS DE ÁLBUMES EN FORMATO 3:2 - MÁS GRANDES */
         .album-card {
-            background: linear-gradient(145deg, #111111 0%, #1a1a1a 100%);
+            background: #111111;
             border: 1px solid #333333;
             border-radius: 16px;
-            padding: 1.8rem;
-            transition: all 0.4s ease;
-            position: relative;
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .album-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #D4AF37, transparent);
-            transition: left 0.6s ease;
+            transition: all 0.3s ease;
         }
 
         .album-card:hover {
             transform: translateY(-3px);
-            border-color: #444444;
-            background: linear-gradient(145deg, #1a1a1a 0%, #222222 100%);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            border-color: #444444;
         }
 
-        .album-card:hover::before {
-            left: 100%;
-        }
-
-        /* CONTENEDOR DE LA IMAGEN 3:2 - MÁS GRANDE */
-        .album-image-container {
-            width: 100%;
-            position: relative;
-            margin-bottom: 1.8rem;
-            border-radius: 14px;
-            overflow: hidden;
-            border: 1px solid #333333;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-            aspect-ratio: 3/2; /* FORMATO 3:2 */
-            min-height: 250px; /* ALTURA MÍNIMA MÁS GRANDE */
-        }
-
-        .album-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.4s ease;
-        }
-
-        .album-card:hover .album-image {
-            transform: scale(1.02);
-        }
-
-        /* INFORMACIÓN DEL ÁLBUM DEBAJO DE LA IMAGEN */
-        .album-footer {
+        .album-header {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            padding-top: 1.5rem;
-            border-top: 1px solid #333333;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: linear-gradient(90deg, #111111 0%, #1a1a1a 100%);
+        }
+
+        .album-cover {
+            width: 100px;
+            height: 100px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 1px solid #444444;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .album-basic-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .album-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+            line-height: 1.2;
         }
 
         .album-price {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.5rem;
-            font-weight: 600;
             color: #D4AF37;
-            letter-spacing: 0.5px;
-        }
-
-        .price-coming {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.4rem;
             font-weight: 600;
-            color: #cccccc;
-            letter-spacing: 0.5px;
-            font-style: italic;
-            opacity: 0.8;
+            margin-bottom: 0.8rem;
         }
 
-        .buy-button {
+        .platform-icons {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 0.5rem;
+        }
+
+        .platform-icon {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+            filter: grayscale(100%) brightness(2);
+            border-radius: 6px;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+
+        .platform-icon:hover {
+            opacity: 1;
+        }
+
+        .album-details {
+            padding: 1.5rem;
+            background: #0a0a0a;
+        }
+
+        .tracklist {
+            margin-bottom: 1.5rem;
+        }
+
+        .tracklist-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            color: #cccccc;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.7;
+        }
+
+        .track {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            color: #aaaaaa;
+            margin-bottom: 0.5rem;
+            padding: 0.4rem 0;
+            border-bottom: 1px solid #222222;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .track:last-child {
+            border-bottom: none;
+        }
+
+        .track-name {
+            flex: 1;
+        }
+
+        .track-duration {
+            font-size: 0.75rem;
+            opacity: 0.7;
+            color: #888888;
+            margin-left: 1rem;
+        }
+
+        .purchase-btn {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 0.6rem;
-            background: linear-gradient(135deg, #222222 0%, #333333 100%);
-            border: 1px solid #444444;
-            color: #ffffff;
-            padding: 0.9rem 1.8rem;
+            width: 100%;
+            padding: 1rem;
+            background: transparent;
+            border: 2px solid #D4AF37;
             border-radius: 12px;
-            text-decoration: none;
+            color: #D4AF37;
             font-family: 'Inter', sans-serif;
             font-size: 0.95rem;
-            font-weight: 500;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.3s ease;
-            min-width: 140px;
-            justify-content: center;
-            letter-spacing: 0.3px;
         }
 
-        .buy-button:hover {
-            background: linear-gradient(135deg, #333333 0%, #444444 100%);
-            border-color: #D4AF37;
+        .purchase-btn:hover {
+            background: #D4AF37;
+            color: #000000;
             transform: translateY(-2px);
             box-shadow: 0 6px 16px rgba(212, 175, 55, 0.3);
         }
 
-        .buy-button.soon {
-            background: #1a1a1a;
-            color: #888888;
-            border-color: #333333;
-            cursor: not-allowed;
-        }
-
-        .buy-button.soon:hover {
-            transform: none;
-            box-shadow: none;
-            border-color: #333333;
-        }
-
-        .button-icon {
+        .purchase-icon {
             width: 18px;
             height: 18px;
             transition: transform 0.2s ease;
         }
 
-        .buy-button:hover .button-icon {
+        .purchase-btn:hover .purchase-icon {
             transform: scale(1.1);
         }
 
-        /* SEPARADOR ENTRE ÁLBUMES Y MERCHANDISING */
-        .store-divider {
-            margin: 3rem 0 2.5rem 0;
-            position: relative;
-            text-align: center;
-        }
-
-        .store-divider-line {
-            height: 1px;
-            background: #333333;
-            width: 100%;
-            position: absolute;
-            top: 50%;
-            left: 0;
-            transform: translateY(-50%);
-        }
-
-        .store-divider-text {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            font-weight: 600;
-            background: #000000;
-            padding: 0 1.5rem;
-            position: relative;
-            z-index: 1;
-            color: #ffffff;
-            display: inline-block;
-        }
-
-        /* MERCHANDISING COMO TARJETA (IGUAL QUE ÁLBUMES) */
-        .merch-card {
-            background: linear-gradient(145deg, #111111 0%, #1a1a1a 100%);
-            border: 1px solid #333333;
-            border-radius: 16px;
-            padding: 1.8rem;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-
-        .merch-card::before {
-            content: '';
-            position: absolute;
+        /* Modal para selección de plataformas */
+        .modal-overlay {
+            position: fixed;
             top: 0;
-            left: -100%;
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #D4AF37, transparent);
-            transition: left 0.6s ease;
-        }
-
-        .merch-card:hover {
-            transform: translateY(-3px);
-            border-color: #444444;
-            background: linear-gradient(145deg, #1a1a1a 0%, #222222 100%);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-        }
-
-        .merch-card:hover::before {
-            left: 100%;
-        }
-
-        /* CONTENEDOR DE LA IMAGEN DE MERCH 3:2 */
-        .merch-image-container {
-            width: 100%;
-            position: relative;
-            margin-bottom: 1.8rem;
-            border-radius: 14px;
-            overflow: hidden;
-            border: 1px solid #333333;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-            aspect-ratio: 3/2; /* FORMATO 3:2 */
-            min-height: 250px; /* ALTURA MÍNIMA MÁS GRANDE */
-        }
-
-        .merch-image {
+            left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.4s ease;
+            background: rgba(0, 0, 0, 0.85);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            padding: 1rem;
         }
 
-        .merch-card:hover .merch-image {
-            transform: scale(1.02);
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
         }
 
-        /* INFORMACIÓN DE MERCH DEBAJO DE LA IMAGEN */
-        .merch-footer {
+        .modal-content {
+            background: #111111;
+            border: 1px solid #333333;
+            border-radius: 16px;
+            padding: 2rem;
+            max-width: 400px;
+            width: 100%;
+            position: relative;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.3s ease 0.1s;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .modal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            width: 100%;
-            padding-top: 1.5rem;
-            border-top: 1px solid #333333;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #333333;
         }
 
-        .merch-price {
+        .modal-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #D4AF37;
-            letter-spacing: 0.5px;
+            font-size: 1.3rem;
+            color: #ffffff;
         }
 
-        .merch-coming {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.4rem;
-            font-weight: 600;
+        .close-modal {
+            background: none;
+            border: none;
             color: #cccccc;
-            letter-spacing: 0.5px;
-            font-style: italic;
-            opacity: 0.8;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: color 0.3s ease;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .close-modal:hover {
+            color: #ffffff;
+        }
+
+        .platform-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .modal-platform-btn {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.2rem;
+            background: #222222;
+            border: 1px solid #444444;
+            border-radius: 12px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .modal-platform-btn:hover {
+            background: #333333;
+            transform: translateY(-2px);
+            border-color: #666666;
+        }
+
+        .modal-platform-logo {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+            filter: grayscale(100%) brightness(2);
+            border-radius: 6px;
+        }
+
+        .modal-platform-name {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
         }
 
         .bottom-nav {
@@ -1432,22 +1437,28 @@
                 max-width: 130px; /* Mantener 130px */
             }
 
-            .album-card, .merch-card {
-                padding: 1.5rem;
+            .album-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 1rem;
             }
 
-            .album-price, .price-coming, .merch-coming {
+            .album-cover {
+                width: 140px;
+                height: 140px;
+            }
+
+            .album-name {
                 font-size: 1.3rem;
             }
 
-            .buy-button {
-                padding: 0.8rem 1.5rem;
-                font-size: 0.9rem;
-                min-width: 130px;
+            .album-price {
+                font-size: 1.4rem;
             }
 
-            .album-image-container, .merch-image-container {
-                min-height: 220px;
+            .platform-icons {
+                justify-content: center;
             }
 
             .fading-banner {
@@ -1544,22 +1555,29 @@
                 font-size: 0.8rem;
             }
 
-            .album-card, .merch-card {
-                padding: 1.2rem;
+            .album-cover {
+                width: 120px;
+                height: 120px;
             }
 
-            .album-price, .price-coming, .merch-coming {
+            .album-name {
                 font-size: 1.2rem;
             }
 
-            .buy-button {
-                padding: 0.7rem 1.2rem;
-                font-size: 0.8rem;
-                min-width: 110px;
+            .album-price {
+                font-size: 1.3rem;
             }
 
-            .album-image-container, .merch-image-container {
-                min-height: 200px;
+            .track {
+                font-size: 0.8rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.2rem;
+            }
+
+            .track-duration {
+                margin-left: 0;
+                align-self: flex-end;
             }
 
             .fading-banner {
@@ -1570,10 +1588,6 @@
         @media (min-width: 1200px) {
             .fading-banner {
                 height: 400px;
-            }
-            
-            .album-image-container, .merch-image-container {
-                min-height: 280px;
             }
         }
 
@@ -1653,6 +1667,13 @@
                     <span class="btn-text">Tidal</span>
                     <span class="hifi-badge">Hi-Fi</span>
                 </a>
+                
+                <!-- NUEVO BOTÓN QOBUZ FUNCIONAL CON BADGE HI-FI -->
+                <a href="https://www.qobuz.com/us-en/interpreter/sam-the-revenant/29785940" class="link-btn" target="_blank">
+                    <img src="https://headphone.guru/wp-content/uploads/2021/02/qobuz-logo.png" alt="Qobuz" class="platform-logo">
+                    <span class="btn-text">Qobuz</span>
+                    <span class="hifi-badge">Hi-Fi</span>
+                </a>
 
                 <a href="https://soundcloud.com/therevsam" class="link-btn" target="_blank">
                     <img src="https://i.pinimg.com/1200x/81/9d/35/819d35d67997e972a5542b5ba49d577b.jpg" alt="SoundCloud" class="platform-logo">
@@ -1672,12 +1693,6 @@
                 <a href="https://whatsapp.com/channel/0029Vb72z7J9RZAWILcE5e0v" class="link-btn" target="_blank">
                     <img src="https://i.pinimg.com/1200x/fc/ae/b3/fcaeb33b122b22a4cac47d29f4447684.jpg" alt="WhatsApp Channel" class="platform-logo">
                     <span class="btn-text">WhatsApp Channel</span>
-                </a>
-
-                <a href="#" class="link-btn" onclick="return false;">
-                    <img src="https://headphone.guru/wp-content/uploads/2021/02/qobuz-logo.png" alt="Qobuz" class="platform-logo">
-                    <span class="btn-text">Qobuz</span>
-                    <span class="soon-badge">Soon</span>
                 </a>
             </div>
 
@@ -1879,6 +1894,51 @@
                     <img src="https://i.pinimg.com/736x/65/51/85/655185780cce5db43c91bc642b56de2d.jpg" alt="Sam the Revenant Collection" class="playlist-cover">
                     
                     <div class="playlist-grid">
+                        <!-- NUEVOS BOTONES CON LINKS ACTUALIZADOS -->
+                        <a href="https://open.spotify.com/playlist/0XYS21NjKw1WlzW0Opu8bG?si=S8prhdvfTWm0_KPzWT42PA" class="playlist-card" target="_blank">
+                            <img src="https://i.pinimg.com/1200x/e6/55/bf/e655bff3217dd6f575a275604b0ff7e1.jpg" alt="Spotify" class="playlist-logo">
+                            <div class="playlist-info">
+                                <div class="playlist-name">Sam the Revenant Collection</div>
+                                <div class="playlist-platform">Spotify Playlist</div>
+                            </div>
+                            <svg class="playlist-arrow" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                            </svg>
+                        </a>
+
+                        <a href="https://link.deezer.com/s/31NpCDLsHDAngyDhLnRTg" class="playlist-card" target="_blank">
+                            <img src="https://i.pinimg.com/736x/1b/f9/33/1bf93302bd924479b90f47a0df2134cd.jpg" alt="Deezer" class="playlist-logo">
+                            <div class="playlist-info">
+                                <div class="playlist-name">Sam the Revenant Collection</div>
+                                <div class="playlist-platform">Deezer Playlist</div>
+                            </div>
+                            <svg class="playlist-arrow" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                            </svg>
+                        </a>
+
+                        <a href="https://tidal.com/playlist/82304d6b-e154-4ecc-a4bb-de5de1c2a891" class="playlist-card" target="_blank">
+                            <img src="https://i.pinimg.com/736x/94/9c/01/949c014c813bc031520d82af3905a4f0.jpg" alt="Tidal" class="playlist-logo">
+                            <div class="playlist-info">
+                                <div class="playlist-name">Sam the Revenant Collection</div>
+                                <div class="playlist-platform">Tidal Playlist</div>
+                            </div>
+                            <svg class="playlist-arrow" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                            </svg>
+                        </a>
+
+                        <a href="https://music.youtube.com/playlist?list=PLxczVDZlfe7gNwqRiqsFLRCtU9mSigZrS&si=nK1tavQKwRLAlLWR" class="playlist-card" target="_blank">
+                            <img src="https://i.pinimg.com/1200x/73/6d/0c/736d0c2aac22b1c37a6ce0ee1a52277f.jpg" alt="YouTube Music" class="playlist-logo">
+                            <div class="playlist-info">
+                                <div class="playlist-name">Sam the Revenant Collection</div>
+                                <div class="playlist-platform">YouTube Music Playlist</div>
+                            </div>
+                            <svg class="playlist-arrow" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                            </svg>
+                        </a>
+
                         <a href="https://youtube.com/playlist?list=PLxczVDZlfe7gNwqRiqsFLRCtU9mSigZrS&si=6Fv6NIcwc7kzuyb0" class="playlist-card" target="_blank">
                             <img src="https://i.pinimg.com/736x/7a/5d/56/7a5d56c5e22d6fed8d72eeb70329f5f5.jpg" alt="YouTube" class="playlist-logo">
                             <div class="playlist-info">
@@ -1920,7 +1980,7 @@
             </div>
         </div>
 
-        <!-- SECCIÓN DE TIENDA CON MERCHANDISING AGREGADO -->
+        <!-- NUEVA SECCIÓN DE TIENDA CON PROPUESTA 2 MODIFICADA -->
         <div class="section" id="store-section">
             <div class="store-section">
                 <div class="store-header">
@@ -1928,63 +1988,94 @@
                     <p class="store-subtitle">Official editions available here.</p>
                 </div>
 
-                <div class="albums-grid">
-                    <!-- ÁLBUM E.P. NOCTURNE -->
-                    <div class="album-card">
-                        <div class="album-image-container">
-                            <img src="https://image2url.com/images/1764810993162-ed83fffe-8d0b-4e19-a7b8-5b31764ce9f1.png" alt="E.P. Nocturne" class="album-image">
+                <div class="albums-container">
+                    <!-- ÁLBUM 1: L'Âme Nocturne -->
+                    <div class="album-card" data-album="ame-nocturne">
+                        <div class="album-header">
+                            <img src="https://i.pinimg.com/736x/a5/24/c0/a524c0f2fca32421708bb32f6a26ee99.jpg" 
+                                 alt="L'Âme Nocturne" class="album-cover">
+                            <div class="album-basic-info">
+                                <h3 class="album-name">L'Âme Nocturne</h3>
+                                <div class="album-price">5.39 USD</div>
+                                <div class="platform-icons">
+                                    <img src="https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg" 
+                                         alt="iTunes" class="platform-icon" title="Available on iTunes">
+                                    <img src="https://headphone.guru/wp-content/uploads/2021/02/qobuz-logo.png" 
+                                         alt="Qobuz" class="platform-icon" title="Available on Qobuz">
+                                </div>
+                            </div>
                         </div>
-                        
-                        <div class="album-footer">
-                            <div class="album-price">1.98 USD</div>
-                            <a href="https://music.apple.com/hn/album/e-p-nocturne-single/1850689071" class="buy-button" target="_blank">
-                                <svg class="button-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <div class="album-details">
+                            <div class="tracklist">
+                                <div class="tracklist-title">Tracklist</div>
+                                <div class="track">
+                                    <span class="track-name">Sonate Noire, Op. II — Nuit Obscure</span>
+                                    <span class="track-duration">(2:42)</span>
+                                </div>
+                                <div class="track">
+                                    <span class="track-name">Sérénade Céleste, Op. II — Amour Flétri</span>
+                                    <span class="track-duration">(2:42)</span>
+                                </div>
+                                <div class="track">
+                                    <span class="track-name">Épilogue Nocturne, Op. II — Dernier Souffle</span>
+                                    <span class="track-duration">(3:32)</span>
+                                </div>
+                            </div>
+                            <button class="purchase-btn" onclick="openPlatformModal('ame-nocturne')">
+                                <svg class="purchase-icon" viewBox="0 0 24 24" fill="currentColor">
                                     <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
                                 </svg>
-                                Purchase
-                            </a>
+                                Purchase Album
+                            </button>
                         </div>
                     </div>
 
-                    <!-- ÁLBUM L'ÂME NOCTURNE -->
-                    <div class="album-card">
-                        <div class="album-image-container">
-                            <img src="https://image2url.com/images/1764810912802-3dcb6387-07e2-462e-bec4-fe1058ca34b1.png" alt="L'Âme Nocturne" class="album-image">
+                    <!-- ÁLBUM 2: E.P. Nocturne -->
+                    <div class="album-card" data-album="ep-nocturne">
+                        <div class="album-header">
+                            <img src="https://i.pinimg.com/736x/5b/35/5e/5b355efd3b65d11bc14a53fa3931afbe.jpg" 
+                                 alt="E.P. Nocturne" class="album-cover">
+                            <div class="album-basic-info">
+                                <h3 class="album-name">E.P. Nocturne</h3>
+                                <div class="album-price">1.98 USD</div>
+                                <div class="platform-icons">
+                                    <img src="https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg" 
+                                         alt="iTunes" class="platform-icon" title="Available on iTunes">
+                                </div>
+                            </div>
                         </div>
-                        
-                        <div class="album-footer">
-                            <div class="price-coming">Coming Soon</div>
-                            <button class="buy-button soon">
-                                <svg class="button-icon" viewBox="0 0 24 24" fill="currentColor" opacity="0.6">
-                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        <div class="album-details">
+                            <div class="tracklist">
+                                <div class="tracklist-title">Tracklist</div>
+                                <div class="track">
+                                    <span class="track-name">Notturno I in Do♯ Minore: Velo della Notte</span>
+                                    <span class="track-duration">(2:55)</span>
+                                </div>
+                                <div class="track">
+                                    <span class="track-name">Notturno II en Mi mineur – Murmures Perdus</span>
+                                    <span class="track-duration">(1:45)</span>
+                                </div>
+                            </div>
+                            <button class="purchase-btn" onclick="openPlatformModal('ep-nocturne')">
+                                <svg class="purchase-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
                                 </svg>
-                                Soon
+                                Purchase Album
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- SEPARADOR ENTRE ÁLBUMES Y MERCHANDISING -->
-                <div class="store-divider">
-                    <div class="store-divider-line"></div>
-                    <div class="store-divider-text">Merchandising</div>
-                </div>
-
-                <!-- MERCHANDISING COMO TARJETA (IGUAL QUE ÁLBUMES) -->
-                <div class="merch-card">
-                    <div class="merch-image-container">
-                        <img src="https://image2url.com/images/1764811018232-dc7ca651-650c-4aa9-b51a-1a2da5b308b3.png" alt="Merchandise" class="merch-image">
-                    </div>
-                    
-                    <!-- INFORMACIÓN DE MERCH DEBAJO DE LA IMAGEN -->
-                    <div class="merch-footer">
-                        <div class="merch-coming">Coming Soon</div>
-                        <button class="buy-button soon">
-                            <svg class="button-icon" viewBox="0 0 24 24" fill="currentColor" opacity="0.6">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                            </svg>
-                            Soon
-                        </button>
+                <!-- Modal para selección de plataformas -->
+                <div class="modal-overlay" id="platformModal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title">Select Platform</h3>
+                            <button class="close-modal" onclick="closeModal()">×</button>
+                        </div>
+                        <div class="platform-options" id="platformOptions">
+                            <!-- Las opciones se generan dinámicamente aquí -->
+                        </div>
                     </div>
                 </div>
 
@@ -2076,6 +2167,91 @@
         let isPlaying = false;
         let isLiked = false;
         let currentSection = 'home';
+
+        // Datos para el modal de plataformas
+        const albumsData = {
+            'ame-nocturne': {
+                name: "L'Âme Nocturne",
+                platforms: [
+                    {
+                        name: "iTunes",
+                        logo: "https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg",
+                        url: "https://music.apple.com/hn/album/l%C3%A2me-nocturne-single/1858841532"
+                    },
+                    {
+                        name: "Qobuz",
+                        logo: "https://headphone.guru/wp-content/uploads/2021/02/qobuz-logo.png",
+                        url: "https://www.qobuz.com/us-en/album/lame-nocturne-sam-the-revenant/pc7h0agqhs6oq"
+                    }
+                ]
+            },
+            'ep-nocturne': {
+                name: "E.P. Nocturne",
+                platforms: [
+                    {
+                        name: "iTunes",
+                        logo: "https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg",
+                        url: "https://music.apple.com/hn/album/e-p-nocturne-single/1850689071"
+                    }
+                ]
+            }
+        };
+
+        // Funciones para el modal de plataformas
+        let currentAlbumId = '';
+
+        function openPlatformModal(albumId) {
+            currentAlbumId = albumId;
+            const modal = document.getElementById('platformModal');
+            const platformOptions = document.getElementById('platformOptions');
+            const album = albumsData[albumId];
+
+            // Limpiar opciones anteriores
+            platformOptions.innerHTML = '';
+
+            // Crear botones para cada plataforma
+            album.platforms.forEach(platform => {
+                const platformBtn = document.createElement('a');
+                platformBtn.href = platform.url;
+                platformBtn.target = '_blank';
+                platformBtn.className = 'modal-platform-btn';
+                platformBtn.onclick = (e) => {
+                    // Permitir que el enlace se abra normalmente
+                    // El modal se cerrará automáticamente porque el enlace abre nueva pestaña
+                };
+
+                platformBtn.innerHTML = `
+                    <img src="${platform.logo}" alt="${platform.name}" class="modal-platform-logo">
+                    <span class="modal-platform-name">${platform.name}</span>
+                `;
+
+                platformOptions.appendChild(platformBtn);
+            });
+
+            // Mostrar modal con animación
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('platformModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Cerrar modal al hacer clic fuera
+        document.getElementById('platformModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Cerrar modal con Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
 
         audio.preload = 'metadata';
         loadTrack(currentTrackIndex);
