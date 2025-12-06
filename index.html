@@ -165,12 +165,6 @@
             -ms-user-select: none;
         }
 
-        /* ELIMINADO EL HOVER DEL AVATAR */
-        /* .avatar:hover {
-            transform: scale(1.05);
-            filter: grayscale(0%);
-        } */
-
         .name {
             font-family: 'Cormorant Garamond', serif;
             font-size: 2rem;
@@ -260,11 +254,6 @@
             -ms-user-select: none;
         }
 
-        /* ELIMINADO EL HOVER DE LA IMAGEN DE ACTUALIZACIONES */
-        /* .update-image:hover {
-            transform: scale(1.02);
-        } */
-
         .section-divider {
             margin: 2rem 0 1.5rem 0;
             position: relative;
@@ -343,6 +332,148 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+        }
+
+        /* NUEVO BOTÓN DE LISTA DE REPRODUCCIÓN */
+        .playlist-toggle-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: rgba(34, 34, 34, 0.9);
+            border: 1px solid #444444;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .playlist-toggle-btn:hover {
+            background: #333333;
+            transform: scale(1.05);
+            border-color: #666666;
+        }
+
+        .playlist-toggle-icon {
+            width: 20px;
+            height: 20px;
+            filter: invert(1); /* Convertir negro a blanco */
+        }
+
+        /* LISTA DE REPRODUCCIÓN */
+        .playlist-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: none;
+            flex-direction: column;
+            z-index: 9;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 16px;
+            padding: 1rem;
+            backdrop-filter: blur(5px);
+        }
+
+        .playlist-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .playlist-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #444444;
+        }
+
+        .playlist-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: #ffffff;
+        }
+
+        .close-playlist {
+            background: none;
+            border: none;
+            color: #cccccc;
+            cursor: pointer;
+            padding: 0.5rem;
+            font-size: 1.5rem;
+            line-height: 1;
+            transition: color 0.3s ease;
+        }
+
+        .close-playlist:hover {
+            color: #ffffff;
+        }
+
+        .playlist-tracks {
+            flex: 1;
+            overflow-y: auto;
+            max-height: 280px;
+        }
+
+        .playlist-track {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(34, 34, 34, 0.7);
+            border: 1px solid transparent;
+        }
+
+        .playlist-track:hover {
+            background: rgba(51, 51, 51, 0.9);
+            border-color: #666666;
+        }
+
+        .playlist-track.active {
+            background: rgba(51, 51, 51, 0.9);
+            border-color: #ffffff;
+        }
+
+        .playlist-track-cover {
+            width: 40px;
+            height: 40px;
+            border-radius: 6px;
+            object-fit: cover;
+            margin-right: 1rem;
+            border: 1px solid #444444;
+        }
+
+        .playlist-track-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .playlist-track-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.9rem;
+            color: #ffffff;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .playlist-track-artist {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            color: #cccccc;
+            opacity: 0.8;
         }
 
         .loading-overlay {
@@ -1081,6 +1212,7 @@
             border-radius: 16px;
             overflow: hidden;
             transition: all 0.3s ease;
+            position: relative;
         }
 
         .album-card:hover {
@@ -1120,6 +1252,7 @@
             line-height: 1.2;
         }
 
+        /* PRECIO CON LA MISMA FUENTE DEL NOMBRE DEL ÁLBUM */
         .album-price {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.5rem;
@@ -1151,6 +1284,28 @@
         .album-details {
             padding: 1.5rem;
             background: #0a0a0a;
+            position: relative;
+        }
+
+        .album-details-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .album-details-overlay.active {
+            display: flex;
+            opacity: 1;
         }
 
         .tracklist {
@@ -1229,113 +1384,98 @@
             transform: scale(1.1);
         }
 
-        /* Modal para selección de plataformas */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            padding: 1rem;
-        }
-
-        .modal-overlay.active {
-            display: flex;
-            opacity: 1;
-        }
-
-        .modal-content {
-            background: #111111;
-            border: 1px solid #333333;
-            border-radius: 16px;
-            padding: 2rem;
-            max-width: 400px;
-            width: 100%;
+        /* Modal para selección de plataformas DENTRO DE LA TARJETA */
+        .album-modal {
             position: relative;
-            transform: translateY(20px);
+            z-index: 3;
+            background: #111111;
+            border: 1px solid #444444;
+            border-radius: 12px;
+            padding: 1.5rem;
+            width: 90%;
+            max-width: 320px;
+            transform: scale(0.9);
             opacity: 0;
-            transition: all 0.3s ease 0.1s;
+            transition: all 0.3s ease;
         }
 
-        .modal-overlay.active .modal-content {
-            transform: translateY(0);
+        .album-details-overlay.active .album-modal {
+            transform: scale(1);
             opacity: 1;
         }
 
-        .modal-header {
+        .album-modal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             padding-bottom: 1rem;
-            border-bottom: 1px solid #333333;
+            border-bottom: 1px solid #444444;
         }
 
-        .modal-title {
+        .album-modal-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             color: #ffffff;
         }
 
-        .close-modal {
+        .close-album-modal {
             background: none;
             border: none;
             color: #cccccc;
             cursor: pointer;
             padding: 0.5rem;
-            transition: color 0.3s ease;
             font-size: 1.2rem;
             line-height: 1;
+            transition: color 0.3s ease;
         }
 
-        .close-modal:hover {
+        .close-album-modal:hover {
             color: #ffffff;
         }
 
-        .platform-options {
+        .album-platform-options {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 0.8rem;
         }
 
-        .modal-platform-btn {
+        .album-modal-platform-btn {
             display: flex;
             align-items: center;
             gap: 1rem;
-            padding: 1.2rem;
+            padding: 1rem;
             background: #222222;
             border: 1px solid #444444;
-            border-radius: 12px;
+            border-radius: 8px;
             color: white;
             text-decoration: none;
             transition: all 0.3s ease;
         }
 
-        .modal-platform-btn:hover {
+        .album-modal-platform-btn:hover {
             background: #333333;
             transform: translateY(-2px);
             border-color: #666666;
         }
 
-        .modal-platform-logo {
-            width: 30px;
-            height: 30px;
+        .album-modal-platform-logo {
+            width: 24px;
+            height: 24px;
             object-fit: contain;
             filter: grayscale(100%) brightness(2);
-            border-radius: 6px;
+            border-radius: 4px;
         }
 
-        .modal-platform-name {
+        .album-modal-platform-name {
             font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 500;
+        }
+
+        /* Modal global eliminado */
+        .modal-overlay {
+            display: none !important;
         }
 
         .bottom-nav {
@@ -1437,28 +1577,50 @@
                 max-width: 130px; /* Mantener 130px */
             }
 
+            /* MEJORAS PARA MÓVIL EN LA TIENDA */
             .album-header {
-                flex-direction: column;
+                flex-direction: row;
                 align-items: center;
-                text-align: center;
+                text-align: left;
                 gap: 1rem;
+                padding: 1.2rem;
             }
 
             .album-cover {
-                width: 140px;
-                height: 140px;
+                width: 80px;
+                height: 80px;
             }
 
             .album-name {
-                font-size: 1.3rem;
+                font-size: 1.2rem;
             }
 
             .album-price {
-                font-size: 1.4rem;
+                font-size: 1.3rem;
             }
 
             .platform-icons {
-                justify-content: center;
+                justify-content: flex-start;
+            }
+
+            .album-details {
+                padding: 1.2rem;
+            }
+
+            .track {
+                font-size: 0.8rem;
+                flex-direction: row;
+                align-items: center;
+            }
+
+            .track-duration {
+                margin-left: 0.5rem;
+                font-size: 0.7rem;
+            }
+
+            .purchase-btn {
+                padding: 0.8rem;
+                font-size: 0.9rem;
             }
 
             .fading-banner {
@@ -1555,17 +1717,36 @@
                 font-size: 0.8rem;
             }
 
+            /* MEJORAS ESPECÍFICAS PARA MÓVIL PEQUEÑO EN TIENDA */
+            .album-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
             .album-cover {
-                width: 120px;
-                height: 120px;
+                width: 100px;
+                height: 100px;
             }
 
             .album-name {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
+                text-align: center;
             }
 
             .album-price {
-                font-size: 1.3rem;
+                font-size: 1.4rem;
+                text-align: center;
+            }
+
+            .platform-icons {
+                justify-content: center;
+            }
+
+            .album-details {
+                padding: 1rem;
             }
 
             .track {
@@ -1573,11 +1754,32 @@
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 0.2rem;
+                padding: 0.5rem 0;
+            }
+
+            .track-name {
+                width: 100%;
             }
 
             .track-duration {
                 margin-left: 0;
                 align-self: flex-end;
+                font-size: 0.7rem;
+            }
+
+            .purchase-btn {
+                padding: 0.9rem;
+                font-size: 0.9rem;
+            }
+
+            /* MODAL EN MÓVIL */
+            .album-modal {
+                width: 95%;
+                padding: 1.2rem;
+            }
+
+            .album-modal-platform-btn {
+                padding: 0.8rem;
             }
 
             .fading-banner {
@@ -1738,6 +1940,22 @@
                     <!-- FONDO CORREGIDO -->
                     <div class="audio-player-bg"></div>
                     <div class="audio-player-overlay"></div>
+                    
+                    <!-- NUEVO BOTÓN DE LISTA DE REPRODUCCIÓN -->
+                    <button class="playlist-toggle-btn" id="playlistToggleBtn" aria-label="Show playlist">
+                        <img src="https://image2url.com/images/1764990333046-73e389cf-b3d8-42b7-8fd6-6a6f1ca67e08.png" alt="Playlist" class="playlist-toggle-icon">
+                    </button>
+                    
+                    <!-- LISTA DE REPRODUCCIÓN -->
+                    <div class="playlist-overlay" id="playlistOverlay">
+                        <div class="playlist-header">
+                            <h3 class="playlist-title">Playlist</h3>
+                            <button class="close-playlist" id="closePlaylistBtn">×</button>
+                        </div>
+                        <div class="playlist-tracks" id="playlistTracks">
+                            <!-- Las pistas se generan dinámicamente aquí -->
+                        </div>
+                    </div>
                     
                     <div class="loading-overlay" id="loadingOverlay">
                         <div class="pulse-loader">
@@ -2006,6 +2224,26 @@
                             </div>
                         </div>
                         <div class="album-details">
+                            <!-- Overlay para el modal dentro de la tarjeta -->
+                            <div class="album-details-overlay" id="ame-nocturne-overlay">
+                                <div class="album-modal">
+                                    <div class="album-modal-header">
+                                        <h3 class="album-modal-title">Select Platform</h3>
+                                        <button class="close-album-modal" onclick="closeAlbumModal('ame-nocturne')">×</button>
+                                    </div>
+                                    <div class="album-platform-options">
+                                        <a href="https://music.apple.com/hn/album/l%C3%A2me-nocturne-single/1858841532" class="album-modal-platform-btn" target="_blank">
+                                            <img src="https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg" alt="iTunes" class="album-modal-platform-logo">
+                                            <span class="album-modal-platform-name">iTunes</span>
+                                        </a>
+                                        <a href="https://www.qobuz.com/us-en/album/lame-nocturne-sam-the-revenant/pc7h0agqhs6oq" class="album-modal-platform-btn" target="_blank">
+                                            <img src="https://headphone.guru/wp-content/uploads/2021/02/qobuz-logo.png" alt="Qobuz" class="album-modal-platform-logo">
+                                            <span class="album-modal-platform-name">Qobuz</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            
                             <div class="tracklist">
                                 <div class="tracklist-title">Tracklist</div>
                                 <div class="track">
@@ -2021,7 +2259,7 @@
                                     <span class="track-duration">(3:32)</span>
                                 </div>
                             </div>
-                            <button class="purchase-btn" onclick="openPlatformModal('ame-nocturne')">
+                            <button class="purchase-btn" onclick="openAlbumModal('ame-nocturne')">
                                 <svg class="purchase-icon" viewBox="0 0 24 24" fill="currentColor">
                                     <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
                                 </svg>
@@ -2045,6 +2283,22 @@
                             </div>
                         </div>
                         <div class="album-details">
+                            <!-- Overlay para el modal dentro de la tarjeta -->
+                            <div class="album-details-overlay" id="ep-nocturne-overlay">
+                                <div class="album-modal">
+                                    <div class="album-modal-header">
+                                        <h3 class="album-modal-title">Select Platform</h3>
+                                        <button class="close-album-modal" onclick="closeAlbumModal('ep-nocturne')">×</button>
+                                    </div>
+                                    <div class="album-platform-options">
+                                        <a href="https://music.apple.com/hn/album/e-p-nocturne-single/1850689071" class="album-modal-platform-btn" target="_blank">
+                                            <img src="https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg" alt="iTunes" class="album-modal-platform-logo">
+                                            <span class="album-modal-platform-name">iTunes</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            
                             <div class="tracklist">
                                 <div class="tracklist-title">Tracklist</div>
                                 <div class="track">
@@ -2056,25 +2310,12 @@
                                     <span class="track-duration">(1:45)</span>
                                 </div>
                             </div>
-                            <button class="purchase-btn" onclick="openPlatformModal('ep-nocturne')">
+                            <button class="purchase-btn" onclick="openAlbumModal('ep-nocturne')">
                                 <svg class="purchase-icon" viewBox="0 0 24 24" fill="currentColor">
                                     <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
                                 </svg>
                                 Purchase Album
                             </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Modal para selección de plataformas -->
-                <div class="modal-overlay" id="platformModal">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h3 class="modal-title">Select Platform</h3>
-                            <button class="close-modal" onclick="closeModal()">×</button>
-                        </div>
-                        <div class="platform-options" id="platformOptions">
-                            <!-- Las opciones se generan dinámicamente aquí -->
                         </div>
                     </div>
                 </div>
@@ -2162,99 +2403,19 @@
         const melodiesNav = document.getElementById('melodies-nav');
         const storeNav = document.getElementById('store-nav');
         const fadingBanner = document.getElementById('fadingBanner');
+        const playlistToggleBtn = document.getElementById('playlistToggleBtn');
+        const playlistOverlay = document.getElementById('playlistOverlay');
+        const closePlaylistBtn = document.getElementById('closePlaylistBtn');
+        const playlistTracks = document.getElementById('playlistTracks');
 
         let currentTrackIndex = 0;
         let isPlaying = false;
         let isLiked = false;
         let currentSection = 'home';
 
-        // Datos para el modal de plataformas
-        const albumsData = {
-            'ame-nocturne': {
-                name: "L'Âme Nocturne",
-                platforms: [
-                    {
-                        name: "iTunes",
-                        logo: "https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg",
-                        url: "https://music.apple.com/hn/album/l%C3%A2me-nocturne-single/1858841532"
-                    },
-                    {
-                        name: "Qobuz",
-                        logo: "https://headphone.guru/wp-content/uploads/2021/02/qobuz-logo.png",
-                        url: "https://www.qobuz.com/us-en/album/lame-nocturne-sam-the-revenant/pc7h0agqhs6oq"
-                    }
-                ]
-            },
-            'ep-nocturne': {
-                name: "E.P. Nocturne",
-                platforms: [
-                    {
-                        name: "iTunes",
-                        logo: "https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg",
-                        url: "https://music.apple.com/hn/album/e-p-nocturne-single/1850689071"
-                    }
-                ]
-            }
-        };
-
-        // Funciones para el modal de plataformas
-        let currentAlbumId = '';
-
-        function openPlatformModal(albumId) {
-            currentAlbumId = albumId;
-            const modal = document.getElementById('platformModal');
-            const platformOptions = document.getElementById('platformOptions');
-            const album = albumsData[albumId];
-
-            // Limpiar opciones anteriores
-            platformOptions.innerHTML = '';
-
-            // Crear botones para cada plataforma
-            album.platforms.forEach(platform => {
-                const platformBtn = document.createElement('a');
-                platformBtn.href = platform.url;
-                platformBtn.target = '_blank';
-                platformBtn.className = 'modal-platform-btn';
-                platformBtn.onclick = (e) => {
-                    // Permitir que el enlace se abra normalmente
-                    // El modal se cerrará automáticamente porque el enlace abre nueva pestaña
-                };
-
-                platformBtn.innerHTML = `
-                    <img src="${platform.logo}" alt="${platform.name}" class="modal-platform-logo">
-                    <span class="modal-platform-name">${platform.name}</span>
-                `;
-
-                platformOptions.appendChild(platformBtn);
-            });
-
-            // Mostrar modal con animación
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-            const modal = document.getElementById('platformModal');
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Cerrar modal al hacer clic fuera
-        document.getElementById('platformModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
-        });
-
-        // Cerrar modal con Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeModal();
-            }
-        });
-
         audio.preload = 'metadata';
         loadTrack(currentTrackIndex);
+        populatePlaylist();
 
         // CONTROL DEL BANNER CON DESVANECIMIENTO PROGRESIVO - SOLO EN HOME
         function handleScroll() {
@@ -2291,6 +2452,81 @@
             }
         }
 
+        // FUNCIONES PARA LA LISTA DE REPRODUCCIÓN
+        function populatePlaylist() {
+            playlistTracks.innerHTML = '';
+            
+            tracks.forEach((track, index) => {
+                const trackElement = document.createElement('div');
+                trackElement.className = `playlist-track ${index === currentTrackIndex ? 'active' : ''}`;
+                trackElement.innerHTML = `
+                    <img src="${track.coverUrl}" alt="${track.title}" class="playlist-track-cover">
+                    <div class="playlist-track-info">
+                        <div class="playlist-track-name">${track.title}</div>
+                        <div class="playlist-track-artist">Sam the Revenant</div>
+                    </div>
+                `;
+                
+                trackElement.addEventListener('click', () => {
+                    selectTrackFromPlaylist(index);
+                });
+                
+                playlistTracks.appendChild(trackElement);
+            });
+        }
+
+        function selectTrackFromPlaylist(index) {
+            currentTrackIndex = index;
+            loadTrack(currentTrackIndex);
+            if (isPlaying) {
+                audio.play().catch(e => console.log('Auto-play prevented'));
+            }
+            updatePlaylistSelection();
+            closePlaylist();
+        }
+
+        function updatePlaylistSelection() {
+            const trackElements = document.querySelectorAll('.playlist-track');
+            trackElements.forEach((element, index) => {
+                if (index === currentTrackIndex) {
+                    element.classList.add('active');
+                } else {
+                    element.classList.remove('active');
+                }
+            });
+        }
+
+        function openPlaylist() {
+            playlistOverlay.classList.add('active');
+            document.querySelector('.audio-player-content').style.filter = 'brightness(0.5)';
+        }
+
+        function closePlaylist() {
+            playlistOverlay.classList.remove('active');
+            document.querySelector('.audio-player-content').style.filter = 'brightness(1)';
+        }
+
+        // FUNCIONES PARA EL MODAL DE PLATAFORMAS DENTRO DE LAS TARJETAS
+        function openAlbumModal(albumId) {
+            const overlay = document.getElementById(`${albumId}-overlay`);
+            overlay.classList.add('active');
+        }
+
+        function closeAlbumModal(albumId) {
+            const overlay = document.getElementById(`${albumId}-overlay`);
+            overlay.classList.remove('active');
+        }
+
+        // Cerrar modal al hacer clic fuera del contenido
+        document.querySelectorAll('.album-details-overlay').forEach(overlay => {
+            overlay.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    const albumId = this.id.replace('-overlay', '');
+                    closeAlbumModal(albumId);
+                }
+            });
+        });
+
         function loadTrack(index) {
             const track = tracks[index];
             showLoading();
@@ -2319,6 +2555,7 @@
                     trackTitle.classList.remove('fade-transition');
                     trackArtist.classList.remove('fade-transition');
                     hideLoading();
+                    updatePlaylistSelection();
                 }, 50);
                 
                 if (isPlaying) {
@@ -2464,6 +2701,15 @@
         homeNav.addEventListener('click', () => showSection(homeSection));
         melodiesNav.addEventListener('click', () => showSection(melodiesSection));
         storeNav.addEventListener('click', () => showSection(storeSection));
+        playlistToggleBtn.addEventListener('click', openPlaylist);
+        closePlaylistBtn.addEventListener('click', closePlaylist);
+
+        // Cerrar playlist al hacer clic fuera del contenido
+        playlistOverlay.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePlaylist();
+            }
+        });
 
         // Event listener para el scroll con throttling
         let scrollTimeout;
