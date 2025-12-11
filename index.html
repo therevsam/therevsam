@@ -90,12 +90,16 @@
         .section {
             display: none;
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transform: translateY(0);
+            transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             width: 100%;
             position: absolute;
             top: 0;
             left: 0;
+            /* CAMBIO: Mejorar rendimiento de transiciones */
+            will-change: opacity, transform;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
         }
 
         .section.active {
@@ -103,6 +107,23 @@
             opacity: 1;
             transform: translateY(0);
             position: relative;
+        }
+
+        /* CAMBIO: Suavizar transición de entrada */
+        .section.entering {
+            display: block;
+            animation: slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* BANNER CON EFECTO DE DESVANECIMIENTO PROGRESIVO - SOLO EN HOME */
@@ -163,6 +184,8 @@
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
+            /* CAMBIO: Agregar loading=lazy */
+            loading: "lazy";
         }
 
         .name {
@@ -222,6 +245,8 @@
             height: auto;
             border-radius: 8px;
             display: block;
+            /* CAMBIO: Agregar loading=lazy */
+            loading: "lazy";
         }
 
         /* SECCIÓN DE ACTUALIZACIONES EN FORMATO 16:9 - SIN INTERACCIÓN */
@@ -252,6 +277,8 @@
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
+            /* CAMBIO: Agregar loading=lazy */
+            loading: "lazy";
         }
 
         .section-divider {
@@ -282,7 +309,8 @@
             display: inline-block;
         }
 
-        /* REPRODUCTOR CON FONDO PERSONALIZADO - TOTALMENTE CORREGIDO */
+        /* REPRODUCTOR CON FONDO GRIS OSCURO - MODIFICADO */
+        /* CAMBIO: Fondo más oscuro (#0a0a0a en lugar de #1a1a1a) */
         .audio-player-section {
             padding: 2rem;
             margin-bottom: 2rem;
@@ -291,39 +319,23 @@
             flex-direction: column;
             justify-content: space-between;
             position: relative;
-            border: 1px solid #333333;
+            border: 1px solid #444444;
             border-radius: 16px;
             overflow: hidden;
-            background: #000000;
+            background: #0a0a0a; /* CAMBIO: FONDO MÁS OSCURO */
         }
 
-        /* FONDO DEL REPRODUCTOR CORREGIDO - SIN GRADIENTE */
-        .audio-player-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://image2url.com/images/1764777063266-1fb46b28-5748-4791-bb0b-257dcd6745d7.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            opacity: 0.5; /* Ajusta esta opacidad según necesites */
-            z-index: 0;
-        }
+        /* ELIMINADO EL FONDO DE IMAGEN PERSONALIZADA */
+        /* .audio-player-bg {
+            display: none;
+        } */
+        
+        /* ELIMINADO EL OVERLAY DE FONDO */
+        /* .audio-player-overlay {
+            display: none;
+        } */
 
-        /* CAPA OSCURA SOBRE EL FONDO */
-        .audio-player-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6); /* Más oscuro para mejor contraste */
-            z-index: 1;
-        }
-
-        /* TODO EL CONTENIDO DEL REPRODUCTOR DEBE TENER z-index: 2 */
+        /* TODO EL CONTENIDO DEL REPRODUCTOR */
         .audio-player-content {
             position: relative;
             z-index: 2;
@@ -334,147 +346,15 @@
             justify-content: space-between;
         }
 
-        /* NUEVO BOTÓN DE LISTA DE REPRODUCCIÓN */
-        .playlist-toggle-btn {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            width: 36px;
-            height: 36px;
-            border-radius: 8px;
-            background: rgba(34, 34, 34, 0.9);
-            border: 1px solid #444444;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            z-index: 10;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .playlist-toggle-btn:hover {
-            background: #333333;
-            transform: scale(1.05);
-            border-color: #666666;
-        }
-
-        .playlist-toggle-icon {
-            width: 20px;
-            height: 20px;
-            filter: invert(1); /* Convertir negro a blanco */
-        }
-
-        /* LISTA DE REPRODUCCIÓN */
-        .playlist-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
+        /* ELIMINADO EL BOTÓN DE LISTA DE REPRODUCCIÓN */
+        /* .playlist-toggle-btn {
             display: none;
-            flex-direction: column;
-            z-index: 9;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            border-radius: 16px;
-            padding: 1rem;
-            backdrop-filter: blur(5px);
-        }
-
-        .playlist-overlay.active {
-            display: flex;
-            opacity: 1;
-        }
-
-        .playlist-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #444444;
-        }
-
-        .playlist-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.2rem;
-            color: #ffffff;
-        }
-
-        .close-playlist {
-            background: none;
-            border: none;
-            color: #cccccc;
-            cursor: pointer;
-            padding: 0.5rem;
-            font-size: 1.5rem;
-            line-height: 1;
-            transition: color 0.3s ease;
-        }
-
-        .close-playlist:hover {
-            color: #ffffff;
-        }
-
-        .playlist-tracks {
-            flex: 1;
-            overflow-y: auto;
-            max-height: 280px;
-        }
-
-        .playlist-track {
-            display: flex;
-            align-items: center;
-            padding: 0.8rem;
-            border-radius: 8px;
-            margin-bottom: 0.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background: rgba(34, 34, 34, 0.7);
-            border: 1px solid transparent;
-        }
-
-        .playlist-track:hover {
-            background: rgba(51, 51, 51, 0.9);
-            border-color: #666666;
-        }
-
-        .playlist-track.active {
-            background: rgba(51, 51, 51, 0.9);
-            border-color: #ffffff;
-        }
-
-        .playlist-track-cover {
-            width: 40px;
-            height: 40px;
-            border-radius: 6px;
-            object-fit: cover;
-            margin-right: 1rem;
-            border: 1px solid #444444;
-        }
-
-        .playlist-track-info {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .playlist-track-name {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 0.9rem;
-            color: #ffffff;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .playlist-track-artist {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.75rem;
-            color: #cccccc;
-            opacity: 0.8;
-        }
+        } */
+        
+        /* ELIMINADA LA LISTA DE REPRODUCCIÓN */
+        /* .playlist-overlay {
+            display: none;
+        } */
 
         .loading-overlay {
             position: absolute;
@@ -527,7 +407,7 @@
             height: 140px;
             border-radius: 12px;
             object-fit: cover;
-            border: 1px solid #333333;
+            border: 1px solid #555555;
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
             transition: transform 0.3s ease, opacity 0.3s ease;
             filter: grayscale(100%);
@@ -592,8 +472,8 @@
         }
 
         .top-control-btn {
-            background: #222222;
-            border: 1px solid #444444;
+            background: #2a2a2a;
+            border: 1px solid #555555;
             color: #ffffff;
             cursor: pointer;
             padding: 0;
@@ -609,14 +489,14 @@
         }
 
         .top-control-btn:hover {
-            background: #333333;
+            background: #3a3a3a;
             transform: scale(1.05);
             border-color: #666666;
         }
 
         .like-btn.liked {
             color: #ffffff !important;
-            background: #444444 !important;
+            background: #555555 !important;
             border-color: #666666 !important;
         }
 
@@ -635,7 +515,7 @@
             margin-bottom: 1.2rem;
             cursor: pointer;
             position: relative;
-            border: 1px solid #444444;
+            border: 1px solid #555555;
         }
 
         .progress-bar {
@@ -704,13 +584,13 @@
             width: 48px;
             height: 48px;
             border-radius: 12px;
-            background: #222222;
-            border: 1px solid #444444;
+            background: #2a2a2a;
+            border: 1px solid #555555;
             transition: all 0.3s ease;
         }
 
         .nav-btn:hover {
-            background: #333333;
+            background: #3a3a3a;
             transform: scale(1.05);
             border-color: #666666;
         }
@@ -719,13 +599,13 @@
             width: 64px;
             height: 64px;
             border-radius: 16px;
-            background: #222222;
-            border: 1px solid #444444;
+            background: #2a2a2a;
+            border: 1px solid #555555;
             opacity: 1;
         }
 
         .play-pause-btn:hover {
-            background: #333333;
+            background: #3a3a3a;
             transform: scale(1.05);
             border-color: #666666;
         }
@@ -758,8 +638,8 @@
             text-decoration: none;
             font-size: 0.75rem;
             transition: all 0.3s ease;
-            background: #222222;
-            border: 1px solid #444444;
+            background: #2a2a2a;
+            border: 1px solid #555555;
             width: fit-content;
             margin: 0 auto;
             min-width: 180px;
@@ -770,7 +650,7 @@
 
         .player-youtube-btn:hover {
             transform: translateY(-2px);
-            background: #333333;
+            background: #3a3a3a;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
 
@@ -851,7 +731,8 @@
             opacity: 0.9;
             border: 1px solid #444444;
             z-index: 2;
-            color: #cccccc;
+            color: #aaaaaa; /* COLOR GRIS CLARO PARA EL TEXTO "SOON" */
+            font-weight: 500;
         }
 
         .hifi-badge {
@@ -1819,7 +1700,10 @@
         <div class="section active" id="home-section">
             <!-- CONTENEDOR DE AVATAR SOLAMENTE - SIN INTERACCIÓN -->
             <div class="avatar-container">
-                <img src="https://yt3.ggpht.com/Z6UP3_g1F9t2nJM1_SBp1uaInWJdaflA-dZ28Su_mpHqu-TVF9HDOW2NCGXfmrdlp8J-EoG4cA=s600-c-k-c0x00ffffff-no-rj-rp-mo" alt="Sam the Revenant" class="avatar">
+                <img src="https://yt3.ggpht.com/Z6UP3_g1F9t2nJM1_SBp1uaInWJdaflA-dZ28Su_mpHqu-TVF9HDOW2NCGXfmrdlp8J-EoG4cA=s600-c-k-c0x00ffffff-no-rj-rp-mo" 
+                     alt="Sam the Revenant" 
+                     class="avatar"
+                     loading="eager"> <!-- CAMBIO: eager para carga inmediata -->
             </div>
             
             <h1 class="name">Sam the Revenant</h1>
@@ -1828,12 +1712,18 @@
 
             <!-- BOTÓN "ESCUCHAR AHORA" MODIFICADO A 130px -->
             <a href="https://youtu.be/l-7QFvMkOr0?si=8GtKDMU2qLHL_J6Y" class="listen-now-btn" target="_blank">
-                <img src="https://image2url.com/images/1764438678014-b4985758-e3ab-4ad6-a79d-04caf468a111.jpg" alt="Listen Now" class="listen-now-img">
+                <img src="https://image2url.com/images/1764438678014-b4985758-e3ab-4ad6-a79d-04caf468a111.jpg" 
+                     alt="Listen Now" 
+                     class="listen-now-img"
+                     loading="eager"> <!-- CAMBIO: eager para carga inmediata -->
             </a>
 
             <!-- SECCIÓN DE ACTUALIZACIONES EN FORMATO 16:9 - SIN INTERACCIÓN -->
             <div class="updates-section">
-                <img src="https://image2url.com/images/1764776723968-1d5d39e6-99f7-429a-a52d-a5ab05f34863.png" alt="Latest Updates" class="update-image">
+                <img src="https://image2url.com/images/1764776723968-1d5d39e6-99f7-429a-a52d-a5ab05f34863.png" 
+                     alt="Latest Updates" 
+                     class="update-image"
+                     loading="lazy"> <!-- CAMBIO: lazy para carga diferida -->
             </div>
 
             <div class="section-divider">
@@ -1842,82 +1732,153 @@
             </div>
 
             <div class="links">
-                <a href="https://www.youtube.com/@therevsam" class="link-btn" target="_blank">
-                    <img src="https://i.pinimg.com/736x/7a/5d/56/7a5d56c5e22d6fed8d72eeb70329f5f5.jpg" alt="YouTube" class="platform-logo">
-                    <span class="btn-text">YouTube</span>
-                </a>
-                
+                <!-- Spotify primero -->
                 <a href="https://open.spotify.com/artist/5m4k5QM67SNdvDsnPFnfkD?si=29DlJSBMTA2-LAFf0zKgOA" class="link-btn" target="_blank">
-                    <img src="https://i.pinimg.com/1200x/e6/55/bf/e655bff3217dd6f575a275604b0ff7e1.jpg" alt="Spotify" class="platform-logo">
+                    <img src="https://i.pinimg.com/1200x/e6/55/bf/e655bff3217dd6f575a275604b0ff7e1.jpg" 
+                         alt="Spotify" 
+                         class="platform-logo"
+                         loading="lazy"> <!-- CAMBIO: lazy para carga diferida -->
                     <span class="btn-text">Spotify</span>
                 </a>
                 
+                <!-- Apple Music segundo -->
                 <a href="https://music.apple.com/es/artist/sam-the-revenant/1850689072" class="link-btn" target="_blank">
-                    <img src="https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg" alt="Apple Music" class="platform-logo">
+                    <img src="https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg" 
+                         alt="Apple Music" 
+                         class="platform-logo"
+                         loading="lazy">
                     <span class="btn-text">Apple Music</span>
                     <span class="hifi-badge">Hi-Fi</span>
                 </a>
                 
+                <!-- Deezer tercero -->
                 <a href="https://www.deezer.com/es/artist/353551022" class="link-btn" target="_blank">
-                    <img src="https://i.pinimg.com/736x/1b/f9/33/1bf93302bd924479b90f47a0df2134cd.jpg" alt="Deezer" class="platform-logo">
+                    <img src="https://i.pinimg.com/736x/1b/f9/33/1bf93302bd924479b90f47a0df2134cd.jpg" 
+                         alt="Deezer" 
+                         class="platform-logo"
+                         loading="lazy">
                     <span class="btn-text">Deezer</span>
                     <span class="hifi-badge">Hi-Fi</span>
                 </a>
                 
+                <!-- Tidal cuarto -->
                 <a href="https://tidal.com/artist/69131106" class="link-btn" target="_blank">
-                    <img src="https://i.pinimg.com/736x/94/9c/01/949c014c813bc031520d82af3905a4f0.jpg" alt="Tidal" class="platform-logo">
+                    <img src="https://i.pinimg.com/736x/94/9c/01/949c014c813bc031520d82af3905a4f0.jpg" 
+                         alt="Tidal" 
+                         class="platform-logo"
+                         loading="lazy">
                     <span class="btn-text">Tidal</span>
                     <span class="hifi-badge">Hi-Fi</span>
                 </a>
                 
-                <!-- NUEVO BOTÓN QOBUZ FUNCIONAL CON BADGE HI-FI -->
+                <!-- Qobuz quinto -->
                 <a href="https://www.qobuz.com/us-en/interpreter/sam-the-revenant/29785940" class="link-btn" target="_blank">
-                    <img src="https://headphone.guru/wp-content/uploads/2021/02/qobuz-logo.png" alt="Qobuz" class="platform-logo">
+                    <img src="https://headphone.guru/wp-content/uploads/2021/02/qobuz-logo.png" 
+                         alt="Qobuz" 
+                         class="platform-logo"
+                         loading="lazy">
                     <span class="btn-text">Qobuz</span>
                     <span class="hifi-badge">Hi-Fi</span>
                 </a>
+                
+                <!-- YouTube sexto (movido después de Qobuz) -->
+                <a href="https://www.youtube.com/@therevsam" class="link-btn" target="_blank">
+                    <img src="https://i.pinimg.com/736x/7a/5d/56/7a5d56c5e22d6fed8d72eeb70329f5f5.jpg" 
+                         alt="YouTube" 
+                         class="platform-logo"
+                         loading="lazy">
+                    <span class="btn-text">YouTube</span>
+                </a>
 
+                <!-- SoundCloud séptimo -->
                 <a href="https://soundcloud.com/therevsam" class="link-btn" target="_blank">
-                    <img src="https://i.pinimg.com/1200x/81/9d/35/819d35d67997e972a5542b5ba49d577b.jpg" alt="SoundCloud" class="platform-logo">
+                    <img src="https://i.pinimg.com/1200x/81/9d/35/819d35d67997e972a5542b5ba49d577b.jpg" 
+                         alt="SoundCloud" 
+                         class="platform-logo"
+                         loading="lazy">
                     <span class="btn-text">SoundCloud</span>
                 </a>
 
+                <!-- Audiomack octavo -->
                 <a href="https://audiomack.com/therevsam" class="link-btn" target="_blank">
-                    <img src="https://i.pinimg.com/1200x/f6/36/b6/f636b60899bb4ec359b6e4aadecce904.jpg" alt="Audiomack" class="platform-logo">
+                    <img src="https://i.pinimg.com/1200x/f6/36/b6/f636b60899bb4ec359b6e4aadecce904.jpg" 
+                         alt="Audiomack" 
+                         class="platform-logo"
+                         loading="lazy">
                     <span class="btn-text">Audiomack</span>
                 </a>
 
+                <!-- YouTube Music noveno -->
                 <a href="https://music.youtube.com/channel/UC-0mubI3Nl_IE0uXgwFUSvw?si=q4waJRsoESvg7FnG" class="link-btn" target="_blank">
-                    <img src="https://i.pinimg.com/1200x/73/6d/0c/736d0c2aac22b1c37a6ce0ee1a52277f.jpg" alt="YouTube Music" class="platform-logo">
+                    <img src="https://i.pinimg.com/1200x/73/6d/0c/736d0c2aac22b1c37a6ce0ee1a52277f.jpg" 
+                         alt="YouTube Music" 
+                         class="platform-logo"
+                         loading="lazy">
                     <span class="btn-text">YouTube Music</span>
                 </a>
 
+                <!-- WhatsApp Channel décimo -->
                 <a href="https://whatsapp.com/channel/0029Vb72z7J9RZAWILcE5e0v" class="link-btn" target="_blank">
-                    <img src="https://i.pinimg.com/1200x/fc/ae/b3/fcaeb33b122b22a4cac47d29f4447684.jpg" alt="WhatsApp Channel" class="platform-logo">
+                    <img src="https://i.pinimg.com/1200x/fc/ae/b3/fcaeb33b122b22a4cac47d29f4447684.jpg" 
+                         alt="WhatsApp Channel" 
+                         class="platform-logo"
+                         loading="lazy">
                     <span class="btn-text">WhatsApp Channel</span>
+                </a>
+
+                <!-- NUEVO: Amazon Music -->
+                <a href="#" class="link-btn">
+                    <img src="https://i.pinimg.com/736x/09/72/ae/0972ae3bcb8a4157c4f790996c73f41c.jpg" 
+                         alt="Amazon Music" 
+                         class="platform-logo"
+                         loading="lazy">
+                    <span class="btn-text">Amazon Music</span>
+                    <span class="soon-badge">Soon</span>
+                </a>
+
+                <!-- NUEVO: Claro Music -->
+                <a href="#" class="link-btn">
+                    <img src="https://image2url.com/images/1765459235574-0e1a6473-1189-45f0-b7c0-5bc77946d717.jpg" 
+                         alt="Claro Music" 
+                         class="platform-logo"
+                         loading="lazy">
+                    <span class="btn-text">Claro Music</span>
+                    <span class="soon-badge">Soon</span>
                 </a>
             </div>
 
             <div class="final-buttons">
                 <a href="https://www.bandlab.com/samtherev" class="bandlab-btn" target="_blank">
-                    <img src="https://i.pinimg.com/1200x/d9/96/9d/d9969dcc861731e87c4a7265c02b4d40.jpg" alt="BandLab" class="platform-logo">
+                    <img src="https://i.pinimg.com/1200x/d9/96/9d/d9969dcc861731e87c4a7265c02b4d40.jpg" 
+                         alt="BandLab" 
+                         class="platform-logo"
+                         loading="lazy">
                     <span class="bandlab-text">BandLab</span>
                 </a>
 
                 <a href="https://www.vampr.me/artist/therevsam" class="vampr-btn" target="_blank">
-                    <img src="https://i.pinimg.com/736x/9d/ba/34/9dba346e08113d3db750ee43d74ecf36.jpg" alt="Vampr" class="platform-logo">
+                    <img src="https://i.pinimg.com/736x/9d/ba/34/9dba346e08113d3db750ee43d74ecf36.jpg" 
+                         alt="Vampr" 
+                         class="platform-logo"
+                         loading="lazy">
                     <span class="vampr-text">Vampr</span>
                 </a>
             </div>
 
             <div class="final-buttons">
                 <a href="mailto:samtherevenant@gmail.com" class="contact-btn">
-                    <img src="https://i.pinimg.com/1200x/8e/48/1a/8e481add923811cde7fb76cc3597b19f.jpg" alt="Email" class="platform-logo">
+                    <img src="https://i.pinimg.com/1200x/8e/48/1a/8e481add923811cde7fb76cc3597b19f.jpg" 
+                         alt="Email" 
+                         class="platform-logo"
+                         loading="lazy">
                     <span class="contact-text">Contact Me</span>
                 </a>
 
                 <a href="https://linktr.ee/therevsam" class="linktree-btn" target="_blank">
-                    <img src="https://i.pinimg.com/736x/6a/51/07/6a5107cccb272aa7fbbb322d1d1b66da.jpg" alt="LinkTree" class="platform-logo">
+                    <img src="https://i.pinimg.com/736x/6a/51/07/6a5107cccb272aa7fbbb322d1d1b66da.jpg" 
+                         alt="LinkTree" 
+                         class="platform-logo"
+                         loading="lazy">
                     <span class="linktree-text">LinkTree</span>
                 </a>
             </div>
@@ -1927,7 +1888,7 @@
             </div>
         </div>
 
-        <!-- SECCIÓN DE MELODÍAS CON FONDO PERSONALIZADO EN EL REPRODUCTOR - CORREGIDO -->
+        <!-- SECCIÓN DE MELODÍAS CON REPRODUCTOR DE FONDO GRIS OSCURO -->
         <div class="section" id="melodies-section">
             <div class="discography-section">
                 <div class="discography-header">
@@ -1935,28 +1896,8 @@
                     <p class="discography-subtitle">Discover my musical creations</p>
                 </div>
 
-                <!-- REPRODUCTOR CON NUEVA ESTRUCTURA DE FONDO -->
+                <!-- REPRODUCTOR CON FONDO MÁS OSCURO -->
                 <div class="audio-player-section">
-                    <!-- FONDO CORREGIDO -->
-                    <div class="audio-player-bg"></div>
-                    <div class="audio-player-overlay"></div>
-                    
-                    <!-- NUEVO BOTÓN DE LISTA DE REPRODUCCIÓN -->
-                    <button class="playlist-toggle-btn" id="playlistToggleBtn" aria-label="Show playlist">
-                        <img src="https://image2url.com/images/1764990333046-73e389cf-b3d8-42b7-8fd6-6a6f1ca67e08.png" alt="Playlist" class="playlist-toggle-icon">
-                    </button>
-                    
-                    <!-- LISTA DE REPRODUCCIÓN -->
-                    <div class="playlist-overlay" id="playlistOverlay">
-                        <div class="playlist-header">
-                            <h3 class="playlist-title">Playlist</h3>
-                            <button class="close-playlist" id="closePlaylistBtn">×</button>
-                        </div>
-                        <div class="playlist-tracks" id="playlistTracks">
-                            <!-- Las pistas se generan dinámicamente aquí -->
-                        </div>
-                    </div>
-                    
                     <div class="loading-overlay" id="loadingOverlay">
                         <div class="pulse-loader">
                             <div class="pulse-dot"></div>
@@ -1965,7 +1906,11 @@
 
                     <div class="audio-player-content">
                         <div class="album-art-container">
-                            <img src="https://i.pinimg.com/736x/a5/24/c0/a524c0f2fca32421708bb32f6a26ee99.jpg" alt="Album Cover" class="album-art" id="albumArt">
+                            <img src="https://i.pinimg.com/736x/a5/24/c0/a524c0f2fca32421708bb32f6a26ee99.jpg" 
+                                 alt="Album Cover" 
+                                 class="album-art" 
+                                 id="albumArt"
+                                 loading="lazy"> <!-- CAMBIO: lazy para carga diferida -->
                         </div>
 
                         <div class="track-info">
@@ -1976,11 +1921,17 @@
                         <div class="player-controls">
                             <div class="top-controls">
                                 <button class="top-control-btn share-btn" id="shareBtn" aria-label="Share track">
-                                    <img src="https://image2url.com/images/1764081563085-f0954b8f-e384-4bb6-a12f-ada7bb9a2995.png" alt="Share" class="top-control-icon">
+                                    <img src="https://image2url.com/images/1764081563085-f0954b8f-e384-4bb6-a12f-ada7bb9a2995.png" 
+                                         alt="Share" 
+                                         class="top-control-icon"
+                                         loading="lazy">
                                 </button>
                                 
                                 <button class="top-control-btn like-btn" id="likeBtn" aria-label="Like this track">
-                                    <img src="https://image2url.com/images/1761698056717-ea1b41f0-0d28-4596-b01e-23f5b346dcd0.png" alt="Like" class="top-control-icon">
+                                    <img src="https://image2url.com/images/1761698056717-ea1b41f0-0d28-4596-b01e-23f5b346dcd0.png" 
+                                         alt="Like" 
+                                         class="top-control-icon"
+                                         loading="lazy">
                                 </button>
                             </div>
 
@@ -1997,16 +1948,31 @@
 
                             <div class="control-buttons">
                                 <button class="control-btn nav-btn" id="prevBtn" aria-label="Previous track">
-                                    <img src="https://image2url.com/images/1761698013612-62385d1e-9789-42b9-ba80-ebe5e42d4c91.png" alt="Previous" class="btn-icon">
+                                    <img src="https://image2url.com/images/1761698013612-62385d1e-9789-42b9-ba80-ebe5e42d4c91.png" 
+                                         alt="Previous" 
+                                         class="btn-icon"
+                                         loading="lazy">
                                 </button>
                                 
                                 <button class="control-btn play-pause-btn" id="playPauseBtn" aria-label="Play/Pause">
-                                    <img src="https://image2url.com/images/1761697941860-0ce481a7-5181-49ab-b30a-332650fbfefd.png" alt="Play" class="btn-icon" id="playIcon">
-                                    <img src="https://image2url.com/images/1761699687492-757df8e7-bb4b-4f63-a7a2-496af93bb6f1.png" alt="Pause" class="btn-icon" id="pauseIcon" style="display: none;">
+                                    <img src="https://image2url.com/images/1761697941860-0ce481a7-5181-49ab-b30a-332650fbfefd.png" 
+                                         alt="Play" 
+                                         class="btn-icon" 
+                                         id="playIcon"
+                                         loading="lazy">
+                                    <img src="https://image2url.com/images/1761699687492-757df8e7-bb4b-4f63-a7a2-496af93bb6f1.png" 
+                                         alt="Pause" 
+                                         class="btn-icon" 
+                                         id="pauseIcon" 
+                                         style="display: none;"
+                                         loading="lazy">
                                 </button>
                                 
                                 <button class="control-btn nav-btn" id="nextBtn" aria-label="Next track">
-                                    <img src="https://image2url.com/images/1761698032051-f05c1844-9148-4786-afe7-046a3663328a.png" alt="Next" class="btn-icon">
+                                    <img src="https://image2url.com/images/1761698032051-f05c1844-9148-4786-afe7-046a3663328a.png" 
+                                         alt="Next" 
+                                         class="btn-icon"
+                                         loading="lazy">
                                 </button>
                             </div>
 
@@ -2026,7 +1992,10 @@
                     <div class="album-info">E.P. Nocturne</div>
                     <div class="melodies-grid">
                         <a href="https://youtu.be/LSGb5LSdq08?si=W9Y_PMzq7dLYqHyF" class="melody-card" target="_blank">
-                            <img src="https://i.pinimg.com/736x/5b/35/5e/5b355efd3b65d11bc14a53fa3931afbe.jpg" alt="Notturno I" class="melody-cover">
+                            <img src="https://i.pinimg.com/736x/5b/35/5e/5b355efd3b65d11bc14a53fa3931afbe.jpg" 
+                                 alt="Notturno I" 
+                                 class="melody-cover"
+                                 loading="lazy"> <!-- CAMBIO: lazy para carga diferida -->
                             <div class="melody-info">
                                 <div class="melody-name">Notturno I in Do♯ Minore - Velo della Notte</div>
                                 <div class="melody-artist">Sam the Revenant</div>
@@ -2037,7 +2006,10 @@
                         </a>
 
                         <a href="https://youtu.be/94Ntp_VQ2Gw?si=l8fmouUI9I70iH9o" class="melody-card" target="_blank">
-                            <img src="https://i.pinimg.com/736x/5b/35/5e/5b355efd3b65d11bc14a53fa3931afbe.jpg" alt="Notturno II" class="melody-cover">
+                            <img src="https://i.pinimg.com/736x/5b/35/5e/5b355efd3b65d11bc14a53fa3931afbe.jpg" 
+                                 alt="Notturno II" 
+                                 class="melody-cover"
+                                 loading="lazy">
                             <div class="melody-info">
                                 <div class="melody-name">Notturno II en Mi mineur – Murmures Perdus</div>
                                 <div class="melody-artist">Sam the Revenant</div>
@@ -2051,7 +2023,10 @@
                     <div class="album-info" style="margin-top: 2rem;">L'Âme Nocturne</div>
                     <div class="melodies-grid">
                         <a href="https://youtu.be/2vPzG4mL5pA?si=_3zAZPqTDxdRhwZJ" class="melody-card" target="_blank">
-                            <img src="https://i.pinimg.com/736x/a5/24/c0/a524c0f2fca32421708bb32f6a26ee99.jpg" alt="Sonate Noire" class="melody-cover">
+                            <img src="https://i.pinimg.com/736x/a5/24/c0/a524c0f2fca32421708bb32f6a26ee99.jpg" 
+                                 alt="Sonate Noire" 
+                                 class="melody-cover"
+                                 loading="lazy">
                             <div class="melody-info">
                                 <div class="melody-name">Sonate Noire, Op. II — Nuit Obscure</div>
                                 <div class="melody-artist">Sam the Revenant</div>
@@ -2062,7 +2037,10 @@
                         </a>
 
                         <a href="https://youtu.be/l-7QFvMkOr0?si=U1PZA-bw0KqqMe5J" class="melody-card" target="_blank">
-                            <img src="https://i.pinimg.com/736x/a5/24/c0/a524c0f2fca32421708bb32f6a26ee99.jpg" alt="Sérénade Céleste" class="melody-cover">
+                            <img src="https://i.pinimg.com/736x/a5/24/c0/a524c0f2fca32421708bb32f6a26ee99.jpg" 
+                                 alt="Sérénade Céleste" 
+                                 class="melody-cover"
+                                 loading="lazy">
                             <div class="melody-info">
                                 <div class="melody-name">Sérénade Céleste, Op. II — Amour Flétri</div>
                                 <div class="melody-artist">Sam the Revenant</div>
@@ -2073,7 +2051,10 @@
                         </a>
 
                         <a href="https://youtu.be/mpynbtLfV3k?si=xqY8_fBBVVYuXhT0" class="melody-card" target="_blank">
-                            <img src="https://i.pinimg.com/736x/a5/24/c0/a524c0f2fca32421708bb32f6a26ee99.jpg" alt="Épilogue Nocturne" class="melody-cover">
+                            <img src="https://i.pinimg.com/736x/a5/24/c0/a524c0f2fca32421708bb32f6a26ee99.jpg" 
+                                 alt="Épilogue Nocturne" 
+                                 class="melody-cover"
+                                 loading="lazy">
                             <div class="melody-info">
                                 <div class="melody-name">Épilogue Nocturne, Op. II — Dernier Souffle</div>
                                 <div class="melody-artist">Sam the Revenant</div>
@@ -2089,7 +2070,10 @@
                     <h3 class="category-title">Musical Interpretations</h3>
                     <div class="melodies-grid">
                         <a href="https://youtu.be/AhWvSNRSflA?si=LvaNZVMUvkr6oNSv" class="melody-card" target="_blank">
-                            <img src="https://i.pinimg.com/736x/7f/4f/8e/7f4f8e83dea5492b29cc66689764c709.jpg" alt="Bella's Lullaby" class="melody-cover">
+                            <img src="https://i.pinimg.com/736x/7f/4f/8e/7f4f8e83dea5492b29cc66689764c709.jpg" 
+                                 alt="Bella's Lullaby" 
+                                 class="melody-cover"
+                                 loading="lazy">
                             <div class="melody-info">
                                 <div class="melody-name">Bella's Lullaby, Op. I – Crépuscule</div>
                                 <div class="melody-artist">Sam the Revenant</div>
@@ -2109,12 +2093,18 @@
                     
                     <p class="playlist-description">The complete collection of Sam the Revenant.</p>
                     
-                    <img src="https://i.pinimg.com/736x/65/51/85/655185780cce5db43c91bc642b56de2d.jpg" alt="Sam the Revenant Collection" class="playlist-cover">
+                    <img src="https://i.pinimg.com/736x/65/51/85/655185780cce5db43c91bc642b56de2d.jpg" 
+                         alt="Sam the Revenant Collection" 
+                         class="playlist-cover"
+                         loading="lazy">
                     
                     <div class="playlist-grid">
                         <!-- NUEVOS BOTONES CON LINKS ACTUALIZADOS -->
                         <a href="https://open.spotify.com/playlist/0XYS21NjKw1WlzW0Opu8bG?si=S8prhdvfTWm0_KPzWT42PA" class="playlist-card" target="_blank">
-                            <img src="https://i.pinimg.com/1200x/e6/55/bf/e655bff3217dd6f575a275604b0ff7e1.jpg" alt="Spotify" class="playlist-logo">
+                            <img src="https://i.pinimg.com/1200x/e6/55/bf/e655bff3217dd6f575a275604b0ff7e1.jpg" 
+                                 alt="Spotify" 
+                                 class="playlist-logo"
+                                 loading="lazy">
                             <div class="playlist-info">
                                 <div class="playlist-name">Sam the Revenant Collection</div>
                                 <div class="playlist-platform">Spotify Playlist</div>
@@ -2125,7 +2115,10 @@
                         </a>
 
                         <a href="https://link.deezer.com/s/31NpCDLsHDAngyDhLnRTg" class="playlist-card" target="_blank">
-                            <img src="https://i.pinimg.com/736x/1b/f9/33/1bf93302bd924479b90f47a0df2134cd.jpg" alt="Deezer" class="playlist-logo">
+                            <img src="https://i.pinimg.com/736x/1b/f9/33/1bf93302bd924479b90f47a0df2134cd.jpg" 
+                                 alt="Deezer" 
+                                 class="playlist-logo"
+                                 loading="lazy">
                             <div class="playlist-info">
                                 <div class="playlist-name">Sam the Revenant Collection</div>
                                 <div class="playlist-platform">Deezer Playlist</div>
@@ -2136,7 +2129,10 @@
                         </a>
 
                         <a href="https://tidal.com/playlist/82304d6b-e154-4ecc-a4bb-de5de1c2a891" class="playlist-card" target="_blank">
-                            <img src="https://i.pinimg.com/736x/94/9c/01/949c014c813bc031520d82af3905a4f0.jpg" alt="Tidal" class="playlist-logo">
+                            <img src="https://i.pinimg.com/736x/94/9c/01/949c014c813bc031520d82af3905a4f0.jpg" 
+                                 alt="Tidal" 
+                                 class="playlist-logo"
+                                 loading="lazy">
                             <div class="playlist-info">
                                 <div class="playlist-name">Sam the Revenant Collection</div>
                                 <div class="playlist-platform">Tidal Playlist</div>
@@ -2147,7 +2143,10 @@
                         </a>
 
                         <a href="https://music.youtube.com/playlist?list=PLxczVDZlfe7gNwqRiqsFLRCtU9mSigZrS&si=nK1tavQKwRLAlLWR" class="playlist-card" target="_blank">
-                            <img src="https://i.pinimg.com/1200x/73/6d/0c/736d0c2aac22b1c37a6ce0ee1a52277f.jpg" alt="YouTube Music" class="playlist-logo">
+                            <img src="https://i.pinimg.com/1200x/73/6d/0c/736d0c2aac22b1c37a6ce0ee1a52277f.jpg" 
+                                 alt="YouTube Music" 
+                                 class="playlist-logo"
+                                 loading="lazy">
                             <div class="playlist-info">
                                 <div class="playlist-name">Sam the Revenant Collection</div>
                                 <div class="playlist-platform">YouTube Music Playlist</div>
@@ -2158,7 +2157,10 @@
                         </a>
 
                         <a href="https://youtube.com/playlist?list=PLxczVDZlfe7gNwqRiqsFLRCtU9mSigZrS&si=6Fv6NIcwc7kzuyb0" class="playlist-card" target="_blank">
-                            <img src="https://i.pinimg.com/736x/7a/5d/56/7a5d56c5e22d6fed8d72eeb70329f5f5.jpg" alt="YouTube" class="playlist-logo">
+                            <img src="https://i.pinimg.com/736x/7a/5d/56/7a5d56c5e22d6fed8d72eeb70329f5f5.jpg" 
+                                 alt="YouTube" 
+                                 class="playlist-logo"
+                                 loading="lazy">
                             <div class="playlist-info">
                                 <div class="playlist-name">Sam the Revenant Collection</div>
                                 <div class="playlist-platform">YouTube Playlist</div>
@@ -2169,7 +2171,10 @@
                         </a>
 
                         <a href="https://on.soundcloud.com/Bfh65Er1vC6TNGfHT6" class="playlist-card" target="_blank">
-                            <img src="https://i.pinimg.com/1200x/81/9d/35/819d35d67997e972a5542b5ba49d577b.jpg" alt="SoundCloud" class="playlist-logo">
+                            <img src="https://i.pinimg.com/1200x/81/9d/35/819d35d67997e972a5542b5ba49d577b.jpg" 
+                                 alt="SoundCloud" 
+                                 class="playlist-logo"
+                                 loading="lazy">
                             <div class="playlist-info">
                                 <div class="playlist-name">Sam the Revenant Collection</div>
                                 <div class="playlist-platform">SoundCloud Playlist</div>
@@ -2180,7 +2185,10 @@
                         </a>
 
                         <a href="https://audiomack.com/therevsam/playlist/64080268" class="playlist-card" target="_blank">
-                            <img src="https://i.pinimg.com/1200x/f6/36/b6/f636b60899bb4ec359b6e4aadecce904.jpg" alt="Audiomack" class="playlist-logo">
+                            <img src="https://i.pinimg.com/1200x/f6/36/b6/f636b60899bb4ec359b6e4aadecce904.jpg" 
+                                 alt="Audiomack" 
+                                 class="playlist-logo"
+                                 loading="lazy">
                             <div class="playlist-info">
                                 <div class="playlist-name">Sam the Revenant Collection</div>
                                 <div class="playlist-platform">Audiomack Playlist</div>
@@ -2211,15 +2219,23 @@
                     <div class="album-card" data-album="ame-nocturne">
                         <div class="album-header">
                             <img src="https://i.pinimg.com/736x/a5/24/c0/a524c0f2fca32421708bb32f6a26ee99.jpg" 
-                                 alt="L'Âme Nocturne" class="album-cover">
+                                 alt="L'Âme Nocturne" 
+                                 class="album-cover"
+                                 loading="lazy">
                             <div class="album-basic-info">
                                 <h3 class="album-name">L'Âme Nocturne</h3>
                                 <div class="album-price">5.39 USD</div>
                                 <div class="platform-icons">
                                     <img src="https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg" 
-                                         alt="iTunes" class="platform-icon" title="Available on iTunes">
+                                         alt="iTunes" 
+                                         class="platform-icon" 
+                                         title="Available on iTunes"
+                                         loading="lazy">
                                     <img src="https://headphone.guru/wp-content/uploads/2021/02/qobuz-logo.png" 
-                                         alt="Qobuz" class="platform-icon" title="Available on Qobuz">
+                                         alt="Qobuz" 
+                                         class="platform-icon" 
+                                         title="Available on Qobuz"
+                                         loading="lazy">
                                 </div>
                             </div>
                         </div>
@@ -2233,11 +2249,17 @@
                                     </div>
                                     <div class="album-platform-options">
                                         <a href="https://music.apple.com/hn/album/l%C3%A2me-nocturne-single/1858841532" class="album-modal-platform-btn" target="_blank">
-                                            <img src="https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg" alt="iTunes" class="album-modal-platform-logo">
+                                            <img src="https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg" 
+                                                 alt="iTunes" 
+                                                 class="album-modal-platform-logo"
+                                                 loading="lazy">
                                             <span class="album-modal-platform-name">iTunes</span>
                                         </a>
                                         <a href="https://www.qobuz.com/us-en/album/lame-nocturne-sam-the-revenant/pc7h0agqhs6oq" class="album-modal-platform-btn" target="_blank">
-                                            <img src="https://headphone.guru/wp-content/uploads/2021/02/qobuz-logo.png" alt="Qobuz" class="album-modal-platform-logo">
+                                            <img src="https://headphone.guru/wp-content/uploads/2021/02/qobuz-logo.png" 
+                                                 alt="Qobuz" 
+                                                 class="album-modal-platform-logo"
+                                                 loading="lazy">
                                             <span class="album-modal-platform-name">Qobuz</span>
                                         </a>
                                     </div>
@@ -2272,13 +2294,18 @@
                     <div class="album-card" data-album="ep-nocturne">
                         <div class="album-header">
                             <img src="https://i.pinimg.com/736x/5b/35/5e/5b355efd3b65d11bc14a53fa3931afbe.jpg" 
-                                 alt="E.P. Nocturne" class="album-cover">
+                                 alt="E.P. Nocturne" 
+                                 class="album-cover"
+                                 loading="lazy">
                             <div class="album-basic-info">
                                 <h3 class="album-name">E.P. Nocturne</h3>
                                 <div class="album-price">1.98 USD</div>
                                 <div class="platform-icons">
                                     <img src="https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg" 
-                                         alt="iTunes" class="platform-icon" title="Available on iTunes">
+                                         alt="iTunes" 
+                                         class="platform-icon" 
+                                         title="Available on iTunes"
+                                         loading="lazy">
                                 </div>
                             </div>
                         </div>
@@ -2292,7 +2319,10 @@
                                     </div>
                                     <div class="album-platform-options">
                                         <a href="https://music.apple.com/hn/album/e-p-nocturne-single/1850689071" class="album-modal-platform-btn" target="_blank">
-                                            <img src="https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg" alt="iTunes" class="album-modal-platform-logo">
+                                            <img src="https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg" 
+                                                 alt="iTunes" 
+                                                 class="album-modal-platform-logo"
+                                                 loading="lazy">
                                             <span class="album-modal-platform-name">iTunes</span>
                                         </a>
                                     </div>
@@ -2329,17 +2359,27 @@
 
     <div class="bottom-nav">
         <div class="nav-button active" id="home-nav">
-            <img src="https://image2url.com/images/1764081504690-58bf4fad-eed8-4ee3-b8cf-b8de57126838.png" alt="Links" class="nav-icon">
+            <img src="https://image2url.com/images/1764081504690-58bf4fad-eed8-4ee3-b8cf-b8de57126838.png" 
+                 alt="Links" 
+                 class="nav-icon"
+                 loading="eager"> <!-- CAMBIO: eager para carga inmediata -->
         </div>
         <div class="nav-button" id="melodies-nav">
-            <img src="https://image2url.com/images/1764081290983-d5a8b4e4-8cde-4914-9d8d-d44c6751bf98.png" alt="Discography" class="nav-icon">
+            <img src="https://image2url.com/images/1764081290983-d5a8b4e4-8cde-4914-9d8d-d44c6751bf98.png" 
+                 alt="Discography" 
+                 class="nav-icon"
+                 loading="lazy">
         </div>
         <div class="nav-button" id="store-nav">
-            <img src="https://image2url.com/images/1764081531272-bb9bbd9a-b07b-4de8-a662-1cd8a5bbab02.png" alt="Store" class="nav-icon">
+            <img src="https://image2url.com/images/1764081531272-bb9bbd9a-b07b-4de8-a662-1cd8a5bbab02.png" 
+                 alt="Store" 
+                 class="nav-icon"
+                 loading="lazy">
         </div>
     </div>
 
     <script>
+        // CAMBIO: Sistema de transiciones mejorado
         const tracks = [
             {
                 title: "Sonate Noire, Op. II — Nuit Obscure",
@@ -2403,107 +2443,45 @@
         const melodiesNav = document.getElementById('melodies-nav');
         const storeNav = document.getElementById('store-nav');
         const fadingBanner = document.getElementById('fadingBanner');
-        const playlistToggleBtn = document.getElementById('playlistToggleBtn');
-        const playlistOverlay = document.getElementById('playlistOverlay');
-        const closePlaylistBtn = document.getElementById('closePlaylistBtn');
-        const playlistTracks = document.getElementById('playlistTracks');
 
         let currentTrackIndex = 0;
         let isPlaying = false;
         let isLiked = false;
         let currentSection = 'home';
+        let isTransitioning = false; // CAMBIO: Control para evitar transiciones simultáneas
 
-        audio.preload = 'metadata';
-        loadTrack(currentTrackIndex);
-        populatePlaylist();
-
-        // CONTROL DEL BANNER CON DESVANECIMIENTO PROGRESIVO - SOLO EN HOME
-        function handleScroll() {
-            if (currentSection === 'home') {
-                const scrollY = window.scrollY;
-                const banner = document.getElementById('fadingBanner');
-                const maxScroll = 300;
-                
-                let opacity = 1 - (scrollY / maxScroll);
-                opacity = Math.max(0, Math.min(1, opacity));
-                
-                banner.style.opacity = opacity;
-            }
-        }
-
-        // BANNER SOLO EN HOME
-        function updateBannerForSection(section) {
-            currentSection = section;
-            const banner = document.getElementById('fadingBanner');
-            
-            if (section === 'home') {
-                banner.style.display = 'block';
-                banner.style.transition = 'opacity 0.6s ease';
-                setTimeout(() => {
-                    banner.style.opacity = '1';
-                    handleScroll();
-                }, 50);
-            } else {
-                banner.style.transition = 'opacity 0.6s ease';
-                banner.style.opacity = '0';
-                setTimeout(() => {
-                    banner.style.display = 'none';
-                }, 600);
-            }
-        }
-
-        // FUNCIONES PARA LA LISTA DE REPRODUCCIÓN
-        function populatePlaylist() {
-            playlistTracks.innerHTML = '';
-            
-            tracks.forEach((track, index) => {
-                const trackElement = document.createElement('div');
-                trackElement.className = `playlist-track ${index === currentTrackIndex ? 'active' : ''}`;
-                trackElement.innerHTML = `
-                    <img src="${track.coverUrl}" alt="${track.title}" class="playlist-track-cover">
-                    <div class="playlist-track-info">
-                        <div class="playlist-track-name">${track.title}</div>
-                        <div class="playlist-track-artist">Sam the Revenant</div>
-                    </div>
-                `;
-                
-                trackElement.addEventListener('click', () => {
-                    selectTrackFromPlaylist(index);
+        // CAMBIO: Sistema de lazy loading avanzado con Intersection Observer
+        function initLazyLoading() {
+            // Solo si el navegador soporta Intersection Observer
+            if ('IntersectionObserver' in window) {
+                const lazyImageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            if (img.dataset.src) {
+                                img.src = img.dataset.src;
+                                delete img.dataset.src;
+                            }
+                            if (img.dataset.srcset) {
+                                img.srcset = img.dataset.srcset;
+                                delete img.dataset.srcset;
+                            }
+                            img.classList.remove('lazy');
+                            observer.unobserve(img);
+                        }
+                    });
+                }, {
+                    rootMargin: '50px', // Carga cuando falta 50px para entrar en viewport
+                    threshold: 0.1
                 });
-                
-                playlistTracks.appendChild(trackElement);
-            });
-        }
 
-        function selectTrackFromPlaylist(index) {
-            currentTrackIndex = index;
-            loadTrack(currentTrackIndex);
-            if (isPlaying) {
-                audio.play().catch(e => console.log('Auto-play prevented'));
+                // Observar imágenes con atributo loading="lazy"
+                document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+                    if (!img.complete) {
+                        lazyImageObserver.observe(img);
+                    }
+                });
             }
-            updatePlaylistSelection();
-            closePlaylist();
-        }
-
-        function updatePlaylistSelection() {
-            const trackElements = document.querySelectorAll('.playlist-track');
-            trackElements.forEach((element, index) => {
-                if (index === currentTrackIndex) {
-                    element.classList.add('active');
-                } else {
-                    element.classList.remove('active');
-                }
-            });
-        }
-
-        function openPlaylist() {
-            playlistOverlay.classList.add('active');
-            document.querySelector('.audio-player-content').style.filter = 'brightness(0.5)';
-        }
-
-        function closePlaylist() {
-            playlistOverlay.classList.remove('active');
-            document.querySelector('.audio-player-content').style.filter = 'brightness(1)';
         }
 
         // FUNCIONES PARA EL MODAL DE PLATAFORMAS DENTRO DE LAS TARJETAS
@@ -2526,6 +2504,45 @@
                 }
             });
         });
+
+        audio.preload = 'metadata';
+        loadTrack(currentTrackIndex);
+
+        // CONTROL DEL BANNER CON DESVANECIMIENTO PROGRESIVO - SOLO EN HOME
+        function handleScroll() {
+            if (currentSection === 'home') {
+                const scrollY = window.scrollY;
+                const banner = document.getElementById('fadingBanner');
+                const maxScroll = 300;
+                
+                let opacity = 1 - (scrollY / maxScroll);
+                opacity = Math.max(0, Math.min(1, opacity));
+                
+                banner.style.opacity = opacity;
+            }
+        }
+
+        // CAMBIO: Sistema de transiciones mejorado
+        function updateBannerForSection(section) {
+            currentSection = section;
+            const banner = document.getElementById('fadingBanner');
+            
+            if (section === 'home') {
+                banner.style.display = 'block';
+                // Forzar reflow para activar la transición
+                void banner.offsetWidth;
+                banner.style.opacity = '1';
+                handleScroll();
+            } else {
+                banner.style.opacity = '0';
+                // Esperar a que termine la transición para ocultar
+                setTimeout(() => {
+                    if (currentSection !== 'home') {
+                        banner.style.display = 'none';
+                    }
+                }, 600);
+            }
+        }
 
         function loadTrack(index) {
             const track = tracks[index];
@@ -2555,7 +2572,6 @@
                     trackTitle.classList.remove('fade-transition');
                     trackArtist.classList.remove('fade-transition');
                     hideLoading();
-                    updatePlaylistSelection();
                 }, 50);
                 
                 if (isPlaying) {
@@ -2655,35 +2671,80 @@
             }, 2000);
         }
 
+        // CAMBIO: Sistema de transiciones completamente revisado
         function showSection(sectionToShow) {
+            // Evitar múltiples transiciones simultáneas
+            if (isTransitioning) return;
+            isTransitioning = true;
+            
             const currentActive = document.querySelector('.section.active');
-            if (currentActive && currentActive !== sectionToShow) {
+            
+            // Si ya está activa, no hacer nada
+            if (currentActive && currentActive === sectionToShow) {
+                isTransitioning = false;
+                return;
+            }
+            
+            // Ocultar sección actual
+            if (currentActive) {
                 currentActive.style.opacity = '0';
-                currentActive.style.transform = 'translateY(-20px)';
+                currentActive.style.transform = 'translateY(10px)';
+                
                 setTimeout(() => {
                     currentActive.classList.remove('active');
+                    
+                    // Mostrar nueva sección
                     sectionToShow.classList.add('active');
+                    // Forzar reflow para activar la transición
                     void sectionToShow.offsetWidth;
                     sectionToShow.style.opacity = '1';
                     sectionToShow.style.transform = 'translateY(0)';
                     
-                    window.scrollTo(0, 0);
+                    // Actualizar navegación
+                    updateNavigation(sectionToShow.id);
                     
-                    document.querySelectorAll('.nav-button').forEach(button => {
-                        button.classList.remove('active');
-                    });
+                    // Actualizar banner
+                    updateBannerBasedOnSection(sectionToShow.id);
                     
-                    if (sectionToShow.id === 'home-section') {
-                        homeNav.classList.add('active');
-                        updateBannerForSection('home');
-                    } else if (sectionToShow.id === 'melodies-section') {
-                        melodiesNav.classList.add('active');
-                        updateBannerForSection('melodies');
-                    } else if (sectionToShow.id === 'store-section') {
-                        storeNav.classList.add('active');
-                        updateBannerForSection('store');
-                    }
+                    // Scroll al inicio
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    
+                    // Permitir nueva transición
+                    setTimeout(() => {
+                        isTransitioning = false;
+                    }, 50);
+                    
                 }, 300);
+            } else {
+                // Primera carga
+                sectionToShow.classList.add('active');
+                sectionToShow.style.opacity = '1';
+                sectionToShow.style.transform = 'translateY(0)';
+                updateNavigation(sectionToShow.id);
+                updateBannerBasedOnSection(sectionToShow.id);
+                isTransitioning = false;
+            }
+        }
+
+        function updateNavigation(sectionId) {
+            document.querySelectorAll('.nav-button').forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            if (sectionId === 'home-section') {
+                homeNav.classList.add('active');
+            } else if (sectionId === 'melodies-section') {
+                melodiesNav.classList.add('active');
+            } else if (sectionId === 'store-section') {
+                storeNav.classList.add('active');
+            }
+        }
+
+        function updateBannerBasedOnSection(sectionId) {
+            if (sectionId === 'home-section') {
+                updateBannerForSection('home');
+            } else {
+                updateBannerForSection(sectionId === 'melodies-section' ? 'melodies' : 'store');
             }
         }
 
@@ -2698,17 +2759,16 @@
         progressContainer.addEventListener('click', setProgress);
         likeBtn.addEventListener('click', toggleLike);
         shareBtn.addEventListener('click', shareTrack);
-        homeNav.addEventListener('click', () => showSection(homeSection));
-        melodiesNav.addEventListener('click', () => showSection(melodiesSection));
-        storeNav.addEventListener('click', () => showSection(storeSection));
-        playlistToggleBtn.addEventListener('click', openPlaylist);
-        closePlaylistBtn.addEventListener('click', closePlaylist);
-
-        // Cerrar playlist al hacer clic fuera del contenido
-        playlistOverlay.addEventListener('click', function(e) {
-            if (e.target === this) {
-                closePlaylist();
-            }
+        
+        // CAMBIO: Event listeners mejorados para navegación
+        homeNav.addEventListener('click', () => {
+            if (!isTransitioning) showSection(homeSection);
+        });
+        melodiesNav.addEventListener('click', () => {
+            if (!isTransitioning) showSection(melodiesSection);
+        });
+        storeNav.addEventListener('click', () => {
+            if (!isTransitioning) showSection(storeSection);
         });
 
         // Event listener para el scroll con throttling
@@ -2739,6 +2799,11 @@
 
         // Inicializar el banner (solo en home)
         updateBannerForSection('home');
+        
+        // CAMBIO: Inicializar lazy loading después de que todo cargue
+        window.addEventListener('load', function() {
+            initLazyLoading();
+        });
     </script>
 </body>
 </html>
