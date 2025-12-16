@@ -1142,6 +1142,11 @@
             margin-bottom: 0.8rem;
         }
 
+        .album-price.soon {
+            color: #aaaaaa; /* Color gris para el estado "Soon" */
+            font-style: italic;
+        }
+
         .platform-icons {
             display: flex;
             gap: 0.8rem;
@@ -1248,11 +1253,24 @@
             transition: all 0.3s ease;
         }
 
-        .purchase-btn:hover {
+        .purchase-btn.soon {
+            border-color: #555555;
+            color: #aaaaaa;
+            cursor: not-allowed;
+        }
+
+        .purchase-btn:hover:not(.soon) {
             background: #D4AF37;
             color: #000000;
             transform: translateY(-2px);
             box-shadow: 0 6px 16px rgba(212, 175, 55, 0.3);
+        }
+
+        .purchase-btn.soon:hover {
+            transform: none;
+            box-shadow: none;
+            background: transparent;
+            color: #aaaaaa;
         }
 
         .purchase-icon {
@@ -2215,7 +2233,57 @@
                 </div>
 
                 <div class="albums-container">
-                    <!-- ÁLBUM 1: L'Âme Nocturne -->
+                    <!-- NUEVO ÁLBUM: La Nuit Déchue -->
+                    <div class="album-card" data-album="nuit-dechue">
+                        <div class="album-header">
+                            <img src="https://image2url.com/images/1765848273878-04670324-a5d6-4496-9d0c-f68bdc53d45c.png" 
+                                 alt="La Nuit Déchue" 
+                                 class="album-cover"
+                                 loading="lazy">
+                            <div class="album-basic-info">
+                                <h3 class="album-name">La Nuit Déchue</h3>
+                                <div class="album-price soon">Soon</div>
+                                <div class="platform-icons">
+                                    <img src="https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg" 
+                                         alt="iTunes" 
+                                         class="platform-icon" 
+                                         title="Available on iTunes"
+                                         loading="lazy">
+                                    <img src="https://headphone.guru/wp-content/uploads/2021/02/qobuz-logo.png" 
+                                         alt="Qobuz" 
+                                         class="platform-icon" 
+                                         title="Available on Qobuz"
+                                         loading="lazy">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="album-details">
+                            <!-- No habrá modal para este álbum ya que aún no está disponible -->
+                            <div class="tracklist">
+                                <div class="tracklist-title">Tracklist</div>
+                                <div class="track">
+                                    <span class="track-name">Nocturne Op. III en Do♯ mineur — L'obscurité de la Nuit</span>
+                                    <span class="track-duration"></span>
+                                </div>
+                                <div class="track">
+                                    <span class="track-name">Réverie Op. III en Do mineur — Silences Enlacés</span>
+                                    <span class="track-duration"></span>
+                                </div>
+                                <div class="track">
+                                    <span class="track-name">Improvisation Op. III en Do mineur — Lune Éternelle</span>
+                                    <span class="track-duration"></span>
+                                </div>
+                            </div>
+                            <button class="purchase-btn soon" disabled>
+                                <svg class="purchase-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+                                </svg>
+                                Soon
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- ÁLBUM: L'Âme Nocturne -->
                     <div class="album-card" data-album="ame-nocturne">
                         <div class="album-header">
                             <img src="https://i.pinimg.com/736x/a5/24/c0/a524c0f2fca32421708bb32f6a26ee99.jpg" 
@@ -2290,7 +2358,7 @@
                         </div>
                     </div>
 
-                    <!-- ÁLBUM 2: E.P. Nocturne -->
+                    <!-- ÁLBUM: E.P. Nocturne (PRECIO ACTUALIZADO Y QOBUZ AÑADIDO) -->
                     <div class="album-card" data-album="ep-nocturne">
                         <div class="album-header">
                             <img src="https://i.pinimg.com/736x/5b/35/5e/5b355efd3b65d11bc14a53fa3931afbe.jpg" 
@@ -2299,12 +2367,17 @@
                                  loading="lazy">
                             <div class="album-basic-info">
                                 <h3 class="album-name">E.P. Nocturne</h3>
-                                <div class="album-price">1.98 USD</div>
+                                <div class="album-price">4.79 USD</div> <!-- PRECIO ACTUALIZADO -->
                                 <div class="platform-icons">
                                     <img src="https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg" 
                                          alt="iTunes" 
                                          class="platform-icon" 
                                          title="Available on iTunes"
+                                         loading="lazy">
+                                    <img src="https://headphone.guru/wp-content/uploads/2021/02/qobuz-logo.png" 
+                                         alt="Qobuz" 
+                                         class="platform-icon" 
+                                         title="Available on Qobuz"
                                          loading="lazy">
                                 </div>
                             </div>
@@ -2324,6 +2397,13 @@
                                                  class="album-modal-platform-logo"
                                                  loading="lazy">
                                             <span class="album-modal-platform-name">iTunes</span>
+                                        </a>
+                                        <a href="https://www.qobuz.com/us-en/album/ep-nocturne-sam-the-revenant/x9ldllvzsquc1" class="album-modal-platform-btn" target="_blank">
+                                            <img src="https://headphone.guru/wp-content/uploads/2021/02/qobuz-logo.png" 
+                                                 alt="Qobuz" 
+                                                 class="album-modal-platform-logo"
+                                                 loading="lazy">
+                                            <span class="album-modal-platform-name">Qobuz</span>
                                         </a>
                                     </div>
                                 </div>
@@ -2449,40 +2529,6 @@
         let isLiked = false;
         let currentSection = 'home';
         let isTransitioning = false; // CAMBIO: Control para evitar transiciones simultáneas
-
-        // CAMBIO: Sistema de lazy loading avanzado con Intersection Observer
-        function initLazyLoading() {
-            // Solo si el navegador soporta Intersection Observer
-            if ('IntersectionObserver' in window) {
-                const lazyImageObserver = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const img = entry.target;
-                            if (img.dataset.src) {
-                                img.src = img.dataset.src;
-                                delete img.dataset.src;
-                            }
-                            if (img.dataset.srcset) {
-                                img.srcset = img.dataset.srcset;
-                                delete img.dataset.srcset;
-                            }
-                            img.classList.remove('lazy');
-                            observer.unobserve(img);
-                        }
-                    });
-                }, {
-                    rootMargin: '50px', // Carga cuando falta 50px para entrar en viewport
-                    threshold: 0.1
-                });
-
-                // Observar imágenes con atributo loading="lazy"
-                document.querySelectorAll('img[loading="lazy"]').forEach(img => {
-                    if (!img.complete) {
-                        lazyImageObserver.observe(img);
-                    }
-                });
-            }
-        }
 
         // FUNCIONES PARA EL MODAL DE PLATAFORMAS DENTRO DE LAS TARJETAS
         function openAlbumModal(albumId) {
@@ -2799,11 +2845,6 @@
 
         // Inicializar el banner (solo en home)
         updateBannerForSection('home');
-        
-        // CAMBIO: Inicializar lazy loading después de que todo cargue
-        window.addEventListener('load', function() {
-            initLazyLoading();
-        });
     </script>
 </body>
 </html>
