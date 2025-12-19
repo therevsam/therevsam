@@ -96,7 +96,6 @@
             position: absolute;
             top: 0;
             left: 0;
-            /* CAMBIO: Mejorar rendimiento de transiciones */
             will-change: opacity, transform;
             backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
@@ -109,7 +108,6 @@
             position: relative;
         }
 
-        /* CAMBIO: Suavizar transición de entrada */
         .section.entering {
             display: block;
             animation: slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
@@ -126,7 +124,7 @@
             }
         }
 
-        /* BANNER CON EFECTO DE DESVANECIMIENTO PROGRESIVO - SOLO EN HOME */
+        /* BANNER MEJORADO - EFECTO FIJO SIN BUGS */
         .fading-banner {
             position: fixed;
             top: 0;
@@ -145,8 +143,110 @@
             background-repeat: no-repeat;
             z-index: -1;
             opacity: 1;
-            transition: opacity 0.6s ease-in-out;
             pointer-events: none;
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+
+        /* MODAL DE BIO MEJORADO */
+        .bio-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            padding: 1rem;
+        }
+
+        .bio-modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .bio-modal {
+            background: #111111;
+            border: 1px solid #333333;
+            border-radius: 20px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+        }
+
+        .bio-modal-overlay.active .bio-modal {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .bio-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #333333;
+        }
+
+        .bio-modal-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: #ffffff;
+        }
+
+        .close-bio-modal {
+            background: none;
+            border: none;
+            color: #cccccc;
+            cursor: pointer;
+            padding: 0.5rem;
+            font-size: 1.8rem;
+            line-height: 1;
+            transition: color 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+
+        .close-bio-modal:hover {
+            color: #ffffff;
+            background: #222222;
+        }
+
+        .bio-modal-content {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            line-height: 1.7;
+            color: #e0e0e0;
+            opacity: 0.9;
+            font-weight: 400;
+            text-align: left;
+            background: transparent !important;
+        }
+
+        .bio-modal-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .bio-modal-content p:last-child {
+            margin-bottom: 0;
         }
 
         .glass-effect {
@@ -158,7 +258,6 @@
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
 
-        /* CONTENEDOR DE AVATAR SOLAMENTE */
         .avatar-container {
             position: relative;
             width: 100%;
@@ -168,7 +267,6 @@
             align-items: center;
         }
 
-        /* AVATAR - SIN INTERACCIÓN */
         .avatar {
             width: 140px;
             height: 140px;
@@ -178,14 +276,11 @@
             box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
             z-index: 2;
             filter: grayscale(100%);
-            /* ELIMINAR TODAS LAS TRANSICIONES Y EFECTOS HOVER */
             pointer-events: none;
             user-select: none;
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
-            /* CAMBIO: Agregar loading=lazy */
-            loading: "lazy";
         }
 
         .name {
@@ -198,34 +293,50 @@
             color: #ffffff;
         }
 
+        /* BIO CORREGIDA - MÁS PEQUEÑA, SIN FONDO, SIN PUNTEO, FUENTE CORRECTA */
         .bio {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.2rem;
+            font-family: 'Cormorant Garamond', serif; /* MISMA FUENTE QUE LA CITA */
+            font-size: 1.1rem; /* MÁS PEQUEÑA QUE ANTES */
             margin-bottom: 0.3rem;
             opacity: 0.9;
-            font-style: normal;
+            font-style: italic; /* ITÁLICA COMO LA CITA */
             line-height: 1.4;
             text-align: center;
             color: #e0e0e0;
             font-weight: 400;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            padding: 0;
+            border-radius: 0;
+            background: transparent !important; /* SIN FONDO NEGRO */
         }
 
-        .quote {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1rem;
-            margin-bottom: 1rem;
+        .bio:hover {
+            color: #ffffff;
+        }
+
+        .read-more {
+            display: inline-block;
+            font-family: 'Inter', sans-serif; /* FUENTE SIMPLE */
+            font-size: 0.9rem;
+            color: #ffffff !important; /* COLOR BLANCO */
+            font-weight: 400; /* NORMAL, NO BOLD */
+            margin-left: 0.3rem;
+            text-decoration: none; /* SIN SUBRAYADO */
+            border-bottom: none !important; /* SIN PUNTEO */
+            transition: opacity 0.3s ease;
+            background: transparent !important;
+            cursor: pointer;
+        }
+
+        .read-more:hover {
             opacity: 0.8;
-            font-style: italic;
-            line-height: 1.4;
-            text-align: center;
-            color: #cccccc;
         }
 
-        /* BOTÓN "ESCUCHAR AHORA" MODIFICADO A 130px */
         .listen-now-btn {
             display: block;
             width: 100%;
-            max-width: 130px; /* REDUCIDO A 130px */
+            max-width: 130px;
             margin: 0.5rem auto 1rem auto;
             border-radius: 8px;
             transition: all 0.3s ease;
@@ -245,11 +356,8 @@
             height: auto;
             border-radius: 8px;
             display: block;
-            /* CAMBIO: Agregar loading=lazy */
-            loading: "lazy";
         }
 
-        /* SECCIÓN DE ACTUALIZACIONES EN FORMATO 16:9 - SIN INTERACCIÓN */
         .updates-section {
             margin-bottom: 1.5rem;
             position: relative;
@@ -259,7 +367,7 @@
             overflow: hidden;
             border: 1px solid #333333;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            pointer-events: none; /* DESACTIVA TODA INTERACCIÓN */
+            pointer-events: none;
             user-select: none;
             -webkit-user-select: none;
             -moz-user-select: none;
@@ -271,14 +379,7 @@
             height: auto;
             border-radius: 16px;
             display: block;
-            /* ELIMINAR TRANSICIONES Y EFECTOS HOVER */
             pointer-events: none;
-            user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            /* CAMBIO: Agregar loading=lazy */
-            loading: "lazy";
         }
 
         .section-divider {
@@ -309,8 +410,7 @@
             display: inline-block;
         }
 
-        /* REPRODUCTOR CON FONDO GRIS OSCURO - MODIFICADO */
-        /* CAMBIO: Fondo más oscuro (#0a0a0a en lugar de #1a1a1a) */
+        /* AUDIO PLAYER CON FONDO MÁS OSCURO */
         .audio-player-section {
             padding: 2rem;
             margin-bottom: 2rem;
@@ -322,39 +422,8 @@
             border: 1px solid #444444;
             border-radius: 16px;
             overflow: hidden;
-            background: #0a0a0a; /* CAMBIO: FONDO MÁS OSCURO */
+            background: #0a0a0a;
         }
-
-        /* ELIMINADO EL FONDO DE IMAGEN PERSONALIZADA */
-        /* .audio-player-bg {
-            display: none;
-        } */
-        
-        /* ELIMINADO EL OVERLAY DE FONDO */
-        /* .audio-player-overlay {
-            display: none;
-        } */
-
-        /* TODO EL CONTENIDO DEL REPRODUCTOR */
-        .audio-player-content {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        /* ELIMINADO EL BOTÓN DE LISTA DE REPRODUCCIÓN */
-        /* .playlist-toggle-btn {
-            display: none;
-        } */
-        
-        /* ELIMINADA LA LISTA DE REPRODUCCIÓN */
-        /* .playlist-overlay {
-            display: none;
-        } */
 
         .loading-overlay {
             position: absolute;
@@ -367,7 +436,7 @@
             align-items: center;
             justify-content: center;
             border-radius: 16px;
-            z-index: 3; /* POR ENCIMA DE TODO */
+            z-index: 3;
         }
 
         .pulse-loader {
@@ -719,22 +788,6 @@
             color: #ffffff;
         }
 
-        .soon-badge {
-            position: absolute;
-            right: 1.2rem;
-            top: 50%;
-            transform: translateY(-50%);
-            background: #222222;
-            padding: 0.4rem 0.8rem;
-            border-radius: 8px;
-            font-size: 0.7rem;
-            opacity: 0.9;
-            border: 1px solid #444444;
-            z-index: 2;
-            color: #aaaaaa; /* COLOR GRIS CLARO PARA EL TEXTO "SOON" */
-            font-weight: 500;
-        }
-
         .hifi-badge {
             position: absolute;
             right: 1.2rem;
@@ -751,6 +804,67 @@
             font-weight: 600;
         }
 
+        /* BOTONES UNIFICADOS - TAMAÑO IGUAL PARA TODOS */
+        .social-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            position: relative;
+            color: white;
+            padding: 1.2rem 1.8rem;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            overflow: hidden;
+            min-height: 60px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            width: 100%;
+            -webkit-tap-highlight-color: transparent;
+            background: #111111;
+            border: 1px solid #333333;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            background: #1a1a1a;
+            border-color: #444444;
+        }
+
+        .social-logo {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+            position: absolute;
+            left: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            filter: grayscale(100%) brightness(2);
+            border-radius: 8px;
+            z-index: 2;
+        }
+
+        .social-text {
+            flex: 1;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            z-index: 2;
+            position: relative;
+            font-size: 0.9rem;
+            color: #ffffff;
+            margin-left: 0;
+        }
+
+        /* FINAL BUTTONS UNIFICADOS - SIN BANDLAB NI VAMPR */
         .final-buttons {
             display: flex;
             gap: 1rem;
@@ -758,10 +872,9 @@
             margin-bottom: 1.5rem;
         }
 
-        .contact-btn, .linktree-btn, .bandlab-btn, .vampr-btn, .qobuz-btn {
+        .email-btn, .linktree-btn {
             display: flex;
             align-items: center;
-            justify-content: center;
             position: relative;
             color: white;
             padding: 1.2rem 1.5rem;
@@ -779,7 +892,7 @@
             border: 1px solid #333333;
         }
 
-        .contact-btn:hover, .linktree-btn:hover, .bandlab-btn:hover, .vampr-btn:hover, .qobuz-btn:hover {
+        .email-btn:hover, .linktree-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
             background: #1a1a1a;
@@ -796,20 +909,7 @@
             filter: grayscale(100%) brightness(2);
         }
 
-        .contact-text {
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            z-index: 2;
-            font-size: 0.8rem;
-            white-space: nowrap;
-            text-align: center;
-            flex: 1;
-            padding: 0 0.5rem;
-            margin-left: 12px;
-            color: #ffffff;
-        }
-
-        .linktree-text, .bandlab-text, .vampr-text, .qobuz-text {
+        .email-text, .linktree-text {
             font-family: 'Inter', sans-serif;
             font-weight: 500;
             z-index: 2;
@@ -819,16 +919,6 @@
             padding: 0 0.5rem;
             margin-left: 12px;
             color: #ffffff;
-        }
-
-        .lock-icon {
-            position: absolute;
-            right: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            opacity: 0.8;
-            z-index: 2;
-            color: #cccccc;
         }
 
         .copyright {
@@ -1055,7 +1145,7 @@
             opacity: 1;
         }
 
-        /* NUEVA SECCIÓN DE TIENDA CON PROPUESTA 2 MODIFICADA */
+        /* SECCIÓN DE TIENDA */
         .store-section {
             padding-bottom: 5rem;
         }
@@ -1133,7 +1223,6 @@
             line-height: 1.2;
         }
 
-        /* PRECIO CON LA MISMA FUENTE DEL NOMBRE DEL ÁLBUM */
         .album-price {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.5rem;
@@ -1143,7 +1232,7 @@
         }
 
         .album-price.soon {
-            color: #aaaaaa; /* Color gris para el estado "Soon" */
+            color: #aaaaaa;
             font-style: italic;
         }
 
@@ -1372,11 +1461,6 @@
             font-weight: 500;
         }
 
-        /* Modal global eliminado */
-        .modal-overlay {
-            display: none !important;
-        }
-
         .bottom-nav {
             position: fixed;
             bottom: 1.5rem;
@@ -1473,10 +1557,9 @@
             }
 
             .listen-now-btn {
-                max-width: 130px; /* Mantener 130px */
+                max-width: 130px;
             }
 
-            /* MEJORAS PARA MÓVIL EN LA TIENDA */
             .album-header {
                 flex-direction: row;
                 align-items: center;
@@ -1548,16 +1631,12 @@
             }
             
             .bio {
-                font-size: 1.1rem;
+                font-size: 1rem; /* MÁS PEQUEÑA EN MÓVIL */
                 margin-bottom: 1.5rem;
             }
             
-            .quote {
-                font-size: 0.9rem;
-            }
-            
             .listen-now-btn {
-                max-width: 130px; /* Mantener 130px */
+                max-width: 130px;
                 margin-bottom: 1rem;
             }
             
@@ -1616,7 +1695,6 @@
                 font-size: 0.8rem;
             }
 
-            /* MEJORAS ESPECÍFICAS PARA MÓVIL PEQUEÑO EN TIENDA */
             .album-header {
                 flex-direction: column;
                 align-items: center;
@@ -1671,7 +1749,6 @@
                 font-size: 0.9rem;
             }
 
-            /* MODAL EN MÓVIL */
             .album-modal {
                 width: 95%;
                 padding: 1.2rem;
@@ -1683,6 +1760,25 @@
 
             .fading-banner {
                 height: 250px;
+            }
+
+            /* BIO MODAL EN MÓVIL */
+            .bio-modal {
+                padding: 1.5rem;
+                max-height: 85vh;
+            }
+
+            .bio-modal-title {
+                font-size: 1.5rem;
+            }
+
+            .bio-modal-content {
+                font-size: 1.1rem;
+                line-height: 1.6;
+            }
+
+            .read-more {
+                font-size: 0.85rem;
             }
         }
 
@@ -1709,44 +1805,66 @@
     </style>
 </head>
 <body>
-    <!-- BANNER CON EFECTO DE DESVANECIMIENTO PROGRESIVO - SOLO EN HOME -->
+    <!-- MODAL DE BIO MEJORADO -->
+    <div class="bio-modal-overlay" id="bioModal">
+        <div class="bio-modal">
+            <div class="bio-modal-header">
+                <h3 class="bio-modal-title">About Sam</h3>
+                <button class="close-bio-modal" id="closeBioModal">×</button>
+            </div>
+            <div class="bio-modal-content">
+                <p>I'm Sam, pianist, composer, and the mind behind Sam the Revenant.</p>
+                
+                <p>I've played piano for as long as I can remember, long enough for it to become the language I trust the most. My compositions explore stillness, tension, and the quiet truths that only music can say without asking permission. Every piece is a conversation I never had, but needed to.</p>
+                
+                <p>Sam the Revenant is the name I chose for the version of me that survives in my music — disciplined, detached from noise, and driven by the need to create something that lasts. I don't write to impress; I write to reveal. Every melody carries its own pulse, its own shadow, and its own reason to exist.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- BANNER MEJORADO -->
     <div class="fading-banner" id="fadingBanner"></div>
 
     <div class="toast" id="toast"></div>
 
     <div class="main-container">
         <div class="section active" id="home-section">
-            <!-- CONTENEDOR DE AVATAR SOLAMENTE - SIN INTERACCIÓN -->
+            <!-- AVATAR -->
             <div class="avatar-container">
                 <img src="https://yt3.ggpht.com/Z6UP3_g1F9t2nJM1_SBp1uaInWJdaflA-dZ28Su_mpHqu-TVF9HDOW2NCGXfmrdlp8J-EoG4cA=s600-c-k-c0x00ffffff-no-rj-rp-mo" 
                      alt="Sam the Revenant" 
                      class="avatar"
-                     loading="eager"> <!-- CAMBIO: eager para carga inmediata -->
+                     loading="eager">
             </div>
             
             <h1 class="name">Sam the Revenant</h1>
-            <p class="bio">Pianist & Composer</p>
-            <p class="quote">"Between silence and chaos, I found my truth — and turned it into music."</p>
+            
+            <!-- BIO CON "MORE" - CORREGIDA -->
+            <p class="bio" id="bio">
+                I'm Sam, pianist, composer, and the mind behind Sam the Revenant.
+                <a href="javascript:void(0);" class="read-more" id="readMore">...more</a>
+            </p>
 
-            <!-- BOTÓN "ESCUCHAR AHORA" MODIFICADO A 130px -->
+            <!-- BOTÓN "ESCUCHAR AHORA" -->
             <a href="https://youtu.be/l-7QFvMkOr0?si=8GtKDMU2qLHL_J6Y" class="listen-now-btn" target="_blank">
                 <img src="https://image2url.com/images/1764438678014-b4985758-e3ab-4ad6-a79d-04caf468a111.jpg" 
                      alt="Listen Now" 
                      class="listen-now-img"
-                     loading="eager"> <!-- CAMBIO: eager para carga inmediata -->
+                     loading="eager">
             </a>
 
-            <!-- SECCIÓN DE ACTUALIZACIONES EN FORMATO 16:9 - SIN INTERACCIÓN -->
+            <!-- SECCIÓN DE ACTUALIZACIONES -->
             <div class="updates-section">
                 <img src="https://image2url.com/images/1764776723968-1d5d39e6-99f7-429a-a52d-a5ab05f34863.png" 
                      alt="Latest Updates" 
                      class="update-image"
-                     loading="lazy"> <!-- CAMBIO: lazy para carga diferida -->
+                     loading="lazy">
             </div>
 
+            <!-- SECCIÓN: STREAMING PLATFORMS -->
             <div class="section-divider">
                 <div class="divider-line"></div>
-                <div class="divider-text">My Socials</div>
+                <div class="divider-text">Streaming Platforms</div>
             </div>
 
             <div class="links">
@@ -1755,7 +1873,7 @@
                     <img src="https://i.pinimg.com/1200x/e6/55/bf/e655bff3217dd6f575a275604b0ff7e1.jpg" 
                          alt="Spotify" 
                          class="platform-logo"
-                         loading="lazy"> <!-- CAMBIO: lazy para carga diferida -->
+                         loading="lazy">
                     <span class="btn-text">Spotify</span>
                 </a>
                 
@@ -1789,7 +1907,7 @@
                     <span class="hifi-badge">Hi-Fi</span>
                 </a>
 
-                <!-- Amazon Music quinto (después de Tidal) -->
+                <!-- Amazon Music quinto -->
                 <a href="https://music.amazon.com/artists/B0G6NYRX6P/sam-the-revenant" class="link-btn" target="_blank">
                     <img src="https://i.pinimg.com/736x/09/72/ae/0972ae3bcb8a4157c4f790996c73f41c.jpg" 
                          alt="Amazon Music" 
@@ -1845,7 +1963,7 @@
                     <span class="btn-text">YouTube Music</span>
                 </a>
 
-                <!-- Claro Music undécimo (después de YouTube Music) -->
+                <!-- Claro Music undécimo -->
                 <a href="https://www.claromusica.com/dl.sh/ct/hn/artist/14325111" class="link-btn" target="_blank">
                     <img src="https://image2url.com/images/1765459235574-0e1a6473-1189-45f0-b7c0-5bc77946d717.jpg" 
                          alt="Claro Music" 
@@ -1853,49 +1971,46 @@
                          loading="lazy">
                     <span class="btn-text">Claro Music</span>
                 </a>
+            </div>
 
-                <!-- WhatsApp Channel duodécimo -->
-                <a href="https://whatsapp.com/channel/0029Vb72z7J9RZAWILcE5e0v" class="link-btn" target="_blank">
+            <!-- SECCIÓN: PROFILES & CONTACT -->
+            <div class="section-divider">
+                <div class="divider-line"></div>
+                <div class="divider-text">Profiles & Contact</div>
+            </div>
+
+            <div class="social-buttons">
+                <!-- WhatsApp Channel -->
+                <a href="https://whatsapp.com/channel/0029Vb72z7J9RZAWILcE5e0v" class="social-btn" target="_blank">
                     <img src="https://i.pinimg.com/1200x/fc/ae/b3/fcaeb33b122b22a4cac47d29f4447684.jpg" 
                          alt="WhatsApp Channel" 
-                         class="platform-logo"
-                         loading="lazy">
-                    <span class="btn-text">WhatsApp Channel</span>
-                </a>
-            </div>
-
-            <div class="final-buttons">
-                <a href="https://www.bandlab.com/samtherev" class="bandlab-btn" target="_blank">
-                    <img src="https://i.pinimg.com/1200x/d9/96/9d/d9969dcc861731e87c4a7265c02b4d40.jpg" 
-                         alt="BandLab" 
-                         class="platform-logo"
-                         loading="lazy">
-                    <span class="bandlab-text">BandLab</span>
+                         class="social-logo">
+                    <span class="social-text">WhatsApp Channel</span>
                 </a>
 
-                <a href="https://www.vampr.me/artist/therevsam" class="vampr-btn" target="_blank">
-                    <img src="https://i.pinimg.com/736x/9d/ba/34/9dba346e08113d3db750ee43d74ecf36.jpg" 
-                         alt="Vampr" 
-                         class="platform-logo"
-                         loading="lazy">
-                    <span class="vampr-text">Vampr</span>
+                <!-- X Profile -->
+                <a href="https://x.com/samtherevenant" class="social-btn" target="_blank">
+                    <img src="https://i.pinimg.com/736x/4e/11/6b/4e116be3fbc42188144fcc3a330a548a.jpg" 
+                         alt="X Profile" 
+                         class="social-logo">
+                    <span class="social-text">X Profile</span>
                 </a>
-            </div>
 
-            <div class="final-buttons">
-                <a href="mailto:samtherevenant@gmail.com" class="contact-btn">
+                <!-- Email -->
+                <a href="mailto:samtherevenant@gmail.com" class="social-btn">
                     <img src="https://i.pinimg.com/1200x/8e/48/1a/8e481add923811cde7fb76cc3597b19f.jpg" 
                          alt="Email" 
-                         class="platform-logo"
-                         loading="lazy">
-                    <span class="contact-text">Contact Me</span>
+                         class="social-logo">
+                    <span class="social-text">Email</span>
                 </a>
+            </div>
 
+            <!-- FINAL BUTTONS UNIFICADOS - SIN BANDLAB NI VAMPR -->
+            <div class="final-buttons">
                 <a href="https://linktr.ee/therevsam" class="linktree-btn" target="_blank">
                     <img src="https://i.pinimg.com/736x/6a/51/07/6a5107cccb272aa7fbbb322d1d1b66da.jpg" 
                          alt="LinkTree" 
-                         class="platform-logo"
-                         loading="lazy">
+                         class="platform-logo">
                     <span class="linktree-text">LinkTree</span>
                 </a>
             </div>
@@ -1905,7 +2020,7 @@
             </div>
         </div>
 
-        <!-- SECCIÓN DE MELODÍAS CON REPRODUCTOR DE FONDO GRIS OSCURO -->
+        <!-- SECCIÓN DE MELODÍAS -->
         <div class="section" id="melodies-section">
             <div class="discography-section">
                 <div class="discography-header">
@@ -1913,7 +2028,7 @@
                     <p class="discography-subtitle">Discover my musical creations</p>
                 </div>
 
-                <!-- REPRODUCTOR CON FONDO MÁS OSCURO -->
+                <!-- REPRODUCTOR -->
                 <div class="audio-player-section">
                     <div class="loading-overlay" id="loadingOverlay">
                         <div class="pulse-loader">
@@ -1927,7 +2042,7 @@
                                  alt="Album Cover" 
                                  class="album-art" 
                                  id="albumArt"
-                                 loading="lazy"> <!-- CAMBIO: lazy para carga diferida -->
+                                 loading="lazy">
                         </div>
 
                         <div class="track-info">
@@ -2012,7 +2127,7 @@
                             <img src="https://i.pinimg.com/736x/5b/35/5e/5b355efd3b65d11bc14a53fa3931afbe.jpg" 
                                  alt="Notturno I" 
                                  class="melody-cover"
-                                 loading="lazy"> <!-- CAMBIO: lazy para carga diferida -->
+                                 loading="lazy">
                             <div class="melody-info">
                                 <div class="melody-name">Notturno I in Do♯ Minore - Velo della Notte</div>
                                 <div class="melody-artist">Sam the Revenant</div>
@@ -2083,6 +2198,7 @@
                     </div>
                 </div>
 
+                <!-- PLAYLISTS CON APPLE MUSIC AÑADIDO -->
                 <div class="playlist-section">
                     <div class="section-divider">
                         <div class="divider-line"></div>
@@ -2097,7 +2213,7 @@
                          loading="lazy">
                     
                     <div class="playlist-grid">
-                        <!-- NUEVOS BOTONES CON LINKS ACTUALIZADOS -->
+                        <!-- Spotify -->
                         <a href="https://open.spotify.com/playlist/0XYS21NjKw1WlzW0Opu8bG?si=S8prhdvfTWm0_KPzWT42PA" class="playlist-card" target="_blank">
                             <img src="https://i.pinimg.com/1200x/e6/55/bf/e655bff3217dd6f575a275604b0ff7e1.jpg" 
                                  alt="Spotify" 
@@ -2112,6 +2228,22 @@
                             </svg>
                         </a>
 
+                        <!-- Apple Music (NUEVO) -->
+                        <a href="https://music.apple.com/hn/playlist/sam-the-revenant-collection/pl.u-Ymb0vdyFDjeLLEb?ls" class="playlist-card" target="_blank">
+                            <img src="https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg" 
+                                 alt="Apple Music" 
+                                 class="playlist-logo"
+                                 loading="lazy">
+                            <div class="playlist-info">
+                                <div class="playlist-name">Sam the Revenant Collection</div>
+                                <div class="playlist-platform">Apple Music Playlist</div>
+                            </div>
+                            <svg class="playlist-arrow" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                            </svg>
+                        </a>
+
+                        <!-- Deezer -->
                         <a href="https://link.deezer.com/s/31NpCDLsHDAngyDhLnRTg" class="playlist-card" target="_blank">
                             <img src="https://i.pinimg.com/736x/1b/f9/33/1bf93302bd924479b90f47a0df2134cd.jpg" 
                                  alt="Deezer" 
@@ -2126,6 +2258,7 @@
                             </svg>
                         </a>
 
+                        <!-- Tidal -->
                         <a href="https://tidal.com/playlist/82304d6b-e154-4ecc-a4bb-de5de1c2a891" class="playlist-card" target="_blank">
                             <img src="https://i.pinimg.com/736x/94/9c/01/949c014c813bc031520d82af3905a4f0.jpg" 
                                  alt="Tidal" 
@@ -2140,6 +2273,7 @@
                             </svg>
                         </a>
 
+                        <!-- YouTube Music -->
                         <a href="https://music.youtube.com/playlist?list=PLxczVDZlfe7gNwqRiqsFLRCtU9mSigZrS&si=nK1tavQKwRLAlLWR" class="playlist-card" target="_blank">
                             <img src="https://i.pinimg.com/1200x/73/6d/0c/736d0c2aac22b1c37a6ce0ee1a52277f.jpg" 
                                  alt="YouTube Music" 
@@ -2154,6 +2288,7 @@
                             </svg>
                         </a>
 
+                        <!-- YouTube -->
                         <a href="https://youtube.com/playlist?list=PLxczVDZlfe7gNwqRiqsFLRCtU9mSigZrS&si=6Fv6NIcwc7kzuyb0" class="playlist-card" target="_blank">
                             <img src="https://i.pinimg.com/736x/7a/5d/56/7a5d56c5e22d6fed8d72eeb70329f5f5.jpg" 
                                  alt="YouTube" 
@@ -2168,6 +2303,7 @@
                             </svg>
                         </a>
 
+                        <!-- SoundCloud -->
                         <a href="https://on.soundcloud.com/Bfh65Er1vC6TNGfHT6" class="playlist-card" target="_blank">
                             <img src="https://i.pinimg.com/1200x/81/9d/35/819d35d67997e972a5542b5ba49d577b.jpg" 
                                  alt="SoundCloud" 
@@ -2182,6 +2318,7 @@
                             </svg>
                         </a>
 
+                        <!-- Audiomack -->
                         <a href="https://audiomack.com/therevsam/playlist/64080268" class="playlist-card" target="_blank">
                             <img src="https://i.pinimg.com/1200x/f6/36/b6/f636b60899bb4ec359b6e4aadecce904.jpg" 
                                  alt="Audiomack" 
@@ -2204,7 +2341,7 @@
             </div>
         </div>
 
-        <!-- NUEVA SECCIÓN DE TIENDA CON PROPUESTA 2 MODIFICADA -->
+        <!-- SECCIÓN DE TIENDA -->
         <div class="section" id="store-section">
             <div class="store-section">
                 <div class="store-header">
@@ -2238,7 +2375,6 @@
                             </div>
                         </div>
                         <div class="album-details">
-                            <!-- No habrá modal para este álbum ya que aún no está disponible -->
                             <div class="tracklist">
                                 <div class="tracklist-title">Tracklist</div>
                                 <div class="track">
@@ -2288,7 +2424,6 @@
                             </div>
                         </div>
                         <div class="album-details">
-                            <!-- Overlay para el modal dentro de la tarjeta -->
                             <div class="album-details-overlay" id="ame-nocturne-overlay">
                                 <div class="album-modal">
                                     <div class="album-modal-header">
@@ -2338,7 +2473,7 @@
                         </div>
                     </div>
 
-                    <!-- ÁLBUM: E.P. Nocturne (PRECIO ACTUALIZADO Y QOBUZ AÑADIDO) -->
+                    <!-- ÁLBUM: E.P. Nocturne -->
                     <div class="album-card" data-album="ep-nocturne">
                         <div class="album-header">
                             <img src="https://i.pinimg.com/736x/5b/35/5e/5b355efd3b65d11bc14a53fa3931afbe.jpg" 
@@ -2347,7 +2482,7 @@
                                  loading="lazy">
                             <div class="album-basic-info">
                                 <h3 class="album-name">E.P. Nocturne</h3>
-                                <div class="album-price">4.79 USD</div> <!-- PRECIO ACTUALIZADO -->
+                                <div class="album-price">4.79 USD</div>
                                 <div class="platform-icons">
                                     <img src="https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg" 
                                          alt="iTunes" 
@@ -2363,7 +2498,6 @@
                             </div>
                         </div>
                         <div class="album-details">
-                            <!-- Overlay para el modal dentro de la tarjeta -->
                             <div class="album-details-overlay" id="ep-nocturne-overlay">
                                 <div class="album-modal">
                                     <div class="album-modal-header">
@@ -2422,7 +2556,7 @@
             <img src="https://image2url.com/images/1764081504690-58bf4fad-eed8-4ee3-b8cf-b8de57126838.png" 
                  alt="Links" 
                  class="nav-icon"
-                 loading="eager"> <!-- CAMBIO: eager para carga inmediata -->
+                 loading="eager">
         </div>
         <div class="nav-button" id="melodies-nav">
             <img src="https://image2url.com/images/1764081290983-d5a8b4e4-8cde-4914-9d8d-d44c6751bf98.png" 
@@ -2439,7 +2573,7 @@
     </div>
 
     <script>
-        // CAMBIO: Sistema de transiciones mejorado
+        // DATOS DEL REPRODUCTOR
         const tracks = [
             {
                 title: "Sonate Noire, Op. II — Nuit Obscure",
@@ -2473,6 +2607,7 @@
             }
         ];
 
+        // ELEMENTOS DEL DOM
         const audio = new Audio();
         const playPauseBtn = document.getElementById('playPauseBtn');
         const playIcon = document.getElementById('playIcon');
@@ -2497,14 +2632,30 @@
         const melodiesNav = document.getElementById('melodies-nav');
         const storeNav = document.getElementById('store-nav');
         const fadingBanner = document.getElementById('fadingBanner');
+        const bio = document.getElementById('bio');
+        const readMore = document.getElementById('readMore');
+        const bioModal = document.getElementById('bioModal');
+        const closeBioModal = document.getElementById('closeBioModal');
 
+        // VARIABLES GLOBALES
         let currentTrackIndex = 0;
         let isPlaying = false;
         let isLiked = false;
         let currentSection = 'home';
-        let isTransitioning = false; // CAMBIO: Control para evitar transiciones simultáneas
+        let isTransitioning = false;
 
-        // FUNCIONES PARA EL MODAL DE PLATAFORMAS DENTRO DE LAS TARJETAS
+        // FUNCIONES PARA EL MODAL DE BIO
+        function openBioModal() {
+            bioModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBioModalFunc() {
+            bioModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // FUNCIONES PARA EL MODAL DE PLATAFORMAS
         function openAlbumModal(albumId) {
             const overlay = document.getElementById(`${albumId}-overlay`);
             overlay.classList.add('active');
@@ -2515,55 +2666,39 @@
             overlay.classList.remove('active');
         }
 
-        // Cerrar modal al hacer clic fuera del contenido
-        document.querySelectorAll('.album-details-overlay').forEach(overlay => {
-            overlay.addEventListener('click', function(e) {
-                if (e.target === this) {
-                    const albumId = this.id.replace('-overlay', '');
-                    closeAlbumModal(albumId);
-                }
-            });
-        });
-
-        audio.preload = 'metadata';
-        loadTrack(currentTrackIndex);
-
-        // CONTROL DEL BANNER CON DESVANECIMIENTO PROGRESIVO - SOLO EN HOME
+        // BANNER MEJORADO - SIN BUGS
         function handleScroll() {
             if (currentSection === 'home') {
                 const scrollY = window.scrollY;
-                const banner = document.getElementById('fadingBanner');
                 const maxScroll = 300;
                 
                 let opacity = 1 - (scrollY / maxScroll);
                 opacity = Math.max(0, Math.min(1, opacity));
                 
-                banner.style.opacity = opacity;
+                fadingBanner.style.opacity = opacity;
             }
         }
 
-        // CAMBIO: Sistema de transiciones mejorado
+        // SISTEMA DE TRANSICIONES MEJORADO
         function updateBannerForSection(section) {
             currentSection = section;
-            const banner = document.getElementById('fadingBanner');
             
             if (section === 'home') {
-                banner.style.display = 'block';
-                // Forzar reflow para activar la transición
-                void banner.offsetWidth;
-                banner.style.opacity = '1';
+                fadingBanner.style.display = 'block';
+                void fadingBanner.offsetWidth;
+                fadingBanner.style.opacity = '1';
                 handleScroll();
             } else {
-                banner.style.opacity = '0';
-                // Esperar a que termine la transición para ocultar
+                fadingBanner.style.opacity = '0';
                 setTimeout(() => {
                     if (currentSection !== 'home') {
-                        banner.style.display = 'none';
+                        fadingBanner.style.display = 'none';
                     }
                 }, 600);
             }
         }
 
+        // FUNCIONES DEL REPRODUCTOR
         function loadTrack(index) {
             const track = tracks[index];
             showLoading();
@@ -2691,21 +2826,18 @@
             }, 2000);
         }
 
-        // CAMBIO: Sistema de transiciones completamente revisado
+        // SISTEMA DE NAVEGACIÓN MEJORADO
         function showSection(sectionToShow) {
-            // Evitar múltiples transiciones simultáneas
             if (isTransitioning) return;
             isTransitioning = true;
             
             const currentActive = document.querySelector('.section.active');
             
-            // Si ya está activa, no hacer nada
             if (currentActive && currentActive === sectionToShow) {
                 isTransitioning = false;
                 return;
             }
             
-            // Ocultar sección actual
             if (currentActive) {
                 currentActive.style.opacity = '0';
                 currentActive.style.transform = 'translateY(10px)';
@@ -2713,30 +2845,22 @@
                 setTimeout(() => {
                     currentActive.classList.remove('active');
                     
-                    // Mostrar nueva sección
                     sectionToShow.classList.add('active');
-                    // Forzar reflow para activar la transición
                     void sectionToShow.offsetWidth;
                     sectionToShow.style.opacity = '1';
                     sectionToShow.style.transform = 'translateY(0)';
                     
-                    // Actualizar navegación
                     updateNavigation(sectionToShow.id);
-                    
-                    // Actualizar banner
                     updateBannerBasedOnSection(sectionToShow.id);
                     
-                    // Scroll al inicio
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                     
-                    // Permitir nueva transición
                     setTimeout(() => {
                         isTransitioning = false;
                     }, 50);
                     
                 }, 300);
             } else {
-                // Primera carga
                 sectionToShow.classList.add('active');
                 sectionToShow.style.opacity = '1';
                 sectionToShow.style.transform = 'translateY(0)';
@@ -2768,7 +2892,7 @@
             }
         }
 
-        // Event Listeners
+        // EVENT LISTENERS
         playPauseBtn.addEventListener('click', playPause);
         prevBtn.addEventListener('click', prevTrack);
         nextBtn.addEventListener('click', nextTrack);
@@ -2780,7 +2904,7 @@
         likeBtn.addEventListener('click', toggleLike);
         shareBtn.addEventListener('click', shareTrack);
         
-        // CAMBIO: Event listeners mejorados para navegación
+        // NAVEGACIÓN
         homeNav.addEventListener('click', () => {
             if (!isTransitioning) showSection(homeSection);
         });
@@ -2791,7 +2915,16 @@
             if (!isTransitioning) showSection(storeSection);
         });
 
-        // Event listener para el scroll con throttling
+        // BIO MODAL
+        readMore.addEventListener('click', openBioModal);
+        closeBioModal.addEventListener('click', closeBioModalFunc);
+        bioModal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeBioModalFunc();
+            }
+        });
+
+        // SCROLL CON THROTTLING
         let scrollTimeout;
         window.addEventListener('scroll', function() {
             if (!scrollTimeout) {
@@ -2802,13 +2935,28 @@
             }
         });
 
+        // CERRAR MODALES CON ESCAPE
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                if (bioModal.classList.contains('active')) {
+                    closeBioModalFunc();
+                }
+                // Cerrar modales de álbumes
+                document.querySelectorAll('.album-details-overlay.active').forEach(overlay => {
+                    const albumId = overlay.id.replace('-overlay', '');
+                    closeAlbumModal(albumId);
+                });
+            }
+        });
+
+        // MANEJO DE VISIBILIDAD DE LA PÁGINA
         document.addEventListener('visibilitychange', function() {
             if (document.hidden) {
                 if (isPlaying) audio.pause();
             }
         });
 
-        // Precarga de tracks
+        // PRECARGA DE TRACKS
         tracks.forEach((track, index) => {
             if (index !== currentTrackIndex) {
                 const preloadAudio = new Audio();
@@ -2817,8 +2965,31 @@
             }
         });
 
-        // Inicializar el banner (solo en home)
+        // CERRAR MODALES DE ÁLBUMES AL HACER CLICK FUERA
+        document.querySelectorAll('.album-details-overlay').forEach(overlay => {
+            overlay.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    const albumId = this.id.replace('-overlay', '');
+                    closeAlbumModal(albumId);
+                }
+            });
+        });
+
+        // INICIALIZACIÓN
+        audio.preload = 'metadata';
+        loadTrack(currentTrackIndex);
         updateBannerForSection('home');
+
+        // FORZAR CARGA DEL BANNER
+        setTimeout(() => {
+            fadingBanner.style.backgroundImage = `linear-gradient(to bottom, 
+                rgba(0,0,0,0.3) 0%, 
+                rgba(0,0,0,0.2) 30%, 
+                rgba(0,0,0,0.1) 60%, 
+                rgba(0,0,0,0.05) 80%, 
+                rgba(0,0,0,0) 100%),
+                url('https://image2url.com/images/1764398925959-0ac36ca7-3ed4-4585-8843-b7cec2422e39.png')`;
+        }, 100);
     </script>
 </body>
 </html>
