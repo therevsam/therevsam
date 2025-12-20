@@ -261,7 +261,7 @@
         .avatar-container {
             position: relative;
             width: 100%;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -283,23 +283,35 @@
             -ms-user-select: none;
         }
 
+        /* NOMBRE Y TÍTULO AÑADIDO */
         .name {
             font-family: 'Cormorant Garamond', serif;
             font-size: 2rem;
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.2rem;
             letter-spacing: 0.5px;
             text-align: center;
             color: #ffffff;
         }
 
+        .title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            text-align: center;
+            color: #cccccc;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+            opacity: 0.9;
+        }
+
         /* BIO CORREGIDA - MÁS PEQUEÑA, SIN FONDO, SIN PUNTEO, FUENTE CORRECTA */
         .bio {
-            font-family: 'Cormorant Garamond', serif; /* MISMA FUENTE QUE LA CITA */
-            font-size: 1.1rem; /* MÁS PEQUEÑA QUE ANTES */
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
             margin-bottom: 0.3rem;
             opacity: 0.9;
-            font-style: italic; /* ITÁLICA COMO LA CITA */
+            font-style: italic;
             line-height: 1.4;
             text-align: center;
             color: #e0e0e0;
@@ -308,7 +320,7 @@
             transition: color 0.3s ease;
             padding: 0;
             border-radius: 0;
-            background: transparent !important; /* SIN FONDO NEGRO */
+            background: transparent !important;
         }
 
         .bio:hover {
@@ -317,13 +329,13 @@
 
         .read-more {
             display: inline-block;
-            font-family: 'Inter', sans-serif; /* FUENTE SIMPLE */
+            font-family: 'Inter', sans-serif;
             font-size: 0.9rem;
-            color: #ffffff !important; /* COLOR BLANCO */
-            font-weight: 400; /* NORMAL, NO BOLD */
+            color: #ffffff !important;
+            font-weight: 400;
             margin-left: 0.3rem;
-            text-decoration: none; /* SIN SUBRAYADO */
-            border-bottom: none !important; /* SIN PUNTEO */
+            text-decoration: none;
+            border-bottom: none !important;
             transition: opacity 0.3s ease;
             background: transparent !important;
             cursor: pointer;
@@ -864,63 +876,7 @@
             margin-left: 0;
         }
 
-        /* FINAL BUTTONS UNIFICADOS - SIN BANDLAB NI VAMPR */
-        .final-buttons {
-            display: flex;
-            gap: 1rem;
-            width: 100%;
-            margin-bottom: 1.5rem;
-        }
-
-        .email-btn, .linktree-btn {
-            display: flex;
-            align-items: center;
-            position: relative;
-            color: white;
-            padding: 1.2rem 1.5rem;
-            text-decoration: none;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            font-size: 0.85rem;
-            overflow: hidden;
-            min-height: 58px;
-            flex: 1;
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            -webkit-tap-highlight-color: transparent;
-            background: #111111;
-            border: 1px solid #333333;
-        }
-
-        .email-btn:hover, .linktree-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-            background: #1a1a1a;
-            border-color: #444444;
-        }
-
-        .final-buttons .platform-logo {
-            width: 24px;
-            height: 24px;
-            position: absolute;
-            left: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            filter: grayscale(100%) brightness(2);
-        }
-
-        .email-text, .linktree-text {
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            z-index: 2;
-            font-size: 0.85rem;
-            text-align: center;
-            flex: 1;
-            padding: 0 0.5rem;
-            margin-left: 12px;
-            color: #ffffff;
-        }
-
+        /* CORRECCIÓN: FINAL BUTTONS ELIMINADO - EL BOTÓN LINKTREE SE MUEVE AL SOCIAL-BUTTONS */
         .copyright {
             font-family: 'Inter', sans-serif;
             font-size: 0.75rem;
@@ -1629,9 +1585,13 @@
             .name {
                 font-size: 1.8rem;
             }
+
+            .title {
+                font-size: 0.9rem;
+            }
             
             .bio {
-                font-size: 1rem; /* MÁS PEQUEÑA EN MÓVIL */
+                font-size: 1rem;
                 margin-bottom: 1.5rem;
             }
             
@@ -1837,7 +1797,9 @@
                      loading="eager">
             </div>
             
+            <!-- NOMBRE Y TÍTULO AÑADIDO -->
             <h1 class="name">Sam the Revenant</h1>
+            <div class="title">Pianist & Composer</div>
             
             <!-- BIO CON "MORE" - CORREGIDA -->
             <p class="bio" id="bio">
@@ -2003,15 +1965,14 @@
                          class="social-logo">
                     <span class="social-text">Email</span>
                 </a>
-            </div>
 
-            <!-- FINAL BUTTONS UNIFICADOS - SIN BANDLAB NI VAMPR -->
-            <div class="final-buttons">
-                <a href="https://linktr.ee/therevsam" class="linktree-btn" target="_blank">
+                <!-- CORRECCIÓN: LinkTree ahora está dentro de social-buttons -->
+                <!-- LinkTree -->
+                <a href="https://linktr.ee/therevsam" class="social-btn" target="_blank">
                     <img src="https://i.pinimg.com/736x/6a/51/07/6a5107cccb272aa7fbbb322d1d1b66da.jpg" 
                          alt="LinkTree" 
-                         class="platform-logo">
-                    <span class="linktree-text">LinkTree</span>
+                         class="social-logo">
+                    <span class="social-text">LinkTree</span>
                 </a>
             </div>
 
