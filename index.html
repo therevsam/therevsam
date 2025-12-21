@@ -1008,6 +1008,7 @@
             opacity: 1;
         }
 
+        /* NUEVO: BOTÓN DE PLAYLIST MEJORADO */
         .playlist-section {
             margin-bottom: 2.5rem;
         }
@@ -1033,13 +1034,134 @@
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
         }
 
-        .playlist-grid {
+        /* NUEVO: BOTÓN DE COLECCIÓN ÚNICO */
+        .collection-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+            background: #111111;
+            border: 1px solid #333333;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+
+        .collection-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+            background: #1a1a1a;
+            border-color: #444444;
+        }
+
+        .collection-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .collection-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            opacity: 0.7;
+            text-align: center;
+            color: #cccccc;
+        }
+
+        /* NUEVO: MODAL DE PLAYLISTS */
+        .playlists-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2001;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            padding: 1rem;
+        }
+
+        .playlists-modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .playlists-modal {
+            background: #111111;
+            border: 1px solid #333333;
+            border-radius: 20px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+        }
+
+        .playlists-modal-overlay.active .playlists-modal {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .playlists-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #333333;
+        }
+
+        .playlists-modal-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: #ffffff;
+        }
+
+        .close-playlists-modal {
+            background: none;
+            border: none;
+            color: #cccccc;
+            cursor: pointer;
+            padding: 0.5rem;
+            font-size: 1.8rem;
+            line-height: 1;
+            transition: color 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+
+        .close-playlists-modal:hover {
+            color: #ffffff;
+            background: #222222;
+        }
+
+        .playlists-grid {
             display: flex;
             flex-direction: column;
             gap: 1rem;
         }
 
-        .playlist-card {
+        .playlist-modal-card {
             display: flex;
             align-items: center;
             padding: 1.2rem;
@@ -1054,14 +1176,14 @@
             border: 1px solid #333333;
         }
 
-        .playlist-card:hover {
+        .playlist-modal-card:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
             background: #1a1a1a;
             border-color: #444444;
         }
 
-        .playlist-logo {
+        .playlist-modal-logo {
             width: 40px;
             height: 40px;
             object-fit: contain;
@@ -1070,11 +1192,11 @@
             border-radius: 8px;
         }
 
-        .playlist-info {
+        .playlist-modal-info {
             flex: 1;
         }
 
-        .playlist-name {
+        .playlist-modal-name {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1rem;
             margin-bottom: 0.2rem;
@@ -1082,14 +1204,14 @@
             color: #ffffff;
         }
 
-        .playlist-platform {
+        .playlist-modal-platform {
             font-family: 'Inter', sans-serif;
             font-size: 0.75rem;
             opacity: 0.7;
             color: #cccccc;
         }
 
-        .playlist-arrow {
+        .playlist-modal-arrow {
             width: 20px;
             height: 20px;
             opacity: 0.7;
@@ -1097,7 +1219,7 @@
             color: #ffffff;
         }
 
-        .playlist-card:hover .playlist-arrow {
+        .playlist-modal-card:hover .playlist-modal-arrow {
             opacity: 1;
         }
 
@@ -1417,6 +1539,8 @@
             font-weight: 500;
         }
 
+        /* NUEVO: NAVEGACIÓN ADAPTATIVA */
+        /* Barra de navegación para móviles (posición inferior) */
         .bottom-nav {
             position: fixed;
             bottom: 1.5rem;
@@ -1431,6 +1555,25 @@
             border: 1px solid #333333;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(10px);
+        }
+
+        /* Barra de navegación para pantallas anchas (posición lateral derecha) */
+        .side-nav {
+            position: fixed;
+            top: 50%;
+            right: 2rem;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            z-index: 1000;
+            padding: 1.5rem 0.8rem;
+            border-radius: 16px;
+            background: #111111;
+            border: 1px solid #333333;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            display: none; /* Oculto por defecto, se muestra en media queries */
         }
 
         .nav-button {
@@ -1486,6 +1629,7 @@
             transform: translateX(-50%) translateY(0);
         }
 
+        /* MEDIA QUERIES PARA NAVEGACIÓN ADAPTATIVA */
         @media (max-width: 768px) {
             .bottom-nav {
                 padding: 0.7rem 1.3rem;
@@ -1563,6 +1707,21 @@
 
             .fading-banner {
                 height: 300px;
+            }
+        }
+
+        @media (min-width: 769px) {
+            /* Para tablets y pantallas más anchas: navegación lateral */
+            .bottom-nav {
+                display: none;
+            }
+            
+            .side-nav {
+                display: flex;
+            }
+            
+            .main-container {
+                margin-right: 5rem; /* Espacio para la navegación lateral */
             }
         }
 
@@ -1746,6 +1905,15 @@
             .fading-banner {
                 height: 400px;
             }
+            
+            /* Más espacio para la navegación lateral en pantallas grandes */
+            .side-nav {
+                right: 3rem;
+            }
+            
+            .main-container {
+                margin-right: 7rem;
+            }
         }
 
         /* Media query para formato 4:5 en móviles */
@@ -1778,6 +1946,137 @@
                 <p>I've played piano for as long as I can remember, long enough for it to become the language I trust the most. My compositions explore stillness, tension, and the quiet truths that only music can say without asking permission. Every piece is a conversation I never had, but needed to.</p>
                 
                 <p>Sam the Revenant is the name I chose for the version of me that survives in my music — disciplined, detached from noise, and driven by the need to create something that lasts. I don't write to impress; I write to reveal. Every melody carries its own pulse, its own shadow, and its own reason to exist.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- NUEVO: MODAL DE PLAYLISTS -->
+    <div class="playlists-modal-overlay" id="playlistsModal">
+        <div class="playlists-modal">
+            <div class="playlists-modal-header">
+                <h3 class="playlists-modal-title">Sam the Revenant Collection</h3>
+                <button class="close-playlists-modal" id="closePlaylistsModal">×</button>
+            </div>
+            <div class="playlists-grid">
+                <!-- Spotify -->
+                <a href="https://open.spotify.com/playlist/0XYS21NjKw1WlzW0Opu8bG?si=S8prhdvfTWm0_KPzWT42PA" class="playlist-modal-card" target="_blank">
+                    <img src="https://i.pinimg.com/1200x/e6/55/bf/e655bff3217dd6f575a275604b0ff7e1.jpg" 
+                         alt="Spotify" 
+                         class="playlist-modal-logo"
+                         loading="lazy">
+                    <div class="playlist-modal-info">
+                        <div class="playlist-modal-name">Sam the Revenant Collection</div>
+                        <div class="playlist-modal-platform">Spotify Playlist</div>
+                    </div>
+                    <svg class="playlist-modal-arrow" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                    </svg>
+                </a>
+
+                <!-- Apple Music -->
+                <a href="https://music.apple.com/hn/playlist/sam-the-revenant-collection/pl.u-Ymb0vdyFDjeLLEb?ls" class="playlist-modal-card" target="_blank">
+                    <img src="https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg" 
+                         alt="Apple Music" 
+                         class="playlist-modal-logo"
+                         loading="lazy">
+                    <div class="playlist-modal-info">
+                        <div class="playlist-modal-name">Sam the Revenant Collection</div>
+                        <div class="playlist-modal-platform">Apple Music Playlist</div>
+                    </div>
+                    <svg class="playlist-modal-arrow" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                    </svg>
+                </a>
+
+                <!-- Deezer -->
+                <a href="https://link.deezer.com/s/31NpCDLsHDAngyDhLnRTg" class="playlist-modal-card" target="_blank">
+                    <img src="https://i.pinimg.com/736x/1b/f9/33/1bf93302bd924479b90f47a0df2134cd.jpg" 
+                         alt="Deezer" 
+                         class="playlist-modal-logo"
+                         loading="lazy">
+                    <div class="playlist-modal-info">
+                        <div class="playlist-modal-name">Sam the Revenant Collection</div>
+                        <div class="playlist-modal-platform">Deezer Playlist</div>
+                    </div>
+                    <svg class="playlist-modal-arrow" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                    </svg>
+                </a>
+
+                <!-- Tidal -->
+                <a href="https://tidal.com/playlist/82304d6b-e154-4ecc-a4bb-de5de1c2a891" class="playlist-modal-card" target="_blank">
+                    <img src="https://i.pinimg.com/736x/94/9c/01/949c014c813bc031520d82af3905a4f0.jpg" 
+                         alt="Tidal" 
+                         class="playlist-modal-logo"
+                         loading="lazy">
+                    <div class="playlist-modal-info">
+                        <div class="playlist-modal-name">Sam the Revenant Collection</div>
+                        <div class="playlist-modal-platform">Tidal Playlist</div>
+                    </div>
+                    <svg class="playlist-modal-arrow" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                    </svg>
+                </a>
+
+                <!-- YouTube Music -->
+                <a href="https://music.youtube.com/playlist?list=PLxczVDZlfe7gNwqRiqsFLRCtU9mSigZrS&si=nK1tavQKwRLAlLWR" class="playlist-modal-card" target="_blank">
+                    <img src="https://i.pinimg.com/1200x/73/6d/0c/736d0c2aac22b1c37a6ce0ee1a52277f.jpg" 
+                         alt="YouTube Music" 
+                         class="playlist-modal-logo"
+                         loading="lazy">
+                    <div class="playlist-modal-info">
+                        <div class="playlist-modal-name">Sam the Revenant Collection</div>
+                        <div class="playlist-modal-platform">YouTube Music Playlist</div>
+                    </div>
+                    <svg class="playlist-modal-arrow" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                    </svg>
+                </a>
+
+                <!-- YouTube -->
+                <a href="https://youtube.com/playlist?list=PLxczVDZlfe7gNwqRiqsFLRCtU9mSigZrS&si=6Fv6NIcwc7kzuyb0" class="playlist-modal-card" target="_blank">
+                    <img src="https://i.pinimg.com/736x/7a/5d/56/7a5d56c5e22d6fed8d72eeb70329f5f5.jpg" 
+                         alt="YouTube" 
+                         class="playlist-modal-logo"
+                         loading="lazy">
+                    <div class="playlist-modal-info">
+                        <div class="playlist-modal-name">Sam the Revenant Collection</div>
+                        <div class="playlist-modal-platform">YouTube Playlist</div>
+                    </div>
+                    <svg class="playlist-modal-arrow" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                    </svg>
+                </a>
+
+                <!-- SoundCloud -->
+                <a href="https://on.soundcloud.com/Bfh65Er1vC6TNGfHT6" class="playlist-modal-card" target="_blank">
+                    <img src="https://i.pinimg.com/1200x/81/9d/35/819d35d67997e972a5542b5ba49d577b.jpg" 
+                         alt="SoundCloud" 
+                         class="playlist-modal-logo"
+                         loading="lazy">
+                    <div class="playlist-modal-info">
+                        <div class="playlist-modal-name">Sam the Revenant Collection</div>
+                        <div class="playlist-modal-platform">SoundCloud Playlist</div>
+                    </div>
+                    <svg class="playlist-modal-arrow" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                    </svg>
+                </a>
+
+                <!-- Audiomack -->
+                <a href="https://audiomack.com/therevsam/playlist/64080268" class="playlist-modal-card" target="_blank">
+                    <img src="https://i.pinimg.com/1200x/f6/36/b6/f636b60899bb4ec359b6e4aadecce904.jpg" 
+                         alt="Audiomack" 
+                         class="playlist-modal-logo"
+                         loading="lazy">
+                    <div class="playlist-modal-info">
+                        <div class="playlist-modal-name">Sam the Revenant Collection</div>
+                        <div class="playlist-modal-platform">Audiomack Playlist</div>
+                    </div>
+                    <svg class="playlist-modal-arrow" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                    </svg>
+                </a>
             </div>
         </div>
     </div>
@@ -1966,7 +2265,6 @@
                     <span class="social-text">Email</span>
                 </a>
 
-                <!-- CORRECCIÓN: LinkTree ahora está dentro de social-buttons -->
                 <!-- LinkTree -->
                 <a href="https://linktr.ee/therevsam" class="social-btn" target="_blank">
                     <img src="https://i.pinimg.com/736x/6a/51/07/6a5107cccb272aa7fbbb322d1d1b66da.jpg" 
@@ -2159,7 +2457,7 @@
                     </div>
                 </div>
 
-                <!-- PLAYLISTS CON APPLE MUSIC AÑADIDO -->
+                <!-- NUEVO: BOTÓN ÚNICO DE COLECCIÓN -->
                 <div class="playlist-section">
                     <div class="section-divider">
                         <div class="divider-line"></div>
@@ -2173,126 +2471,10 @@
                          class="playlist-cover"
                          loading="lazy">
                     
-                    <div class="playlist-grid">
-                        <!-- Spotify -->
-                        <a href="https://open.spotify.com/playlist/0XYS21NjKw1WlzW0Opu8bG?si=S8prhdvfTWm0_KPzWT42PA" class="playlist-card" target="_blank">
-                            <img src="https://i.pinimg.com/1200x/e6/55/bf/e655bff3217dd6f575a275604b0ff7e1.jpg" 
-                                 alt="Spotify" 
-                                 class="playlist-logo"
-                                 loading="lazy">
-                            <div class="playlist-info">
-                                <div class="playlist-name">Sam the Revenant Collection</div>
-                                <div class="playlist-platform">Spotify Playlist</div>
-                            </div>
-                            <svg class="playlist-arrow" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                            </svg>
-                        </a>
-
-                        <!-- Apple Music (NUEVO) -->
-                        <a href="https://music.apple.com/hn/playlist/sam-the-revenant-collection/pl.u-Ymb0vdyFDjeLLEb?ls" class="playlist-card" target="_blank">
-                            <img src="https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg" 
-                                 alt="Apple Music" 
-                                 class="playlist-logo"
-                                 loading="lazy">
-                            <div class="playlist-info">
-                                <div class="playlist-name">Sam the Revenant Collection</div>
-                                <div class="playlist-platform">Apple Music Playlist</div>
-                            </div>
-                            <svg class="playlist-arrow" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                            </svg>
-                        </a>
-
-                        <!-- Deezer -->
-                        <a href="https://link.deezer.com/s/31NpCDLsHDAngyDhLnRTg" class="playlist-card" target="_blank">
-                            <img src="https://i.pinimg.com/736x/1b/f9/33/1bf93302bd924479b90f47a0df2134cd.jpg" 
-                                 alt="Deezer" 
-                                 class="playlist-logo"
-                                 loading="lazy">
-                            <div class="playlist-info">
-                                <div class="playlist-name">Sam the Revenant Collection</div>
-                                <div class="playlist-platform">Deezer Playlist</div>
-                            </div>
-                            <svg class="playlist-arrow" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                            </svg>
-                        </a>
-
-                        <!-- Tidal -->
-                        <a href="https://tidal.com/playlist/82304d6b-e154-4ecc-a4bb-de5de1c2a891" class="playlist-card" target="_blank">
-                            <img src="https://i.pinimg.com/736x/94/9c/01/949c014c813bc031520d82af3905a4f0.jpg" 
-                                 alt="Tidal" 
-                                 class="playlist-logo"
-                                 loading="lazy">
-                            <div class="playlist-info">
-                                <div class="playlist-name">Sam the Revenant Collection</div>
-                                <div class="playlist-platform">Tidal Playlist</div>
-                            </div>
-                            <svg class="playlist-arrow" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                            </svg>
-                        </a>
-
-                        <!-- YouTube Music -->
-                        <a href="https://music.youtube.com/playlist?list=PLxczVDZlfe7gNwqRiqsFLRCtU9mSigZrS&si=nK1tavQKwRLAlLWR" class="playlist-card" target="_blank">
-                            <img src="https://i.pinimg.com/1200x/73/6d/0c/736d0c2aac22b1c37a6ce0ee1a52277f.jpg" 
-                                 alt="YouTube Music" 
-                                 class="playlist-logo"
-                                 loading="lazy">
-                            <div class="playlist-info">
-                                <div class="playlist-name">Sam the Revenant Collection</div>
-                                <div class="playlist-platform">YouTube Music Playlist</div>
-                            </div>
-                            <svg class="playlist-arrow" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                            </svg>
-                        </a>
-
-                        <!-- YouTube -->
-                        <a href="https://youtube.com/playlist?list=PLxczVDZlfe7gNwqRiqsFLRCtU9mSigZrS&si=6Fv6NIcwc7kzuyb0" class="playlist-card" target="_blank">
-                            <img src="https://i.pinimg.com/736x/7a/5d/56/7a5d56c5e22d6fed8d72eeb70329f5f5.jpg" 
-                                 alt="YouTube" 
-                                 class="playlist-logo"
-                                 loading="lazy">
-                            <div class="playlist-info">
-                                <div class="playlist-name">Sam the Revenant Collection</div>
-                                <div class="playlist-platform">YouTube Playlist</div>
-                            </div>
-                            <svg class="playlist-arrow" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                            </svg>
-                        </a>
-
-                        <!-- SoundCloud -->
-                        <a href="https://on.soundcloud.com/Bfh65Er1vC6TNGfHT6" class="playlist-card" target="_blank">
-                            <img src="https://i.pinimg.com/1200x/81/9d/35/819d35d67997e972a5542b5ba49d577b.jpg" 
-                                 alt="SoundCloud" 
-                                 class="playlist-logo"
-                                 loading="lazy">
-                            <div class="playlist-info">
-                                <div class="playlist-name">Sam the Revenant Collection</div>
-                                <div class="playlist-platform">SoundCloud Playlist</div>
-                            </div>
-                            <svg class="playlist-arrow" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                            </svg>
-                        </a>
-
-                        <!-- Audiomack -->
-                        <a href="https://audiomack.com/therevsam/playlist/64080268" class="playlist-card" target="_blank">
-                            <img src="https://i.pinimg.com/1200x/f6/36/b6/f636b60899bb4ec359b6e4aadecce904.jpg" 
-                                 alt="Audiomack" 
-                                 class="playlist-logo"
-                                 loading="lazy">
-                            <div class="playlist-info">
-                                <div class="playlist-name">Sam the Revenant Collection</div>
-                                <div class="playlist-platform">Audiomack Playlist</div>
-                            </div>
-                            <svg class="playlist-arrow" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                            </svg>
-                        </a>
+                    <!-- NUEVO: BOTÓN ÚNICO QUE ABRE EL MODAL -->
+                    <div class="collection-btn" id="openPlaylistsModal">
+                        <h3 class="collection-title">Sam the Revenant Collection</h3>
+                        <p class="collection-subtitle">View all playlists</p>
                     </div>
                 </div>
 
@@ -2512,6 +2694,29 @@
         </div>
     </div>
 
+    <!-- NUEVA: BARRA DE NAVEGACIÓN LATERAL PARA PANTALLAS ANCHAS -->
+    <div class="side-nav">
+        <div class="nav-button active" id="side-home-nav">
+            <img src="https://image2url.com/images/1764081504690-58bf4fad-eed8-4ee3-b8cf-b8de57126838.png" 
+                 alt="Links" 
+                 class="nav-icon"
+                 loading="eager">
+        </div>
+        <div class="nav-button" id="side-melodies-nav">
+            <img src="https://image2url.com/images/1764081290983-d5a8b4e4-8cde-4914-9d8d-d44c6751bf98.png" 
+                 alt="Discography" 
+                 class="nav-icon"
+                 loading="lazy">
+        </div>
+        <div class="nav-button" id="side-store-nav">
+            <img src="https://image2url.com/images/1764081531272-bb9bbd9a-b07b-4de8-a662-1cd8a5bbab02.png" 
+                 alt="Store" 
+                 class="nav-icon"
+                 loading="lazy">
+        </div>
+    </div>
+
+    <!-- BARRA DE NAVEGACIÓN INFERIOR PARA MÓVILES -->
     <div class="bottom-nav">
         <div class="nav-button active" id="home-nav">
             <img src="https://image2url.com/images/1764081504690-58bf4fad-eed8-4ee3-b8cf-b8de57126838.png" 
@@ -2592,11 +2797,17 @@
         const homeNav = document.getElementById('home-nav');
         const melodiesNav = document.getElementById('melodies-nav');
         const storeNav = document.getElementById('store-nav');
+        const sideHomeNav = document.getElementById('side-home-nav');
+        const sideMelodiesNav = document.getElementById('side-melodies-nav');
+        const sideStoreNav = document.getElementById('side-store-nav');
         const fadingBanner = document.getElementById('fadingBanner');
         const bio = document.getElementById('bio');
         const readMore = document.getElementById('readMore');
         const bioModal = document.getElementById('bioModal');
         const closeBioModal = document.getElementById('closeBioModal');
+        const openPlaylistsModalBtn = document.getElementById('openPlaylistsModal');
+        const playlistsModal = document.getElementById('playlistsModal');
+        const closePlaylistsModal = document.getElementById('closePlaylistsModal');
 
         // VARIABLES GLOBALES
         let currentTrackIndex = 0;
@@ -2613,6 +2824,17 @@
 
         function closeBioModalFunc() {
             bioModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // FUNCIONES PARA EL MODAL DE PLAYLISTS
+        function openPlaylistsModal() {
+            playlistsModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePlaylistsModalFunc() {
+            playlistsModal.classList.remove('active');
             document.body.style.overflow = 'auto';
         }
 
@@ -2832,16 +3054,20 @@
         }
 
         function updateNavigation(sectionId) {
+            // Actualizar ambas barras de navegación
             document.querySelectorAll('.nav-button').forEach(button => {
                 button.classList.remove('active');
             });
             
             if (sectionId === 'home-section') {
                 homeNav.classList.add('active');
+                sideHomeNav.classList.add('active');
             } else if (sectionId === 'melodies-section') {
                 melodiesNav.classList.add('active');
+                sideMelodiesNav.classList.add('active');
             } else if (sectionId === 'store-section') {
                 storeNav.classList.add('active');
+                sideStoreNav.classList.add('active');
             }
         }
 
@@ -2876,12 +3102,32 @@
             if (!isTransitioning) showSection(storeSection);
         });
 
+        // NAVEGACIÓN LATERAL
+        sideHomeNav.addEventListener('click', () => {
+            if (!isTransitioning) showSection(homeSection);
+        });
+        sideMelodiesNav.addEventListener('click', () => {
+            if (!isTransitioning) showSection(melodiesSection);
+        });
+        sideStoreNav.addEventListener('click', () => {
+            if (!isTransitioning) showSection(storeSection);
+        });
+
         // BIO MODAL
         readMore.addEventListener('click', openBioModal);
         closeBioModal.addEventListener('click', closeBioModalFunc);
         bioModal.addEventListener('click', function(e) {
             if (e.target === this) {
                 closeBioModalFunc();
+            }
+        });
+
+        // PLAYLISTS MODAL
+        openPlaylistsModalBtn.addEventListener('click', openPlaylistsModal);
+        closePlaylistsModal.addEventListener('click', closePlaylistsModalFunc);
+        playlistsModal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePlaylistsModalFunc();
             }
         });
 
@@ -2901,6 +3147,9 @@
             if (e.key === 'Escape') {
                 if (bioModal.classList.contains('active')) {
                     closeBioModalFunc();
+                }
+                if (playlistsModal.classList.contains('active')) {
+                    closePlaylistsModalFunc();
                 }
                 // Cerrar modales de álbumes
                 document.querySelectorAll('.album-details-overlay.active').forEach(overlay => {
