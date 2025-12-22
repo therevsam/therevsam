@@ -150,27 +150,44 @@
             -webkit-backface-visibility: hidden;
         }
 
-        /* MODAL DE BIO MEJORADO */
+        /* MODAL DE BIO MEJORADO - CON BLUR Y ANIMACIONES FLUIDAS */
         .bio-modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(15px) brightness(0.6);
+            -webkit-backdrop-filter: blur(15px) brightness(0.6);
             display: none;
             align-items: center;
             justify-content: center;
             z-index: 2000;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             padding: 1rem;
+            pointer-events: none;
         }
 
         .bio-modal-overlay.active {
             display: flex;
             opacity: 1;
+            pointer-events: all;
+            animation: blurIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes blurIn {
+            0% {
+                backdrop-filter: blur(0px) brightness(1);
+                -webkit-backdrop-filter: blur(0px) brightness(1);
+                background: rgba(0, 0, 0, 0);
+            }
+            100% {
+                backdrop-filter: blur(15px) brightness(0.6);
+                -webkit-backdrop-filter: blur(15px) brightness(0.6);
+                background: rgba(0, 0, 0, 0.7);
+            }
         }
 
         .bio-modal {
@@ -182,15 +199,31 @@
             max-width: 500px;
             max-height: 80vh;
             overflow-y: auto;
-            transform: translateY(20px);
+            transform: translateY(30px) scale(0.95);
             opacity: 0;
-            transition: all 0.3s ease;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
         }
 
         .bio-modal-overlay.active .bio-modal {
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
             opacity: 1;
+            animation: modalSlideIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        @keyframes modalSlideIn {
+            0% {
+                transform: translateY(30px) scale(0.95);
+                opacity: 0;
+            }
+            70% {
+                transform: translateY(-5px) scale(1.02);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
         }
 
         .bio-modal-header {
@@ -200,6 +233,16 @@
             margin-bottom: 1.5rem;
             padding-bottom: 1rem;
             border-bottom: 1px solid #333333;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 0.5s ease 0.2s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         .bio-modal-title {
@@ -216,7 +259,7 @@
             padding: 0.5rem;
             font-size: 1.8rem;
             line-height: 1;
-            transition: color 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             width: 40px;
             height: 40px;
             display: flex;
@@ -228,6 +271,7 @@
         .close-bio-modal:hover {
             color: #ffffff;
             background: #222222;
+            transform: rotate(90deg);
         }
 
         .bio-modal-content {
@@ -243,9 +287,21 @@
 
         .bio-modal-content p {
             margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
         }
 
-        .bio-modal-content p:last-child {
+        .bio-modal-content p:nth-child(1) {
+            animation-delay: 0.3s;
+        }
+
+        .bio-modal-content p:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .bio-modal-content p:nth-child(3) {
+            animation-delay: 0.7s;
             margin-bottom: 0;
         }
 
@@ -1042,7 +1098,7 @@
             justify-content: center;
             padding: 2rem;
             border-radius: 16px;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
             color: white;
             background: #111111;
@@ -1075,27 +1131,31 @@
             color: #cccccc;
         }
 
-        /* NUEVO: MODAL DE PLAYLISTS */
+        /* NUEVO: MODAL DE PLAYLISTS CON MISMAS ANIMACIONES */
         .playlists-modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(15px) brightness(0.6);
+            -webkit-backdrop-filter: blur(15px) brightness(0.6);
             display: none;
             align-items: center;
             justify-content: center;
             z-index: 2001;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             padding: 1rem;
+            pointer-events: none;
         }
 
         .playlists-modal-overlay.active {
             display: flex;
             opacity: 1;
+            pointer-events: all;
+            animation: blurIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
 
         .playlists-modal {
@@ -1107,15 +1167,16 @@
             max-width: 500px;
             max-height: 80vh;
             overflow-y: auto;
-            transform: translateY(20px);
+            transform: translateY(30px) scale(0.95);
             opacity: 0;
-            transition: all 0.3s ease;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
         }
 
         .playlists-modal-overlay.active .playlists-modal {
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
             opacity: 1;
+            animation: modalSlideIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
         }
 
         .playlists-modal-header {
@@ -1125,6 +1186,9 @@
             margin-bottom: 1.5rem;
             padding-bottom: 1rem;
             border-bottom: 1px solid #333333;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 0.5s ease 0.2s forwards;
         }
 
         .playlists-modal-title {
@@ -1141,7 +1205,7 @@
             padding: 0.5rem;
             font-size: 1.8rem;
             line-height: 1;
-            transition: color 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             width: 40px;
             height: 40px;
             display: flex;
@@ -1153,6 +1217,7 @@
         .close-playlists-modal:hover {
             color: #ffffff;
             background: #222222;
+            transform: rotate(90deg);
         }
 
         .playlists-grid {
@@ -1166,7 +1231,7 @@
             align-items: center;
             padding: 1.2rem;
             border-radius: 12px;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
             color: white;
             position: relative;
@@ -1174,10 +1239,29 @@
             -webkit-tap-highlight-color: transparent;
             background: #111111;
             border: 1px solid #333333;
+            transform: translateX(20px);
+            opacity: 0;
+            animation: slideInRight 0.5s ease forwards;
         }
 
+        @keyframes slideInRight {
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .playlist-modal-card:nth-child(1) { animation-delay: 0.3s; }
+        .playlist-modal-card:nth-child(2) { animation-delay: 0.4s; }
+        .playlist-modal-card:nth-child(3) { animation-delay: 0.5s; }
+        .playlist-modal-card:nth-child(4) { animation-delay: 0.6s; }
+        .playlist-modal-card:nth-child(5) { animation-delay: 0.7s; }
+        .playlist-modal-card:nth-child(6) { animation-delay: 0.8s; }
+        .playlist-modal-card:nth-child(7) { animation-delay: 0.9s; }
+        .playlist-modal-card:nth-child(8) { animation-delay: 1.0s; }
+
         .playlist-modal-card:hover {
-            transform: translateY(-2px);
+            transform: translateY(-2px) translateX(0);
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
             background: #1a1a1a;
             border-color: #444444;
@@ -1223,7 +1307,7 @@
             opacity: 1;
         }
 
-        /* SECCIÓN DE TIENDA */
+        /* SECCIÓN DE TIENDA CON ANIMACIONES MEJORADAS */
         .store-section {
             padding-bottom: 5rem;
         }
@@ -1260,7 +1344,7 @@
             border: 1px solid #333333;
             border-radius: 16px;
             overflow: hidden;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
         }
 
@@ -1338,31 +1422,21 @@
             padding: 1.5rem;
             background: #0a0a0a;
             position: relative;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
         }
 
-        .album-details-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 2;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            backdrop-filter: blur(5px);
-        }
-
-        .album-details-overlay.active {
-            display: flex;
-            opacity: 1;
+        .album-card.expanded .album-details {
+            padding-bottom: 2.5rem;
         }
 
         .tracklist {
             margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .album-card.expanded .tracklist {
+            margin-bottom: 2rem;
         }
 
         .tracklist-title {
@@ -1402,6 +1476,7 @@
             margin-left: 1rem;
         }
 
+        /* BOTÓN DE COMPRA MEJORADO */
         .purchase-btn {
             display: flex;
             align-items: center;
@@ -1417,7 +1492,9 @@
             font-size: 0.95rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
         }
 
         .purchase-btn.soon {
@@ -1443,100 +1520,94 @@
         .purchase-icon {
             width: 18px;
             height: 18px;
-            transition: transform 0.2s ease;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .purchase-btn:hover .purchase-icon {
             transform: scale(1.1);
         }
 
-        /* Modal para selección de plataformas DENTRO DE LA TARJETA */
-        .album-modal {
-            position: relative;
-            z-index: 3;
-            background: #111111;
-            border: 1px solid #444444;
-            border-radius: 12px;
-            padding: 1.5rem;
-            width: 90%;
-            max-width: 320px;
-            transform: scale(0.9);
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-
-        .album-details-overlay.active .album-modal {
-            transform: scale(1);
-            opacity: 1;
-        }
-
-        .album-modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.2rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #444444;
-        }
-
-        .album-modal-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.1rem;
-            color: #ffffff;
-        }
-
-        .close-album-modal {
-            background: none;
-            border: none;
-            color: #cccccc;
-            cursor: pointer;
-            padding: 0.5rem;
-            font-size: 1.2rem;
-            line-height: 1;
-            transition: color 0.3s ease;
-        }
-
-        .close-album-modal:hover {
-            color: #ffffff;
-        }
-
-        .album-platform-options {
+        /* PLATFORM BUTTONS CONTAINER - NUEVA ANIMACIÓN DE DESPLIEGUE */
+        .platform-buttons-container {
             display: flex;
             flex-direction: column;
             gap: 0.8rem;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transform: translateY(-10px);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-top: 0;
         }
 
-        .album-modal-platform-btn {
+        .album-card.expanded .platform-buttons-container {
+            max-height: 200px;
+            opacity: 1;
+            transform: translateY(0);
+            margin-top: 1.5rem;
+        }
+
+        .platform-buttons-row {
             display: flex;
+            gap: 0.8rem;
+            width: 100%;
+        }
+
+        .platform-button {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 1rem;
-            padding: 1rem;
+            justify-content: center;
+            padding: 1rem 0.5rem;
             background: #222222;
             border: 1px solid #444444;
-            border-radius: 8px;
-            color: white;
+            border-radius: 10px;
             text-decoration: none;
-            transition: all 0.3s ease;
+            color: white;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(10px);
+            opacity: 0;
         }
 
-        .album-modal-platform-btn:hover {
+        .album-card.expanded .platform-button {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .album-card.expanded .platform-button:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .album-card.expanded .platform-button:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .album-card.expanded .platform-button:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        .platform-button:hover {
             background: #333333;
             transform: translateY(-2px);
             border-color: #666666;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
-        .album-modal-platform-logo {
-            width: 24px;
-            height: 24px;
+        .platform-button-logo {
+            width: 32px;
+            height: 32px;
             object-fit: contain;
+            margin-bottom: 0.5rem;
             filter: grayscale(100%) brightness(2);
-            border-radius: 4px;
+            border-radius: 6px;
         }
 
-        .album-modal-platform-name {
+        .platform-button-name {
             font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
+            text-align: center;
         }
 
         /* NUEVO: NAVEGACIÓN ADAPTATIVA */
@@ -1587,7 +1658,7 @@
             border: 1px solid #444444;
             color: white;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             -webkit-tap-highlight-color: transparent;
         }
@@ -1705,6 +1776,15 @@
                 font-size: 0.9rem;
             }
 
+            .platform-buttons-row {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .platform-button {
+                padding: 0.8rem;
+            }
+
             .fading-banner {
                 height: 300px;
             }
@@ -1722,6 +1802,10 @@
             
             .main-container {
                 margin-right: 5rem; /* Espacio para la navegación lateral */
+            }
+
+            .platform-buttons-row {
+                flex-direction: row;
             }
         }
 
@@ -1868,12 +1952,11 @@
                 font-size: 0.9rem;
             }
 
-            .album-modal {
-                width: 95%;
-                padding: 1.2rem;
+            .platform-buttons-row {
+                flex-direction: column;
             }
 
-            .album-modal-platform-btn {
+            .platform-button {
                 padding: 0.8rem;
             }
 
@@ -1894,6 +1977,15 @@
             .bio-modal-content {
                 font-size: 1.1rem;
                 line-height: 1.6;
+            }
+
+            .playlists-modal {
+                padding: 1.5rem;
+                max-height: 85vh;
+            }
+
+            .playlists-modal-title {
+                font-size: 1.5rem;
             }
 
             .read-more {
@@ -2577,38 +2669,6 @@
                             </div>
                         </div>
                         <div class="album-details">
-                            <div class="album-details-overlay" id="ame-nocturne-overlay">
-                                <div class="album-modal">
-                                    <div class="album-modal-header">
-                                        <h3 class="album-modal-title">Select Platform</h3>
-                                        <button class="close-album-modal" onclick="closeAlbumModal('ame-nocturne')">×</button>
-                                    </div>
-                                    <div class="album-platform-options">
-                                        <a href="https://music.apple.com/hn/album/l%C3%A2me-nocturne-single/1858841532" class="album-modal-platform-btn" target="_blank">
-                                            <img src="https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg" 
-                                                 alt="iTunes" 
-                                                 class="album-modal-platform-logo"
-                                                 loading="lazy">
-                                            <span class="album-modal-platform-name">iTunes</span>
-                                        </a>
-                                        <a href="https://www.qobuz.com/us-en/album/lame-nocturne-sam-the-revenant/pc7h0agqhs6oq" class="album-modal-platform-btn" target="_blank">
-                                            <img src="https://headphone.guru/wp-content/uploads/2021/02/qobuz-logo.png" 
-                                                 alt="Qobuz" 
-                                                 class="album-modal-platform-logo"
-                                                 loading="lazy">
-                                            <span class="album-modal-platform-name">Qobuz</span>
-                                        </a>
-                                        <a href="https://amazon.com/music/player/albums/B0G7KQS7LM?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_Nq4E4gfsTVgLeKW7ql3xJ2CMJ" class="album-modal-platform-btn" target="_blank">
-                                            <img src="https://i.pinimg.com/736x/09/72/ae/0972ae3bcb8a4157c4f790996c73f41c.jpg" 
-                                                 alt="Amazon Music" 
-                                                 class="album-modal-platform-logo"
-                                                 loading="lazy">
-                                            <span class="album-modal-platform-name">Amazon Music</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            
                             <div class="tracklist">
                                 <div class="tracklist-title">Tracklist</div>
                                 <div class="track">
@@ -2624,12 +2684,39 @@
                                     <span class="track-duration">(3:32)</span>
                                 </div>
                             </div>
-                            <button class="purchase-btn" onclick="openAlbumModal('ame-nocturne')">
+                            <button class="purchase-btn" onclick="toggleAlbumExpand('ame-nocturne')">
                                 <svg class="purchase-icon" viewBox="0 0 24 24" fill="currentColor">
                                     <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
                                 </svg>
                                 Purchase Album
                             </button>
+                            
+                            <!-- NUEVO: BOTONES DE PLATAFORMAS EN DESPLIEGUE -->
+                            <div class="platform-buttons-container" id="ame-nocturne-platforms">
+                                <div class="platform-buttons-row">
+                                    <a href="https://music.apple.com/hn/album/l%C3%A2me-nocturne-single/1858841532" class="platform-button" target="_blank">
+                                        <img src="https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg" 
+                                             alt="iTunes" 
+                                             class="platform-button-logo"
+                                             loading="lazy">
+                                        <span class="platform-button-name">iTunes</span>
+                                    </a>
+                                    <a href="https://www.qobuz.com/us-en/album/lame-nocturne-sam-the-revenant/pc7h0agqhs6oq" class="platform-button" target="_blank">
+                                        <img src="https://headphone.guru/wp-content/uploads/2021/02/qobuz-logo.png" 
+                                             alt="Qobuz" 
+                                             class="platform-button-logo"
+                                             loading="lazy">
+                                        <span class="platform-button-name">Qobuz</span>
+                                    </a>
+                                    <a href="https://amazon.com/music/player/albums/B0G7KQS7LM?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_Nq4E4gfsTVgLeKW7ql3xJ2CMJ" class="platform-button" target="_blank">
+                                        <img src="https://i.pinimg.com/736x/09/72/ae/0972ae3bcb8a4157c4f790996c73f41c.jpg" 
+                                             alt="Amazon Music" 
+                                             class="platform-button-logo"
+                                             loading="lazy">
+                                        <span class="platform-button-name">Amazon</span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -2663,38 +2750,6 @@
                             </div>
                         </div>
                         <div class="album-details">
-                            <div class="album-details-overlay" id="ep-nocturne-overlay">
-                                <div class="album-modal">
-                                    <div class="album-modal-header">
-                                        <h3 class="album-modal-title">Select Platform</h3>
-                                        <button class="close-album-modal" onclick="closeAlbumModal('ep-nocturne')">×</button>
-                                    </div>
-                                    <div class="album-platform-options">
-                                        <a href="https://music.apple.com/hn/album/e-p-nocturne-single/1850689071" class="album-modal-platform-btn" target="_blank">
-                                            <img src="https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg" 
-                                                 alt="iTunes" 
-                                                 class="album-modal-platform-logo"
-                                                 loading="lazy">
-                                            <span class="album-modal-platform-name">iTunes</span>
-                                        </a>
-                                        <a href="https://www.qobuz.com/us-en/album/ep-nocturne-sam-the-revenant/x9ldllvzsquc1" class="album-modal-platform-btn" target="_blank">
-                                            <img src="https://headphone.guru/wp-content/uploads/2021/02/qobuz-logo.png" 
-                                                 alt="Qobuz" 
-                                                 class="album-modal-platform-logo"
-                                                 loading="lazy">
-                                            <span class="album-modal-platform-name">Qobuz</span>
-                                        </a>
-                                        <a href="https://amazon.com/music/player/albums/B0G6NV1QWL?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_gb5UEFbVY19AD4HE5qbHFkTOG" class="album-modal-platform-btn" target="_blank">
-                                            <img src="https://i.pinimg.com/736x/09/72/ae/0972ae3bcb8a4157c4f790996c73f41c.jpg" 
-                                                 alt="Amazon Music" 
-                                                 class="album-modal-platform-logo"
-                                                 loading="lazy">
-                                            <span class="album-modal-platform-name">Amazon Music</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            
                             <div class="tracklist">
                                 <div class="tracklist-title">Tracklist</div>
                                 <div class="track">
@@ -2706,12 +2761,39 @@
                                     <span class="track-duration">(1:45)</span>
                                 </div>
                             </div>
-                            <button class="purchase-btn" onclick="openAlbumModal('ep-nocturne')">
+                            <button class="purchase-btn" onclick="toggleAlbumExpand('ep-nocturne')">
                                 <svg class="purchase-icon" viewBox="0 0 24 24" fill="currentColor">
                                     <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
                                 </svg>
                                 Purchase Album
                             </button>
+                            
+                            <!-- NUEVO: BOTONES DE PLATAFORMAS EN DESPLIEGUE -->
+                            <div class="platform-buttons-container" id="ep-nocturne-platforms">
+                                <div class="platform-buttons-row">
+                                    <a href="https://music.apple.com/hn/album/e-p-nocturne-single/1850689071" class="platform-button" target="_blank">
+                                        <img src="https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg" 
+                                             alt="iTunes" 
+                                             class="platform-button-logo"
+                                             loading="lazy">
+                                        <span class="platform-button-name">iTunes</span>
+                                    </a>
+                                    <a href="https://www.qobuz.com/us-en/album/ep-nocturne-sam-the-revenant/x9ldllvzsquc1" class="platform-button" target="_blank">
+                                        <img src="https://headphone.guru/wp-content/uploads/2021/02/qobuz-logo.png" 
+                                             alt="Qobuz" 
+                                             class="platform-button-logo"
+                                             loading="lazy">
+                                        <span class="platform-button-name">Qobuz</span>
+                                    </a>
+                                    <a href="https://amazon.com/music/player/albums/B0G6NV1QWL?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_gb5UEFbVY19AD4HE5qbHFkTOG" class="platform-button" target="_blank">
+                                        <img src="https://i.pinimg.com/736x/09/72/ae/0972ae3bcb8a4157c4f790996c73f41c.jpg" 
+                                             alt="Amazon Music" 
+                                             class="platform-button-logo"
+                                             loading="lazy">
+                                        <span class="platform-button-name">Amazon</span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -2844,6 +2926,7 @@
         let isLiked = false;
         let currentSection = 'home';
         let isTransitioning = false;
+        let expandedAlbum = null;
 
         // FUNCIONES PARA EL MODAL DE BIO
         function openBioModal() {
@@ -2853,7 +2936,9 @@
 
         function closeBioModalFunc() {
             bioModal.classList.remove('active');
-            document.body.style.overflow = 'auto';
+            setTimeout(() => {
+                document.body.style.overflow = 'auto';
+            }, 500);
         }
 
         // FUNCIONES PARA EL MODAL DE PLAYLISTS
@@ -2864,18 +2949,55 @@
 
         function closePlaylistsModalFunc() {
             playlistsModal.classList.remove('active');
-            document.body.style.overflow = 'auto';
+            setTimeout(() => {
+                document.body.style.overflow = 'auto';
+            }, 500);
         }
 
-        // FUNCIONES PARA EL MODAL DE PLATAFORMAS
-        function openAlbumModal(albumId) {
-            const overlay = document.getElementById(`${albumId}-overlay`);
-            overlay.classList.add('active');
-        }
-
-        function closeAlbumModal(albumId) {
-            const overlay = document.getElementById(`${albumId}-overlay`);
-            overlay.classList.remove('active');
+        // FUNCIONES PARA EL DESPLIEGUE DE ÁLBUMES
+        function toggleAlbumExpand(albumId) {
+            const albumCard = document.querySelector(`[data-album="${albumId}"]`);
+            const purchaseBtn = albumCard.querySelector('.purchase-btn');
+            
+            if (expandedAlbum === albumId) {
+                // Cerrar el álbum actualmente expandido
+                albumCard.classList.remove('expanded');
+                purchaseBtn.innerHTML = `
+                    <svg class="purchase-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+                    </svg>
+                    Purchase Album
+                `;
+                expandedAlbum = null;
+            } else {
+                // Cerrar cualquier otro álbum expandido
+                if (expandedAlbum) {
+                    const prevAlbumCard = document.querySelector(`[data-album="${expandedAlbum}"]`);
+                    const prevPurchaseBtn = prevAlbumCard.querySelector('.purchase-btn');
+                    prevAlbumCard.classList.remove('expanded');
+                    prevPurchaseBtn.innerHTML = `
+                        <svg class="purchase-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+                        </svg>
+                        Purchase Album
+                    `;
+                }
+                
+                // Expandir el nuevo álbum
+                albumCard.classList.add('expanded');
+                purchaseBtn.innerHTML = `
+                    <svg class="purchase-icon" viewBox="0 0 24 24" fill="currentColor" style="transform: rotate(180deg);">
+                        <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+                    </svg>
+                    Hide Options
+                `;
+                expandedAlbum = albumId;
+                
+                // Desplazar la vista al álbum si está parcialmente fuera de vista
+                setTimeout(() => {
+                    albumCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 100);
+            }
         }
 
         // BANNER MEJORADO - SIN BUGS
@@ -3180,11 +3302,10 @@
                 if (playlistsModal.classList.contains('active')) {
                     closePlaylistsModalFunc();
                 }
-                // Cerrar modales de álbumes
-                document.querySelectorAll('.album-details-overlay.active').forEach(overlay => {
-                    const albumId = overlay.id.replace('-overlay', '');
-                    closeAlbumModal(albumId);
-                });
+                // Cerrar álbumes expandidos
+                if (expandedAlbum) {
+                    toggleAlbumExpand(expandedAlbum);
+                }
             }
         });
 
@@ -3204,14 +3325,11 @@
             }
         });
 
-        // CERRAR MODALES DE ÁLBUMES AL HACER CLICK FUERA
-        document.querySelectorAll('.album-details-overlay').forEach(overlay => {
-            overlay.addEventListener('click', function(e) {
-                if (e.target === this) {
-                    const albumId = this.id.replace('-overlay', '');
-                    closeAlbumModal(albumId);
-                }
-            });
+        // CERRAR ÁLBUMES EXPANDIDOS AL HACER CLICK FUERA
+        document.addEventListener('click', function(e) {
+            if (expandedAlbum && !e.target.closest(`[data-album="${expandedAlbum}"]`)) {
+                toggleAlbumExpand(expandedAlbum);
+            }
         });
 
         // INICIALIZACIÓN
