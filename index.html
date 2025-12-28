@@ -141,8 +141,8 @@
         .side-menu {
             position: fixed;
             top: 0;
-            left: -70%;
-            width: 70%;
+            left: -320px; /* Cambiado de porcentaje a píxeles fijos */
+            width: 320px; /* Ancho fijo para pantallas grandes */
             height: 100%;
             background: #000000;
             z-index: 1000;
@@ -152,6 +152,32 @@
             border-right: 1px solid #333333;
             overflow-y: auto;
             box-shadow: 8px 0 32px rgba(0, 0, 0, 0.5);
+        }
+
+        /* CORRECCIÓN: Menú más angosto en pantallas horizontales */
+        @media (min-width: 769px) {
+            .side-menu {
+                width: 280px; /* Más angosto en pantallas grandes */
+                left: -280px;
+            }
+        }
+
+        /* CORRECCIÓN: Menú más ancho en móviles */
+        @media (max-width: 768px) {
+            .side-menu {
+                width: 85%; /* Porcentaje en móviles para mejor adaptación */
+                left: -85%;
+                max-width: 320px; /* Máximo ancho para no ser excesivo */
+            }
+        }
+
+        /* CORRECCIÓN: Menú más pequeño en móviles muy pequeños */
+        @media (max-width: 480px) {
+            .side-menu {
+                width: 90%;
+                left: -90%;
+                max-width: 300px;
+            }
         }
 
         .side-menu.active {
@@ -1903,6 +1929,11 @@
         }
 
         /* NUEVO: NAVEGACIÓN ADAPTATIVA CORREGIDA */
+        /* CORRECCIÓN: Aumentamos el z-index del menú para que cubra la navegación */
+        .side-menu {
+            z-index: 1001; /* Aumentado para estar por encima de la navegación */
+        }
+
         /* Barra de navegación para móviles (posición inferior) */
         .bottom-nav {
             position: fixed;
@@ -1911,7 +1942,7 @@
             transform: translateX(-50%);
             display: flex;
             gap: 1.2rem;
-            z-index: 1000;
+            z-index: 1000; /* Menor que el menú */
             padding: 0.8rem 1.5rem;
             border-radius: 16px;
             background: #111111;
@@ -1929,7 +1960,7 @@
             display: flex;
             flex-direction: column;
             gap: 1.2rem;
-            z-index: 1000;
+            z-index: 1000; /* Menor que el menú */
             padding: 1.5rem 0.8rem;
             border-radius: 16px;
             background: #111111;
@@ -3615,6 +3646,9 @@
             if (playlistsModal.classList.contains('active')) {
                 closePlaylistsModalFunc();
             }
+            
+            // CORRECCIÓN: Asegurar que el menú cubra la navegación
+            // Ya se maneja con z-index en CSS
         }
 
         function closeMenu() {
