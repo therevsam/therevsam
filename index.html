@@ -13,6 +13,9 @@
     <link rel="icon" type="image/png" sizes="32x32" href="https://image2url.com/images/1764395969079-b7cb359f-b1a9-4587-96b2-d58c0fb83810.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://image2url.com/images/1764395969079-b7cb359f-b1a9-4587-96b2-d58c0fb83810.png">
     
+    <!-- FUENTE LEXEND PARA USERNAME -->
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@600;700&display=swap" rel="stylesheet">
+    
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -351,6 +354,33 @@
             color: #ffffff;
         }
 
+        /* NUEVO: USERNAME CON VERIFICADO - MÁS PEQUEÑO */
+        .username-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.5rem;
+            gap: 0.3rem;
+        }
+
+        .username {
+            font-family: 'Lexend', sans-serif;
+            font-size: 0.9rem; /* Cambiado de 1.1rem a 0.9rem */
+            font-weight: 600;
+            color: #cccccc;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .verified-badge {
+            width: 14px; /* Cambiado de 18px a 14px */
+            height: 14px; /* Cambiado de 18px a 14px */
+            object-fit: contain;
+            filter: none !important; /* Mantener color original */
+        }
+
         .title {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1rem;
@@ -427,6 +457,7 @@
             display: block;
         }
 
+        /* SECCIÓN DE ACTUALIZACIONES MEJORADA - CON SLIDER */
         .updates-section {
             margin-bottom: 1.5rem;
             position: relative;
@@ -441,6 +472,13 @@
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
+            min-height: 200px;
+        }
+
+        .update-slider {
+            position: relative;
+            width: 100%;
+            height: 100%;
         }
 
         .update-image {
@@ -449,6 +487,16 @@
             border-radius: 16px;
             display: block;
             pointer-events: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+
+        .update-image.active {
+            opacity: 1;
+            position: relative;
         }
 
         .section-divider {
@@ -1082,7 +1130,7 @@
             opacity: 1;
         }
 
-        /* NUEVO: BOTÓN DE PLAYLIST MEJORADO */
+        /* NUEVO: BOTÓN DE PLAYLIST MEJORADO - ESTILOS MODIFICADOS */
         .playlist-section {
             margin-bottom: 2.5rem;
         }
@@ -1108,14 +1156,13 @@
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
         }
 
-        /* NUEVO: BOTÓN DE COLECCIÓN ÚNICO */
+        /* BOTÓN DE COLECCIÓN MODIFICADO - MÁS DELGADO Y CON ÍCONO */
         .collection-btn {
             display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 2rem;
-            border-radius: 16px;
+            position: relative;
+            padding: 1.2rem 1.8rem;
+            border-radius: 12px;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
             color: white;
@@ -1124,29 +1171,46 @@
             cursor: pointer;
             width: 100%;
             margin-bottom: 2rem;
+            min-height: 60px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .collection-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
             background: #1a1a1a;
             border-color: #444444;
         }
 
+        /* Ícono del botón de colección */
+        .collection-icon {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+            position: absolute;
+            left: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            filter: grayscale(100%) brightness(2) invert(1); /* Invertir color a blanco */
+            border-radius: 8px;
+            z-index: 2;
+        }
+
         .collection-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
+            font-family: 'Inter', sans-serif; /* Cambiado de Cormorant Garamond */
+            font-size: 0.9rem; /* Texto más pequeño */
+            margin-bottom: 0;
             text-align: center;
             color: #ffffff;
+            flex: 1;
+            z-index: 2;
+            position: relative;
         }
 
         .collection-subtitle {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.85rem;
-            opacity: 0.7;
-            text-align: center;
-            color: #cccccc;
+            display: none; /* Ocultamos el subtítulo ya que solo queremos un texto */
         }
 
         /* NUEVO: MODAL DE PLAYLISTS CON MISMAS ANIMACIONES */
@@ -1885,6 +1949,15 @@
                 font-size: 1.8rem;
             }
 
+            .username {
+                font-size: 0.85rem; /* Ajustado para móvil */
+            }
+
+            .verified-badge {
+                width: 13px; /* Ajustado para móvil */
+                height: 13px; /* Ajustado para móvil */
+            }
+
             .title {
                 font-size: 0.9rem;
             }
@@ -2259,6 +2332,18 @@
             
             <!-- NOMBRE Y TÍTULO AÑADIDO -->
             <h1 class="name">Sam the Revenant</h1>
+            
+            <!-- NUEVO: USERNAME CON ÍCONO VERIFICADO - MÁS PEQUEÑO -->
+            <div class="username-container">
+                <div class="username">
+                    @therevsam
+                    <img src="https://image2url.com/r2/bucket2/images/1766771229462-36a956fe-b6f7-458d-b50a-839204f7ed7e.png" 
+                         alt="Verified" 
+                         class="verified-badge"
+                         loading="lazy">
+                </div>
+            </div>
+            
             <div class="title">Pianist & Composer</div>
             
             <!-- BIO CON "MORE" - CORREGIDA -->
@@ -2275,12 +2360,18 @@
                      loading="eager">
             </a>
 
-            <!-- SECCIÓN DE ACTUALIZACIONES -->
+            <!-- SECCIÓN DE ACTUALIZACIONES MEJORADA - CON SLIDER -->
             <div class="updates-section">
-                <img src="https://image2url.com/images/1764776723968-1d5d39e6-99f7-429a-a52d-a5ab05f34863.png" 
-                     alt="Latest Updates" 
-                     class="update-image"
-                     loading="lazy">
+                <div class="update-slider" id="updateSlider">
+                    <img src="https://image2url.com/images/1764776723968-1d5d39e6-99f7-429a-a52d-a5ab05f34863.png" 
+                         alt="Latest Updates" 
+                         class="update-image active"
+                         loading="lazy">
+                    <img src="https://image2url.com/r2/bucket3/images/1766868212553-003855dd-0154-4462-afd0-efd8167b2266.png" 
+                         alt="News Update" 
+                         class="update-image"
+                         loading="lazy">
+                </div>
             </div>
 
             <!-- SECCIÓN: STREAMING PLATFORMS -->
@@ -2367,8 +2458,8 @@
                     <span class="btn-text">SoundCloud</span>
                 </a>
 
-                <!-- Audiomack noveno -->
-                <a href="https://audiomack.com/samtherev" class="link-btn" target="_blank">
+                <!-- Audiomack noveno - ENLACE ACTUALIZADO -->
+                <a href="https://audiomack.com/therevsam" class="link-btn" target="_blank">
                     <img src="https://i.pinimg.com/1200x/f6/36/b6/f636b60899bb4ec359b6e4aadecce904.jpg" 
                          alt="Audiomack" 
                          class="platform-logo"
@@ -2456,9 +2547,9 @@
                     <span class="soon-badge">Soon</span>
                 </div>
 
-                <!-- Threads -->
+                <!-- Threads - LOGO ACTUALIZADO -->
                 <div class="social-btn">
-                    <img src="https://i.pinimg.com/1200x/b5/be/cc/b5beccc377fa9d43f26df302f4f328a9.jpg" 
+                    <img src="https://i.pinimg.com/736x/41/e1/ee/41e1ee5954aba428f2dec8821e4688d9.jpg" 
                          alt="Threads" 
                          class="social-logo">
                     <span class="social-text">Threads</span>
@@ -2674,7 +2765,7 @@
                     </div>
                 </div>
 
-                <!-- NUEVO: BOTÓN ÚNICO DE COLECCIÓN -->
+                <!-- NUEVO: BOTÓN ÚNICO DE COLECCIÓN MODIFICADO -->
                 <div class="playlist-section">
                     <div class="section-divider">
                         <div class="divider-line"></div>
@@ -2688,10 +2779,13 @@
                          class="playlist-cover"
                          loading="lazy">
                     
-                    <!-- NUEVO: BOTÓN ÚNICO QUE ABRE EL MODAL -->
+                    <!-- BOTÓN MODIFICADO CON ÍCONO Y TEXTO MÁS PEQUEÑO -->
                     <div class="collection-btn" id="openPlaylistsModal">
-                        <h3 class="collection-title">Sam the Revenant Collection</h3>
-                        <p class="collection-subtitle">View all playlists</p>
+                        <img src="https://image2url.com/r2/bucket3/images/1766866882676-6fca813d-d6d6-47d1-916b-19e32c553e55.png" 
+                             alt="Playlist Icon" 
+                             class="collection-icon"
+                             loading="lazy">
+                        <h3 class="collection-title">View all playlists</h3>
                     </div>
                 </div>
 
@@ -3044,6 +3138,8 @@
         const openPlaylistsModalBtn = document.getElementById('openPlaylistsModal');
         const playlistsModal = document.getElementById('playlistsModal');
         const closePlaylistsModal = document.getElementById('closePlaylistsModal');
+        const updateSlider = document.getElementById('updateSlider');
+        const updateImages = updateSlider.querySelectorAll('.update-image');
 
         // VARIABLES GLOBALES
         let currentTrackIndex = 0;
@@ -3052,6 +3148,32 @@
         let currentSection = 'home';
         let isTransitioning = false;
         let expandedAlbum = null;
+        let currentUpdateIndex = 0;
+        let updateInterval;
+
+        // FUNCIONES PARA EL SLIDER DE ACTUALIZACIONES
+        function startUpdateSlider() {
+            if (updateInterval) {
+                clearInterval(updateInterval);
+            }
+            
+            updateInterval = setInterval(() => {
+                nextUpdate();
+            }, 5000); // Cambiar cada 5 segundos
+        }
+
+        function nextUpdate() {
+            // Ocultar la imagen actual
+            updateImages[currentUpdateIndex].classList.remove('active');
+            
+            // Calcular siguiente índice
+            currentUpdateIndex = (currentUpdateIndex + 1) % updateImages.length;
+            
+            // Mostrar la siguiente imagen
+            setTimeout(() => {
+                updateImages[currentUpdateIndex].classList.add('active');
+            }, 50);
+        }
 
         // FUNCIONES PARA EL MODAL DE BIO
         function openBioModal() {
@@ -3147,8 +3269,13 @@
                 void fadingBanner.offsetWidth;
                 fadingBanner.style.opacity = '1';
                 handleScroll();
+                startUpdateSlider(); // Iniciar slider cuando estamos en home
             } else {
                 fadingBanner.style.opacity = '0';
+                if (updateInterval) {
+                    clearInterval(updateInterval);
+                    updateInterval = null;
+                }
                 setTimeout(() => {
                     if (currentSection !== 'home') {
                         fadingBanner.style.display = 'none';
@@ -3438,6 +3565,12 @@
         document.addEventListener('visibilitychange', function() {
             if (document.hidden) {
                 if (isPlaying) audio.pause();
+                if (updateInterval) {
+                    clearInterval(updateInterval);
+                    updateInterval = null;
+                }
+            } else if (currentSection === 'home') {
+                startUpdateSlider();
             }
         });
 
@@ -3461,6 +3594,7 @@
         audio.preload = 'metadata';
         loadTrack(currentTrackIndex);
         updateBannerForSection('home');
+        startUpdateSlider();
 
         // FORZAR CARGA DEL BANNER
         setTimeout(() => {
