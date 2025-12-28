@@ -1788,7 +1788,7 @@
             transform: translateX(-50%) translateY(0);
         }
 
-        /* MODIFICACIONES: CLASES PARA ANIMACIÓN DE SCROLL MÁS RÁPIDA EN HOME */
+        /* NUEVO: CLASES PARA ANIMACIÓN DE SCROLL MEJORADA - MÁS RÁPIDA Y MÁS ELEMENTOS VISIBLES */
         .fade-in-element {
             opacity: 1;
             transform: translateY(0);
@@ -1798,9 +1798,9 @@
         /* Solo aplicar animaciones en la sección Home */
         #home-section .fade-in-element {
             opacity: 0;
-            transform: translateY(15px); /* Reducido de 20px a 15px */
-            transition: opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-                        transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Reducido de 0.5s a 0.3s */
+            transform: translateY(15px); /* Reducido de 20px a 15px para movimiento más sutil */
+            transition: opacity 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), /* Animación más rápida: 0.4s en lugar de 0.5s */
+                        transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); /* Curva más suave para entrada más rápida */
             will-change: opacity, transform;
         }
 
@@ -1809,11 +1809,20 @@
             transform: translateY(0);
         }
 
-        #home-section .fade-in-element.delay-1 { transition-delay: 0.05s; } /* Reducido de 0.1s */
-        #home-section .fade-in-element.delay-2 { transition-delay: 0.1s; }  /* Reducido de 0.2s */
-        #home-section .fade-in-element.delay-3 { transition-delay: 0.15s; } /* Reducido de 0.3s */
-        #home-section .fade-in-element.delay-4 { transition-delay: 0.2s; }  /* Reducido de 0.4s */
-        #home-section .fade-in-element.delay-5 { transition-delay: 0.25s; } /* Reducido de 0.5s */
+        /* Delays más cortos para que aparezcan más rápido en secuencia */
+        #home-section .fade-in-element.delay-1 { transition-delay: 0.05s; }
+        #home-section .fade-in-element.delay-2 { transition-delay: 0.1s; }
+        #home-section .fade-in-element.delay-3 { transition-delay: 0.15s; }
+        #home-section .fade-in-element.delay-4 { transition-delay: 0.2s; }
+        #home-section .fade-in-element.delay-5 { transition-delay: 0.25s; }
+
+        /* Botones Spotify y Apple Music FIJOS (sin efecto de scroll) */
+        #home-section .links .link-btn:nth-child(1),
+        #home-section .links .link-btn:nth-child(2) {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            transition: none !important;
+        }
 
         /* Eliminar animaciones de scroll de otras secciones */
         #melodies-section .fade-in-element,
@@ -2440,8 +2449,8 @@
             </div>
 
             <div class="links">
-                <!-- Spotify primero -->
-                <a href="https://open.spotify.com/artist/5m4k5QM67SNdvDsnPFnfkD?si=29DlJSBMTA2-LAFf0zKgOA" class="link-btn fade-in-element delay-4" target="_blank">
+                <!-- Spotify primero - SIN EFECTO DE SCROLL (FIJADO) -->
+                <a href="https://open.spotify.com/artist/5m4k5QM67SNdvDsnPFnfkD?si=29DlJSBMTA2-LAFf0zKgOA" class="link-btn" target="_blank">
                     <img src="https://i.pinimg.com/1200x/e6/55/bf/e655bff3217dd6f575a275604b0ff7e1.jpg" 
                          alt="Spotify" 
                          class="platform-logo"
@@ -2449,8 +2458,8 @@
                     <span class="btn-text">Spotify</span>
                 </a>
                 
-                <!-- Apple Music segundo -->
-                <a href="https://music.apple.com/es/artist/sam-the-revenant/1850689072" class="link-btn fade-in-element delay-4" target="_blank">
+                <!-- Apple Music segundo - SIN EFECTO DE SCROLL (FIJADO) -->
+                <a href="https://music.apple.com/es/artist/sam-the-revenant/1850689072" class="link-btn" target="_blank">
                     <img src="https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg" 
                          alt="Apple Music" 
                          class="platform-logo"
@@ -2459,7 +2468,7 @@
                     <span class="hifi-badge">Hi-Fi</span>
                 </a>
                 
-                <!-- Deezer tercero -->
+                <!-- Deezer tercero - CON EFECTO DE SCROLL -->
                 <a href="https://www.deezer.com/es/artist/353551022" class="link-btn fade-in-element delay-4" target="_blank">
                     <img src="https://i.pinimg.com/736x/1b/f9/33/1bf93302bd924479b90f47a0df2134cd.jpg" 
                          alt="Deezer" 
@@ -2469,7 +2478,7 @@
                     <span class="hifi-badge">Hi-Fi</span>
                 </a>
                 
-                <!-- Tidal cuarto -->
+                <!-- Tidal cuarto - CON EFECTO DE SCROLL -->
                 <a href="https://tidal.com/artist/69131106" class="link-btn fade-in-element delay-4" target="_blank">
                     <img src="https://i.pinimg.com/736x/94/9c/01/949c014c813bc031520d82af3905a4f0.jpg" 
                          alt="Tidal" 
@@ -2479,7 +2488,7 @@
                     <span class="hifi-badge">Hi-Fi</span>
                 </a>
 
-                <!-- Amazon Music quinto -->
+                <!-- Amazon Music quinto - CON EFECTO DE SCROLL -->
                 <a href="https://music.amazon.com/artists/B0G6NYRX6P/sam-the-revenant" class="link-btn fade-in-element delay-4" target="_blank">
                     <img src="https://i.pinimg.com/736x/09/72/ae/0972ae3bcb8a4157c4f790996c73f41c.jpg" 
                          alt="Amazon Music" 
@@ -2489,7 +2498,7 @@
                     <span class="hifi-badge">Hi-Fi</span>
                 </a>
                 
-                <!-- Qobuz sexto -->
+                <!-- Qobuz sexto - CON EFECTO DE SCROLL -->
                 <a href="https://www.qobuz.com/us-en/interpreter/sam-the-revenant/29785940" class="link-btn fade-in-element delay-4" target="_blank">
                     <img src="https://headphone.guru/wp-content/uploads/2021/02/qobuz-logo.png" 
                          alt="Qobuz" 
@@ -2499,7 +2508,7 @@
                     <span class="hifi-badge">Hi-Fi</span>
                 </a>
                 
-                <!-- YouTube séptimo -->
+                <!-- YouTube séptimo - CON EFECTO DE SCROLL -->
                 <a href="https://www.youtube.com/@therevsam" class="link-btn fade-in-element delay-4" target="_blank">
                     <img src="https://i.pinimg.com/736x/7a/5d/56/7a5d56c5e22d6fed8d72eeb70329f5f5.jpg" 
                          alt="YouTube" 
@@ -2508,7 +2517,7 @@
                     <span class="btn-text">YouTube</span>
                 </a>
 
-                <!-- SoundCloud octavo -->
+                <!-- SoundCloud octavo - CON EFECTO DE SCROLL -->
                 <a href="https://soundcloud.com/therevsam" class="link-btn fade-in-element delay-5" target="_blank">
                     <img src="https://i.pinimg.com/1200x/81/9d/35/819d35d67997e972a5542b5ba49d577b.jpg" 
                          alt="SoundCloud" 
@@ -2517,7 +2526,7 @@
                     <span class="btn-text">SoundCloud</span>
                 </a>
 
-                <!-- Audiomack noveno - ENLACE ACTUALIZADO -->
+                <!-- Audiomack noveno - ENLACE ACTUALIZADO - CON EFECTO DE SCROLL -->
                 <a href="https://audiomack.com/therevsam" class="link-btn fade-in-element delay-5" target="_blank">
                     <img src="https://i.pinimg.com/1200x/f6/36/b6/f636b60899bb4ec359b6e4aadecce904.jpg" 
                          alt="Audiomack" 
@@ -2526,7 +2535,7 @@
                     <span class="btn-text">Audiomack</span>
                 </a>
 
-                <!-- YouTube Music décimo -->
+                <!-- YouTube Music décimo - CON EFECTO DE SCROLL -->
                 <a href="https://music.youtube.com/channel/UC-0mubI3Nl_IE0uXgwFUSvw?si=q4waJRsoESvg7FnG" class="link-btn fade-in-element delay-5" target="_blank">
                     <img src="https://i.pinimg.com/1200x/73/6d/0c/736d0c2aac22b1c37a6ce0ee1a52277f.jpg" 
                          alt="YouTube Music" 
@@ -2535,7 +2544,7 @@
                     <span class="btn-text">YouTube Music</span>
                 </a>
 
-                <!-- Claro Music undécimo -->
+                <!-- Claro Music undécimo - CON EFECTO DE SCROLL -->
                 <a href="https://www.claromusica.com/dl.sh/ct/hn/artist/14325111" class="link-btn fade-in-element delay-5" target="_blank">
                     <img src="https://image2url.com/images/1765459235574-0e1a6473-1189-45f0-b7c0-5bc77946d717.jpg" 
                          alt="Claro Music" 
@@ -2544,7 +2553,7 @@
                     <span class="btn-text">Claro Music</span>
                 </a>
 
-                <!-- NUEVO: Anghami (con badge "Soon") -->
+                <!-- NUEVO: Anghami (con badge "Soon") - CON EFECTO DE SCROLL -->
                 <div class="link-btn fade-in-element delay-5">
                     <img src="https://image2url.com/r2/bucket1/images/1766698308134-dcc1aad9-702b-420d-8a11-41dcdd0f7120.jpeg" 
                          alt="Anghami" 
@@ -2554,7 +2563,7 @@
                     <span class="soon-badge">Soon</span>
                 </div>
 
-                <!-- NUEVO: JioSaavn (con badge "Soon") -->
+                <!-- NUEVO: JioSaavn (con badge "Soon") - CON EFECTO DE SCROLL -->
                 <div class="link-btn fade-in-element delay-5">
                     <img src="https://image2url.com/r2/bucket1/images/1766698368793-cc17867c-f5c5-4df9-9c97-1df17477877d.jpeg" 
                          alt="JioSaavn" 
@@ -2572,7 +2581,7 @@
             </div>
 
             <div class="social-buttons">
-                <!-- WhatsApp Channel -->
+                <!-- WhatsApp Channel - CON EFECTO DE SCROLL -->
                 <a href="https://whatsapp.com/channel/0029Vb72z7J9RZAWILcE5e0v" class="social-btn fade-in-element delay-5" target="_blank">
                     <img src="https://i.pinimg.com/1200x/fc/ae/b3/fcaeb33b122b22a4cac47d29f4447684.jpg" 
                          alt="WhatsApp Channel" 
@@ -2580,7 +2589,7 @@
                     <span class="social-text">WhatsApp Channel</span>
                 </a>
 
-                <!-- X Profile -->
+                <!-- X Profile - CON EFECTO DE SCROLL -->
                 <a href="https://x.com/samtherevenant" class="social-btn fade-in-element delay-5" target="_blank">
                     <img src="https://i.pinimg.com/736x/4e/11/6b/4e116be3fbc42188144fcc3a330a548a.jpg" 
                          alt="X Profile" 
@@ -2588,7 +2597,7 @@
                     <span class="social-text">X Profile</span>
                 </a>
 
-                <!-- Instagram -->
+                <!-- Instagram - CON EFECTO DE SCROLL -->
                 <div class="social-btn fade-in-element delay-5">
                     <img src="https://i.pinimg.com/1200x/fa/98/3a/fa983a2e5a92b0d949dc434a7eaa8ba3.jpg" 
                          alt="Instagram" 
@@ -2597,7 +2606,7 @@
                     <span class="soon-badge">Soon</span>
                 </div>
 
-                <!-- TikTok -->
+                <!-- TikTok - CON EFECTO DE SCROLL -->
                 <div class="social-btn fade-in-element delay-5">
                     <img src="https://i.pinimg.com/1200x/a7/ce/a7/a7cea7c475cc6fc18a96b7b08323dd67.jpg" 
                          alt="TikTok" 
@@ -2606,7 +2615,7 @@
                     <span class="soon-badge">Soon</span>
                 </div>
 
-                <!-- Threads - LOGO ACTUALIZADO -->
+                <!-- Threads - LOGO ACTUALIZADO - CON EFECTO DE SCROLL -->
                 <div class="social-btn fade-in-element delay-5">
                     <img src="https://i.pinimg.com/736x/41/e1/ee/41e1ee5954aba428f2dec8821e4688d9.jpg" 
                          alt="Threads" 
@@ -2615,7 +2624,7 @@
                     <span class="soon-badge">Soon</span>
                 </div>
 
-                <!-- Facebook Page -->
+                <!-- Facebook Page - CON EFECTO DE SCROLL -->
                 <div class="social-btn fade-in-element delay-5">
                     <img src="https://i.pinimg.com/736x/23/6a/4e/236a4e7b01a79e5c18001dec5229865c.jpg" 
                          alt="Facebook Page" 
@@ -2624,7 +2633,7 @@
                     <span class="soon-badge">Soon</span>
                 </div>
 
-                <!-- Email -->
+                <!-- Email - CON EFECTO DE SCROLL -->
                 <a href="mailto:samtherevenant@gmail.com" class="social-btn fade-in-element delay-5">
                     <img src="https://i.pinimg.com/1200x/8e/48/1a/8e481add923811cde7fb76cc3597b19f.jpg" 
                          alt="Email" 
@@ -2632,7 +2641,7 @@
                     <span class="social-text">Email</span>
                 </a>
 
-                <!-- LinkTree -->
+                <!-- LinkTree - CON EFECTO DE SCROLL -->
                 <a href="https://linktr.ee/therevsam" class="social-btn fade-in-element delay-5" target="_blank">
                     <img src="https://i.pinimg.com/736x/6a/51/07/6a5107cccb272aa7fbbb322d1d1b66da.jpg" 
                          alt="LinkTree" 
@@ -3211,7 +3220,7 @@
         let updateInterval;
         let scrollObserver = null;
 
-        // FUNCIÓN PARA INICIALIZAR ANIMACIONES DE SCROLL (SOLO HOME)
+        // FUNCIÓN PARA INICIALIZAR ANIMACIONES DE SCROLL MEJORADA - MÁS RÁPIDA Y MÁS ELEMENTOS VISIBLES
         function initScrollAnimations() {
             // Solo inicializar si estamos en la sección Home
             if (currentSection !== 'home') return;
@@ -3222,27 +3231,37 @@
                 scrollObserver = null;
             }
 
-            // Crear IntersectionObserver para animaciones de scroll en HOME
+            // Crear IntersectionObserver con configuración MEJORADA para más velocidad y más elementos visibles
             scrollObserver = new IntersectionObserver(
                 (entries) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
                             entry.target.classList.add('visible');
+                            // Opcional: dejar de observar después de que se haya mostrado para mejor rendimiento
+                            // scrollObserver.unobserve(entry.target);
+                        } else {
+                            // Opcional: remover la clase visible si el elemento sale de la vista
+                            // entry.target.classList.remove('visible');
                         }
                     });
                 },
                 {
-                    threshold: 0.1, // Reducido de 0.15 a 0.1 - se activa más rápido
-                    rootMargin: '0px 0px -50px 0px' // Reducido de -30px a -50px para activarse antes
+                    threshold: 0.05, // REDUCIDO: Se activa cuando el 5% del elemento es visible (más rápido)
+                    rootMargin: '0px 0px -10px 0px' // REDUCIDO: Se activa mucho más cerca del borde superior
                 }
             );
 
-            // Observar solo los elementos dentro de #home-section
+            // Observar solo los elementos con fade-in-element dentro de #home-section
             const homeElements = document.querySelectorAll('#home-section .fade-in-element');
             homeElements.forEach(element => {
-                // Resetear estado de animación
-                element.classList.remove('visible');
-                scrollObserver.observe(element);
+                // Resetear estado de animación solo para elementos que no sean los botones fijos
+                const isSpotifyOrApple = element.closest('.links .link-btn:nth-child(1)') || 
+                                          element.closest('.links .link-btn:nth-child(2)');
+                
+                if (!isSpotifyOrApple) {
+                    element.classList.remove('visible');
+                    scrollObserver.observe(element);
+                }
             });
         }
 
