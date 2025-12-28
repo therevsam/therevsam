@@ -141,11 +141,11 @@
         .side-menu {
             position: fixed;
             top: 0;
-            left: -320px; /* Cambiado de porcentaje a píxeles fijos */
-            width: 320px; /* Ancho fijo para pantallas grandes */
+            left: -100%;
+            width: 70%;
             height: 100%;
             background: #000000;
-            z-index: 1000;
+            z-index: 1010; /* AUMENTADO DE 1000 A 1010 PARA CUBRIR BOTONES DE NAVEGACIÓN */
             transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
@@ -154,34 +154,29 @@
             box-shadow: 8px 0 32px rgba(0, 0, 0, 0.5);
         }
 
-        /* CORRECCIÓN: Menú más angosto en pantallas horizontales */
-        @media (min-width: 769px) {
-            .side-menu {
-                width: 280px; /* Más angosto en pantallas grandes */
-                left: -280px;
-            }
-        }
-
-        /* CORRECCIÓN: Menú más ancho en móviles */
-        @media (max-width: 768px) {
-            .side-menu {
-                width: 85%; /* Porcentaje en móviles para mejor adaptación */
-                left: -85%;
-                max-width: 320px; /* Máximo ancho para no ser excesivo */
-            }
-        }
-
-        /* CORRECCIÓN: Menú más pequeño en móviles muy pequeños */
-        @media (max-width: 480px) {
-            .side-menu {
-                width: 90%;
-                left: -90%;
-                max-width: 300px;
-            }
-        }
-
         .side-menu.active {
             left: 0;
+        }
+
+        /* NUEVO: PARA PANTALLAS HORIZONTALES (TABLETS Y PC) - MENÚ MÁS ANGOSTO */
+        @media (min-width: 769px) {
+            .side-menu {
+                width: 380px; /* ANCHO FIJO EN LUGAR DE PORCENTAJE */
+                max-width: 380px; /* LÍMITE MÁXIMO */
+                left: -380px;
+            }
+            
+            .side-menu.active {
+                left: 0;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .side-menu {
+                width: 320px; /* AÚN MÁS ANGOSTO EN PANTALLAS MUY GRANDES */
+                max-width: 320px;
+                left: -320px;
+            }
         }
 
         .menu-header {
@@ -1929,11 +1924,6 @@
         }
 
         /* NUEVO: NAVEGACIÓN ADAPTATIVA CORREGIDA */
-        /* CORRECCIÓN: Aumentamos el z-index del menú para que cubra la navegación */
-        .side-menu {
-            z-index: 1001; /* Aumentado para estar por encima de la navegación */
-        }
-
         /* Barra de navegación para móviles (posición inferior) */
         .bottom-nav {
             position: fixed;
@@ -1942,7 +1932,7 @@
             transform: translateX(-50%);
             display: flex;
             gap: 1.2rem;
-            z-index: 1000; /* Menor que el menú */
+            z-index: 1000;
             padding: 0.8rem 1.5rem;
             border-radius: 16px;
             background: #111111;
@@ -1960,7 +1950,7 @@
             display: flex;
             flex-direction: column;
             gap: 1.2rem;
-            z-index: 1000; /* Menor que el menú */
+            z-index: 1000;
             padding: 1.5rem 0.8rem;
             border-radius: 16px;
             background: #111111;
@@ -3167,7 +3157,7 @@
                                 <div class="melody-artist">Sam the Revenant</div>
                             </div>
                             <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
                             </svg>
                         </a>
 
@@ -3181,7 +3171,7 @@
                                 <div class="melody-artist">Sam the Revenant</div>
                             </div>
                             <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
                             </svg>
                         </a>
                     </div>
@@ -3198,7 +3188,7 @@
                                 <div class="melody-artist">Sam the Revenant</div>
                             </div>
                             <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
                             </svg>
                         </a>
 
@@ -3212,7 +3202,7 @@
                                 <div class="melody-artist">Sam the Revenant</div>
                             </div>
                             <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
                             </svg>
                         </a>
 
@@ -3226,7 +3216,7 @@
                                 <div class="melody-artist">Sam the Revenant</div>
                             </div>
                             <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
                             </svg>
                         </a>
                     </div>
@@ -3646,9 +3636,6 @@
             if (playlistsModal.classList.contains('active')) {
                 closePlaylistsModalFunc();
             }
-            
-            // CORRECCIÓN: Asegurar que el menú cubra la navegación
-            // Ya se maneja con z-index en CSS
         }
 
         function closeMenu() {
@@ -3808,9 +3795,9 @@
                     prevPurchaseBtn.innerHTML = `
                         <svg class="purchase-icon" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
-                        </svg>
-                        Purchase Album
-                    `;
+                    </svg>
+                    Purchase Album
+                `;
                 }
                 
                 // Expandir el nuevo álbum
