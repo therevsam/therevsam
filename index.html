@@ -81,6 +81,210 @@
             to { opacity: 1; }
         }
 
+        /* NUEVO: MENÚ HAMBURGUESA Y OVERLAY */
+        .hamburger-btn {
+            position: fixed;
+            top: 1.5rem;
+            left: 1.5rem;
+            width: 46px;
+            height: 46px;
+            background: #111111;
+            border: 1px solid #333333;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1001;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .hamburger-btn:hover {
+            background: #222222;
+            border-color: #444444;
+            transform: scale(1.05);
+        }
+
+        .hamburger-line {
+            width: 22px;
+            height: 2px;
+            background: #ffffff;
+            border-radius: 1px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px) brightness(0.5);
+            -webkit-backdrop-filter: blur(8px) brightness(0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: all;
+        }
+
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: -70%;
+            width: 70%;
+            height: 100%;
+            background: #000000;
+            z-index: 1000;
+            transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid #333333;
+            overflow-y: auto;
+            box-shadow: 8px 0 32px rgba(0, 0, 0, 0.5);
+        }
+
+        .side-menu.active {
+            left: 0;
+        }
+
+        .menu-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #333333;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .close-menu-btn {
+            width: 44px;
+            height: 44px;
+            background: #111111;
+            border: 1px solid #333333;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: #ffffff;
+            font-size: 1.8rem;
+            line-height: 1;
+        }
+
+        .close-menu-btn:hover {
+            background: #222222;
+            border-color: #444444;
+            transform: rotate(90deg);
+        }
+
+        .menu-content {
+            flex: 1;
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .menu-link {
+            display: flex;
+            align-items: center;
+            padding: 1.2rem 1.5rem;
+            background: #111111;
+            border: 1px solid #333333;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .menu-link:hover {
+            background: #222222;
+            border-color: #444444;
+            transform: translateX(5px);
+        }
+
+        .menu-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 1rem;
+            filter: invert(1);
+        }
+
+        .menu-footer {
+            margin-top: auto;
+            padding-top: 2rem;
+            border-top: 1px solid #333333;
+        }
+
+        .menu-social-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            color: #cccccc;
+            text-align: center;
+        }
+
+        .menu-social-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.8rem;
+        }
+
+        .menu-social-btn {
+            display: flex;
+            align-items: center;
+            padding: 0.9rem;
+            background: #111111;
+            border: 1px solid #333333;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            gap: 0.8rem;
+        }
+
+        .menu-social-btn:hover {
+            background: #222222;
+            border-color: #444444;
+            transform: translateY(-2px);
+        }
+
+        .menu-social-icon {
+            width: 22px;
+            height: 22px;
+            object-fit: contain;
+            filter: grayscale(100%) brightness(2);
+            border-radius: 6px;
+        }
+
+        .menu-social-text {
+            flex: 1;
+            text-align: left;
+            font-size: 0.75rem;
+        }
+
         .main-container {
             width: 100%;
             max-width: 400px;
@@ -1832,7 +2036,7 @@
             transition: none !important;
         }
 
-        /* MEDIA QUERIES PARA NAVEGACIÓN ADAPTATIVA CORREGIDA */
+        /* MEDIA QUERIES PARA RESPONSIVE */
         @media (max-width: 768px) {
             .bottom-nav {
                 padding: 0.7rem 1.3rem;
@@ -1948,6 +2152,33 @@
                 padding-left: 35px;
                 padding-right: 35px;
             }
+
+            /* MENÚ HAMBURGUESA EN MÓVIL */
+            .hamburger-btn {
+                top: 1rem;
+                left: 1rem;
+                width: 44px;
+                height: 44px;
+            }
+
+            .menu-social-grid {
+                grid-template-columns: 1fr;
+                gap: 0.6rem;
+            }
+
+            .menu-social-btn {
+                padding: 0.7rem;
+                gap: 0.6rem;
+            }
+
+            .menu-social-icon {
+                width: 20px;
+                height: 20px;
+            }
+
+            .menu-social-text {
+                font-size: 0.7rem;
+            }
         }
 
         @media (min-width: 769px) {
@@ -1978,6 +2209,16 @@
 
             .platform-buttons-row {
                 flex-direction: row;
+            }
+
+            /* MENÚ HAMBURGUESA EN DESKTOP */
+            .hamburger-btn {
+                top: 2rem;
+                left: 2rem;
+            }
+
+            .menu-social-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -2205,6 +2446,30 @@
                 width: 25px;
                 height: 25px;
             }
+
+            /* MENÚ HAMBURGUESA EN MÓVIL PEQUEÑO */
+            .hamburger-btn {
+                top: 0.8rem;
+                left: 0.8rem;
+                width: 40px;
+                height: 40px;
+            }
+
+            .hamburger-line {
+                width: 20px;
+                height: 2px;
+            }
+
+            .menu-link {
+                padding: 1rem 1.2rem;
+                font-size: 1rem;
+            }
+
+            .menu-icon {
+                width: 20px;
+                height: 20px;
+                margin-right: 0.8rem;
+            }
         }
 
         @media (min-width: 1200px) {
@@ -2215,6 +2480,12 @@
             /* Más espacio para la navegación lateral en pantallas grandes */
             .side-nav {
                 right: 3rem;
+            }
+
+            /* MENÚ HAMBURGUESA EN PANTALLAS GRANDES */
+            .hamburger-btn {
+                top: 2.5rem;
+                left: 2.5rem;
             }
         }
 
@@ -2235,6 +2506,103 @@
     </style>
 </head>
 <body>
+    <!-- NUEVO: MENÚ HAMBURGUESA -->
+    <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open menu">
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line"></div>
+    </button>
+
+    <!-- NUEVO: OVERLAY PARA EL MENÚ -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- NUEVO: MENÚ LATERAL -->
+    <div class="side-menu" id="sideMenu">
+        <div class="menu-header">
+            <button class="close-menu-btn" id="closeMenuBtn" aria-label="Close menu">×</button>
+        </div>
+        <div class="menu-content">
+            <div class="menu-links">
+                <a href="javascript:void(0);" class="menu-link" id="menuHome">
+                    <img src="https://image2url.com/images/1764081504690-58bf4fad-eed8-4ee3-b8cf-b8de57126838.png" 
+                         alt="Home" 
+                         class="menu-icon"
+                         loading="lazy">
+                    Home
+                </a>
+                <a href="javascript:void(0);" class="menu-link" id="menuDiscography">
+                    <img src="https://image2url.com/images/1764081290983-d5a8b4e4-8cde-4914-9d8d-d44c6751bf98.png" 
+                         alt="Discography" 
+                         class="menu-icon"
+                         loading="lazy">
+                    Discography
+                </a>
+                <a href="javascript:void(0);" class="menu-link" id="menuStore">
+                    <img src="https://image2url.com/images/1764081531272-bb9bbd9a-b07b-4de8-a662-1cd8a5bbab02.png" 
+                         alt="Store" 
+                         class="menu-icon"
+                         loading="lazy">
+                    Store
+                </a>
+                <a href="mailto:samtherevenant@gmail.com" class="menu-link" id="menuContact">
+                    <img src="https://image2url.com/images/1764081563085-f0954b8f-e384-4bb6-a12f-ada7bb9a2995.png" 
+                         alt="Contact" 
+                         class="menu-icon"
+                         loading="lazy">
+                    Contact
+                </a>
+            </div>
+
+            <div class="menu-footer">
+                <div class="menu-social-title">Connect with me</div>
+                <div class="menu-social-grid">
+                    <a href="https://whatsapp.com/channel/0029Vb72z7J9RZAWILcE5e0v" class="menu-social-btn" target="_blank">
+                        <img src="https://i.pinimg.com/1200x/fc/ae/b3/fcaeb33b122b22a4cac47d29f4447684.jpg" 
+                             alt="WhatsApp Channel" 
+                             class="menu-social-icon"
+                             loading="lazy">
+                        <span class="menu-social-text">WhatsApp</span>
+                    </a>
+                    <a href="https://x.com/samtherevenant" class="menu-social-btn" target="_blank">
+                        <img src="https://i.pinimg.com/736x/4e/11/6b/4e116be3fbc42188144fcc3a330a548a.jpg" 
+                             alt="X Profile" 
+                             class="menu-social-icon"
+                             loading="lazy">
+                        <span class="menu-social-text">X Profile</span>
+                    </a>
+                    <a href="https://open.spotify.com/artist/5m4k5QM67SNdvDsnPFnfkD?si=29DlJSBMTA2-LAFf0zKgOA" class="menu-social-btn" target="_blank">
+                        <img src="https://i.pinimg.com/1200x/e6/55/bf/e655bff3217dd6f575a275604b0ff7e1.jpg" 
+                             alt="Spotify" 
+                             class="menu-social-icon"
+                             loading="lazy">
+                        <span class="menu-social-text">Spotify</span>
+                    </a>
+                    <a href="https://music.apple.com/es/artist/sam-the-revenant/1850689072" class="menu-social-btn" target="_blank">
+                        <img src="https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg" 
+                             alt="Apple Music" 
+                             class="menu-social-icon"
+                             loading="lazy">
+                        <span class="menu-social-text">Apple Music</span>
+                    </a>
+                    <a href="https://tidal.com/artist/69131106" class="menu-social-btn" target="_blank">
+                        <img src="https://i.pinimg.com/736x/94/9c/01/949c014c813bc031520d82af3905a4f0.jpg" 
+                             alt="Tidal" 
+                             class="menu-social-icon"
+                             loading="lazy">
+                        <span class="menu-social-text">Tidal</span>
+                    </a>
+                    <a href="mailto:samtherevenant@gmail.com" class="menu-social-btn">
+                        <img src="https://i.pinimg.com/1200x/8e/48/1a/8e481add923811cde7fb76cc3597b19f.jpg" 
+                             alt="Email" 
+                             class="menu-social-icon"
+                             loading="lazy">
+                        <span class="menu-social-text">Email</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- MODAL DE BIO MEJORADO -->
     <div class="bio-modal-overlay" id="bioModal">
         <div class="bio-modal">
@@ -3208,6 +3576,16 @@
         const closePlaylistsModal = document.getElementById('closePlaylistsModal');
         const updateSlider = document.getElementById('updateSlider');
         const updateImages = updateSlider.querySelectorAll('.update-image');
+        
+        // NUEVOS ELEMENTOS DEL MENÚ
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const sideMenu = document.getElementById('sideMenu');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        const menuHome = document.getElementById('menuHome');
+        const menuDiscography = document.getElementById('menuDiscography');
+        const menuStore = document.getElementById('menuStore');
+        const menuContact = document.getElementById('menuContact');
 
         // VARIABLES GLOBALES
         let currentTrackIndex = 0;
@@ -3219,6 +3597,66 @@
         let currentUpdateIndex = 0;
         let updateInterval;
         let scrollObserver = null;
+        let isMenuOpen = false;
+
+        // FUNCIONES PARA EL MENÚ HAMBURGUESA
+        function openMenu() {
+            if (isMenuOpen) return;
+            
+            isMenuOpen = true;
+            sideMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Cerrar otros modales si están abiertos
+            if (bioModal.classList.contains('active')) {
+                closeBioModalFunc();
+            }
+            if (playlistsModal.classList.contains('active')) {
+                closePlaylistsModalFunc();
+            }
+        }
+
+        function closeMenu() {
+            if (!isMenuOpen) return;
+            
+            isMenuOpen = false;
+            sideMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            
+            setTimeout(() => {
+                document.body.style.overflow = 'auto';
+            }, 400);
+        }
+
+        function toggleMenu() {
+            if (isMenuOpen) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        }
+
+        // FUNCIONES DEL MENÚ
+        function handleMenuHome() {
+            closeMenu();
+            if (!isTransitioning) showSection(homeSection);
+        }
+
+        function handleMenuDiscography() {
+            closeMenu();
+            if (!isTransitioning) showSection(melodiesSection);
+        }
+
+        function handleMenuStore() {
+            closeMenu();
+            if (!isTransitioning) showSection(storeSection);
+        }
+
+        function handleMenuContact() {
+            closeMenu();
+            window.location.href = 'mailto:samtherevenant@gmail.com';
+        }
 
         // FUNCIÓN PARA INICIALIZAR ANIMACIONES DE SCROLL MEJORADA - MÁS RÁPIDA Y MÁS ELEMENTOS VISIBLES
         function initScrollAnimations() {
@@ -3237,17 +3675,12 @@
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
                             entry.target.classList.add('visible');
-                            // Opcional: dejar de observar después de que se haya mostrado para mejor rendimiento
-                            // scrollObserver.unobserve(entry.target);
-                        } else {
-                            // Opcional: remover la clase visible si el elemento sale de la vista
-                            // entry.target.classList.remove('visible');
                         }
                     });
                 },
                 {
-                    threshold: 0.05, // REDUCIDO: Se activa cuando el 5% del elemento es visible (más rápido)
-                    rootMargin: '0px 0px -10px 0px' // REDUCIDO: Se activa mucho más cerca del borde superior
+                    threshold: 0.05,
+                    rootMargin: '0px 0px -10px 0px'
                 }
             );
 
@@ -3273,7 +3706,7 @@
             
             updateInterval = setInterval(() => {
                 nextUpdate();
-            }, 5000); // Cambiar cada 5 segundos
+            }, 5000);
         }
 
         function nextUpdate() {
@@ -3293,6 +3726,7 @@
         function openBioModal() {
             bioModal.classList.add('active');
             document.body.style.overflow = 'hidden';
+            closeMenu();
         }
 
         function closeBioModalFunc() {
@@ -3306,6 +3740,7 @@
         function openPlaylistsModal() {
             playlistsModal.classList.add('active');
             document.body.style.overflow = 'hidden';
+            closeMenu();
         }
 
         function closePlaylistsModalFunc() {
@@ -3613,7 +4048,16 @@
             }
         }
 
-        // EVENT LISTENERS
+        // EVENT LISTENERS PARA EL MENÚ
+        hamburgerBtn.addEventListener('click', toggleMenu);
+        closeMenuBtn.addEventListener('click', closeMenu);
+        menuOverlay.addEventListener('click', closeMenu);
+        menuHome.addEventListener('click', handleMenuHome);
+        menuDiscography.addEventListener('click', handleMenuDiscography);
+        menuStore.addEventListener('click', handleMenuStore);
+        menuContact.addEventListener('click', handleMenuContact);
+
+        // EVENT LISTENERS DEL REPRODUCTOR
         playPauseBtn.addEventListener('click', playPause);
         prevBtn.addEventListener('click', prevTrack);
         nextBtn.addEventListener('click', nextTrack);
@@ -3679,6 +4123,9 @@
         // CERRAR MODALES CON ESCAPE
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
+                if (isMenuOpen) {
+                    closeMenu();
+                }
                 if (bioModal.classList.contains('active')) {
                     closeBioModalFunc();
                 }
@@ -3699,6 +4146,9 @@
                 if (updateInterval) {
                     clearInterval(updateInterval);
                     updateInterval = null;
+                }
+                if (isMenuOpen) {
+                    closeMenu();
                 }
             } else if (currentSection === 'home') {
                 startUpdateSlider();
