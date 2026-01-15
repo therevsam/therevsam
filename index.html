@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sam the Revenant - Pianist & Composer</title>
     <meta name="description" content="Sam the Revenant - Elegant piano compositions and musical interpretations. Pianist & Composer creating timeless melodies.">
-    <meta name="keywords" content="piano, composer, music, classical, melodies, Sam the Revenant">
+    <meta name="keywords" content="piano, composer, music, classical, melodies, Sam the Revenant, neoclassical piano, modern classical, piano music">
     
     <!-- NUEVO FAVICON ACTUALIZADO -->
     <link rel="icon" type="image/x-icon" href="https://image2url.com/images/1764395969079-b7cb359f-b1a9-4587-96b2-d58c0fb83810.png">
@@ -23,12 +23,16 @@
         "name": "Sam the Revenant",
         "description": "Pianist & Composer creating timeless melodies. Elegant piano compositions and musical interpretations.",
         "url": "https://therevsam.com",
-        "genre": ["Classical", "Piano", "Contemporary", "Neoclassical"],
+        "genre": ["Classical", "Piano", "Contemporary", "Neoclassical", "Modern Classical"],
         "image": "https://yt3.ggpht.com/Z6UP3_g1F9t2nJM1_SBp1uaInWJdaflA-dZ28Su_mpHqu-TVF9HDOW2NCGXfmrdlp8J-EoG4cA=s600-c-k-c0x00ffffff-no-rj-rp-mo",
         "sameAs": [
             "https://www.youtube.com/@therevsam",
+            "https://open.spotify.com/artist/5m4k5QM67SNdvDsnPFnfkD",
+            "https://music.apple.com/es/artist/sam-the-revenant/1850689072",
             "https://soundcloud.com/therevsam",
-            "https://audiomack.com/therevsam"
+            "https://audiomack.com/therevsam",
+            "https://tidal.com/artist/69131106",
+            "https://www.deezer.com/es/artist/353551022"
         ],
         "track": [
             {
@@ -36,14 +40,38 @@
                 "name": "Sonate Noire, Op. II — Nuit Obscure",
                 "url": "https://youtu.be/2vPzG4mL5pA",
                 "duration": "PT2M42S",
-                "genre": "Classical"
+                "genre": "Classical",
+                "inAlbum": "L'Âme Nocturne"
             },
             {
                 "@type": "MusicRecording", 
-                "name": "Bella's Lullaby, Op. I – Crépuscule",
-                "url": "https://youtu.be/AhWvSNRSflA",
-                "duration": "PT2M30S",
-                "genre": "Classical"
+                "name": "La Nuit Déchue - Complete Album",
+                "url": "https://music.apple.com/es/album/la-nuit-d%C3%A9chue-single/1868808306",
+                "duration": "PT9M29S",
+                "genre": "Neoclassical"
+            }
+        ],
+        "album": [
+            {
+                "@type": "MusicAlbum",
+                "name": "La Nuit Déchue",
+                "url": "https://music.apple.com/es/album/la-nuit-d%C3%A9chue-single/1868808306",
+                "numTracks": 3,
+                "genre": "Neoclassical Piano"
+            },
+            {
+                "@type": "MusicAlbum",
+                "name": "L'Âme Nocturne",
+                "url": "https://music.apple.com/hn/album/l%C3%A2me-nocturne-single/1858841532",
+                "numTracks": 3,
+                "genre": "Classical Piano"
+            },
+            {
+                "@type": "MusicAlbum",
+                "name": "E.P. Nocturne",
+                "url": "https://music.apple.com/hn/album/e-p-nocturne-single/1850689071",
+                "numTracks": 2,
+                "genre": "Contemporary Classical"
             }
         ]
     }
@@ -1130,6 +1158,11 @@
             position: relative;
             font-size: 0.9rem;
             color: #ffffff;
+            /* CORRECCIÓN: Asegurar centrado completo */
+            margin-left: 0;
+            margin-right: 0;
+            width: 100%;
+            padding: 0 40px; /* Espacio para logos y badges */
         }
 
         .hifi-badge {
@@ -1223,6 +1256,8 @@
             font-size: 0.9rem;
             color: #ffffff;
             margin-left: 0;
+            /* CORRECCIÓN: Asegurar centrado completo */
+            padding: 0 40px; /* Espacio para logos y badges */
         }
 
         /* CORRECCIÓN: FINAL BUTTONS ELIMINADO - EL BOTÓN LINKTREE SE MUEVE AL SOCIAL-BUTTONS */
@@ -1357,269 +1392,6 @@
             opacity: 1;
         }
 
-        /* NUEVO: BOTÓN DE PLAYLIST MEJORADO - ESTILOS MODIFICADOS */
-        .playlist-section {
-            margin-bottom: 2.5rem;
-        }
-
-        .playlist-description {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            opacity: 0.7;
-            text-align: center;
-            margin-bottom: 1.5rem;
-            color: #cccccc;
-            line-height: 1.4;
-        }
-
-        .playlist-cover {
-            width: 100%;
-            max-width: 400px;
-            height: auto;
-            border-radius: 16px;
-            margin: 0 auto 1.5rem auto;
-            display: block;
-            border: 1px solid #333333;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-        }
-
-        /* BOTÓN DE COLECCIÓN MODIFICADO - CENTRADO CORRECTAMENTE */
-        .collection-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center; /* CENTRADO HORIZONTAL */
-            position: relative;
-            padding: 1.2rem 1.8rem;
-            border-radius: 12px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            text-decoration: none;
-            color: white;
-            background: #111111;
-            border: 1px solid #333333;
-            cursor: pointer;
-            width: 100%;
-            margin-bottom: 2rem;
-            min-height: 60px;
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .collection-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-            background: #1a1a1a;
-            border-color: #444444;
-        }
-
-        /* Ícono del botón de colección */
-        .collection-icon {
-            width: 30px;
-            height: 30px;
-            object-fit: contain;
-            position: absolute;
-            left: 1.2rem;
-            top: 50%;
-            transform: translateY(-50%);
-            filter: grayscale(100%) brightness(2) invert(1); /* Invertir color a blanco */
-            border-radius: 8px;
-            z-index: 2;
-        }
-
-        .collection-title {
-            font-family: 'Inter', sans-serif; /* Cambiado de Cormorant Garamond */
-            font-size: 0.9rem; /* Texto más pequeño */
-            margin-bottom: 0;
-            text-align: center;
-            color: #ffffff;
-            flex: 1;
-            z-index: 2;
-            position: relative;
-            /* CENTRADO PERFECTO */
-            padding-left: 40px; /* Espacio para el ícono */
-            padding-right: 40px; /* Espacio simétrico */
-        }
-
-        .collection-subtitle {
-            display: none; /* Ocultamos el subtítulo ya que solo queremos un texto */
-        }
-
-        /* NUEVO: MODAL DE PLAYLISTS CON MISMAS ANIMACIONES */
-        .playlists-modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(15px) brightness(0.6);
-            -webkit-backdrop-filter: blur(15px) brightness(0.6);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 2001;
-            opacity: 0;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            padding: 1rem;
-            pointer-events: none;
-        }
-
-        .playlists-modal-overlay.active {
-            display: flex;
-            opacity: 1;
-            pointer-events: all;
-            animation: blurIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-        }
-
-        .playlists-modal {
-            background: #111111;
-            border: 1px solid #333333;
-            border-radius: 20px;
-            padding: 2rem;
-            width: 100%;
-            max-width: 500px;
-            max-height: 80vh;
-            overflow-y: auto;
-            transform: translateY(30px) scale(0.95);
-            opacity: 0;
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-        }
-
-        .playlists-modal-overlay.active .playlists-modal {
-            transform: translateY(0) scale(1);
-            opacity: 1;
-            animation: modalSlideIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-        }
-
-        .playlists-modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #333333;
-            transform: translateY(20px);
-            opacity: 0;
-            animation: fadeInUp 0.5s ease 0.2s forwards;
-        }
-
-        .playlists-modal-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            color: #ffffff;
-        }
-
-        .close-playlists-modal {
-            background: none;
-            border: none;
-            color: #cccccc;
-            cursor: pointer;
-            padding: 0.5rem;
-            font-size: 1.8rem;
-            line-height: 1;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-        }
-
-        .close-playlists-modal:hover {
-            color: #ffffff;
-            background: #222222;
-            transform: rotate(90deg);
-        }
-
-        .playlists-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .playlist-modal-card {
-            display: flex;
-            align-items: center;
-            padding: 1.2rem;
-            border-radius: 12px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            text-decoration: none;
-            color: white;
-            position: relative;
-            overflow: hidden;
-            -webkit-tap-highlight-color: transparent;
-            background: #111111;
-            border: 1px solid #333333;
-            transform: translateX(20px);
-            opacity: 0;
-            animation: slideInRight 0.5s ease forwards;
-        }
-
-        @keyframes slideInRight {
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        .playlist-modal-card:nth-child(1) { animation-delay: 0.3s; }
-        .playlist-modal-card:nth-child(2) { animation-delay: 0.4s; }
-        .playlist-modal-card:nth-child(3) { animation-delay: 0.5s; }
-        .playlist-modal-card:nth-child(4) { animation-delay: 0.6s; }
-        .playlist-modal-card:nth-child(5) { animation-delay: 0.7s; }
-        .playlist-modal-card:nth-child(6) { animation-delay: 0.8s; }
-        .playlist-modal-card:nth-child(7) { animation-delay: 0.9s; }
-        .playlist-modal-card:nth-child(8) { animation-delay: 1.0s; }
-
-        .playlist-modal-card:hover {
-            transform: translateY(-2px) translateX(0);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-            background: #1a1a1a;
-            border-color: #444444;
-        }
-
-        .playlist-modal-logo {
-            width: 40px;
-            height: 40px;
-            object-fit: contain;
-            margin-right: 1.2rem;
-            filter: grayscale(100%) brightness(2);
-            border-radius: 8px;
-        }
-
-        .playlist-modal-info {
-            flex: 1;
-        }
-
-        .playlist-modal-name {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1rem;
-            margin-bottom: 0.2rem;
-            line-height: 1.3;
-            color: #ffffff;
-        }
-
-        .playlist-modal-platform {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.75rem;
-            opacity: 0.7;
-            color: #cccccc;
-        }
-
-        .playlist-modal-arrow {
-            width: 20px;
-            height: 20px;
-            opacity: 0.7;
-            transition: opacity 0.3s ease;
-            color: #ffffff;
-        }
-
-        .playlist-modal-card:hover .playlist-modal-arrow {
-            opacity: 1;
-        }
-
         /* SECCIÓN DE TIENDA CON ANIMACIONES MEJORADAS */
         .store-section {
             padding-bottom: 5rem;
@@ -1704,11 +1476,6 @@
             color: #D4AF37;
             font-weight: 600;
             margin-bottom: 0.8rem;
-        }
-
-        .album-price.soon {
-            color: #aaaaaa;
-            font-style: italic;
         }
 
         .platform-icons {
@@ -1810,24 +1577,11 @@
             overflow: hidden;
         }
 
-        .purchase-btn.soon {
-            border-color: #555555;
-            color: #aaaaaa;
-            cursor: not-allowed;
-        }
-
-        .purchase-btn:hover:not(.soon) {
+        .purchase-btn:hover {
             background: #D4AF37;
             color: #000000;
             transform: translateY(-2px);
             box-shadow: 0 6px 16px rgba(212, 175, 55, 0.3);
-        }
-
-        .purchase-btn.soon:hover {
-            transform: none;
-            box-shadow: none;
-            background: transparent;
-            color: #aaaaaa;
         }
 
         .purchase-icon {
@@ -2168,12 +1922,6 @@
                 right: 0;
             }
 
-            /* Ajustes para el botón de colección en móviles */
-            .collection-title {
-                padding-left: 35px;
-                padding-right: 35px;
-            }
-
             /* MENÚ HAMBURGUESA EN MÓVIL */
             .hamburger-btn {
                 top: 1rem;
@@ -2443,29 +2191,8 @@
                 line-height: 1.6;
             }
 
-            .playlists-modal {
-                padding: 1.5rem;
-                max-height: 85vh;
-            }
-
-            .playlists-modal-title {
-                font-size: 1.5rem;
-            }
-
             .read-more {
                 font-size: 0.85rem;
-            }
-
-            /* Ajustes para el botón de colección en móviles pequeños */
-            .collection-title {
-                font-size: 0.85rem;
-                padding-left: 30px;
-                padding-right: 30px;
-            }
-            
-            .collection-icon {
-                width: 25px;
-                height: 25px;
             }
 
             /* MENÚ HAMBURGUESA EN MÓVIL PEQUEÑO */
@@ -2641,137 +2368,6 @@
         </div>
     </div>
 
-    <!-- NUEVO: MODAL DE PLAYLISTS -->
-    <div class="playlists-modal-overlay" id="playlistsModal">
-        <div class="playlists-modal">
-            <div class="playlists-modal-header">
-                <h3 class="playlists-modal-title">Sam the Revenant Collection</h3>
-                <button class="close-playlists-modal" id="closePlaylistsModal">×</button>
-            </div>
-            <div class="playlists-grid">
-                <!-- Spotify -->
-                <a href="https://open.spotify.com/playlist/0XYS21NjKw1WlzW0Opu8bG?si=S8prhdvfTWm0_KPzWT42PA" class="playlist-modal-card" target="_blank">
-                    <img src="https://i.pinimg.com/1200x/e6/55/bf/e655bff3217dd6f575a275604b0ff7e1.jpg" 
-                         alt="Spotify" 
-                         class="playlist-modal-logo"
-                         loading="lazy">
-                    <div class="playlist-modal-info">
-                        <div class="playlist-modal-name">Sam the Revenant Collection</div>
-                        <div class="playlist-modal-platform">Spotify Playlist</div>
-                    </div>
-                    <svg class="playlist-modal-arrow" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                    </svg>
-                </a>
-
-                <!-- Apple Music -->
-                <a href="https://music.apple.com/hn/playlist/sam-the-revenant-collection/pl.u-Ymb0vdyFDjeLLEb?ls" class="playlist-modal-card" target="_blank">
-                    <img src="https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg" 
-                         alt="Apple Music" 
-                         class="playlist-modal-logo"
-                         loading="lazy">
-                    <div class="playlist-modal-info">
-                        <div class="playlist-modal-name">Sam the Revenant Collection</div>
-                        <div class="playlist-modal-platform">Apple Music Playlist</div>
-                    </div>
-                    <svg class="playlist-modal-arrow" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                    </svg>
-                </a>
-
-                <!-- Deezer -->
-                <a href="https://link.deezer.com/s/31NpCDLsHDAngyDhLnRTg" class="playlist-modal-card" target="_blank">
-                    <img src="https://i.pinimg.com/736x/1b/f9/33/1bf93302bd924479b90f47a0df2134cd.jpg" 
-                         alt="Deezer" 
-                         class="playlist-modal-logo"
-                         loading="lazy">
-                    <div class="playlist-modal-info">
-                        <div class="playlist-modal-name">Sam the Revenant Collection</div>
-                        <div class="playlist-modal-platform">Deezer Playlist</div>
-                    </div>
-                    <svg class="playlist-modal-arrow" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                    </svg>
-                </a>
-
-                <!-- Tidal -->
-                <a href="https://tidal.com/playlist/82304d6b-e154-4ecc-a4bb-de5de1c2a891" class="playlist-modal-card" target="_blank">
-                    <img src="https://i.pinimg.com/736x/94/9c/01/949c014c813bc031520d82af3905a4f0.jpg" 
-                         alt="Tidal" 
-                         class="playlist-modal-logo"
-                         loading="lazy">
-                    <div class="playlist-modal-info">
-                        <div class="playlist-modal-name">Sam the Revenant Collection</div>
-                        <div class="playlist-modal-platform">Tidal Playlist</div>
-                    </div>
-                    <svg class="playlist-modal-arrow" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                    </svg>
-                </a>
-
-                <!-- YouTube Music -->
-                <a href="https://music.youtube.com/playlist?list=PLxczVDZlfe7gNwqRiqsFLRCtU9mSigZrS&si=nK1tavQKwRLAlLWR" class="playlist-modal-card" target="_blank">
-                    <img src="https://i.pinimg.com/1200x/73/6d/0c/736d0c2aac22b1c37a6ce0ee1a52277f.jpg" 
-                         alt="YouTube Music" 
-                         class="playlist-modal-logo"
-                         loading="lazy">
-                    <div class="playlist-modal-info">
-                        <div class="playlist-modal-name">Sam the Revenant Collection</div>
-                        <div class="playlist-modal-platform">YouTube Music Playlist</div>
-                    </div>
-                    <svg class="playlist-modal-arrow" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                    </svg>
-                </a>
-
-                <!-- YouTube -->
-                <a href="https://youtube.com/playlist?list=PLxczVDZlfe7gNwqRiqsFLRCtU9mSigZrS&si=6Fv6NIcwc7kzuyb0" class="playlist-modal-card" target="_blank">
-                    <img src="https://i.pinimg.com/736x/7a/5d/56/7a5d56c5e22d6fed8d72eeb70329f5f5.jpg" 
-                         alt="YouTube" 
-                         class="playlist-modal-logo"
-                         loading="lazy">
-                    <div class="playlist-modal-info">
-                        <div class="playlist-modal-name">Sam the Revenant Collection</div>
-                        <div class="playlist-modal-platform">YouTube Playlist</div>
-                    </div>
-                    <svg class="playlist-modal-arrow" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                    </svg>
-                </a>
-
-                <!-- SoundCloud -->
-                <a href="https://on.soundcloud.com/Bfh65Er1vC6TNGfHT6" class="playlist-modal-card" target="_blank">
-                    <img src="https://i.pinimg.com/1200x/81/9d/35/819d35d67997e972a5542b5ba49d577b.jpg" 
-                         alt="SoundCloud" 
-                         class="playlist-modal-logo"
-                         loading="lazy">
-                    <div class="playlist-modal-info">
-                        <div class="playlist-modal-name">Sam the Revenant Collection</div>
-                        <div class="playlist-modal-platform">SoundCloud Playlist</div>
-                    </div>
-                    <svg class="playlist-modal-arrow" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                    </svg>
-                </a>
-
-                <!-- Audiomack -->
-                <a href="https://audiomack.com/therevsam/playlist/64080268" class="playlist-modal-card" target="_blank">
-                    <img src="https://i.pinimg.com/1200x/f6/36/b6/f636b60899bb4ec359b6e4aadecce904.jpg" 
-                         alt="Audiomack" 
-                         class="playlist-modal-logo"
-                         loading="lazy">
-                    <div class="playlist-modal-info">
-                        <div class="playlist-modal-name">Sam the Revenant Collection</div>
-                        <div class="playlist-modal-platform">Audiomack Playlist</div>
-                    </div>
-                    <svg class="playlist-modal-arrow" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                    </svg>
-                </a>
-            </div>
-        </div>
-    </div>
-
     <!-- BANNER MEJORADO -->
     <div class="fading-banner" id="fadingBanner"></div>
 
@@ -2941,26 +2537,6 @@
                          loading="lazy">
                     <span class="btn-text">Claro Music</span>
                 </a>
-
-                <!-- NUEVO: Anghami (con badge "Soon") - CON EFECTO DE SCROLL -->
-                <div class="link-btn fade-in-element delay-5">
-                    <img src="https://image2url.com/r2/bucket1/images/1766698308134-dcc1aad9-702b-420d-8a11-41dcdd0f7120.jpeg" 
-                         alt="Anghami" 
-                         class="platform-logo"
-                         loading="lazy">
-                    <span class="btn-text">Anghami</span>
-                    <span class="soon-badge">Soon</span>
-                </div>
-
-                <!-- NUEVO: JioSaavn (con badge "Soon") - CON EFECTO DE SCROLL -->
-                <div class="link-btn fade-in-element delay-5">
-                    <img src="https://image2url.com/r2/bucket1/images/1766698368793-cc17867c-f5c5-4df9-9c97-1df17477877d.jpeg" 
-                         alt="JioSaavn" 
-                         class="platform-logo"
-                         loading="lazy">
-                    <span class="btn-text">JioSaavn</span>
-                    <span class="soon-badge">Soon</span>
-                </div>
             </div>
 
             <!-- SECCIÓN: PROFILES & CONTACT -->
@@ -3220,29 +2796,42 @@
                             </svg>
                         </a>
                     </div>
-                </div>
 
-                <!-- NUEVO: BOTÓN ÚNICO DE COLECCIÓN MODIFICADO -->
-                <div class="playlist-section">
-                    <div class="section-divider fade-in-element delay-5">
-                        <div class="divider-line"></div>
-                        <div class="divider-text">Sam the Revenant Collection</div>
-                    </div>
-                    
-                    <p class="playlist-description fade-in-element delay-5">The complete collection of Sam the Revenant.</p>
-                    
-                    <img src="https://i.pinimg.com/736x/65/51/85/655185780cce5db43c91bc642b56de2d.jpg" 
-                         alt="Sam the Revenant Collection" 
-                         class="playlist-cover fade-in-element delay-5"
-                         loading="lazy">
-                    
-                    <!-- BOTÓN MODIFICADO CON ÍCONO Y TEXTO MÁS PEQUEÑO - CENTRADO CORRECTAMENTE -->
-                    <div class="collection-btn fade-in-element delay-5" id="openPlaylistsModal">
-                        <img src="https://image2url.com/r2/bucket3/images/1766866882676-6fca813d-d6d6-47d1-916b-19e32c553e55.png" 
-                             alt="Playlist Icon" 
-                             class="collection-icon"
-                             loading="lazy">
-                        <h3 class="collection-title">View all playlists</h3>
+                    <!-- NUEVO: ÁLBUM LA NUIT DÉCHUE CON CANCIONES -->
+                    <div class="album-info fade-in-element delay-5" style="margin-top: 2rem;">La Nuit Déchue</div>
+                    <div class="melodies-grid">
+                        <div class="melody-card fade-in-element delay-5">
+                            <img src="https://image2url.com/images/1765848273878-04670324-a5d6-4496-9d0c-f68bdc53d45c.png" 
+                                 alt="Nocturne Op. III" 
+                                 class="melody-cover"
+                                 loading="lazy">
+                            <div class="melody-info">
+                                <div class="melody-name">Nocturne Op. III en Do♯ mineur — L'obscurité de la Nuit</div>
+                                <div class="melody-artist">Sam the Revenant</div>
+                            </div>
+                        </div>
+
+                        <div class="melody-card fade-in-element delay-5">
+                            <img src="https://image2url.com/images/1765848273878-04670324-a5d6-4496-9d0c-f68bdc53d45c.png" 
+                                 alt="Réverie Op. III" 
+                                 class="melody-cover"
+                                 loading="lazy">
+                            <div class="melody-info">
+                                <div class="melody-name">Réverie Op. III en Do mineur — Silences Enlacés</div>
+                                <div class="melody-artist">Sam the Revenant</div>
+                            </div>
+                        </div>
+
+                        <div class="melody-card fade-in-element delay-5">
+                            <img src="https://image2url.com/images/1765848273878-04670324-a5d6-4496-9d0c-f68bdc53d45c.png" 
+                                 alt="Improvisation Op. III" 
+                                 class="melody-cover"
+                                 loading="lazy">
+                            <div class="melody-info">
+                                <div class="melody-name">Improvisation Op. III en Do mineur — Lune Éternelle</div>
+                                <div class="melody-artist">Sam the Revenant</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -3261,7 +2850,7 @@
                 </div>
 
                 <div class="albums-container">
-                    <!-- NUEVO ÁLBUM: La Nuit Déchue -->
+                    <!-- ÁLBUM: La Nuit Déchue - ACTUALIZADO -->
                     <div class="album-card fade-in-element delay-2" data-album="nuit-dechue">
                         <div class="album-header">
                             <img src="https://image2url.com/images/1765848273878-04670324-a5d6-4496-9d0c-f68bdc53d45c.png" 
@@ -3270,7 +2859,7 @@
                                  loading="lazy">
                             <div class="album-basic-info">
                                 <h3 class="album-name">La Nuit Déchue</h3>
-                                <div class="album-price soon">Soon</div>
+                                <div class="album-price">5.39 USD</div>
                                 <div class="platform-icons">
                                     <img src="https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg" 
                                          alt="iTunes" 
@@ -3295,23 +2884,50 @@
                                 <div class="tracklist-title">Tracklist</div>
                                 <div class="track">
                                     <span class="track-name">Nocturne Op. III en Do♯ mineur — L'obscurité de la Nuit</span>
-                                    <span class="track-duration"></span>
+                                    <span class="track-duration">(3:09)</span>
                                 </div>
                                 <div class="track">
                                     <span class="track-name">Réverie Op. III en Do mineur — Silences Enlacés</span>
-                                    <span class="track-duration"></span>
+                                    <span class="track-duration">(3:13)</span>
                                 </div>
                                 <div class="track">
                                     <span class="track-name">Improvisation Op. III en Do mineur — Lune Éternelle</span>
-                                    <span class="track-duration"></span>
+                                    <span class="track-duration">(3:07)</span>
                                 </div>
                             </div>
-                            <button class="purchase-btn soon" disabled>
+                            <button class="purchase-btn" onclick="toggleAlbumExpand('nuit-dechue')">
                                 <svg class="purchase-icon" viewBox="0 0 24 24" fill="currentColor">
                                     <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
                                 </svg>
-                                Soon
+                                Purchase Album
                             </button>
+                            
+                            <!-- BOTONES DE PLATAFORMAS EN DESPLIEGUE -->
+                            <div class="platform-buttons-container" id="nuit-dechue-platforms">
+                                <div class="platform-buttons-row">
+                                    <a href="https://music.apple.com/es/album/la-nuit-d%C3%A9chue-single/1868808306" class="platform-button" target="_blank">
+                                        <img src="https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg" 
+                                             alt="iTunes" 
+                                             class="platform-button-logo"
+                                             loading="lazy">
+                                        <span class="platform-button-name">iTunes</span>
+                                    </a>
+                                    <a href="https://www.qobuz.com/us-en/album/la-nuit-dechue-sam-the-revenant/try3pj8yy1h4s" class="platform-button" target="_blank">
+                                        <img src="https://headphone.guru/wp-content/uploads/2021/02/qobuz-logo.png" 
+                                             alt="Qobuz" 
+                                             class="platform-button-logo"
+                                             loading="lazy">
+                                        <span class="platform-button-name">Qobuz</span>
+                                    </a>
+                                    <a href="https://amazon.com/music/player/albums/B0GGSSLM7V?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_TpVRa5J0VjspLNxiGqXuWtPmi" class="platform-button" target="_blank">
+                                        <img src="https://i.pinimg.com/736x/09/72/ae/0972ae3bcb8a4157c4f790996c73f41c.jpg" 
+                                             alt="Amazon Music" 
+                                             class="platform-button-logo"
+                                             loading="lazy">
+                                        <span class="platform-button-name">Amazon</span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -3367,7 +2983,7 @@
                                 Purchase Album
                             </button>
                             
-                            <!-- NUEVO: BOTONES DE PLATAFORMAS EN DESPLIEGUE -->
+                            <!-- BOTONES DE PLATAFORMAS EN DESPLIEGUE -->
                             <div class="platform-buttons-container" id="ame-nocturne-platforms">
                                 <div class="platform-buttons-row">
                                     <a href="https://music.apple.com/hn/album/l%C3%A2me-nocturne-single/1858841532" class="platform-button" target="_blank">
@@ -3444,7 +3060,7 @@
                                 Purchase Album
                             </button>
                             
-                            <!-- NUEVO: BOTONES DE PLATAFORMAS EN DESPLIEGUE -->
+                            <!-- BOTONES DE PLATAFORMAS EN DESPLIEGUE -->
                             <div class="platform-buttons-container" id="ep-nocturne-platforms">
                                 <div class="platform-buttons-row">
                                     <a href="https://music.apple.com/hn/album/e-p-nocturne-single/1850689071" class="platform-button" target="_blank">
@@ -3592,9 +3208,6 @@
         const readMore = document.getElementById('readMore');
         const bioModal = document.getElementById('bioModal');
         const closeBioModal = document.getElementById('closeBioModal');
-        const openPlaylistsModalBtn = document.getElementById('openPlaylistsModal');
-        const playlistsModal = document.getElementById('playlistsModal');
-        const closePlaylistsModal = document.getElementById('closePlaylistsModal');
         const updateSlider = document.getElementById('updateSlider');
         const updateImages = updateSlider.querySelectorAll('.update-image');
         
@@ -3632,9 +3245,6 @@
             // Cerrar otros modales si están abiertos
             if (bioModal.classList.contains('active')) {
                 closeBioModalFunc();
-            }
-            if (playlistsModal.classList.contains('active')) {
-                closePlaylistsModalFunc();
             }
         }
 
@@ -3757,20 +3367,6 @@
             }, 500);
         }
 
-        // FUNCIONES PARA EL MODAL DE PLAYLISTS
-        function openPlaylistsModal() {
-            playlistsModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            closeMenu();
-        }
-
-        function closePlaylistsModalFunc() {
-            playlistsModal.classList.remove('active');
-            setTimeout(() => {
-                document.body.style.overflow = 'auto';
-            }, 500);
-        }
-
         // FUNCIONES PARA EL DESPLIEGUE DE ÁLBUMES
         function toggleAlbumExpand(albumId) {
             const albumCard = document.querySelector(`[data-album="${albumId}"]`);
@@ -3795,9 +3391,9 @@
                     prevPurchaseBtn.innerHTML = `
                         <svg class="purchase-icon" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
-                    </svg>
-                    Purchase Album
-                `;
+                        </svg>
+                        Purchase Album
+                    `;
                 }
                 
                 // Expandir el nuevo álbum
@@ -4121,15 +3717,6 @@
             }
         });
 
-        // PLAYLISTS MODAL
-        openPlaylistsModalBtn.addEventListener('click', openPlaylistsModal);
-        closePlaylistsModal.addEventListener('click', closePlaylistsModalFunc);
-        playlistsModal.addEventListener('click', function(e) {
-            if (e.target === this) {
-                closePlaylistsModalFunc();
-            }
-        });
-
         // SCROLL CON THROTTLING
         let scrollTimeout;
         window.addEventListener('scroll', function() {
@@ -4149,9 +3736,6 @@
                 }
                 if (bioModal.classList.contains('active')) {
                     closeBioModalFunc();
-                }
-                if (playlistsModal.classList.contains('active')) {
-                    closePlaylistsModalFunc();
                 }
                 // Cerrar álbumes expandidos
                 if (expandedAlbum) {
