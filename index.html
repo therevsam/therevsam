@@ -1,17 +1,42 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sam the Revenant - Pianist & Composer</title>
-    <meta name="description" content="Sam the Revenant - Elegant piano compositions and musical interpretations. Pianist & Composer creating timeless melodies.">
-    <meta name="keywords" content="piano, composer, music, classical, melodies, Sam the Revenant, neoclassical piano, modern classical, piano music">
+    <title>Sam the Revenant - Pianist & Composer | Official Website</title>
+    <meta name="description" content="Official website of Sam the Revenant - pianist and composer. Stream timeless piano compositions, explore discography, and purchase albums. Elegant neoclassical and modern classical piano music.">
+    <meta name="keywords" content="piano, composer, music, classical, melodies, Sam the Revenant, neoclassical piano, modern classical, piano music, pianist, contemporary classical, ambient piano">
+    <meta name="author" content="Sam the Revenant">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://therevsam.com">
+    <meta property="og:title" content="Sam the Revenant - Pianist & Composer">
+    <meta property="og:description" content="Elegant piano compositions and musical interpretations. Pianist & Composer creating timeless melodies.">
+    <meta property="og:image" content="https://yt3.ggpht.com/Z6UP3_g1F9t2nJM1_SBp1uaInWJdaflA-dZ28Su_mpHqu-TVF9HDOW2NCGXfmrdlp8J-EoG4cA=s600-c-k-c0x00ffffff-no-rj-rp-mo">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://therevsam.com">
+    <meta name="twitter:title" content="Sam the Revenant - Pianist & Composer">
+    <meta name="twitter:description" content="Elegant piano compositions and musical interpretations. Pianist & Composer creating timeless melodies.">
+    <meta name="twitter:image" content="https://yt3.ggpht.com/Z6UP3_g1F9t2nJM1_SBp1uaInWJdaflA-dZ28Su_mpHqu-TVF9HDOW2NCGXfmrdlp8J-EoG4cA=s600-c-k-c0x00ffffff-no-rj-rp-mo">
+    <meta name="twitter:creator" content="@samtherevenant">
     
     <!-- NUEVO FAVICON ACTUALIZADO -->
     <link rel="icon" type="image/x-icon" href="https://image2url.com/images/1764395969079-b7cb359f-b1a9-4587-96b2-d58c0fb83810.png">
     <link rel="apple-touch-icon" sizes="180x180" href="https://image2url.com/images/1764395969079-b7cb359f-b1a9-4587-96b2-d58c0fb83810.png">
     <link rel="icon" type="image/png" sizes="32x32" href="https://image2url.com/images/1764395969079-b7cb359f-b1a9-4587-96b2-d58c0fb83810.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://image2url.com/images/1764395969079-b7cb359f-b1a9-4587-96b2-d58c0fb83810.png">
+    
+    <!-- Preconnect para mejorar performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://image2url.com">
+    <link rel="preconnect" href="https://yt3.ggpht.com">
+    <link rel="preconnect" href="https://i.pinimg.com">
     
     <!-- FUENTE LEXEND PARA USERNAME -->
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@600;700&display=swap" rel="stylesheet">
@@ -1317,9 +1342,31 @@
             font-family: 'Inter', sans-serif;
             font-size: 0.8rem;
             opacity: 0.6;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             color: #cccccc;
             font-style: italic;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-right: 0.5rem;
+        }
+
+        /* NUEVO: ENLACE "LISTEN NOW" EN DISCROGRAFÍA - SIN ÍCONO */
+        .album-listen-now {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            color: #D4AF37 !important;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            opacity: 0.9;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .album-listen-now:hover {
+            opacity: 1;
         }
 
         .melodies-grid {
@@ -1363,14 +1410,24 @@
 
         .melody-info {
             flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
+        /* CORREGIDO: NOMBRE DE MELODÍA SIN SUBRAYADO Y CON ENLACE CORRECTO */
         .melody-name {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.1rem;
             margin-bottom: 0.3rem;
             line-height: 1.3;
             color: #ffffff;
+            text-decoration: none !important;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .melody-name:hover {
+            color: #cccccc;
         }
 
         .melody-artist {
@@ -1519,14 +1576,39 @@
             margin-bottom: 2rem;
         }
 
+        /* CORREGIDO: TRACKLIST HEADER CON "LISTEN NOW" */
+        .tracklist-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
         .tracklist-title {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1rem;
             color: #cccccc;
-            margin-bottom: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             opacity: 0.7;
+        }
+
+        /* NUEVO: "LISTEN NOW" EN STORE */
+        .store-listen-now {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            color: #D4AF37 !important;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            opacity: 0.9;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .store-listen-now:hover {
+            opacity: 1;
         }
 
         .track {
@@ -2721,38 +2803,61 @@
                 <div class="category-section">
                     <h3 class="category-title fade-in-element delay-3">My Discography</h3>
                     
-                    <div class="album-info fade-in-element delay-3">E.P. Nocturne</div>
-                    <div class="melodies-grid">
-                        <a href="https://youtu.be/LSGb5LSdq08?si=W9Y_PMzq7dLYqHyF" class="melody-card fade-in-element delay-3" target="_blank">
-                            <img src="https://i.pinimg.com/736x/5b/35/5e/5b355efd3b65d11bc14a53fa3931afbe.jpg" 
-                                 alt="Notturno I" 
-                                 class="melody-cover"
-                                 loading="lazy">
-                            <div class="melody-info">
-                                <div class="melody-name">Notturno I in Do♯ Minore - Velo della Notte</div>
-                                <div class="melody-artist">Sam the Revenant</div>
-                            </div>
-                            <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                            </svg>
-                        </a>
-
-                        <a href="https://youtu.be/94Ntp_VQ2Gw?si=l8fmouUI9I70iH9o" class="melody-card fade-in-element delay-4" target="_blank">
-                            <img src="https://i.pinimg.com/736x/5b/35/5e/5b355efd3b65d11bc14a53fa3931afbe.jpg" 
-                                 alt="Notturno II" 
-                                 class="melody-cover"
-                                 loading="lazy">
-                            <div class="melody-info">
-                                <div class="melody-name">Notturno II en Mi mineur – Murmures Perdus</div>
-                                <div class="melody-artist">Sam the Revenant</div>
-                            </div>
-                            <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                            </svg>
+                    <!-- NUEVO: ORDEN CORREGIDO - La Nuit Déchue primero -->
+                    <div class="album-info fade-in-element delay-3">
+                        La Nuit Déchue
+                        <a href="https://push.fm/fl/porlgqzv" class="album-listen-now" target="_blank">
+                            Listen Now
                         </a>
                     </div>
+                    <div class="melodies-grid">
+                        <!-- CORREGIDO: SIN SUBRAYADO Y CON FLECHA -->
+                        <div class="melody-card fade-in-element delay-3">
+                            <img src="https://image2url.com/images/1765848273878-04670324-a5d6-4496-9d0c-f68bdc53d45c.png" 
+                                 alt="Nocturne Op. III" 
+                                 class="melody-cover"
+                                 loading="lazy">
+                            <div class="melody-info">
+                                <div class="melody-name">Nocturne Op. III en Do♯ mineur — L'obscurité de la Nuit</div>
+                                <div class="melody-artist">Sam the Revenant</div>
+                            </div>
+                            <a href="https://youtu.be/Cx7iJYfSd0Q" target="_blank" style="display: flex; align-items: center;">
+                                <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                                </svg>
+                            </a>
+                        </div>
 
-                    <div class="album-info fade-in-element delay-5" style="margin-top: 2rem;">L'Âme Nocturne</div>
+                        <div class="melody-card fade-in-element delay-4">
+                            <img src="https://image2url.com/images/1765848273878-04670324-a5d6-4496-9d0c-f68bdc53d45c.png" 
+                                 alt="Réverie Op. III" 
+                                 class="melody-cover"
+                                 loading="lazy">
+                            <div class="melody-info">
+                                <div class="melody-name">Réverie Op. III en Do mineur — Silences Enlacés</div>
+                                <div class="melody-artist">Sam the Revenant</div>
+                            </div>
+                        </div>
+
+                        <div class="melody-card fade-in-element delay-5">
+                            <img src="https://image2url.com/images/1765848273878-04670324-a5d6-4496-9d0c-f68bdc53d45c.png" 
+                                 alt="Improvisation Op. III" 
+                                 class="melody-cover"
+                                 loading="lazy">
+                            <div class="melody-info">
+                                <div class="melody-name">Improvisation Op. III en Do mineur — Lune Éternelle</div>
+                                <div class="melody-artist">Sam the Revenant</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SEGUNDO: L'Âme Nocturne -->
+                    <div class="album-info fade-in-element delay-5" style="margin-top: 2rem;">
+                        L'Âme Nocturne
+                        <a href="https://push.fm/fl/ywelmnmt" class="album-listen-now" target="_blank">
+                            Listen Now
+                        </a>
+                    </div>
                     <div class="melodies-grid">
                         <a href="https://youtu.be/2vPzG4mL5pA?si=_3zAZPqTDxdRhwZJ" class="melody-card fade-in-element delay-5" target="_blank">
                             <img src="https://i.pinimg.com/736x/a5/24/c0/a524c0f2fca32421708bb32f6a26ee99.jpg" 
@@ -2797,41 +2902,41 @@
                         </a>
                     </div>
 
-                    <!-- NUEVO: ÁLBUM LA NUIT DÉCHUE CON CANCIONES -->
-                    <div class="album-info fade-in-element delay-5" style="margin-top: 2rem;">La Nuit Déchue</div>
+                    <!-- TERCERO: E.P. Nocturne -->
+                    <div class="album-info fade-in-element delay-5" style="margin-top: 2rem;">
+                        E.P. Nocturne
+                        <a href="https://push.fm/fl/uoico4ct" class="album-listen-now" target="_blank">
+                            Listen Now
+                        </a>
+                    </div>
                     <div class="melodies-grid">
-                        <div class="melody-card fade-in-element delay-5">
-                            <img src="https://image2url.com/images/1765848273878-04670324-a5d6-4496-9d0c-f68bdc53d45c.png" 
-                                 alt="Nocturne Op. III" 
+                        <a href="https://youtu.be/LSGb5LSdq08?si=W9Y_PMzq7dLYqHyF" class="melody-card fade-in-element delay-5" target="_blank">
+                            <img src="https://i.pinimg.com/736x/5b/35/5e/5b355efd3b65d11bc14a53fa3931afbe.jpg" 
+                                 alt="Notturno I" 
                                  class="melody-cover"
                                  loading="lazy">
                             <div class="melody-info">
-                                <div class="melody-name">Nocturne Op. III en Do♯ mineur — L'obscurité de la Nuit</div>
+                                <div class="melody-name">Notturno I in Do♯ Minore - Velo della Notte</div>
                                 <div class="melody-artist">Sam the Revenant</div>
                             </div>
-                        </div>
+                            <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                            </svg>
+                        </a>
 
-                        <div class="melody-card fade-in-element delay-5">
-                            <img src="https://image2url.com/images/1765848273878-04670324-a5d6-4496-9d0c-f68bdc53d45c.png" 
-                                 alt="Réverie Op. III" 
+                        <a href="https://youtu.be/94Ntp_VQ2Gw?si=l8fmouUI9I70iH9o" class="melody-card fade-in-element delay-5" target="_blank">
+                            <img src="https://i.pinimg.com/736x/5b/35/5e/5b355efd3b65d11bc14a53fa3931afbe.jpg" 
+                                 alt="Notturno II" 
                                  class="melody-cover"
                                  loading="lazy">
                             <div class="melody-info">
-                                <div class="melody-name">Réverie Op. III en Do mineur — Silences Enlacés</div>
+                                <div class="melody-name">Notturno II en Mi mineur – Murmures Perdus</div>
                                 <div class="melody-artist">Sam the Revenant</div>
                             </div>
-                        </div>
-
-                        <div class="melody-card fade-in-element delay-5">
-                            <img src="https://image2url.com/images/1765848273878-04670324-a5d6-4496-9d0c-f68bdc53d45c.png" 
-                                 alt="Improvisation Op. III" 
-                                 class="melody-cover"
-                                 loading="lazy">
-                            <div class="melody-info">
-                                <div class="melody-name">Improvisation Op. III en Do mineur — Lune Éternelle</div>
-                                <div class="melody-artist">Sam the Revenant</div>
-                            </div>
-                        </div>
+                            <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                            </svg>
+                        </a>
                     </div>
                 </div>
 
@@ -2850,7 +2955,7 @@
                 </div>
 
                 <div class="albums-container">
-                    <!-- ÁLBUM: La Nuit Déchue - ACTUALIZADO -->
+                    <!-- ÁLBUM: La Nuit Déchue - PRIMERO -->
                     <div class="album-card fade-in-element delay-2" data-album="nuit-dechue">
                         <div class="album-header">
                             <img src="https://image2url.com/images/1765848273878-04670324-a5d6-4496-9d0c-f68bdc53d45c.png" 
@@ -2880,8 +2985,14 @@
                             </div>
                         </div>
                         <div class="album-details">
+                            <!-- NUEVO: TRACKLIST HEADER CON "LISTEN NOW" -->
                             <div class="tracklist">
-                                <div class="tracklist-title">Tracklist</div>
+                                <div class="tracklist-header">
+                                    <div class="tracklist-title">Tracklist</div>
+                                    <a href="https://push.fm/fl/porlgqzv" class="store-listen-now" target="_blank">
+                                        Listen Now
+                                    </a>
+                                </div>
                                 <div class="track">
                                     <span class="track-name">Nocturne Op. III en Do♯ mineur — L'obscurité de la Nuit</span>
                                     <span class="track-duration">(3:09)</span>
@@ -2931,7 +3042,7 @@
                         </div>
                     </div>
 
-                    <!-- ÁLBUM: L'Âme Nocturne -->
+                    <!-- ÁLBUM: L'Âme Nocturne - SEGUNDO -->
                     <div class="album-card fade-in-element delay-3" data-album="ame-nocturne">
                         <div class="album-header">
                             <img src="https://i.pinimg.com/736x/a5/24/c0/a524c0f2fca32421708bb32f6a26ee99.jpg" 
@@ -2961,8 +3072,14 @@
                             </div>
                         </div>
                         <div class="album-details">
+                            <!-- NUEVO: TRACKLIST HEADER CON "LISTEN NOW" -->
                             <div class="tracklist">
-                                <div class="tracklist-title">Tracklist</div>
+                                <div class="tracklist-header">
+                                    <div class="tracklist-title">Tracklist</div>
+                                    <a href="https://push.fm/fl/ywelmnmt" class="store-listen-now" target="_blank">
+                                        Listen Now
+                                    </a>
+                                </div>
                                 <div class="track">
                                     <span class="track-name">Sonate Noire, Op. II — Nuit Obscure</span>
                                     <span class="track-duration">(2:42)</span>
@@ -3012,7 +3129,7 @@
                         </div>
                     </div>
 
-                    <!-- ÁLBUM: E.P. Nocturne -->
+                    <!-- ÁLBUM: E.P. Nocturne - TERCERO -->
                     <div class="album-card fade-in-element delay-4" data-album="ep-nocturne">
                         <div class="album-header">
                             <img src="https://i.pinimg.com/736x/5b/35/5e/5b355efd3b65d11bc14a53fa3931afbe.jpg" 
@@ -3042,8 +3159,14 @@
                             </div>
                         </div>
                         <div class="album-details">
+                            <!-- NUEVO: TRACKLIST HEADER CON "LISTEN NOW" -->
                             <div class="tracklist">
-                                <div class="tracklist-title">Tracklist</div>
+                                <div class="tracklist-header">
+                                    <div class="tracklist-title">Tracklist</div>
+                                    <a href="https://push.fm/fl/uoico4ct" class="store-listen-now" target="_blank">
+                                        Listen Now
+                                    </a>
+                                </div>
                                 <div class="track">
                                     <span class="track-name">Notturno I in Do♯ Minore: Velo della Notte</span>
                                     <span class="track-duration">(2:55)</span>
@@ -3142,7 +3265,9 @@
     </div>
 
     <script>
-        // DATOS DEL REPRODUCTOR
+        // ============================================
+        // 1. DATOS DEL REPRODUCTOR - MANTENIENDO ESTADO
+        // ============================================
         const tracks = [
             {
                 title: "Sonate Noire, Op. II — Nuit Obscure",
@@ -3176,7 +3301,9 @@
             }
         ];
 
-        // ELEMENTOS DEL DOM
+        // ============================================
+        // 2. ELEMENTOS DEL DOM
+        // ============================================
         const audio = new Audio();
         const playPauseBtn = document.getElementById('playPauseBtn');
         const playIcon = document.getElementById('playIcon');
@@ -3221,7 +3348,9 @@
         const menuStore = document.getElementById('menuStore');
         const menuContact = document.getElementById('menuContact');
 
-        // VARIABLES GLOBALES
+        // ============================================
+        // 3. VARIABLES GLOBALES CON ESTADO PERSISTENTE
+        // ============================================
         let currentTrackIndex = 0;
         let isPlaying = false;
         let isLiked = false;
@@ -3233,7 +3362,18 @@
         let scrollObserver = null;
         let isMenuOpen = false;
 
-        // FUNCIONES PARA EL MENÚ HAMBURGUESA
+        // NUEVO: ESTADO PERSISTENTE DEL REPRODUCTOR
+        let playerState = {
+            currentTrackIndex: 0,
+            isPlaying: false,
+            currentTime: 0,
+            volume: 1,
+            isLiked: false
+        };
+
+        // ============================================
+        // 4. FUNCIONES PARA EL MENÚ HAMBURGUESA
+        // ============================================
         function openMenu() {
             if (isMenuOpen) return;
             
@@ -3242,7 +3382,6 @@
             menuOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
             
-            // Cerrar otros modales si están abiertos
             if (bioModal.classList.contains('active')) {
                 closeBioModalFunc();
             }
@@ -3289,47 +3428,41 @@
             window.location.href = 'mailto:samtherevenant@gmail.com';
         }
 
-        // FUNCIÓN PARA INICIALIZAR ANIMACIONES DE SCROLL MEJORADA - MÁS RÁPIDA Y MÁS ELEMENTOS VISIBLES
-        function initScrollAnimations() {
-            // Solo inicializar si estamos en la sección Home
-            if (currentSection !== 'home') return;
+        // ============================================
+        // 5. MEJORAS DE PERFORMANCE: PRECARGA INTELIGENTE
+        // ============================================
+        function preloadSectionImages(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (!section) return;
             
-            // Limpiar observador anterior si existe
-            if (scrollObserver) {
-                scrollObserver.disconnect();
-                scrollObserver = null;
-            }
-
-            // Crear IntersectionObserver con configuración MEJORADA para más velocidad y más elementos visibles
-            scrollObserver = new IntersectionObserver(
-                (entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('visible');
-                        }
-                    });
-                },
-                {
-                    threshold: 0.05,
-                    rootMargin: '0px 0px -10px 0px'
-                }
-            );
-
-            // Observar solo los elementos con fade-in-element dentro de #home-section
-            const homeElements = document.querySelectorAll('#home-section .fade-in-element');
-            homeElements.forEach(element => {
-                // Resetear estado de animación solo para elementos que no sean los botones fijos
-                const isSpotifyOrApple = element.closest('.links .link-btn:nth-child(1)') || 
-                                          element.closest('.links .link-btn:nth-child(2)');
-                
-                if (!isSpotifyOrApple) {
-                    element.classList.remove('visible');
-                    scrollObserver.observe(element);
+            // Obtener todas las imágenes de la sección
+            const images = section.querySelectorAll('img[data-src]');
+            images.forEach(img => {
+                const src = img.getAttribute('data-src');
+                if (src) {
+                    img.src = src;
+                    img.removeAttribute('data-src');
                 }
             });
         }
 
-        // FUNCIONES PARA EL SLIDER DE ACTUALIZACIONES
+        function preloadCriticalImages() {
+            // Precargar imágenes críticas
+            const criticalImages = [
+                'https://yt3.ggpht.com/Z6UP3_g1F9t2nJM1_SBp1uaInWJdaflA-dZ28Su_mpHqu-TVF9HDOW2NCGXfmrdlp8J-EoG4cA=s600-c-k-c0x00ffffff-no-rj-rp-mo',
+                'https://image2url.com/images/1764438678014-b4985758-e3ab-4ad6-a79d-04caf468a111.jpg',
+                'https://i.pinimg.com/736x/a5/24/c0/a524c0f2fca32421708bb32f6a26ee99.jpg'
+            ];
+            
+            criticalImages.forEach(src => {
+                const img = new Image();
+                img.src = src;
+            });
+        }
+
+        // ============================================
+        // 6. FUNCIONES PARA EL SLIDER DE ACTUALIZACIONES
+        // ============================================
         function startUpdateSlider() {
             if (updateInterval) {
                 clearInterval(updateInterval);
@@ -3341,19 +3474,17 @@
         }
 
         function nextUpdate() {
-            // Ocultar la imagen actual
             updateImages[currentUpdateIndex].classList.remove('active');
-            
-            // Calcular siguiente índice
             currentUpdateIndex = (currentUpdateIndex + 1) % updateImages.length;
             
-            // Mostrar la siguiente imagen
             setTimeout(() => {
                 updateImages[currentUpdateIndex].classList.add('active');
             }, 50);
         }
 
-        // FUNCIONES PARA EL MODAL DE BIO
+        // ============================================
+        // 7. FUNCIONES PARA EL MODAL DE BIO
+        // ============================================
         function openBioModal() {
             bioModal.classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -3367,13 +3498,14 @@
             }, 500);
         }
 
-        // FUNCIONES PARA EL DESPLIEGUE DE ÁLBUMES
+        // ============================================
+        // 8. FUNCIONES PARA EL DESPLIEGUE DE ÁLBUMES
+        // ============================================
         function toggleAlbumExpand(albumId) {
             const albumCard = document.querySelector(`[data-album="${albumId}"]`);
             const purchaseBtn = albumCard.querySelector('.purchase-btn');
             
             if (expandedAlbum === albumId) {
-                // Cerrar el álbum actualmente expandido
                 albumCard.classList.remove('expanded');
                 purchaseBtn.innerHTML = `
                     <svg class="purchase-icon" viewBox="0 0 24 24" fill="currentColor">
@@ -3383,7 +3515,6 @@
                 `;
                 expandedAlbum = null;
             } else {
-                // Cerrar cualquier otro álbum expandido
                 if (expandedAlbum) {
                     const prevAlbumCard = document.querySelector(`[data-album="${expandedAlbum}"]`);
                     const prevPurchaseBtn = prevAlbumCard.querySelector('.purchase-btn');
@@ -3396,7 +3527,6 @@
                     `;
                 }
                 
-                // Expandir el nuevo álbum
                 albumCard.classList.add('expanded');
                 purchaseBtn.innerHTML = `
                     <svg class="purchase-icon" viewBox="0 0 24 24" fill="currentColor" style="transform: rotate(180deg);">
@@ -3406,14 +3536,15 @@
                 `;
                 expandedAlbum = albumId;
                 
-                // Desplazar la vista al álbum si está parcialmente fuera de vista
                 setTimeout(() => {
                     albumCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                 }, 100);
             }
         }
 
-        // BANNER MEJORADO - SIN BUGS
+        // ============================================
+        // 9. BANNER MEJORADO
+        // ============================================
         function handleScroll() {
             if (currentSection === 'home') {
                 const scrollY = window.scrollY;
@@ -3426,7 +3557,9 @@
             }
         }
 
-        // SISTEMA DE TRANSICIONES MEJORADO
+        // ============================================
+        // 10. SISTEMA DE TRANSICIONES MEJORADO
+        // ============================================
         function updateBannerForSection(section) {
             currentSection = section;
             
@@ -3435,9 +3568,8 @@
                 void fadingBanner.offsetWidth;
                 fadingBanner.style.opacity = '1';
                 handleScroll();
-                startUpdateSlider(); // Iniciar slider cuando estamos en home
+                startUpdateSlider();
                 
-                // Inicializar animaciones de scroll después de un pequeño delay
                 setTimeout(() => {
                     initScrollAnimations();
                 }, 100);
@@ -3453,7 +3585,6 @@
                     }
                 }, 600);
                 
-                // Detener animaciones de scroll cuando no estamos en Home
                 if (scrollObserver) {
                     scrollObserver.disconnect();
                     scrollObserver = null;
@@ -3461,8 +3592,10 @@
             }
         }
 
-        // FUNCIONES DEL REPRODUCTOR
-        function loadTrack(index) {
+        // ============================================
+        // 11. FUNCIONES DEL REPRODUCTOR CON ESTADO PERSISTENTE
+        // ============================================
+        function loadTrack(index, preserveTime = false) {
             const track = tracks[index];
             showLoading();
             
@@ -3474,15 +3607,30 @@
                 albumArt.src = track.coverUrl;
                 trackTitle.textContent = track.title;
                 
+                const wasPlaying = !audio.paused;
                 audio.pause();
                 audio.src = track.audioUrl;
-                audio.currentTime = 0;
+                
+                // NUEVO: Restaurar tiempo si se solicita
+                if (preserveTime && playerState.currentTime > 0) {
+                    audio.currentTime = playerState.currentTime;
+                } else {
+                    audio.currentTime = 0;
+                    playerState.currentTime = 0;
+                }
+                
                 progressBar.style.width = '0%';
                 currentTimeEl.textContent = '0:00';
                 durationEl.textContent = '0:00';
                 
                 audio.addEventListener('loadedmetadata', function() {
                     durationEl.textContent = formatTime(audio.duration);
+                    // NUEVO: Actualizar barra de progreso si hay tiempo guardado
+                    if (preserveTime && playerState.currentTime > 0) {
+                        const progressPercent = (playerState.currentTime / audio.duration) * 100;
+                        progressBar.style.width = `${progressPercent}%`;
+                        currentTimeEl.textContent = formatTime(playerState.currentTime);
+                    }
                 }, { once: true });
                 
                 setTimeout(() => {
@@ -3492,12 +3640,19 @@
                     hideLoading();
                 }, 50);
                 
-                if (isPlaying) {
+                // NUEVO: Restaurar estado de reproducción
+                if (wasPlaying || playerState.isPlaying) {
                     setTimeout(() => {
                         audio.play().catch(e => console.log('Auto-play prevented'));
+                        updatePlayButton(true);
+                        playerState.isPlaying = true;
                     }, 300);
                 }
             }, 300);
+            
+            // Actualizar estado
+            playerState.currentTrackIndex = index;
+            currentTrackIndex = index;
         }
 
         function showLoading() {
@@ -3511,11 +3666,21 @@
         function playPause() {
             if (audio.paused) {
                 audio.play();
+                updatePlayButton(true);
+                playerState.isPlaying = true;
+            } else {
+                audio.pause();
+                updatePlayButton(false);
+                playerState.isPlaying = false;
+            }
+        }
+
+        function updatePlayButton(playing) {
+            if (playing) {
                 playIcon.style.display = 'none';
                 pauseIcon.style.display = 'block';
                 isPlaying = true;
             } else {
-                audio.pause();
                 playIcon.style.display = 'block';
                 pauseIcon.style.display = 'none';
                 isPlaying = false;
@@ -3523,23 +3688,15 @@
         }
 
         function nextTrack() {
-            currentTrackIndex = (currentTrackIndex + 1) % tracks.length;
-            loadTrack(currentTrackIndex);
-            if (isPlaying) {
-                setTimeout(() => {
-                    audio.play().catch(e => console.log('Auto-play prevented'));
-                }, 300);
-            }
+            playerState.currentTrackIndex = (playerState.currentTrackIndex + 1) % tracks.length;
+            playerState.currentTime = 0; // Reset time for new track
+            loadTrack(playerState.currentTrackIndex, false);
         }
 
         function prevTrack() {
-            currentTrackIndex = (currentTrackIndex - 1 + tracks.length) % tracks.length;
-            loadTrack(currentTrackIndex);
-            if (isPlaying) {
-                setTimeout(() => {
-                    audio.play().catch(e => console.log('Auto-play prevented'));
-                }, 300);
-            }
+            playerState.currentTrackIndex = (playerState.currentTrackIndex - 1 + tracks.length) % tracks.length;
+            playerState.currentTime = 0; // Reset time for new track
+            loadTrack(playerState.currentTrackIndex, false);
         }
 
         function formatTime(seconds) {
@@ -3554,6 +3711,9 @@
             progressBar.style.width = `${progressPercent}%`;
             currentTimeEl.textContent = formatTime(audio.currentTime);
             
+            // NUEVO: Guardar tiempo actual en el estado
+            playerState.currentTime = audio.currentTime;
+            
             if (audio.duration && !isNaN(audio.duration)) {
                 durationEl.textContent = formatTime(audio.duration);
             }
@@ -3563,17 +3723,20 @@
             const width = this.clientWidth;
             const clickX = e.offsetX;
             const duration = audio.duration;
-            audio.currentTime = (clickX / width) * duration;
+            const newTime = (clickX / width) * duration;
+            audio.currentTime = newTime;
+            playerState.currentTime = newTime;
         }
 
         function toggleLike() {
             isLiked = !isLiked;
+            playerState.isLiked = isLiked;
             likeBtn.classList.toggle('liked', isLiked);
             showToast(isLiked ? 'Added to favorites' : 'Removed from favorites');
         }
 
         function shareTrack() {
-            const currentTrack = tracks[currentTrackIndex];
+            const currentTrack = tracks[playerState.currentTrackIndex];
             navigator.clipboard.writeText(currentTrack.youtubeUrl).then(() => {
                 showToast('YouTube link copied!');
             }).catch(() => {
@@ -3589,7 +3752,9 @@
             }, 2000);
         }
 
-        // SISTEMA DE NAVEGACIÓN MEJORADO
+        // ============================================
+        // 12. SISTEMA DE NAVEGACIÓN MEJORADO
+        // ============================================
         function showSection(sectionToShow) {
             if (isTransitioning) return;
             isTransitioning = true;
@@ -3602,34 +3767,35 @@
             }
             
             if (currentActive) {
-                // Ocultar sección actual
                 currentActive.style.opacity = '0';
                 currentActive.style.transform = 'translateY(10px)';
                 
                 setTimeout(() => {
                     currentActive.classList.remove('active');
                     
-                    // Mostrar nueva sección
                     sectionToShow.classList.add('active');
-                    void sectionToShow.offsetWidth; // Forzar reflow
+                    void sectionToShow.offsetWidth;
                     sectionToShow.style.opacity = '1';
                     sectionToShow.style.transform = 'translateY(0)';
                     
-                    // Actualizar navegación y banner
                     updateNavigation(sectionToShow.id);
                     updateBannerBasedOnSection(sectionToShow.id);
                     
-                    // Scroll al inicio
+                    // NUEVO: Precargar imágenes de la sección al hacer cambio
+                    if (sectionToShow.id === 'melodies-section') {
+                        preloadSectionImages('melodies-section');
+                    } else if (sectionToShow.id === 'store-section') {
+                        preloadSectionImages('store-section');
+                    }
+                    
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                     
-                    // Completar transición
                     setTimeout(() => {
                         isTransitioning = false;
                     }, 100);
                     
                 }, 300);
             } else {
-                // Primera carga
                 sectionToShow.classList.add('active');
                 sectionToShow.style.opacity = '1';
                 sectionToShow.style.transform = 'translateY(0)';
@@ -3640,7 +3806,6 @@
         }
 
         function updateNavigation(sectionId) {
-            // Actualizar ambas barras de navegación
             document.querySelectorAll('.nav-button').forEach(button => {
                 button.classList.remove('active');
             });
@@ -3665,7 +3830,9 @@
             }
         }
 
-        // EVENT LISTENERS PARA EL MENÚ
+        // ============================================
+        // 13. EVENT LISTENERS
+        // ============================================
         hamburgerBtn.addEventListener('click', toggleMenu);
         closeMenuBtn.addEventListener('click', closeMenu);
         menuOverlay.addEventListener('click', closeMenu);
@@ -3737,7 +3904,6 @@
                 if (bioModal.classList.contains('active')) {
                     closeBioModalFunc();
                 }
-                // Cerrar álbumes expandidos
                 if (expandedAlbum) {
                     toggleAlbumExpand(expandedAlbum);
                 }
@@ -3747,7 +3913,11 @@
         // MANEJO DE VISIBILIDAD DE LA PÁGINA
         document.addEventListener('visibilitychange', function() {
             if (document.hidden) {
-                if (isPlaying) audio.pause();
+                if (!audio.paused) {
+                    playerState.isPlaying = true;
+                    playerState.currentTime = audio.currentTime;
+                    audio.pause();
+                }
                 if (updateInterval) {
                     clearInterval(updateInterval);
                     updateInterval = null;
@@ -3757,6 +3927,13 @@
                 }
             } else if (currentSection === 'home') {
                 startUpdateSlider();
+                // NUEVO: Restaurar reproducción si estaba sonando
+                if (playerState.isPlaying) {
+                    setTimeout(() => {
+                        audio.play().catch(e => console.log('Auto-play prevented'));
+                        updatePlayButton(true);
+                    }, 300);
+                }
             }
         });
 
@@ -3776,11 +3953,23 @@
             }
         });
 
-        // INICIALIZACIÓN
+        // ============================================
+        // 14. INICIALIZACIÓN
+        // ============================================
         audio.preload = 'metadata';
-        loadTrack(currentTrackIndex);
+        
+        // Cargar track inicial con estado persistente
+        loadTrack(playerState.currentTrackIndex, false);
+        
+        // Restaurar estado del botón like
+        if (playerState.isLiked) {
+            likeBtn.classList.add('liked');
+            isLiked = true;
+        }
+        
         updateBannerForSection('home');
         startUpdateSlider();
+        preloadCriticalImages();
 
         // Inicializar animaciones de scroll después de un delay inicial
         setTimeout(() => {
@@ -3797,6 +3986,41 @@
                 rgba(0,0,0,0) 100%),
                 url('https://image2url.com/images/1764398925959-0ac36ca7-3ed4-4585-8843-b7cec2422e39.png')`;
         }, 100);
+
+        // FUNCIÓN PARA ANIMACIONES DE SCROLL
+        function initScrollAnimations() {
+            if (currentSection !== 'home') return;
+            
+            if (scrollObserver) {
+                scrollObserver.disconnect();
+                scrollObserver = null;
+            }
+
+            scrollObserver = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        }
+                    });
+                },
+                {
+                    threshold: 0.05,
+                    rootMargin: '0px 0px -10px 0px'
+                }
+            );
+
+            const homeElements = document.querySelectorAll('#home-section .fade-in-element');
+            homeElements.forEach(element => {
+                const isSpotifyOrApple = element.closest('.links .link-btn:nth-child(1)') || 
+                                          element.closest('.links .link-btn:nth-child(2)');
+                
+                if (!isSpotifyOrApple) {
+                    element.classList.remove('visible');
+                    scrollObserver.observe(element);
+                }
+            });
+        }
     </script>
 </body>
 </html>
