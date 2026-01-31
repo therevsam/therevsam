@@ -670,7 +670,71 @@
             opacity: 0.9;
         }
 
-        /* BIO CORREGIDA - MÁS PEQUEÑA, SIN FONDO, SIN PUNTEO, FUENTE CORRECTA */
+        /* ============================================
+           NUEVA SECCIÓN: ESTADÍSTICAS
+           ============================================ */
+        .stats-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin: 0.5rem 0 1rem 0;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .stats-container.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            position: relative;
+            padding: 0 0.5rem;
+        }
+
+        .stat-number {
+            font-family: 'Lexend', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.2rem;
+            min-height: 1.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            width: 100%;
+        }
+
+        .stat-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            color: #cccccc;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.8;
+        }
+
+        /* Separador entre estadísticas */
+        .stat-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 15%;
+            height: 70%;
+            width: 1px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* ============================================ */
+
         .bio {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.1rem;
@@ -2110,6 +2174,24 @@
                 font-size: 0.9rem;
             }
             
+            /* ESTADÍSTICAS EN MÓVIL */
+            .stats-container {
+                margin: 0.3rem 0 0.8rem 0;
+            }
+            
+            .stat-number {
+                font-size: 1.1rem;
+                min-height: 1.6rem;
+            }
+            
+            .stat-label {
+                font-size: 0.7rem;
+            }
+            
+            .stat-item {
+                padding: 0 0.3rem;
+            }
+            
             .bio {
                 font-size: 1rem;
                 margin-bottom: 1.5rem;
@@ -2312,6 +2394,15 @@
                 right: 3rem;
             }
 
+            /* ESTADÍSTICAS EN PANTALLAS GRANDES */
+            .stat-number {
+                font-size: 1.5rem;
+            }
+            
+            .stat-label {
+                font-size: 0.8rem;
+            }
+
             /* MENÚ HAMBURGUESA EN PANTALLAS GRANDES */
             .hamburger-btn {
                 top: 2.5rem;
@@ -2481,14 +2572,26 @@
             
             <div class="title fade-in-element delay-1">Pianist & Composer</div>
             
-            <!-- BIO CON "MORE" - CORREGIDA -->
-            <p class="bio fade-in-element delay-2" id="bio">
-                I'm Sam, pianist, composer, and the mind behind Sam the Revenant.
-                <a href="javascript:void(0);" class="read-more" id="readMore">...more</a>
-            </p>
+            <!-- ============================================
+                NUEVA SECCIÓN: ESTADÍSTICAS
+                ============================================ -->
+            <div class="stats-container fade-in-element delay-2" id="statsContainer">
+                <div class="stat-item">
+                    <div class="stat-number" id="followersCount">0</div>
+                    <div class="stat-label">Followers</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="listenersCount">0</div>
+                    <div class="stat-label">Listeners</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="nowPlayingCount">0</div>
+                    <div class="stat-label">Listening Now</div>
+                </div>
+            </div>
 
             <!-- BOTÓN "ESCUCHAR AHORA" -->
-            <a href="https://youtu.be/l-7QFvMkOr0?si=8GtKDMU2qLHL_J6Y" class="listen-now-btn fade-in-element delay-2" target="_blank">
+            <a href="https://youtu.be/l-7QFvMkOr0?si=8GtKDMU2qLHL_J6Y" class="listen-now-btn fade-in-element delay-3" target="_blank">
                 <img src="https://image2url.com/images/1764438678014-b4985758-e3ab-4ad6-a79d-04caf468a111.jpg" 
                      alt="Listen Now" 
                      class="listen-now-img"
@@ -2496,7 +2599,7 @@
             </a>
 
             <!-- SECCIÓN DE ACTUALIZACIONES CORREGIDA - CON SLIDER -->
-            <div class="updates-section fade-in-element delay-3">
+            <div class="updates-section fade-in-element delay-4">
                 <div class="update-slider" id="updateSlider">
                     <img src="https://image2url.com/images/1764776723968-1d5d39e6-99f7-429a-a52d-a5ab05f34863.png" 
                          alt="Latest Updates" 
@@ -2510,7 +2613,7 @@
             </div>
 
             <!-- SECCIÓN: STREAMING PLATFORMS -->
-            <div class="section-divider fade-in-element delay-4">
+            <div class="section-divider fade-in-element delay-5">
                 <div class="divider-line"></div>
                 <div class="divider-text">Streaming Platforms</div>
             </div>
@@ -2536,7 +2639,7 @@
                 </a>
                 
                 <!-- Deezer tercero - CON EFECTO DE SCROLL -->
-                <a href="https://www.deezer.com/es/artist/353551022" class="link-btn fade-in-element delay-4" target="_blank">
+                <a href="https://www.deezer.com/es/artist/353551022" class="link-btn fade-in-element delay-5" target="_blank">
                     <img src="https://i.pinimg.com/736x/1b/f9/33/1bf93302bd924479b90f47a0df2134cd.jpg" 
                          alt="Deezer" 
                          class="platform-logo"
@@ -2546,7 +2649,7 @@
                 </a>
                 
                 <!-- Tidal cuarto - CON EFECTO DE SCROLL -->
-                <a href="https://tidal.com/artist/69131106" class="link-btn fade-in-element delay-4" target="_blank">
+                <a href="https://tidal.com/artist/69131106" class="link-btn fade-in-element delay-5" target="_blank">
                     <img src="https://i.pinimg.com/736x/94/9c/01/949c014c813bc031520d82af3905a4f0.jpg" 
                          alt="Tidal" 
                          class="platform-logo"
@@ -2556,7 +2659,7 @@
                 </a>
 
                 <!-- Amazon Music quinto - CON EFECTO DE SCROLL -->
-                <a href="https://music.amazon.com/artists/B0G6NYRX6P/sam-the-revenant" class="link-btn fade-in-element delay-4" target="_blank">
+                <a href="https://music.amazon.com/artists/B0G6NYRX6P/sam-the-revenant" class="link-btn fade-in-element delay-5" target="_blank">
                     <img src="https://i.pinimg.com/736x/09/72/ae/0972ae3bcb8a4157c4f790996c73f41c.jpg" 
                          alt="Amazon Music" 
                          class="platform-logo"
@@ -2566,7 +2669,7 @@
                 </a>
                 
                 <!-- Qobuz sexto - CON EFECTO DE SCROLL -->
-                <a href="https://www.qobuz.com/us-en/interpreter/sam-the-revenant/29785940" class="link-btn fade-in-element delay-4" target="_blank">
+                <a href="https://www.qobuz.com/us-en/interpreter/sam-the-revenant/29785940" class="link-btn fade-in-element delay-5" target="_blank">
                     <img src="https://headphone.guru/wp-content/uploads/2021/02/qobuz-logo.png" 
                          alt="Qobuz" 
                          class="platform-logo"
@@ -2576,7 +2679,7 @@
                 </a>
                 
                 <!-- YouTube séptimo - CON EFECTO DE SCROLL -->
-                <a href="https://www.youtube.com/@therevsam" class="link-btn fade-in-element delay-4" target="_blank">
+                <a href="https://www.youtube.com/@therevsam" class="link-btn fade-in-element delay-5" target="_blank">
                     <img src="https://i.pinimg.com/736x/7a/5d/56/7a5d56c5e22d6fed8d72eeb70329f5f5.jpg" 
                          alt="YouTube" 
                          class="platform-logo"
@@ -3397,6 +3500,12 @@
         const menuStore = document.getElementById('menuStore');
         const menuContact = document.getElementById('menuContact');
 
+        // NUEVOS ELEMENTOS DE ESTADÍSTICAS
+        const statsContainer = document.getElementById('statsContainer');
+        const followersCount = document.getElementById('followersCount');
+        const listenersCount = document.getElementById('listenersCount');
+        const nowPlayingCount = document.getElementById('nowPlayingCount');
+
         // ============================================
         // 3. VARIABLES GLOBALES CON ESTADO PERSISTENTE
         // ============================================
@@ -3478,7 +3587,75 @@
         }
 
         // ============================================
-        // 5. MEJORAS DE PERFORMANCE: PRECARGA INTELIGENTE
+        // 5. NUEVAS FUNCIONES PARA LAS ESTADÍSTICAS
+        // ============================================
+        function startStatsAnimation() {
+            // Datos finales
+            const targetFollowers = 30800; // 30.8K
+            const targetListeners = 784;
+            const targetNowPlaying = Math.floor(Math.random() * 9) + 1; // 1-9 aleatorio
+            
+            // Configuración de animación
+            const animationDuration = 2000; // 2 segundos total
+            const easingOut = (t) => 1 - Math.pow(1 - t, 3); // Easing out cúbico
+            
+            // Calcular incrementos basados en los valores finales
+            // Seguidores: número más grande, incremento más rápido
+            const followersIncrement = Math.ceil(targetFollowers / 50); // Más pasos para suavidad
+            const listenersIncrement = Math.ceil(targetListeners / 25);
+            const nowPlayingIncrement = 1; // Solo 1 por paso para el número pequeño
+            
+            let startTime = null;
+            let animationFrame = null;
+            
+            function animateStats(timestamp) {
+                if (!startTime) startTime = timestamp;
+                const elapsed = timestamp - startTime;
+                const progress = Math.min(elapsed / animationDuration, 1);
+                
+                // Aplicar easing out para que se desacelere al final
+                const easedProgress = easingOut(progress);
+                
+                // Calcular valores actuales
+                const currentFollowers = Math.floor(targetFollowers * easedProgress);
+                const currentListeners = Math.floor(targetListeners * easedProgress);
+                const currentNowPlaying = Math.floor(targetNowPlaying * easedProgress);
+                
+                // Actualizar los elementos del DOM
+                followersCount.textContent = formatNumber(currentFollowers);
+                listenersCount.textContent = currentListeners.toLocaleString();
+                nowPlayingCount.textContent = currentNowPlaying;
+                
+                // Continuar la animación si no ha terminado
+                if (progress < 1) {
+                    animationFrame = requestAnimationFrame(animateStats);
+                } else {
+                    // Asegurar que se muestren los valores finales exactos
+                    followersCount.textContent = '30.8K';
+                    listenersCount.textContent = '784';
+                    nowPlayingCount.textContent = targetNowPlaying;
+                }
+            }
+            
+            // Iniciar animación
+            animationFrame = requestAnimationFrame(animateStats);
+            
+            // Hacer visibles las estadísticas
+            setTimeout(() => {
+                statsContainer.classList.add('visible');
+            }, 300);
+        }
+        
+        function formatNumber(num) {
+            if (num >= 1000) {
+                const formatted = (num / 1000).toFixed(1);
+                return formatted.endsWith('.0') ? formatted.slice(0, -2) + 'K' : formatted + 'K';
+            }
+            return num.toLocaleString();
+        }
+
+        // ============================================
+        // 6. MEJORAS DE PERFORMANCE: PRECARGA INTELIGENTE
         // ============================================
         function preloadSectionImages(sectionId) {
             const section = document.getElementById(sectionId);
@@ -3510,7 +3687,7 @@
         }
 
         // ============================================
-        // 6. FUNCIONES PARA EL SLIDER DE ACTUALIZACIONES
+        // 7. FUNCIONES PARA EL SLIDER DE ACTUALIZACIONES
         // ============================================
         function startUpdateSlider() {
             if (updateInterval) {
@@ -3532,7 +3709,7 @@
         }
 
         // ============================================
-        // 7. FUNCIONES PARA EL MODAL DE BIO
+        // 8. FUNCIONES PARA EL MODAL DE BIO
         // ============================================
         function openBioModal() {
             bioModal.classList.add('active');
@@ -3548,7 +3725,7 @@
         }
 
         // ============================================
-        // 8. FUNCIONES PARA EL DESPLIEGUE DE ÁLBUMES
+        // 9. FUNCIONES PARA EL DESPLIEGUE DE ÁLBUMES
         // ============================================
         function toggleAlbumExpand(albumId) {
             const albumCard = document.querySelector(`[data-album="${albumId}"]`);
@@ -3592,7 +3769,7 @@
         }
 
         // ============================================
-        // 9. BANNER MEJORADO
+        // 10. BANNER MEJORADO
         // ============================================
         function handleScroll() {
             if (currentSection === 'home') {
@@ -3607,7 +3784,7 @@
         }
 
         // ============================================
-        // 10. SISTEMA DE TRANSICIONES MEJORADO
+        // 11. SISTEMA DE TRANSICIONES MEJORADO
         // ============================================
         function updateBannerForSection(section) {
             currentSection = section;
@@ -3642,7 +3819,7 @@
         }
 
         // ============================================
-        // 11. FUNCIONES DEL REPRODUCTOR CON ESTADO PERSISTENTE
+        // 12. FUNCIONES DEL REPRODUCTOR CON ESTADO PERSISTENTE
         // ============================================
         function loadTrack(index, preserveTime = false) {
             const track = tracks[index];
@@ -3802,7 +3979,7 @@
         }
 
         // ============================================
-        // 12. SISTEMA DE NAVEGACIÓN MEJORADO
+        // 13. SISTEMA DE NAVEGACIÓN MEJORADO
         // ============================================
         function showSection(sectionToShow) {
             if (isTransitioning) return;
@@ -3880,7 +4057,7 @@
         }
 
         // ============================================
-        // 13. EVENT LISTENERS
+        // 14. EVENT LISTENERS
         // ============================================
         hamburgerBtn.addEventListener('click', toggleMenu);
         closeMenuBtn.addEventListener('click', closeMenu);
@@ -3924,8 +4101,7 @@
             if (!isTransitioning) showSection(storeSection);
         });
 
-        // BIO MODAL
-        readMore.addEventListener('click', openBioModal);
+        // BIO MODAL (mantenido por si se necesita en otro lugar)
         closeBioModal.addEventListener('click', closeBioModalFunc);
         bioModal.addEventListener('click', function(e) {
             if (e.target === this) {
@@ -4003,7 +4179,7 @@
         });
 
         // ============================================
-        // 14. INICIALIZACIÓN
+        // 15. INICIALIZACIÓN
         // ============================================
         audio.preload = 'metadata';
         
@@ -4019,6 +4195,11 @@
         updateBannerForSection('home');
         startUpdateSlider();
         preloadCriticalImages();
+        
+        // NUEVO: Iniciar animación de estadísticas
+        setTimeout(() => {
+            startStatsAnimation();
+        }, 500);
 
         // Inicializar animaciones de scroll después de un delay inicial
         setTimeout(() => {
