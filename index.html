@@ -134,6 +134,51 @@
             to { opacity: 1; }
         }
 
+        /* PANTALLA DE CARGA CON VIDEO */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+        }
+
+        .loading-screen.fade-out {
+            opacity: 0;
+        }
+
+        .loading-video-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .loading-video {
+            width: 100%;
+            max-width: 400px; /* Tamaño máximo en desktop */
+            height: auto;
+            aspect-ratio: 1 / 1; /* Mantiene proporción 1:1 */
+            object-fit: contain;
+            border-radius: 0; /* Sin bordes redondeados para mantener el video original */
+        }
+
+        /* Ajuste para móviles */
+        @media (max-width: 480px) {
+            .loading-video {
+                max-width: 350px; /* Tamaño adecuado para móviles */
+            }
+        }
+
         /* NUEVO: MENÚ HAMBURGUESA Y OVERLAY */
         .hamburger-btn {
             position: fixed;
@@ -198,7 +243,7 @@
             width: 70%;
             height: 100%;
             background: #000000;
-            z-index: 1010; /* AUMENTADO DE 1000 A 1010 PARA CUBRIR BOTONES DE NAVEGACIÓN */
+            z-index: 1010;
             transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
@@ -211,11 +256,10 @@
             left: 0;
         }
 
-        /* NUEVO: PARA PANTALLAS HORIZONTALES (TABLETS Y PC) - MENÚ MÁS ANGOSTO */
         @media (min-width: 769px) {
             .side-menu {
-                width: 380px; /* ANCHO FIJO EN LUGAR DE PORCENTAJE */
-                max-width: 380px; /* LÍMITE MÁXIMO */
+                width: 380px;
+                max-width: 380px;
                 left: -380px;
             }
             
@@ -226,7 +270,7 @@
 
         @media (min-width: 1200px) {
             .side-menu {
-                width: 420px; /* AÚN MÁS ANGOSTO EN PANTALLAS MUY GRANDES */
+                width: 420px;
                 max-width: 620px;
                 left: -420px;
             }
@@ -406,7 +450,6 @@
             }
         }
 
-        /* BANNER MEJORADO - EFECTO FIJO SIN BUGS */
         .fading-banner {
             position: fixed;
             top: 0;
@@ -432,7 +475,6 @@
             -webkit-backface-visibility: hidden;
         }
 
-        /* MODAL DE BIO MEJORADO - CON BLUR Y ANIMACIONES FLUIDAS */
         .bio-modal-overlay {
             position: fixed;
             top: 0;
@@ -621,7 +663,6 @@
             -ms-user-select: none;
         }
 
-        /* NOMBRE Y TÍTULO AÑADIDO */
         .name {
             font-family: 'Cormorant Garamond', serif;
             font-size: 2rem;
@@ -632,7 +673,6 @@
             color: #ffffff;
         }
 
-        /* NUEVO: USERNAME CON VERIFICADO - MÁS PEQUEÑO */
         .username-container {
             display: flex;
             align-items: center;
@@ -643,7 +683,7 @@
 
         .username {
             font-family: 'Lexend', sans-serif;
-            font-size: 0.9rem; /* Cambiado de 1.1rem a 0.9rem */
+            font-size: 0.9rem;
             font-weight: 600;
             color: #cccccc;
             text-align: center;
@@ -653,10 +693,10 @@
         }
 
         .verified-badge {
-            width: 14px; /* Cambiado de 18px a 14px */
-            height: 14px; /* Cambiado de 18px a 14px */
+            width: 14px;
+            height: 14px;
             object-fit: contain;
-            filter: none !important; /* Mantener color original */
+            filter: none !important;
         }
 
         .title {
@@ -670,9 +710,6 @@
             opacity: 0.9;
         }
 
-        /* ============================================
-           NUEVA SECCIÓN: ESTADÍSTICAS
-           ============================================ */
         .stats-container {
             display: flex;
             justify-content: space-between;
@@ -722,7 +759,6 @@
             opacity: 0.8;
         }
 
-        /* Separador entre estadísticas */
         .stat-item:not(:last-child)::after {
             content: '';
             position: absolute;
@@ -732,8 +768,6 @@
             width: 1px;
             background: rgba(255, 255, 255, 0.1);
         }
-
-        /* ============================================ */
 
         .bio {
             font-family: 'Cormorant Garamond', serif;
@@ -799,7 +833,6 @@
             display: block;
         }
 
-        /* SECCIÓN DE ACTUALIZACIONES CORREGIDA - AHORA RESPONSIVE 16:9 */
         .updates-section {
             margin-bottom: 1.5rem;
             position: relative;
@@ -813,7 +846,6 @@
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
-            /* Ratio 16:9 fijo */
             aspect-ratio: 16/9;
             background: #000;
         }
@@ -827,7 +859,7 @@
         .update-image {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Cambiado de cover a contain para mostrar imagen completa */
+            object-fit: contain;
             display: block;
             pointer-events: none;
             position: absolute;
@@ -835,7 +867,7 @@
             left: 0;
             opacity: 0;
             transition: opacity 0.8s ease-in-out;
-            background: #000; /* Fondo negro para bordes si hay letterboxing */
+            background: #000;
         }
 
         .update-image.active {
@@ -871,7 +903,6 @@
             display: inline-block;
         }
 
-        /* AUDIO PLAYER CON FONDO MÁS OSCURO */
         .audio-player-section {
             padding: 2rem;
             margin-bottom: 2rem;
@@ -1247,11 +1278,10 @@
             position: relative;
             font-size: 0.9rem;
             color: #ffffff;
-            /* CORRECCIÓN: Asegurar centrado completo */
             margin-left: 0;
             margin-right: 0;
             width: 100%;
-            padding: 0 40px; /* Espacio para logos y badges */
+            padding: 0 40px;
         }
 
         .hifi-badge {
@@ -1270,7 +1300,6 @@
             font-weight: 600;
         }
 
-        /* NUEVO: BADGE "SOON" */
         .soon-badge {
             position: absolute;
             right: 1.2rem;
@@ -1283,11 +1312,10 @@
             opacity: 0.9;
             border: 1px solid #444444;
             z-index: 2;
-            color: #aaaaaa; /* Gris claro */
+            color: #aaaaaa;
             font-weight: 600;
         }
 
-        /* BOTONES UNIFICADOS - TAMAÑO IGUAL PARA TODOS */
         .social-buttons {
             display: flex;
             flex-direction: column;
@@ -1345,11 +1373,9 @@
             font-size: 0.9rem;
             color: #ffffff;
             margin-left: 0;
-            /* CORRECCIÓN: Asegurar centrado completo */
-            padding: 0 40px; /* Espacio para logos y badges */
+            padding: 0 40px;
         }
 
-        /* CORRECCIÓN: FINAL BUTTONS ELIMINADO - EL BOTÓN LINKTREE SE MUEVE AL SOCIAL-BUTTONS */
         .copyright {
             font-family: 'Inter', sans-serif;
             font-size: 0.75rem;
@@ -1415,7 +1441,6 @@
             padding-right: 0.5rem;
         }
 
-        /* NUEVO: ENLACE "LISTEN NOW" EN DISCROGRAFÍA - SIN ÍCONO */
         .album-listen-now {
             font-family: 'Inter', sans-serif;
             font-size: 0.75rem;
@@ -1478,7 +1503,6 @@
             flex-direction: column;
         }
 
-        /* CORREGIDO: NOMBRE DE MELODÍA SIN SUBRAYADO Y CON ENLACE CORRECTO */
         .melody-name {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.1rem;
@@ -1513,7 +1537,6 @@
             opacity: 1;
         }
 
-        /* SECCIÓN DE TIENDA CON ANIMACIONES MEJORADAS */
         .store-section {
             padding-bottom: 5rem;
         }
@@ -1640,7 +1663,6 @@
             margin-bottom: 2rem;
         }
 
-        /* CORREGIDO: TRACKLIST HEADER CON "LISTEN NOW" */
         .tracklist-header {
             display: flex;
             justify-content: space-between;
@@ -1657,7 +1679,6 @@
             opacity: 0.7;
         }
 
-        /* NUEVO: "LISTEN NOW" EN STORE */
         .store-listen-now {
             font-family: 'Inter', sans-serif;
             font-size: 0.75rem;
@@ -1702,7 +1723,6 @@
             margin-left: 1rem;
         }
 
-        /* BOTÓN DE COMPRA MEJORADO */
         .purchase-btn {
             display: flex;
             align-items: center;
@@ -1740,7 +1760,6 @@
             transform: scale(1.1);
         }
 
-        /* PLATFORM BUTTONS CONTAINER - NUEVA ANIMACIÓN DE DESPLIEGUE */
         .platform-buttons-container {
             display: flex;
             flex-direction: column;
@@ -1823,8 +1842,6 @@
             text-align: center;
         }
 
-        /* NUEVO: NAVEGACIÓN ADAPTATIVA CORREGIDA */
-        /* Barra de navegación para móviles (posición inferior) */
         .bottom-nav {
             position: fixed;
             bottom: 1.5rem;
@@ -1841,7 +1858,6 @@
             backdrop-filter: blur(10px);
         }
 
-        /* Barra de navegación para pantallas anchas (posición lateral derecha) */
         .side-nav {
             position: fixed;
             top: 50%;
@@ -1857,7 +1873,7 @@
             border: 1px solid #333333;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(10px);
-            display: none; /* Oculto por defecto, se muestra en media queries */
+            display: none;
         }
 
         .nav-button {
@@ -1913,19 +1929,17 @@
             transform: translateX(-50%) translateY(0);
         }
 
-        /* NUEVO: CLASES PARA ANIMACIÓN DE SCROLL MEJORADA - MÁS RÁPIDA Y MÁS ELEMENTOS VISIBLES */
         .fade-in-element {
             opacity: 1;
             transform: translateY(0);
             transition: none;
         }
 
-        /* Solo aplicar animaciones en la sección Home */
         #home-section .fade-in-element {
             opacity: 0;
-            transform: translateY(15px); /* Reducido de 20px a 15px para movimiento más sutil */
-            transition: opacity 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), /* Animación más rápida: 0.4s en lugar de 0.5s */
-                        transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); /* Curva más suave para entrada más rápida */
+            transform: translateY(15px);
+            transition: opacity 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+                        transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
             will-change: opacity, transform;
         }
 
@@ -1934,14 +1948,12 @@
             transform: translateY(0);
         }
 
-        /* Delays más cortos para que aparezcan más rápido en secuencia */
         #home-section .fade-in-element.delay-1 { transition-delay: 0.05s; }
         #home-section .fade-in-element.delay-2 { transition-delay: 0.1s; }
         #home-section .fade-in-element.delay-3 { transition-delay: 0.15s; }
         #home-section .fade-in-element.delay-4 { transition-delay: 0.2s; }
         #home-section .fade-in-element.delay-5 { transition-delay: 0.25s; }
 
-        /* Botones Spotify y Apple Music FIJOS (sin efecto de scroll) */
         #home-section .links .link-btn:nth-child(1),
         #home-section .links .link-btn:nth-child(2) {
             opacity: 1 !important;
@@ -1949,7 +1961,6 @@
             transition: none !important;
         }
 
-        /* Eliminar animaciones de scroll de otras secciones */
         #melodies-section .fade-in-element,
         #store-section .fade-in-element {
             opacity: 1 !important;
@@ -1957,7 +1968,6 @@
             transition: none !important;
         }
 
-        /* MEDIA QUERIES PARA RESPONSIVE */
         @media (max-width: 768px) {
             .bottom-nav {
                 padding: 0.7rem 1.3rem;
@@ -2033,7 +2043,6 @@
                 font-size: 0.9rem;
             }
 
-            /* CORRECCIÓN: Los botones de plataforma siempre horizontales */
             .platform-buttons-row {
                 flex-direction: row !important;
                 gap: 0.8rem;
@@ -2060,7 +2069,6 @@
                 height: 300px;
             }
             
-            /* Asegurar que el main container esté centrado */
             .main-container {
                 margin-left: auto;
                 margin-right: auto;
@@ -2068,7 +2076,6 @@
                 right: 0;
             }
 
-            /* MENÚ HAMBURGUESA EN MÓVIL */
             .hamburger-btn {
                 top: 1rem;
                 left: 1rem;
@@ -2097,7 +2104,6 @@
         }
 
         @media (min-width: 769px) {
-            /* Para tablets y pantallas más anchas: navegación lateral */
             .bottom-nav {
                 display: none;
             }
@@ -2106,8 +2112,6 @@
                 display: flex;
             }
             
-            /* CORRECCIÓN: El main container ya está centrado por body */
-            /* No añadimos margen derecho, se mantiene centrado */
             body {
                 display: flex;
                 align-items: center;
@@ -2126,7 +2130,6 @@
                 flex-direction: row;
             }
 
-            /* MENÚ HAMBURGUESA EN DESKTOP */
             .hamburger-btn {
                 top: 2rem;
                 left: 2rem;
@@ -2162,19 +2165,18 @@
             }
 
             .username {
-                font-size: 0.85rem; /* Ajustado para móvil */
+                font-size: 0.85rem;
             }
 
             .verified-badge {
-                width: 13px; /* Ajustado para móvil */
-                height: 13px; /* Ajustado para móvil */
+                width: 13px;
+                height: 13px;
             }
 
             .title {
                 font-size: 0.9rem;
             }
             
-            /* ESTADÍSTICAS EN MÓVIL */
             .stats-container {
                 margin: 0.3rem 0 0.8rem 0;
             }
@@ -2313,7 +2315,6 @@
                 font-size: 0.9rem;
             }
 
-            /* CORRECCIÓN: Los botones de plataforma siempre horizontales */
             .platform-buttons-row {
                 flex-direction: row !important;
                 gap: 0.6rem;
@@ -2340,7 +2341,6 @@
                 height: 250px;
             }
 
-            /* BIO MODAL EN MÓVIL */
             .bio-modal {
                 padding: 1.5rem;
                 max-height: 85vh;
@@ -2359,7 +2359,6 @@
                 font-size: 0.85rem;
             }
 
-            /* MENÚ HAMBURGUESA EN MÓVIL PEQUEÑO */
             .hamburger-btn {
                 top: 0.8rem;
                 left: 0.8rem;
@@ -2389,12 +2388,10 @@
                 height: 400px;
             }
             
-            /* Más espacio para la navegación lateral en pantallas grandes */
             .side-nav {
                 right: 3rem;
             }
 
-            /* ESTADÍSTICAS EN PANTALLAS GRANDES */
             .stat-number {
                 font-size: 1.5rem;
             }
@@ -2403,14 +2400,12 @@
                 font-size: 0.8rem;
             }
 
-            /* MENÚ HAMBURGUESA EN PANTALLAS GRANDES */
             .hamburger-btn {
                 top: 2.5rem;
                 left: 2.5rem;
             }
         }
 
-        /* Media query para formato 4:5 en móviles */
         @media (max-width: 480px) and (max-height: 900px) {
             .fading-banner {
                 background: linear-gradient(to bottom, 
@@ -2427,6 +2422,15 @@
     </style>
 </head>
 <body>
+    <!-- PANTALLA DE CARGA CON VIDEO -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-video-container">
+            <video class="loading-video" id="loadingVideo" autoplay muted playsinline>
+                <source src="https://image2url.com/r2/default/videos/1771088239614-af56618f-3e79-4a71-b080-3d834aa069ba.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
     <!-- NUEVO: MENÚ HAMBURGUESA -->
     <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open menu">
         <div class="hamburger-line"></div>
@@ -3418,6 +3422,24 @@
 
     <script>
         // ============================================
+        // 0. PANTALLA DE CARGA
+        // ============================================
+        const loadingScreen = document.getElementById('loadingScreen');
+        const loadingVideo = document.getElementById('loadingVideo');
+        
+        // Cuando el video termina, iniciamos el fade out
+        loadingVideo.addEventListener('ended', function() {
+            loadingScreen.classList.add('fade-out');
+            
+            // Después de la animación, ocultamos completamente la pantalla de carga
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+                // Aseguramos que el body sea visible (ya tiene su propia animación fadeIn)
+                document.body.style.opacity = '1';
+            }, 800); // Coincide con la duración de la transición fade-out (0.8s)
+        });
+
+        // ============================================
         // 1. DATOS DEL REPRODUCTOR - MANTENIENDO ESTADO
         // ============================================
         const tracks = [
@@ -3727,7 +3749,7 @@
         // ============================================
         // 9. FUNCIONES PARA EL DESPLIEGUE DE ÁLBUMES
         // ============================================
-        function toggleAlbumExpand(albumId) {
+        window.toggleAlbumExpand = function(albumId) {
             const albumCard = document.querySelector(`[data-album="${albumId}"]`);
             const purchaseBtn = albumCard.querySelector('.purchase-btn');
             
@@ -3766,7 +3788,7 @@
                     albumCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                 }, 100);
             }
-        }
+        };
 
         // ============================================
         // 10. BANNER MEJORADO
