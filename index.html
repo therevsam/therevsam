@@ -149,7 +149,7 @@
         }
 
         body {
-            opacity: 1; /* Ya no necesitamos la animación original */
+            opacity: 1;
         }
 
         /* NUEVO: MENÚ HAMBURGUESA Y OVERLAY */
@@ -451,38 +451,15 @@
             -webkit-backface-visibility: hidden;
         }
 
-        /* Media queries para el banner - ajustes responsivos */
         @media (max-width: 768px) {
             .fading-banner {
                 height: 350px;
-                background: linear-gradient(to bottom, 
-                    rgba(0,0,0,0.1) 0%,
-                    rgba(0,0,0,0.15) 20%,
-                    rgba(0,0,0,0.25) 40%,
-                    rgba(0,0,0,0.4) 60%,
-                    rgba(0,0,0,0.6) 75%,
-                    rgba(0,0,0,0.85) 90%,
-                    #000000 100%),
-                    url('https://image2url.com/r2/default/images/1771909460239-50316fb8-6241-41be-8cdc-163340d4e452.jpg');
-                background-size: cover;
-                background-position: center 30%;
             }
         }
 
         @media (max-width: 480px) {
             .fading-banner {
                 height: 300px;
-                background: linear-gradient(to bottom, 
-                    rgba(0,0,0,0.1) 0%,
-                    rgba(0,0,0,0.15) 20%,
-                    rgba(0,0,0,0.25) 40%,
-                    rgba(0,0,0,0.4) 60%,
-                    rgba(0,0,0,0.6) 75%,
-                    rgba(0,0,0,0.85) 90%,
-                    #000000 100%),
-                    url('https://image2url.com/r2/default/images/1771909460239-50316fb8-6241-41be-8cdc-163340d4e452.jpg');
-                background-size: cover;
-                background-position: center 30%;
             }
         }
 
@@ -495,17 +472,6 @@
         @media (min-width: 1200px) {
             .fading-banner {
                 height: 450px;
-                background: linear-gradient(to bottom, 
-                    rgba(0,0,0,0.1) 0%,
-                    rgba(0,0,0,0.15) 20%,
-                    rgba(0,0,0,0.25) 40%,
-                    rgba(0,0,0,0.4) 60%,
-                    rgba(0,0,0,0.6) 75%,
-                    rgba(0,0,0,0.85) 90%,
-                    #000000 100%),
-                    url('https://image2url.com/r2/default/images/1771909460239-50316fb8-6241-41be-8cdc-163340d4e452.jpg');
-                background-size: cover;
-                background-position: center 30%;
             }
         }
 
@@ -745,9 +711,6 @@
             opacity: 0.9;
         }
 
-        /* ============================================
-           SECCIÓN: ESTADÍSTICAS - SIN ANIMACIÓN DE CONTEO
-           ============================================ */
         .stats-container {
             display: flex;
             justify-content: space-between;
@@ -865,47 +828,246 @@
             display: block;
         }
 
-        .updates-section {
-            margin-bottom: 1.5rem;
-            position: relative;
+        /* =============================== */
+        /* NUEVA SECCIÓN: DESTACADOS - CORREGIDA */
+        /* =============================== */
+        .highlights-section {
+            margin: 2rem 0 2rem 0;
             width: 100%;
+            overflow: hidden;
+        }
+
+        .highlights-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 0.8rem;
+            flex-wrap: nowrap;
+            width: 100%;
+        }
+
+        .highlight-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1 1 0;
+            min-width: 0;
+            max-width: 110px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .highlight-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .highlight-image-container {
+            width: 100%;
+            aspect-ratio: 9 / 16;
             border-radius: 16px;
             overflow: hidden;
-            border: 1px solid #333333;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            pointer-events: none;
-            user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            aspect-ratio: 16/9;
-            background: #000;
+            border: 2px solid #444444;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #111111;
         }
 
-        .update-slider {
-            position: relative;
-            width: 100%;
-            height: 100%;
+        .highlight-item:hover .highlight-image-container {
+            border-color: #666666;
+            transform: scale(1.02);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
         }
 
-        .update-image {
+        .highlight-image {
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            object-fit: cover;
             display: block;
-            pointer-events: none;
-            position: absolute;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: grayscale(30%);
+        }
+
+        .highlight-item:hover .highlight-image {
+            transform: scale(1.05);
+            filter: grayscale(0%);
+        }
+
+        .highlight-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-top: 0.5rem;
+            color: #cccccc;
+            text-align: center;
+            letter-spacing: 0.3px;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+            padding: 0 0.2rem;
+        }
+
+        .highlight-item:hover .highlight-label {
+            color: #ffffff;
+        }
+
+        @media (min-width: 480px) {
+            .highlights-container {
+                gap: 1rem;
+            }
+            .highlight-item {
+                max-width: 120px;
+            }
+            .highlight-label {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .highlight-item {
+                max-width: 130px;
+            }
+        }
+
+        /* =============================== */
+        /* MODAL DE HISTORIA (STORY OVERLAY) */
+        /* =============================== */
+        .story-modal-overlay {
+            position: fixed;
             top: 0;
             left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px) brightness(0.5);
+            -webkit-backdrop-filter: blur(12px) brightness(0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 3000;
             opacity: 0;
-            transition: opacity 0.8s ease-in-out;
-            background: #000;
+            transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 1.5rem;
         }
 
-        .update-image.active {
+        .story-modal-overlay.active {
+            display: flex;
             opacity: 1;
+        }
+
+        .story-modal-content {
+            width: 100%;
+            max-width: 400px;
+            background: transparent;
+            border-radius: 24px;
+            overflow: hidden;
+            transform: scale(0.95);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+        }
+
+        .story-modal-overlay.active .story-modal-content {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .story-header {
+            position: absolute;
+            top: 2rem;
+            left: 1.5rem;
+            z-index: 3010;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            padding: 0.6rem 1.2rem;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .story-header .username {
+            font-family: 'Lexend', sans-serif;
+            font-size: 0.9rem;
+            color: #ffffff;
+            margin: 0;
+        }
+
+        .story-header .verified-badge {
+            width: 14px;
+            height: 14px;
+        }
+
+        .story-progress-bar {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            right: 1.5rem;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            overflow: hidden;
+            z-index: 3010;
+        }
+
+        .story-progress-fill {
+            height: 100%;
+            width: 0%;
+            background: #ffffff;
+            border-radius: 6px;
+            transition: width 15s linear;
+        }
+
+        .story-image-container {
+            width: 100%;
+            aspect-ratio: 9 / 16;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid #444444;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
             position: relative;
         }
+
+        .story-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .story-close-btn {
+            position: absolute;
+            top: 2rem;
+            right: 1.5rem;
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 1.8rem;
+            cursor: pointer;
+            z-index: 3010;
+            transition: all 0.3s ease;
+            line-height: 1;
+        }
+
+        .story-close-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+
+        /* =============================== */
+        /* FIN DE NUEVA SECCIÓN DESTACADOS */
+        /* =============================== */
 
         .section-divider {
             margin: 2rem 0 1.5rem 0;
@@ -2133,6 +2295,10 @@
             .menu-social-text {
                 font-size: 0.7rem;
             }
+
+            .highlights-container {
+                gap: 0.5rem;
+            }
         }
 
         @media (min-width: 769px) {
@@ -2169,6 +2335,10 @@
 
             .menu-social-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .highlights-container {
+                gap: 1.2rem;
             }
         }
 
@@ -2413,6 +2583,34 @@
                 height: 20px;
                 margin-right: 0.8rem;
             }
+
+            .highlights-container {
+                gap: 0.4rem;
+            }
+
+            .highlight-label {
+                font-size: 0.7rem;
+            }
+
+            .story-header {
+                top: 1.5rem;
+                left: 1rem;
+                padding: 0.4rem 1rem;
+            }
+
+            .story-progress-bar {
+                top: 1rem;
+                left: 1rem;
+                right: 1rem;
+            }
+
+            .story-close-btn {
+                top: 1.5rem;
+                right: 1rem;
+                width: 36px;
+                height: 36px;
+                font-size: 1.6rem;
+            }
         }
 
         @media (min-width: 1200px) {
@@ -2557,6 +2755,27 @@
         </div>
     </div>
 
+    <!-- MODAL DE HISTORIA (STORY OVERLAY) -->
+    <div class="story-modal-overlay" id="storyModal">
+        <div class="story-modal-content">
+            <div class="story-header">
+                <span class="username">
+                    @therevsam
+                    <img src="https://image2url.com/r2/bucket2/images/1766771229462-36a956fe-b6f7-458d-b50a-839204f7ed7e.png" 
+                         alt="Verified" 
+                         class="verified-badge">
+                </span>
+            </div>
+            <div class="story-progress-bar" id="storyProgressBar">
+                <div class="story-progress-fill" id="storyProgressFill"></div>
+            </div>
+            <button class="story-close-btn" id="closeStoryBtn">×</button>
+            <div class="story-image-container">
+                <img src="" alt="Story" class="story-image" id="storyImage">
+            </div>
+        </div>
+    </div>
+
     <!-- BANNER MEJORADO - CON EFECTO FADE BOTTOM -->
     <div class="fading-banner" id="fadingBanner"></div>
 
@@ -2612,19 +2831,48 @@
                      loading="eager">
             </a>
 
-            <!-- SECCIÓN DE ACTUALIZACIONES CON SLIDER -->
-            <div class="updates-section fade-in-element delay-4">
-                <div class="update-slider" id="updateSlider">
-                    <img src="https://image2url.com/images/1764776723968-1d5d39e6-99f7-429a-a52d-a5ab05f34863.png" 
-                         alt="Latest Updates" 
-                         class="update-image active"
-                         loading="lazy">
-                    <img src="https://image2url.com/r2/bucket3/images/1766868212553-003855dd-0154-4462-afd0-efd8167b2266.png" 
-                         alt="News Update" 
-                         class="update-image"
-                         loading="lazy">
+            <!-- ======================================== -->
+            <!-- NUEVA SECCIÓN: DESTACADOS (HIGHLIGHTS)   -->
+            <!-- ======================================== -->
+            <div class="highlights-section fade-in-element delay-4">
+                <div class="highlights-container">
+                    <!-- Highlight 1: News -->
+                    <div class="highlight-item" data-story="news">
+                        <div class="highlight-image-container">
+                            <img src="https://image2url.com/r2/default/images/1772410638081-e037ab06-8776-4f2c-9a6b-58e0bfe10ddd.png" 
+                                 alt="News" 
+                                 class="highlight-image"
+                                 loading="lazy">
+                        </div>
+                        <span class="highlight-label">News</span>
+                    </div>
+
+                    <!-- Highlight 2: Bhd Scenes -->
+                    <div class="highlight-item" data-story="bhd">
+                        <div class="highlight-image-container">
+                            <img src="https://image2url.com/r2/default/images/1772410686629-b67c2eb4-07b4-4779-a20f-dac3e7c6707f.jpg" 
+                                 alt="Bhd Scenes" 
+                                 class="highlight-image"
+                                 loading="lazy">
+                        </div>
+                        <span class="highlight-label">Bhd Scenes</span>
+                    </div>
+
+                    <!-- Highlight 3: Archives -->
+                    <div class="highlight-item" data-story="archives">
+                        <div class="highlight-image-container">
+                            <img src="https://image2url.com/r2/default/images/1772410710995-db809208-f90c-4b11-93ee-2273116c9590.jpg" 
+                                 alt="Archives" 
+                                 class="highlight-image"
+                                 loading="lazy">
+                        </div>
+                        <span class="highlight-label">Archives</span>
+                    </div>
                 </div>
             </div>
+            <!-- ======================================== -->
+            <!-- FIN DE NUEVA SECCIÓN DESTACADOS          -->
+            <!-- ======================================== -->
 
             <!-- SECCIÓN: STREAMING PLATFORMS -->
             <div class="section-divider fade-in-element delay-5">
@@ -2970,7 +3218,6 @@
                                 <div class="melody-name">Réverie Op. III en Do mineur — Silences Enlacés</div>
                                 <div class="melody-artist">Sam the Revenant</div>
                             </div>
-                            <!-- NUEVO: LINK DE YOUTUBE AGREGADO -->
                             <a href="https://youtu.be/MTJn9vWpX_Q?si=EMn0vNYTlFzIk1_H" target="_blank" style="display: flex; align-items: center;">
                                 <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
                                     <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
@@ -3466,8 +3713,6 @@
         const fadingBanner = document.getElementById('fadingBanner');
         const bioModal = document.getElementById('bioModal');
         const closeBioModal = document.getElementById('closeBioModal');
-        const updateSlider = document.getElementById('updateSlider');
-        const updateImages = updateSlider.querySelectorAll('.update-image');
         
         // NUEVOS ELEMENTOS DEL MENÚ
         const hamburgerBtn = document.getElementById('hamburgerBtn');
@@ -3478,6 +3723,13 @@
         const menuDiscography = document.getElementById('menuDiscography');
         const menuStore = document.getElementById('menuStore');
         const menuContact = document.getElementById('menuContact');
+
+        // NUEVO: ELEMENTOS DE HISTORIAS (DESTACADOS)
+        const storyModal = document.getElementById('storyModal');
+        const storyImage = document.getElementById('storyImage');
+        const storyProgressFill = document.getElementById('storyProgressFill');
+        const closeStoryBtn = document.getElementById('closeStoryBtn');
+        const highlightItems = document.querySelectorAll('.highlight-item');
 
         // NUEVO: ELEMENTO DE ESTADÍSTICAS (Listening Now)
         const nowPlayingCount = document.getElementById('nowPlayingCount');
@@ -3491,10 +3743,9 @@
         let currentSection = 'home';
         let isTransitioning = false;
         let expandedAlbum = null;
-        let currentUpdateIndex = 0;
-        let updateInterval;
         let scrollObserver = null;
         let isMenuOpen = false;
+        let storyTimeout = null;
 
         // NUEVO: ESTADO PERSISTENTE DEL REPRODUCTOR
         let playerState = {
@@ -3503,6 +3754,25 @@
             currentTime: 0,
             volume: 1,
             isLiked: false
+        };
+
+        // NUEVO: DATOS DE LAS HISTORIAS (para futuras expansiones)
+        const storiesData = {
+            news: {
+                images: [
+                    "https://image2url.com/r2/default/images/1772410638081-e037ab06-8776-4f2c-9a6b-58e0bfe10ddd.png"
+                ]
+            },
+            bhd: {
+                images: [
+                    "https://image2url.com/r2/default/images/1772410686629-b67c2eb4-07b4-4779-a20f-dac3e7c6707f.jpg"
+                ]
+            },
+            archives: {
+                images: [
+                    "https://image2url.com/r2/default/images/1772410710995-db809208-f90c-4b11-93ee-2273116c9590.jpg"
+                ]
+            }
         };
 
         // ============================================
@@ -3563,59 +3833,63 @@
         }
 
         // ============================================
-        // 5. MEJORAS DE PERFORMANCE: PRECARGA INTELIGENTE
+        // 5. FUNCIONES PARA LAS HISTORIAS (DESTACADOS)
         // ============================================
-        function preloadSectionImages(sectionId) {
-            const section = document.getElementById(sectionId);
-            if (!section) return;
+        function openStory(storyId) {
+            // Cerrar menú si está abierto
+            if (isMenuOpen) closeMenu();
             
-            const images = section.querySelectorAll('img[data-src]');
-            images.forEach(img => {
-                const src = img.getAttribute('data-src');
-                if (src) {
-                    img.src = src;
-                    img.removeAttribute('data-src');
-                }
-            });
+            // Cerrar bio modal si está abierto
+            if (bioModal.classList.contains('active')) closeBioModalFunc();
+            
+            // Obtener la primera imagen de la historia
+            const storyImages = storiesData[storyId]?.images;
+            if (!storyImages || storyImages.length === 0) return;
+            
+            // Establecer la imagen
+            storyImage.src = storyImages[0];
+            
+            // Resetear la barra de progreso
+            storyProgressFill.style.transition = 'none';
+            storyProgressFill.style.width = '0%';
+            
+            // Mostrar el modal
+            storyModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Forzar reflow para que la transición funcione
+            void storyProgressFill.offsetWidth;
+            
+            // Iniciar la animación de la barra de progreso
+            setTimeout(() => {
+                storyProgressFill.style.transition = 'width 15s linear';
+                storyProgressFill.style.width = '100%';
+            }, 50);
+            
+            // Configurar el timeout para cerrar la historia
+            storyTimeout = setTimeout(() => {
+                closeStory();
+            }, 15000);
         }
 
-        function preloadCriticalImages() {
-            const criticalImages = [
-                'https://yt3.ggpht.com/Z6UP3_g1F9t2nJM1_SBp1uaInWJdaflA-dZ28Su_mpHqu-TVF9HDOW2NCGXfmrdlp8J-EoG4cA=s600-c-k-c0x00ffffff-no-rj-rp-mo',
-                'https://image2url.com/images/1764438678014-b4985758-e3ab-4ad6-a79d-04caf468a111.jpg',
-                'https://i.pinimg.com/736x/a5/24/c0/a524c0f2fca32421708bb32f6a26ee99.jpg'
-            ];
-            
-            criticalImages.forEach(src => {
-                const img = new Image();
-                img.src = src;
-            });
-        }
-
-        // ============================================
-        // 6. FUNCIONES PARA EL SLIDER DE ACTUALIZACIONES
-        // ============================================
-        function startUpdateSlider() {
-            if (updateInterval) {
-                clearInterval(updateInterval);
+        function closeStory() {
+            // Limpiar el timeout
+            if (storyTimeout) {
+                clearTimeout(storyTimeout);
+                storyTimeout = null;
             }
             
-            updateInterval = setInterval(() => {
-                nextUpdate();
-            }, 5000);
-        }
-
-        function nextUpdate() {
-            updateImages[currentUpdateIndex].classList.remove('active');
-            currentUpdateIndex = (currentUpdateIndex + 1) % updateImages.length;
+            // Resetear la barra de progreso
+            storyProgressFill.style.transition = 'none';
+            storyProgressFill.style.width = '0%';
             
-            setTimeout(() => {
-                updateImages[currentUpdateIndex].classList.add('active');
-            }, 50);
+            // Ocultar el modal
+            storyModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
         }
 
         // ============================================
-        // 7. FUNCIONES PARA EL MODAL DE BIO
+        // 6. FUNCIONES PARA EL MODAL DE BIO
         // ============================================
         function openBioModal() {
             bioModal.classList.add('active');
@@ -3631,7 +3905,7 @@
         }
 
         // ============================================
-        // 8. FUNCIONES PARA EL DESPLIEGUE DE ÁLBUMES
+        // 7. FUNCIONES PARA EL DESPLIEGUE DE ÁLBUMES
         // ============================================
         window.toggleAlbumExpand = function(albumId) {
             const albumCard = document.querySelector(`[data-album="${albumId}"]`);
@@ -3675,7 +3949,7 @@
         };
 
         // ============================================
-        // 9. BANNER MEJORADO
+        // 8. BANNER MEJORADO
         // ============================================
         function handleScroll() {
             if (currentSection === 'home') {
@@ -3690,7 +3964,7 @@
         }
 
         // ============================================
-        // 10. SISTEMA DE TRANSICIONES MEJORADO
+        // 9. SISTEMA DE TRANSICIONES MEJORADO
         // ============================================
         function updateBannerForSection(section) {
             currentSection = section;
@@ -3700,17 +3974,12 @@
                 void fadingBanner.offsetWidth;
                 fadingBanner.style.opacity = '1';
                 handleScroll();
-                startUpdateSlider();
                 
                 setTimeout(() => {
                     initScrollAnimations();
                 }, 100);
             } else {
                 fadingBanner.style.opacity = '0';
-                if (updateInterval) {
-                    clearInterval(updateInterval);
-                    updateInterval = null;
-                }
                 setTimeout(() => {
                     if (currentSection !== 'home') {
                         fadingBanner.style.display = 'none';
@@ -3725,7 +3994,7 @@
         }
 
         // ============================================
-        // 11. FUNCIONES DEL REPRODUCTOR CON ESTADO PERSISTENTE
+        // 10. FUNCIONES DEL REPRODUCTOR CON ESTADO PERSISTENTE
         // ============================================
         function loadTrack(index, preserveTime = false) {
             const track = tracks[index];
@@ -3880,7 +4149,7 @@
         }
 
         // ============================================
-        // 12. SISTEMA DE NAVEGACIÓN MEJORADO
+        // 11. SISTEMA DE NAVEGACIÓN MEJORADO
         // ============================================
         function showSection(sectionToShow) {
             if (isTransitioning) return;
@@ -3907,12 +4176,6 @@
                     
                     updateNavigation(sectionToShow.id);
                     updateBannerBasedOnSection(sectionToShow.id);
-                    
-                    if (sectionToShow.id === 'melodies-section') {
-                        preloadSectionImages('melodies-section');
-                    } else if (sectionToShow.id === 'store-section') {
-                        preloadSectionImages('store-section');
-                    }
                     
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                     
@@ -3957,13 +4220,50 @@
         }
 
         // ============================================
-        // 13. INICIALIZAR LISTENING NOW ALEATORIO
+        // 12. INICIALIZAR LISTENING NOW ALEATORIO
         // ============================================
         function initListeningNow() {
             const randomNowPlaying = Math.floor(Math.random() * 9) + 1; // 1-9
             if (nowPlayingCount) {
                 nowPlayingCount.textContent = randomNowPlaying;
             }
+        }
+
+        // ============================================
+        // 13. FUNCIÓN PARA ANIMACIONES DE SCROLL
+        // ============================================
+        function initScrollAnimations() {
+            if (currentSection !== 'home') return;
+            
+            if (scrollObserver) {
+                scrollObserver.disconnect();
+                scrollObserver = null;
+            }
+
+            scrollObserver = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        }
+                    });
+                },
+                {
+                    threshold: 0.05,
+                    rootMargin: '0px 0px -10px 0px'
+                }
+            );
+
+            const homeElements = document.querySelectorAll('#home-section .fade-in-element');
+            homeElements.forEach(element => {
+                const isSpotifyOrApple = element.closest('.links .link-btn:nth-child(1)') || 
+                                          element.closest('.links .link-btn:nth-child(2)');
+                
+                if (!isSpotifyOrApple) {
+                    element.classList.remove('visible');
+                    scrollObserver.observe(element);
+                }
+            });
         }
 
         // ============================================
@@ -3976,6 +4276,22 @@
         menuDiscography.addEventListener('click', handleMenuDiscography);
         menuStore.addEventListener('click', handleMenuStore);
         menuContact.addEventListener('click', handleMenuContact);
+
+        // EVENT LISTENERS DE LAS HISTORIAS
+        highlightItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const storyId = item.getAttribute('data-story');
+                openStory(storyId);
+            });
+        });
+
+        closeStoryBtn.addEventListener('click', closeStory);
+        
+        storyModal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeStory();
+            }
+        });
 
         // EVENT LISTENERS DEL REPRODUCTOR
         playPauseBtn.addEventListener('click', playPause);
@@ -4039,6 +4355,9 @@
                 if (bioModal.classList.contains('active')) {
                     closeBioModalFunc();
                 }
+                if (storyModal.classList.contains('active')) {
+                    closeStory();
+                }
                 if (expandedAlbum) {
                     window.toggleAlbumExpand(expandedAlbum);
                 }
@@ -4053,15 +4372,10 @@
                     playerState.currentTime = audio.currentTime;
                     audio.pause();
                 }
-                if (updateInterval) {
-                    clearInterval(updateInterval);
-                    updateInterval = null;
-                }
                 if (isMenuOpen) {
                     closeMenu();
                 }
             } else if (currentSection === 'home') {
-                startUpdateSlider();
                 if (playerState.isPlaying) {
                     setTimeout(() => {
                         audio.play().catch(e => console.log('Auto-play prevented'));
@@ -4102,7 +4416,6 @@
         }
         
         updateBannerForSection('home');
-        startUpdateSlider();
         preloadCriticalImages();
         
         // Inicializar número aleatorio para Listening Now
@@ -4126,38 +4439,17 @@
                 url('https://image2url.com/r2/default/images/1771909460239-50316fb8-6241-41be-8cdc-163340d4e452.jpg')`;
         }, 100);
 
-        // FUNCIÓN PARA ANIMACIONES DE SCROLL
-        function initScrollAnimations() {
-            if (currentSection !== 'home') return;
+        // Función para pre-cargar imágenes críticas
+        function preloadCriticalImages() {
+            const criticalImages = [
+                'https://yt3.ggpht.com/Z6UP3_g1F9t2nJM1_SBp1uaInWJdaflA-dZ28Su_mpHqu-TVF9HDOW2NCGXfmrdlp8J-EoG4cA=s600-c-k-c0x00ffffff-no-rj-rp-mo',
+                'https://image2url.com/images/1764438678014-b4985758-e3ab-4ad6-a79d-04caf468a111.jpg',
+                'https://i.pinimg.com/736x/a5/24/c0/a524c0f2fca32421708bb32f6a26ee99.jpg'
+            ];
             
-            if (scrollObserver) {
-                scrollObserver.disconnect();
-                scrollObserver = null;
-            }
-
-            scrollObserver = new IntersectionObserver(
-                (entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('visible');
-                        }
-                    });
-                },
-                {
-                    threshold: 0.05,
-                    rootMargin: '0px 0px -10px 0px'
-                }
-            );
-
-            const homeElements = document.querySelectorAll('#home-section .fade-in-element');
-            homeElements.forEach(element => {
-                const isSpotifyOrApple = element.closest('.links .link-btn:nth-child(1)') || 
-                                          element.closest('.links .link-btn:nth-child(2)');
-                
-                if (!isSpotifyOrApple) {
-                    element.classList.remove('visible');
-                    scrollObserver.observe(element);
-                }
+            criticalImages.forEach(src => {
+                const img = new Image();
+                img.src = src;
             });
         }
     </script>
