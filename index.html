@@ -1967,7 +1967,7 @@
         }
 
         .album-card.expanded .platform-buttons-container {
-            max-height: 200px;
+            max-height: 300px; /* Aumentado para dar espacio a 4 botones */
             opacity: 1;
             transform: translateY(0);
             margin-top: 1.5rem;
@@ -1977,10 +1977,12 @@
             display: flex;
             gap: 0.8rem;
             width: 100%;
+            flex-wrap: wrap; /* Para que en móviles no se desborde */
         }
 
         .platform-button {
-            flex: 1;
+            flex: 1 1 calc(25% - 0.6rem); /* Ajuste para 4 botones en escritorio */
+            min-width: 90px; /* Ancho mínimo para que no se vean muy pequeños */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -2006,11 +2008,15 @@
         }
 
         .album-card.expanded .platform-button:nth-child(2) {
-            transition-delay: 0.2s;
+            transition-delay: 0.15s;
         }
 
         .album-card.expanded .platform-button:nth-child(3) {
-            transition-delay: 0.3s;
+            transition-delay: 0.2s;
+        }
+
+        .album-card.expanded .platform-button:nth-child(4) {
+            transition-delay: 0.25s;
         }
 
         .platform-button:hover {
@@ -2031,7 +2037,7 @@
 
         .platform-button-name {
             font-family: 'Inter', sans-serif;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 500;
             text-align: center;
         }
@@ -2242,11 +2248,13 @@
                 gap: 0.8rem;
                 overflow-x: auto;
                 padding-bottom: 0.5rem;
+                flex-wrap: nowrap;
             }
 
             .platform-button {
-                min-width: 100px;
+                min-width: 90px;
                 padding: 0.8rem 0.4rem;
+                flex: 0 0 auto; /* Evita que se encojan en móvil */
             }
 
             .platform-button-logo {
@@ -2256,7 +2264,7 @@
             }
 
             .platform-button-name {
-                font-size: 0.8rem;
+                font-size: 0.75rem;
             }
 
             .fading-banner {
@@ -2522,11 +2530,13 @@
                 gap: 0.6rem;
                 overflow-x: auto;
                 padding-bottom: 0.5rem;
+                flex-wrap: nowrap;
             }
 
             .platform-button {
-                min-width: 90px;
+                min-width: 80px;
                 padding: 0.7rem 0.3rem;
+                flex: 0 0 auto;
             }
 
             .platform-button-logo {
@@ -2536,7 +2546,7 @@
             }
 
             .platform-button-name {
-                font-size: 0.75rem;
+                font-size: 0.7rem;
             }
 
             .fading-banner {
@@ -2807,14 +2817,15 @@
             
             <div class="title fade-in-element delay-1">Pianist & Composer</div>
             
-            <!-- SECCIÓN: ESTADÍSTICAS - VALORES ACTUALIZADOS DIRECTAMENTE -->
+            <!-- SECCIÓN: ESTADÍSTICAS - VALORES ACTUALIZADOS -->
             <div class="stats-container fade-in-element delay-2">
                 <div class="stat-item">
                     <div class="stat-number">31.2K</div>
                     <div class="stat-label">Followers</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">1.2K</div>
+                    <!-- CAMBIO 5: Listeners actualizado de 1.2K a 1.8K -->
+                    <div class="stat-number">1.8K</div>
                     <div class="stat-label">Listeners</div>
                 </div>
                 <div class="stat-item">
@@ -2933,6 +2944,16 @@
                     <span class="btn-text">Qobuz</span>
                     <span class="hifi-badge">Hi-Fi</span>
                 </a>
+
+                <!-- CAMBIO 3: NUEVO BOTÓN DE BANDCAMP EN STREAMING PLATFORMS (con Hi-Fi) -->
+                <a href="https://samtherevenant.bandcamp.com/" class="link-btn fade-in-element delay-5" target="_blank">
+                    <img src="https://image2url.com/r2/default/images/1773752223308-fdc47bc3-e97a-48d6-841e-e1c693e77637.jpg" 
+                         alt="Bandcamp" 
+                         class="platform-logo"
+                         loading="lazy">
+                    <span class="btn-text">Bandcamp</span>
+                    <span class="hifi-badge">Hi-Fi</span>
+                </a>
                 
                 <a href="https://www.youtube.com/@therevsam" class="link-btn fade-in-element delay-5" target="_blank">
                     <img src="https://i.pinimg.com/736x/7a/5d/56/7a5d56c5e22d6fed8d72eeb70329f5f5.jpg" 
@@ -2958,7 +2979,8 @@
                     <span class="btn-text">Audiomack</span>
                 </a>
 
-                <a href="https://music.youtube.com/channel/UC-0mubI3Nl_IE0uXgwFUSvw?si=q4waJRsoESvg7FnG" class="link-btn fade-in-element delay-5" target="_blank">
+                <!-- CAMBIO 6: ENLACE DE YOUTUBE MUSIC ACTUALIZADO -->
+                <a href="https://music.youtube.com/channel/UC-0mubI3Nl_IE0uXgwFUSvw" class="link-btn fade-in-element delay-5" target="_blank">
                     <img src="https://i.pinimg.com/1200x/73/6d/0c/736d0c2aac22b1c37a6ce0ee1a52277f.jpg" 
                          alt="YouTube Music" 
                          class="platform-logo"
@@ -3042,15 +3064,10 @@
                     <span class="social-text">Email</span>
                 </a>
 
-                <a href="https://linktr.ee/therevsam" class="social-btn fade-in-element delay-5" target="_blank">
-                    <img src="https://i.pinimg.com/736x/6a/51/07/6a5107cccb272aa7fbbb322d1d1b66da.jpg" 
-                         alt="LinkTree" 
-                         class="social-logo">
-                    <span class="social-text">LinkTree</span>
-                </a>
+                <!-- CAMBIO 1: BOTÓN DE LINKTREE ELIMINADO -->
             </div>
 
-            <!-- NUEVA SECCIÓN: PROFESSIONAL PROFILES (SIN LINKEDIN) -->
+            <!-- NUEVA SECCIÓN: PROFESSIONAL PROFILES -->
             <div class="section-divider fade-in-element delay-5">
                 <div class="divider-line"></div>
                 <div class="divider-text">Professional Profiles</div>
@@ -3076,6 +3093,14 @@
                          alt="MusicBrainz" 
                          class="social-logo">
                     <span class="social-text">MusicBrainz</span>
+                </a>
+
+                <!-- CAMBIO 2: NUEVO BOTÓN DE DISCOGS EN PROFESSIONAL PROFILES -->
+                <a href="https://www.discogs.com/es/artist/17443813-Sam-the-Revenant" class="social-btn fade-in-element delay-5" target="_blank">
+                    <img src="https://image2url.com/r2/default/images/1773751863855-729a83a9-2372-453c-b53c-c4db14994a58.jpg" 
+                         alt="Discogs" 
+                         class="social-logo">
+                    <span class="social-text">Discogs</span>
                 </a>
             </div>
 
@@ -3367,6 +3392,12 @@
                                          class="platform-icon" 
                                          title="Available on Amazon Music"
                                          loading="lazy">
+                                    <!-- CAMBIO 4: Ícono de Bandcamp para La Nuit Déchue -->
+                                    <img src="https://image2url.com/r2/default/images/1773752223308-fdc47bc3-e97a-48d6-841e-e1c693e77637.jpg" 
+                                         alt="Bandcamp" 
+                                         class="platform-icon" 
+                                         title="Available on Bandcamp"
+                                         loading="lazy">
                                 </div>
                             </div>
                         </div>
@@ -3421,6 +3452,14 @@
                                              loading="lazy">
                                         <span class="platform-button-name">Amazon</span>
                                     </a>
+                                    <!-- CAMBIO 4: Botón de Bandcamp para La Nuit Déchue -->
+                                    <a href="https://samtherevenant.bandcamp.com/album/la-nuit-d-chue" class="platform-button" target="_blank">
+                                        <img src="https://image2url.com/r2/default/images/1773752223308-fdc47bc3-e97a-48d6-841e-e1c693e77637.jpg" 
+                                             alt="Bandcamp" 
+                                             class="platform-button-logo"
+                                             loading="lazy">
+                                        <span class="platform-button-name">Bandcamp</span>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -3451,6 +3490,12 @@
                                          alt="Amazon Music" 
                                          class="platform-icon" 
                                          title="Available on Amazon Music"
+                                         loading="lazy">
+                                    <!-- CAMBIO 4: Ícono de Bandcamp para L'Âme Nocturne -->
+                                    <img src="https://image2url.com/r2/default/images/1773752223308-fdc47bc3-e97a-48d6-841e-e1c693e77637.jpg" 
+                                         alt="Bandcamp" 
+                                         class="platform-icon" 
+                                         title="Available on Bandcamp"
                                          loading="lazy">
                                 </div>
                             </div>
@@ -3506,6 +3551,14 @@
                                              loading="lazy">
                                         <span class="platform-button-name">Amazon</span>
                                     </a>
+                                    <!-- CAMBIO 4: Botón de Bandcamp para L'Âme Nocturne -->
+                                    <a href="https://samtherevenant.bandcamp.com/album/l-me-nocturne" class="platform-button" target="_blank">
+                                        <img src="https://image2url.com/r2/default/images/1773752223308-fdc47bc3-e97a-48d6-841e-e1c693e77637.jpg" 
+                                             alt="Bandcamp" 
+                                             class="platform-button-logo"
+                                             loading="lazy">
+                                        <span class="platform-button-name">Bandcamp</span>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -3536,6 +3589,12 @@
                                          alt="Amazon Music" 
                                          class="platform-icon" 
                                          title="Available on Amazon Music"
+                                         loading="lazy">
+                                    <!-- CAMBIO 4: Ícono de Bandcamp para E.P. Nocturne -->
+                                    <img src="https://image2url.com/r2/default/images/1773752223308-fdc47bc3-e97a-48d6-841e-e1c693e77637.jpg" 
+                                         alt="Bandcamp" 
+                                         class="platform-icon" 
+                                         title="Available on Bandcamp"
                                          loading="lazy">
                                 </div>
                             </div>
@@ -3586,6 +3645,14 @@
                                              class="platform-button-logo"
                                              loading="lazy">
                                         <span class="platform-button-name">Amazon</span>
+                                    </a>
+                                    <!-- CAMBIO 4: Botón de Bandcamp para E.P. Nocturne -->
+                                    <a href="https://samtherevenant.bandcamp.com/album/e-p-nocturne" class="platform-button" target="_blank">
+                                        <img src="https://image2url.com/r2/default/images/1773752223308-fdc47bc3-e97a-48d6-841e-e1c693e77637.jpg" 
+                                             alt="Bandcamp" 
+                                             class="platform-button-logo"
+                                             loading="lazy">
+                                        <span class="platform-button-name">Bandcamp</span>
                                     </a>
                                 </div>
                             </div>
