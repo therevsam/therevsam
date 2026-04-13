@@ -79,6 +79,13 @@
         "album": [
             {
                 "@type": "MusicAlbum",
+                "name": "For Tatto",
+                "url": "#",
+                "numTracks": 1,
+                "genre": "Piano Solo"
+            },
+            {
+                "@type": "MusicAlbum",
                 "name": "La Nuit Déchue",
                 "url": "https://music.apple.com/es/album/la-nuit-d%C3%A9chue-single/1868808306",
                 "numTracks": 3,
@@ -1954,6 +1961,19 @@
             transform: scale(1.1);
         }
 
+        .purchase-btn.soon-btn {
+            border-color: #666666;
+            color: #aaaaaa;
+            cursor: default;
+        }
+
+        .purchase-btn.soon-btn:hover {
+            background: transparent;
+            transform: none;
+            box-shadow: none;
+            color: #aaaaaa;
+        }
+
         .platform-buttons-container {
             display: flex;
             flex-direction: column;
@@ -1967,7 +1987,7 @@
         }
 
         .album-card.expanded .platform-buttons-container {
-            max-height: 300px; /* Aumentado para dar espacio a 4 botones */
+            max-height: 300px;
             opacity: 1;
             transform: translateY(0);
             margin-top: 1.5rem;
@@ -1977,12 +1997,12 @@
             display: flex;
             gap: 0.8rem;
             width: 100%;
-            flex-wrap: wrap; /* Para que en móviles no se desborde */
+            flex-wrap: wrap;
         }
 
         .platform-button {
-            flex: 1 1 calc(25% - 0.6rem); /* Ajuste para 4 botones en escritorio */
-            min-width: 90px; /* Ancho mínimo para que no se vean muy pequeños */
+            flex: 1 1 calc(25% - 0.6rem);
+            min-width: 90px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -2254,7 +2274,7 @@
             .platform-button {
                 min-width: 90px;
                 padding: 0.8rem 0.4rem;
-                flex: 0 0 auto; /* Evita que se encojan en móvil */
+                flex: 0 0 auto;
             }
 
             .platform-button-logo {
@@ -2820,12 +2840,11 @@
             <!-- SECCIÓN: ESTADÍSTICAS - VALORES ACTUALIZADOS -->
             <div class="stats-container fade-in-element delay-2">
                 <div class="stat-item">
-                    <div class="stat-number">31.2K</div>
+                    <div class="stat-number">32.4K</div>
                     <div class="stat-label">Followers</div>
                 </div>
                 <div class="stat-item">
-                    <!-- CAMBIO 5: Listeners actualizado de 1.2K a 1.8K -->
-                    <div class="stat-number">1.8K</div>
+                    <div class="stat-number">3.5K</div>
                     <div class="stat-label">Listeners</div>
                 </div>
                 <div class="stat-item">
@@ -2945,7 +2964,6 @@
                     <span class="hifi-badge">Hi-Fi</span>
                 </a>
 
-                <!-- CAMBIO 3: NUEVO BOTÓN DE BANDCAMP EN STREAMING PLATFORMS (con Hi-Fi) -->
                 <a href="https://samtherevenant.bandcamp.com/" class="link-btn fade-in-element delay-5" target="_blank">
                     <img src="https://image2url.com/r2/default/images/1773752223308-fdc47bc3-e97a-48d6-841e-e1c693e77637.jpg" 
                          alt="Bandcamp" 
@@ -2979,7 +2997,6 @@
                     <span class="btn-text">Audiomack</span>
                 </a>
 
-                <!-- CAMBIO 6: ENLACE DE YOUTUBE MUSIC ACTUALIZADO -->
                 <a href="https://music.youtube.com/channel/UC-0mubI3Nl_IE0uXgwFUSvw" class="link-btn fade-in-element delay-5" target="_blank">
                     <img src="https://i.pinimg.com/1200x/73/6d/0c/736d0c2aac22b1c37a6ce0ee1a52277f.jpg" 
                          alt="YouTube Music" 
@@ -3063,8 +3080,6 @@
                          class="social-logo">
                     <span class="social-text">Email</span>
                 </a>
-
-                <!-- CAMBIO 1: BOTÓN DE LINKTREE ELIMINADO -->
             </div>
 
             <!-- NUEVA SECCIÓN: PROFESSIONAL PROFILES -->
@@ -3095,7 +3110,6 @@
                     <span class="social-text">MusicBrainz</span>
                 </a>
 
-                <!-- CAMBIO 2: NUEVO BOTÓN DE DISCOGS EN PROFESSIONAL PROFILES -->
                 <a href="https://www.discogs.com/es/artist/17443813-Sam-the-Revenant" class="social-btn fade-in-element delay-5" target="_blank">
                     <img src="https://image2url.com/r2/default/images/1773751863855-729a83a9-2372-453c-b53c-c4db14994a58.jpg" 
                          alt="Discogs" 
@@ -3210,6 +3224,27 @@
                 <div class="category-section">
                     <h3 class="category-title fade-in-element delay-3">My Discography</h3>
                     
+                    <!-- For Tatto (NUEVO ÁLBUM - MÁS RECIENTE) -->
+                    <div class="album-info fade-in-element delay-3">
+                        For Tatto
+                        <a href="#" class="album-listen-now" target="_blank">
+                            Listen Now
+                        </a>
+                    </div>
+                    <div class="melodies-grid">
+                        <div class="melody-card fade-in-element delay-3">
+                            <img src="https://www.image2url.com/r2/default/images/1776113458026-e1c65390-636c-4e84-8cae-470374a530cf.jpg" 
+                                 alt="For Tatto" 
+                                 class="melody-cover"
+                                 loading="lazy">
+                            <div class="melody-info">
+                                <div class="melody-name">For Tatto</div>
+                                <div class="melody-artist">Sam the Revenant</div>
+                            </div>
+                            <span class="soon-badge" style="position: relative; right: auto; margin-left: 0.5rem;">Soon</span>
+                        </div>
+                    </div>
+
                     <!-- La Nuit Déchue -->
                     <div class="album-info fade-in-element delay-3">
                         La Nuit Déchue
@@ -3366,6 +3401,95 @@
                 </div>
 
                 <div class="albums-container">
+                    <!-- ÁLBUM: For Tatto (NUEVO - MÁS RECIENTE) -->
+                    <div class="album-card fade-in-element delay-2" data-album="for-tatto">
+                        <div class="album-header">
+                            <img src="https://www.image2url.com/r2/default/images/1776113458026-e1c65390-636c-4e84-8cae-470374a530cf.jpg" 
+                                 alt="For Tatto" 
+                                 class="album-cover"
+                                 loading="lazy">
+                            <div class="album-basic-info">
+                                <h3 class="album-name">For Tatto</h3>
+                                <div class="album-price">Soon</div>
+                                <div class="platform-icons">
+                                    <img src="https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg" 
+                                         alt="iTunes" 
+                                         class="platform-icon" 
+                                         title="Coming Soon"
+                                         loading="lazy">
+                                    <img src="https://headphone.guru/wp-content/uploads/2021/02/qobuz-logo.png" 
+                                         alt="Qobuz" 
+                                         class="platform-icon" 
+                                         title="Coming Soon"
+                                         loading="lazy">
+                                    <img src="https://i.pinimg.com/736x/09/72/ae/0972ae3bcb8a4157c4f790996c73f41c.jpg" 
+                                         alt="Amazon Music" 
+                                         class="platform-icon" 
+                                         title="Coming Soon"
+                                         loading="lazy">
+                                    <img src="https://image2url.com/r2/default/images/1773752223308-fdc47bc3-e97a-48d6-841e-e1c693e77637.jpg" 
+                                         alt="Bandcamp" 
+                                         class="platform-icon" 
+                                         title="Coming Soon"
+                                         loading="lazy">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="album-details">
+                            <div class="tracklist">
+                                <div class="tracklist-header">
+                                    <div class="tracklist-title">Tracklist</div>
+                                    <a href="#" class="store-listen-now" target="_blank">
+                                        Listen Now
+                                    </a>
+                                </div>
+                                <div class="track">
+                                    <span class="track-name">For Tatto</span>
+                                    <span class="track-duration">(2:13)</span>
+                                </div>
+                            </div>
+                            <button class="purchase-btn soon-btn" onclick="return false;">
+                                <svg class="purchase-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+                                </svg>
+                                Soon
+                            </button>
+                            
+                            <div class="platform-buttons-container" id="for-tatto-platforms">
+                                <div class="platform-buttons-row">
+                                    <a href="#" class="platform-button" target="_blank" onclick="return false;">
+                                        <img src="https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg" 
+                                             alt="iTunes" 
+                                             class="platform-button-logo"
+                                             loading="lazy">
+                                        <span class="platform-button-name">Soon</span>
+                                    </a>
+                                    <a href="#" class="platform-button" target="_blank" onclick="return false;">
+                                        <img src="https://headphone.guru/wp-content/uploads/2021/02/qobuz-logo.png" 
+                                             alt="Qobuz" 
+                                             class="platform-button-logo"
+                                             loading="lazy">
+                                        <span class="platform-button-name">Soon</span>
+                                    </a>
+                                    <a href="#" class="platform-button" target="_blank" onclick="return false;">
+                                        <img src="https://i.pinimg.com/736x/09/72/ae/0972ae3bcb8a4157c4f790996c73f41c.jpg" 
+                                             alt="Amazon Music" 
+                                             class="platform-button-logo"
+                                             loading="lazy">
+                                        <span class="platform-button-name">Soon</span>
+                                    </a>
+                                    <a href="#" class="platform-button" target="_blank" onclick="return false;">
+                                        <img src="https://image2url.com/r2/default/images/1773752223308-fdc47bc3-e97a-48d6-841e-e1c693e77637.jpg" 
+                                             alt="Bandcamp" 
+                                             class="platform-button-logo"
+                                             loading="lazy">
+                                        <span class="platform-button-name">Soon</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- ÁLBUM: La Nuit Déchue -->
                     <div class="album-card fade-in-element delay-2" data-album="nuit-dechue">
                         <div class="album-header">
@@ -3392,7 +3516,6 @@
                                          class="platform-icon" 
                                          title="Available on Amazon Music"
                                          loading="lazy">
-                                    <!-- CAMBIO 4: Ícono de Bandcamp para La Nuit Déchue -->
                                     <img src="https://image2url.com/r2/default/images/1773752223308-fdc47bc3-e97a-48d6-841e-e1c693e77637.jpg" 
                                          alt="Bandcamp" 
                                          class="platform-icon" 
@@ -3452,7 +3575,6 @@
                                              loading="lazy">
                                         <span class="platform-button-name">Amazon</span>
                                     </a>
-                                    <!-- CAMBIO 4: Botón de Bandcamp para La Nuit Déchue -->
                                     <a href="https://samtherevenant.bandcamp.com/album/la-nuit-d-chue" class="platform-button" target="_blank">
                                         <img src="https://image2url.com/r2/default/images/1773752223308-fdc47bc3-e97a-48d6-841e-e1c693e77637.jpg" 
                                              alt="Bandcamp" 
@@ -3491,7 +3613,6 @@
                                          class="platform-icon" 
                                          title="Available on Amazon Music"
                                          loading="lazy">
-                                    <!-- CAMBIO 4: Ícono de Bandcamp para L'Âme Nocturne -->
                                     <img src="https://image2url.com/r2/default/images/1773752223308-fdc47bc3-e97a-48d6-841e-e1c693e77637.jpg" 
                                          alt="Bandcamp" 
                                          class="platform-icon" 
@@ -3551,7 +3672,6 @@
                                              loading="lazy">
                                         <span class="platform-button-name">Amazon</span>
                                     </a>
-                                    <!-- CAMBIO 4: Botón de Bandcamp para L'Âme Nocturne -->
                                     <a href="https://samtherevenant.bandcamp.com/album/l-me-nocturne" class="platform-button" target="_blank">
                                         <img src="https://image2url.com/r2/default/images/1773752223308-fdc47bc3-e97a-48d6-841e-e1c693e77637.jpg" 
                                              alt="Bandcamp" 
@@ -3590,7 +3710,6 @@
                                          class="platform-icon" 
                                          title="Available on Amazon Music"
                                          loading="lazy">
-                                    <!-- CAMBIO 4: Ícono de Bandcamp para E.P. Nocturne -->
                                     <img src="https://image2url.com/r2/default/images/1773752223308-fdc47bc3-e97a-48d6-841e-e1c693e77637.jpg" 
                                          alt="Bandcamp" 
                                          class="platform-icon" 
@@ -3646,7 +3765,6 @@
                                              loading="lazy">
                                         <span class="platform-button-name">Amazon</span>
                                     </a>
-                                    <!-- CAMBIO 4: Botón de Bandcamp para E.P. Nocturne -->
                                     <a href="https://samtherevenant.bandcamp.com/album/e-p-nocturne" class="platform-button" target="_blank">
                                         <img src="https://image2url.com/r2/default/images/1773752223308-fdc47bc3-e97a-48d6-841e-e1c693e77637.jpg" 
                                              alt="Bandcamp" 
