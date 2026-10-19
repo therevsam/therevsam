@@ -79,6 +79,13 @@
         "album": [
             {
                 "@type": "MusicAlbum",
+                "name": "L'Étrange Harmonie",
+                "url": "https://push.fm/fl/jo1oukzz",
+                "numTracks": 1,
+                "genre": "Piano Solo"
+            },
+            {
+                "@type": "MusicAlbum",
                 "name": "Noctis Aeternum",
                 "url": "https://push.fm/fl/kpp9ibpf",
                 "numTracks": 3,
@@ -1709,7 +1716,6 @@
             margin-right: 1.2rem;
             border: 1px solid #333333;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-            filter: grayscale(100%);
         }
 
         .melody-info {
@@ -3075,13 +3081,12 @@
                     <span class="soon-badge">Soon</span>
                 </div>
 
-                <div class="social-btn fade-in-element delay-5">
+                <a href="https://www.facebook.com/people/Sam-the-Revenant/61585561861530/" class="social-btn fade-in-element delay-5" target="_blank">
                     <img src="https://i.pinimg.com/736x/23/6a/4e/236a4e7b01a79e5c18001dec5229865c.jpg" 
                          alt="Facebook Page" 
                          class="social-logo">
                     <span class="social-text">Facebook Page</span>
-                    <span class="soon-badge">Soon</span>
-                </div>
+                </a>
 
                 <a href="mailto:samtherevenant@gmail.com" class="social-btn fade-in-element delay-5">
                     <img src="https://i.pinimg.com/1200x/8e/48/1a/8e481add923811cde7fb76cc3597b19f.jpg" 
@@ -3233,8 +3238,31 @@
                 <div class="category-section">
                     <h3 class="category-title fade-in-element delay-3">My Discography</h3>
 
-                    <!-- NUEVO ÁLBUM: Noctis Aeternum (MÁS RECIENTE - PRIMERO) -->
+                    <!-- NUEVO ÁLBUM: L'Étrange Harmonie (MÁS RECIENTE - PRIMERO) -->
                     <div class="album-info fade-in-element delay-3">
+                        L'Étrange Harmonie
+                        <a href="https://push.fm/fl/jo1oukzz" class="album-listen-now" target="_blank">
+                            Listen Now
+                        </a>
+                    </div>
+                    <div class="melodies-grid">
+                        <a href="https://youtu.be/A78q6_GVsz8?si=xlJCkpnoe_TJOmmt" class="melody-card fade-in-element delay-3" target="_blank">
+                            <img src="https://www.image2url.com/r2/default/images/1792441816707-05f7c2a4-41d5-41d3-8878-6d2e450395ae.jpg" 
+                                 alt="L'Étrange Harmonie" 
+                                 class="melody-cover"
+                                 loading="lazy">
+                            <div class="melody-info">
+                                <div class="melody-name">L'Étrange Harmonie</div>
+                                <div class="melody-artist">Sam the Revenant</div>
+                            </div>
+                            <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                            </svg>
+                        </a>
+                    </div>
+
+                    <!-- ÁLBUM: Noctis Aeternum -->
+                    <div class="album-info fade-in-element delay-3" style="margin-top: 2rem;">
                         Noctis Aeternum
                         <a href="https://push.fm/fl/kpp9ibpf" class="album-listen-now" target="_blank">
                             Listen Now
@@ -3255,7 +3283,7 @@
                             </svg>
                         </a>
 
-                        <div class="melody-card fade-in-element delay-4">
+                        <a href="https://youtu.be/lG-EAMegEQ0?si=Z2kReKasbiAVJfvW" class="melody-card fade-in-element delay-4" target="_blank">
                             <img src="https://www.image2url.com/r2/default/images/1788047301591-92b00176-f128-4ae7-bf23-0e0599145be3.jpg" 
                                  alt="Aurore Dissonante" 
                                  class="melody-cover"
@@ -3264,10 +3292,12 @@
                                 <div class="melody-name">Aurore Dissonante, Op. V en Mi majeur — L'élégance de l'oubli</div>
                                 <div class="melody-artist">Sam the Revenant</div>
                             </div>
-                            <span class="soon-badge" style="position: relative; right: auto; margin-left: 0.5rem;">Soon</span>
-                        </div>
+                            <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                            </svg>
+                        </a>
 
-                        <div class="melody-card fade-in-element delay-5">
+                        <a href="https://youtu.be/A78q6_GVsz8?si=8oyqFh2oF0UB9B1K" class="melody-card fade-in-element delay-5" target="_blank">
                             <img src="https://www.image2url.com/r2/default/images/1788047301591-92b00176-f128-4ae7-bf23-0e0599145be3.jpg" 
                                  alt="Élégie Nocturne" 
                                  class="melody-cover"
@@ -3276,11 +3306,13 @@
                                 <div class="melody-name">Élégie Nocturne, Op. V en Do♯ mineur — Les derniers échos</div>
                                 <div class="melody-artist">Sam the Revenant</div>
                             </div>
-                            <span class="soon-badge" style="position: relative; right: auto; margin-left: 0.5rem;">Soon</span>
-                        </div>
+                            <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                            </svg>
+                        </a>
                     </div>
 
-                    <!-- ÁLBUM: L'Obscur Amour (AHORA DISPONIBLE - ACTUALIZADO) -->
+                    <!-- ÁLBUM: L'Obscur Amour -->
                     <div class="album-info fade-in-element delay-3" style="margin-top: 2rem;">
                         L'Obscur Amour
                         <a href="https://push.fm/fl/gx9pxmw4" class="album-listen-now" target="_blank">
@@ -3331,7 +3363,7 @@
                         </a>
                     </div>
 
-                    <!-- For Tatto (AHORA DISPONIBLE - SEPARADO CORRECTAMENTE) -->
+                    <!-- For Tatto -->
                     <div class="album-info fade-in-element delay-3" style="margin-top: 2rem;">
                         For Tatto
                         <a href="https://push.fm/fl/ez7rkhce" class="album-listen-now" target="_blank">
@@ -3512,7 +3544,96 @@
                 </div>
 
                 <div class="albums-container">
-                    <!-- NUEVO ÁLBUM: Noctis Aeternum (MÁS RECIENTE - PRIMERO) -->
+                    <!-- NUEVO ÁLBUM: L'Étrange Harmonie (MÁS RECIENTE - PRIMERO) -->
+                    <div class="album-card fade-in-element delay-2" data-album="etrange-harmonie">
+                        <div class="album-header">
+                            <img src="https://www.image2url.com/r2/default/images/1792441816707-05f7c2a4-41d5-41d3-8878-6d2e450395ae.jpg" 
+                                 alt="L'Étrange Harmonie" 
+                                 class="album-cover"
+                                 loading="lazy">
+                            <div class="album-basic-info">
+                                <h3 class="album-name">L'Étrange Harmonie</h3>
+                                <div class="album-price">1.29 USD</div>
+                                <div class="platform-icons">
+                                    <img src="https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg" 
+                                         alt="iTunes" 
+                                         class="platform-icon" 
+                                         title="Available on iTunes"
+                                         loading="lazy">
+                                    <img src="https://headphone.guru/wp-content/uploads/2021/02/qobuz-logo.png" 
+                                         alt="Qobuz" 
+                                         class="platform-icon" 
+                                         title="Available on Qobuz"
+                                         loading="lazy">
+                                    <img src="https://i.pinimg.com/736x/09/72/ae/0972ae3bcb8a4157c4f790996c73f41c.jpg" 
+                                         alt="Amazon Music" 
+                                         class="platform-icon" 
+                                         title="Available on Amazon Music"
+                                         loading="lazy">
+                                    <img src="https://image2url.com/r2/default/images/1773752223308-fdc47bc3-e97a-48d6-841e-e1c693e77637.jpg" 
+                                         alt="Bandcamp" 
+                                         class="platform-icon" 
+                                         title="Available on Bandcamp"
+                                         loading="lazy">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="album-details">
+                            <div class="tracklist">
+                                <div class="tracklist-header">
+                                    <div class="tracklist-title">Tracklist</div>
+                                    <a href="https://push.fm/fl/jo1oukzz" class="store-listen-now" target="_blank">
+                                        Listen Now
+                                    </a>
+                                </div>
+                                <div class="track">
+                                    <span class="track-name">L'Étrange Harmonie</span>
+                                    <span class="track-duration">(5:03)</span>
+                                </div>
+                            </div>
+                            <button class="purchase-btn" onclick="toggleAlbumExpand('etrange-harmonie')">
+                                <svg class="purchase-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+                                </svg>
+                                Purchase Album
+                            </button>
+                            
+                            <div class="platform-buttons-container" id="etrange-harmonie-platforms">
+                                <div class="platform-buttons-row">
+                                    <a href="https://music.apple.com/es/album/l%C3%A9trange-harmonie-single/6820995215" class="platform-button" target="_blank">
+                                        <img src="https://i.pinimg.com/1200x/cf/87/56/cf875662662a472214c1f230a881b1ce.jpg" 
+                                             alt="iTunes" 
+                                             class="platform-button-logo"
+                                             loading="lazy">
+                                        <span class="platform-button-name">iTunes</span>
+                                    </a>
+                                    <a href="https://www.qobuz.com/us-en/album/letrange-harmonie-sam-the-revenant/yi0amqjnuoiyz" class="platform-button" target="_blank">
+                                        <img src="https://headphone.guru/wp-content/uploads/2021/02/qobuz-logo.png" 
+                                             alt="Qobuz" 
+                                             class="platform-button-logo"
+                                             loading="lazy">
+                                        <span class="platform-button-name">Qobuz</span>
+                                    </a>
+                                    <a href="https://www.amazon.com/music/player/albums/B0HMJCBD1J" class="platform-button" target="_blank">
+                                        <img src="https://i.pinimg.com/736x/09/72/ae/0972ae3bcb8a4157c4f790996c73f41c.jpg" 
+                                             alt="Amazon Music" 
+                                             class="platform-button-logo"
+                                             loading="lazy">
+                                        <span class="platform-button-name">Amazon</span>
+                                    </a>
+                                    <a href="https://samtherevenant.bandcamp.com/album/l-trange-harmonie" class="platform-button" target="_blank">
+                                        <img src="https://image2url.com/r2/default/images/1773752223308-fdc47bc3-e97a-48d6-841e-e1c693e77637.jpg" 
+                                             alt="Bandcamp" 
+                                             class="platform-button-logo"
+                                             loading="lazy">
+                                        <span class="platform-button-name">Bandcamp</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ÁLBUM: Noctis Aeternum -->
                     <div class="album-card fade-in-element delay-2" data-album="noctis-aeternum">
                         <div class="album-header">
                             <img src="https://www.image2url.com/r2/default/images/1788047301591-92b00176-f128-4ae7-bf23-0e0599145be3.jpg" 
@@ -3609,7 +3730,7 @@
                         </div>
                     </div>
 
-                    <!-- ÁLBUM: L'Obscur Amour (AHORA DISPONIBLE - ACTUALIZADO) -->
+                    <!-- ÁLBUM: L'Obscur Amour -->
                     <div class="album-card fade-in-element delay-2" data-album="obscur-amour">
                         <div class="album-header">
                             <img src="https://www.image2url.com/r2/default/images/1777994255444-261db2bf-d26f-4179-a02b-9e26212adcad.jpg" 
@@ -3706,7 +3827,7 @@
                         </div>
                     </div>
 
-                    <!-- ÁLBUM: For Tatto (AHORA DISPONIBLE) -->
+                    <!-- ÁLBUM: For Tatto -->
                     <div class="album-card fade-in-element delay-2" data-album="for-tatto">
                         <div class="album-header">
                             <img src="https://www.image2url.com/r2/default/images/1776113458026-e1c65390-636c-4e84-8cae-470374a530cf.jpg" 
