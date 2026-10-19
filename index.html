@@ -1598,6 +1598,151 @@
             padding: 0 40px;
         }
 
+        /* ============================================ */
+        /* NUEVA TARJETA VERTICAL: CANAL SECUNDARIO     */
+        /* ============================================ */
+        .secondary-channel-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.8rem;
+        }
+
+        .secondary-channel-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 0.9rem;
+            background: #111111;
+            border: 1px solid #333333;
+            border-radius: 14px;
+            padding: 1.6rem 1.4rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            -webkit-tap-highlight-color: transparent;
+            width: 100%;
+            max-width: 280px;
+        }
+
+        .secondary-channel-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            background: #1a1a1a;
+            border-color: #444444;
+        }
+
+        .secondary-channel-avatar {
+            width: 84px;
+            height: 84px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid #444444;
+            filter: grayscale(20%);
+            transition: filter 0.3s ease;
+        }
+
+        .secondary-channel-card:hover .secondary-channel-avatar {
+            filter: grayscale(0%);
+        }
+
+        .secondary-channel-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #ffffff;
+            line-height: 1.2;
+            letter-spacing: 0.3px;
+            margin: 0;
+        }
+
+        .secondary-channel-username {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.3rem;
+            font-family: 'Lexend', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: #cccccc;
+            line-height: 1.2;
+            margin: 0;
+        }
+
+        .secondary-channel-username .verified-badge {
+            width: 12px;
+            height: 12px;
+            flex-shrink: 0;
+        }
+
+        .secondary-channel-description {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            line-height: 1.5;
+            color: #aaaaaa;
+            margin: 0;
+            opacity: 0.95;
+            max-width: 220px;
+        }
+
+        .secondary-channel-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.45rem;
+            background: #222222;
+            border: 1px solid #444444;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.5rem 1.1rem;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-top: 0.2rem;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .secondary-channel-btn:hover {
+            background: #333333;
+            border-color: #666666;
+            transform: translateY(-1px);
+        }
+
+        .secondary-channel-btn-icon {
+            width: 15px;
+            height: 15px;
+            object-fit: contain;
+            filter: grayscale(100%) brightness(2);
+            border-radius: 3px;
+        }
+
+        @media (max-width: 380px) {
+            .secondary-channel-card {
+                padding: 1.3rem 1.1rem;
+                gap: 0.75rem;
+            }
+            .secondary-channel-avatar {
+                width: 72px;
+                height: 72px;
+            }
+            .secondary-channel-name {
+                font-size: 1.05rem;
+            }
+            .secondary-channel-username {
+                font-size: 0.68rem;
+            }
+            .secondary-channel-description {
+                font-size: 0.68rem;
+            }
+            .secondary-channel-btn {
+                font-size: 0.7rem;
+                padding: 0.45rem 0.9rem;
+            }
+        }
+        /* ============================================ */
+        /* FIN NUEVA TARJETA VERTICAL                   */
+        /* ============================================ */
+
         .copyright {
             font-family: 'Inter', sans-serif;
             font-size: 0.75rem;
@@ -3132,6 +3277,39 @@
                 </a>
             </div>
 
+            <!-- NUEVA SECCIÓN: OTHER PROJECTS -->
+            <div class="section-divider fade-in-element delay-5">
+                <div class="divider-line"></div>
+                <div class="divider-text">Other Projects</div>
+            </div>
+
+            <div class="secondary-channel-wrapper fade-in-element delay-5">
+                <div class="secondary-channel-card">
+                    <img src="https://www.image2url.com/r2/default/images/1792450476792-0256f7a1-0dfd-40a3-aab7-7b1b5ff8cb61.jpg" 
+                         alt="𝖘𝖆𝖒 profile picture" 
+                         class="secondary-channel-avatar"
+                         loading="lazy">
+                    <h3 class="secondary-channel-name">𝖘𝖆𝖒</h3>
+                    <div class="secondary-channel-username">
+                        @samunreleasedd
+                        <img src="https://image2url.com/r2/bucket2/images/1766771229462-36a956fe-b6f7-458d-b50a-839204f7ed7e.png" 
+                             alt="Verified" 
+                             class="verified-badge"
+                             loading="lazy">
+                    </div>
+                    <p class="secondary-channel-description">
+                        Another side of Sam. Unreleased pieces, experiments, covers and unfinished ideas.
+                    </p>
+                    <a href="https://www.youtube.com/@samunreleasedd" class="secondary-channel-btn" target="_blank">
+                        <img src="https://i.pinimg.com/736x/7a/5d/56/7a5d56c5e22d6fed8d72eeb70329f5f5.jpg" 
+                             alt="YouTube" 
+                             class="secondary-channel-btn-icon"
+                             loading="lazy">
+                        YouTube
+                    </a>
+                </div>
+            </div>
+
             <div class="copyright fade-in-element delay-5">
                 © 2025 Sam the Revenant. All rights reserved.
             </div>
@@ -3297,7 +3475,7 @@
                             </svg>
                         </a>
 
-                        <a href="https://youtu.be/A78q6_GVsz8?si=8oyqFh2oF0UB9B1K" class="melody-card fade-in-element delay-5" target="_blank">
+                        <a href="https://youtu.be/mbHWkQpgA9g?si=w-B6_hCH3fnKXEc6" class="melody-card fade-in-element delay-5" target="_blank">
                             <img src="https://www.image2url.com/r2/default/images/1788047301591-92b00176-f128-4ae7-bf23-0e0599145be3.jpg" 
                                  alt="Élégie Nocturne" 
                                  class="melody-cover"
